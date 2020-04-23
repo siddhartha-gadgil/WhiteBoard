@@ -23,7 +23,7 @@ object whiteboard extends ScalaJSModule{
   
     def pack(): define.Command[PathRef] = T.command {
       def js = fastOpt()
-      val target = os.pwd/ "docs" / "js" / "illustrations.js"
+      val target = os.pwd/ "docs" / "js" / "whiteboard.js"
     //   pprint.log(target)
       os.copy.over(js.path, target, createFolders = true)
       js

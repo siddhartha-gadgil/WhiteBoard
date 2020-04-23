@@ -32,15 +32,15 @@ object Content {
     }
 
   case class Text(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Span = span(body).render
+    def view: org.scalajs.dom.html.Span = span(" "+body+" ").render
   }
 
   case class Strong(body: String) extends Phrase {
-    def view = strong(body).render
+    def view = strong(" "+body+" ").render
   }
 
   case class Emph(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Element = em(body).render
+    def view: org.scalajs.dom.html.Element = em(" "+body+" ").render
   }
 
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
@@ -144,4 +144,8 @@ object Content {
     (End).map { _ =>
       Vector()
     } | P(sentence ~ divSeq).map { case (x, ys) => x +: ys }
+
+  def bdy[_ : P] : P[Body] = divSeq.map(v => Body(v))
+
+  val example = parse("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n and blah to you\n should merge with the above.", bdy(_)).get.value
 }
