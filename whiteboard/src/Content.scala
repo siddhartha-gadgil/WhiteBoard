@@ -62,7 +62,7 @@ object Content {
 
   case class InlineTeX(code: String) extends Phrase {
     def view: org.scalajs.dom.html.Element = {
-      val s = span().render
+      val s = span(`class`:= "inline-tex", attr("data-tex") := code).render
       s.innerHTML = g.katex.renderToString(code).toString()
       s
     }
@@ -70,7 +70,7 @@ object Content {
 
   case class DisplayTeX(code: String) extends Sentence {
     def view: org.scalajs.dom.html.Element = {
-      val s = div().render
+      val s = div(`class`:= "display-tex", attr("data-tex") := code).render
       s.innerHTML = g.katex.renderToString(code).toString()
       s
     }
