@@ -6407,7 +6407,7 @@ function $p_Lwhiteboard_Content$__$anonfun$inline$10__T($thiz) {
   return new $c_Lsourcecode_Name("inline").value__T()
 }
 function $p_Lwhiteboard_Content$__$anonfun$inline$11__T__Lwhiteboard_Content$InlineTeX($thiz, s) {
-  return new $c_Lwhiteboard_Content$InlineTeX(s)
+  return new $c_Lwhiteboard_Content$InlineTeX(s, true)
 }
 function $p_Lwhiteboard_Content$__$anonfun$blankLine$3__T($thiz) {
   return "\" \""
@@ -6961,7 +6961,7 @@ function $p_Lwhiteboard_Content$__$anonfun$displayMath$9__T($thiz) {
   return new $c_Lsourcecode_Name("displayMath").value__T()
 }
 function $p_Lwhiteboard_Content$__$anonfun$displayMath$10__T__Lwhiteboard_Content$DisplayTeX($thiz, s) {
-  return new $c_Lwhiteboard_Content$DisplayTeX(s)
+  return new $c_Lwhiteboard_Content$DisplayTeX(s, true)
 }
 function $p_Lwhiteboard_Content$__$anonfun$spanSeq$2__T($thiz) {
   return "\" \""
@@ -7185,7 +7185,7 @@ function $p_Lwhiteboard_Content$__rec$macro$74$1__I__I__Lfastparse_internal_Msgs
 function $p_Lwhiteboard_Content$__$anonfun$spanSeq$12__T($thiz) {
   return new $c_Lsourcecode_Name("spanSeq").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$spanSeq$13__jl_Void__sci_Vector($thiz, x$9) {
+function $p_Lwhiteboard_Content$__$anonfun$spanSeq$13__jl_Void__sci_Vector($thiz, x$10) {
   return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sci_Nil$()))
 }
 function $p_Lwhiteboard_Content$__$anonfun$spanSeq$15__T($thiz) {
@@ -7313,14 +7313,14 @@ function $p_Lwhiteboard_Content$__$anonfun$headHead$4__T($thiz) {
 function $p_Lwhiteboard_Content$__$anonfun$headHead$5__T($thiz) {
   return new $c_Lsourcecode_Name("headHead").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$headHead$6__T__I($thiz, x$10) {
-  return $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(x$10))
+function $p_Lwhiteboard_Content$__$anonfun$headHead$6__T__I($thiz, x$11) {
+  return $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(x$11))
 }
 function $p_Lwhiteboard_Content$__$anonfun$para$1__T($thiz) {
   return new $c_Lsourcecode_Name("para").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$para$2__sci_Vector__Lwhiteboard_Content$Paragraph($thiz, x$11) {
-  return new $c_Lwhiteboard_Content$Paragraph(x$11)
+function $p_Lwhiteboard_Content$__$anonfun$para$2__sci_Vector__Lwhiteboard_Content$Paragraph($thiz, x$12) {
+  return new $c_Lwhiteboard_Content$Paragraph(x$12)
 }
 function $p_Lwhiteboard_Content$__$anonfun$heading$1__T($thiz) {
   return new $c_Lsourcecode_Name("heading").value__T()
@@ -7338,7 +7338,7 @@ function $p_Lwhiteboard_Content$__$anonfun$heading$2__T2__Lwhiteboard_Sentence($
 function $p_Lwhiteboard_Content$__$anonfun$sentence$1__T($thiz) {
   return new $c_Lsourcecode_Name("sentence").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector($thiz, x$12) {
+function $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector($thiz, x$13) {
   return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sci_Nil$()))
 }
 function $p_Lwhiteboard_Content$__$anonfun$divSeq$2__T($thiz) {
@@ -7361,8 +7361,8 @@ function $p_Lwhiteboard_Content$__$anonfun$bdy$1__sci_Vector__Lwhiteboard_Conten
 function $p_Lwhiteboard_Content$__$anonfun$example$1__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$13) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$13)
+function $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$14) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$14)
 }
 /** @constructor */
 function $c_Lwhiteboard_Content$() {
@@ -7370,16 +7370,16 @@ function $c_Lwhiteboard_Content$() {
   this.Lwhiteboard_Content$__f_example = null;
   $ct_O__(this);
   $n_Lwhiteboard_Content$ = this;
-  this.Lwhiteboard_Content$__f_eg = new $c_Lwhiteboard_Content$Paragraph($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text("Something like"), new $c_Lwhiteboard_Content$InlineTeX("x^2 + y^2"), new $c_Lwhiteboard_Content$Text(" is a formula")]))));
+  this.Lwhiteboard_Content$__f_eg = new $c_Lwhiteboard_Content$Paragraph($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text("Something like"), new $c_Lwhiteboard_Content$InlineTeX("x^2 + y^2", true), new $c_Lwhiteboard_Content$Text(" is a formula")]))));
   this.Lwhiteboard_Content$__f_example = $as_Lwhiteboard_Content$Body($m_Lfastparse_package$().parse__Lfastparse_ParserInputSource__F1__Z__I__Lfastparse_internal_Instrument__Lfastparse_Parsed($m_Lfastparse_ParserInputSource$().fromParserInput__O__F1__Lfastparse_ParserInputSource$fromParserInput("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.", new $c_sjsr_AnonFunction1((function(this\u00f8) {
     return (function(s$2) {
       var s = $as_T(s$2);
       return $p_Lwhiteboard_Content$__$anonfun$example$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
     })
   })(this))), new $c_sjsr_AnonFunction1((function(this$2) {
-    return (function(x$13$2) {
-      var x$13 = $as_Lfastparse_ParsingRun(x$13$2);
-      return $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$13)
+    return (function(x$14$2) {
+      var x$14 = $as_Lfastparse_ParsingRun(x$14$2);
+      return $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$14)
     })
   })(this)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument()).get__Lfastparse_Parsed$Success().value__O())
 }
@@ -8711,9 +8711,9 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
   } else {
     var this2 = x1$23;
     this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$4) {
-      return (function(x$9$2) {
-        var x$9 = $as_jl_Void(x$9$2);
-        return $p_Lwhiteboard_Content$__$anonfun$spanSeq$13__jl_Void__sci_Vector(this$4, x$9)
+      return (function(x$10$2) {
+        var x$10 = $as_jl_Void(x$10$2);
+        return $p_Lwhiteboard_Content$__$anonfun$spanSeq$13__jl_Void__sci_Vector(this$4, x$10)
       })
     })(this)).apply__O__O((this2.successValue__O(), (void 0))));
     var $$x18 = this2
@@ -9078,9 +9078,9 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
   } else {
     var this2 = x1$7;
     this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$5) {
-      return (function(x$10$2) {
-        var x$10 = $as_T(x$10$2);
-        return $p_Lwhiteboard_Content$__$anonfun$headHead$6__T__I(this$5, x$10)
+      return (function(x$11$2) {
+        var x$11 = $as_T(x$11$2);
+        return $p_Lwhiteboard_Content$__$anonfun$headHead$6__T__I(this$5, x$11)
       })
     })(this)).apply__O__O($as_T(this2.successValue__O())));
     return this2
@@ -9115,9 +9115,9 @@ $c_Lwhiteboard_Content$.prototype.para__Lfastparse_ParsingRun__Lfastparse_Parsin
   } else {
     var this2 = x1$3;
     this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$2) {
-      return (function(x$11$2) {
-        var x$11 = $as_sci_Vector(x$11$2);
-        return $p_Lwhiteboard_Content$__$anonfun$para$2__sci_Vector__Lwhiteboard_Content$Paragraph(this$2, x$11)
+      return (function(x$12$2) {
+        var x$12 = $as_sci_Vector(x$12$2);
+        return $p_Lwhiteboard_Content$__$anonfun$para$2__sci_Vector__Lwhiteboard_Content$Paragraph(this$2, x$12)
       })
     })(this)).apply__O__O($as_sci_Vector(this2.successValue__O())));
     return this2
@@ -9310,9 +9310,9 @@ $c_Lwhiteboard_Content$.prototype.divSeq__Lfastparse_ParsingRun__Lfastparse_Pars
   } else {
     var this2 = x1$2;
     this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$12$2) {
-        var x$12 = $as_jl_Void(x$12$2);
-        return $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector(this\u00f8, x$12)
+      return (function(x$13$2) {
+        var x$13 = $as_jl_Void(x$13$2);
+        return $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector(this\u00f8, x$13)
       })
     })(this)).apply__O__O((this2.successValue__O(), (void 0))));
     var $$x1 = this2
@@ -9456,10 +9456,24 @@ function $m_Lwhiteboard_Content$() {
   };
   return $n_Lwhiteboard_Content$
 }
+function $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElement($thiz) {
+  if ((!$thiz.Lwhiteboard_Whiteboard$__f_bitmap$0)) {
+    $thiz.Lwhiteboard_Whiteboard$__f_d = $m_Lwhiteboard_Content$().example__Lwhiteboard_Content$Body().view__Lorg_scalajs_dom_raw_HTMLElement();
+    $thiz.Lwhiteboard_Whiteboard$__f_bitmap$0 = true
+  };
+  return $thiz.Lwhiteboard_Whiteboard$__f_d
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_Node($thiz, savedRaw$1, j) {
+  return savedRaw$1[j]
+}
 /** @constructor */
 function $c_Lwhiteboard_Whiteboard$() {
+  this.Lwhiteboard_Whiteboard$__f_d = null;
+  this.Lwhiteboard_Whiteboard$__f_jsDiv = null;
+  this.Lwhiteboard_Whiteboard$__f_bitmap$0 = false;
   $ct_O__(this);
-  $n_Lwhiteboard_Whiteboard$ = this
+  $n_Lwhiteboard_Whiteboard$ = this;
+  this.Lwhiteboard_Whiteboard$__f_jsDiv = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#js-div")
 }
 $c_Lwhiteboard_Whiteboard$.prototype = new $h_O();
 $c_Lwhiteboard_Whiteboard$.prototype.constructor = $c_Lwhiteboard_Whiteboard$;
@@ -9468,22 +9482,35 @@ function $h_Lwhiteboard_Whiteboard$() {
   /*<skip>*/
 }
 $h_Lwhiteboard_Whiteboard$.prototype = $c_Lwhiteboard_Whiteboard$.prototype;
+$c_Lwhiteboard_Whiteboard$.prototype.jsDiv__Lorg_scalajs_dom_raw_Element = (function() {
+  return this.Lwhiteboard_Whiteboard$__f_jsDiv
+});
+$c_Lwhiteboard_Whiteboard$.prototype.d__Lorg_scalajs_dom_raw_HTMLElement = (function() {
+  return ((!this.Lwhiteboard_Whiteboard$__f_bitmap$0) ? $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElement(this) : this.Lwhiteboard_Whiteboard$__f_d)
+});
 $c_Lwhiteboard_Whiteboard$.prototype.load__V = (function() {
-  var jsDiv = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#js-div");
-  var d = $m_Lwhiteboard_Content$().example__Lwhiteboard_Content$Body().view__Lorg_scalajs_dom_raw_HTMLElement();
-  d.oninput = (function(jsDiv$1) {
-    return (function(arg1$2) {
-      var arg1 = arg1$2;
-      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_Element__Lorg_scalajs_dom_raw_Node(arg1, jsDiv$1)
+  this.d__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg1$2) {
+    var arg1 = arg1$2;
+    $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V(arg1)
+  });
+  this.jsDiv__Lorg_scalajs_dom_raw_Element().appendChild(this.d__Lorg_scalajs_dom_raw_HTMLElement())
+});
+$c_Lwhiteboard_Whiteboard$.prototype.update__V = (function() {
+  var savedRaw = this.d__Lorg_scalajs_dom_raw_HTMLElement().childNodes;
+  var saves = $m_sr_RichInt$().until$extension__I__I__sci_Range($m_s_Predef$().intWrapper__I__I(0), $uI(savedRaw.length)).map__F1__sci_IndexedSeq(new $c_sjsr_AnonFunction1((function(this\u00f8, savedRaw) {
+    return (function(j$2) {
+      var j = $uI(j$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_Node(this\u00f8, savedRaw, j)
     })
-  })(jsDiv);
-  jsDiv.appendChild(d)
+  })(this, savedRaw)));
+  var focus = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection().focusNode;
+  this.jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($as_T(focus.textContent))])).render__Lorg_scalajs_dom_raw_Element())
 });
 $c_Lwhiteboard_Whiteboard$.prototype.$js$exported$meth$load__O = (function() {
   this.load__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_Element__Lorg_scalajs_dom_raw_Node = (function(e, jsDiv$1) {
-  return jsDiv$1.appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("You clicked")])).render__Lorg_scalajs_dom_raw_Element())
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
+  $m_Lwhiteboard_Whiteboard$().update__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.load = (function() {
   return this.$js$exported$meth$load__O()
@@ -27816,9 +27843,11 @@ function $f_s_reflect_Manifest__$init$__V($thiz) {
   /*<skip>*/
 }
 /** @constructor */
-function $c_Lwhiteboard_Content$DisplayTeX(code) {
+function $c_Lwhiteboard_Content$DisplayTeX(code, formatted) {
   this.Lwhiteboard_Content$DisplayTeX__f_code = null;
+  this.Lwhiteboard_Content$DisplayTeX__f_formatted = false;
   this.Lwhiteboard_Content$DisplayTeX__f_code = code;
+  this.Lwhiteboard_Content$DisplayTeX__f_formatted = formatted;
   $ct_O__(this);
   $f_s_Product__$init$__V(this)
 }
@@ -27832,6 +27861,9 @@ $h_Lwhiteboard_Content$DisplayTeX.prototype = $c_Lwhiteboard_Content$DisplayTeX.
 $c_Lwhiteboard_Content$DisplayTeX.prototype.code__T = (function() {
   return this.Lwhiteboard_Content$DisplayTeX__f_code
 });
+$c_Lwhiteboard_Content$DisplayTeX.prototype.formatted__Z = (function() {
+  return this.Lwhiteboard_Content$DisplayTeX__f_formatted
+});
 $c_Lwhiteboard_Content$DisplayTeX.prototype.view__Lorg_scalajs_dom_raw_HTMLElement = (function() {
   var s = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("display-tex", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("data-tex", $m_Lscalatags_JsDom$all$().attr$default$2__Lscalatags_generic_Namespace(), $m_Lscalatags_JsDom$all$().attr$default$3__Z()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(this.code__T(), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element();
   s.innerHTML = $dp_toString__T(katex.renderToString($m_sjs_js_Any$().fromString__T__sjs_js_Any(this.code__T())));
@@ -27841,11 +27873,23 @@ $c_Lwhiteboard_Content$DisplayTeX.prototype.productPrefix__T = (function() {
   return "DisplayTeX"
 });
 $c_Lwhiteboard_Content$DisplayTeX.prototype.productArity__I = (function() {
-  return 1
+  return 2
 });
 $c_Lwhiteboard_Content$DisplayTeX.prototype.productElement__I__O = (function(x$1) {
   var x1 = x$1;
-  return ((x1 === 0) ? this.code__T() : $s_sr_Statics__ioobe__I__O(x$1))
+  switch (x1) {
+    case 0: {
+      return this.code__T();
+      break
+    }
+    case 1: {
+      return this.formatted__Z();
+      break
+    }
+    default: {
+      return $s_sr_Statics__ioobe__I__O(x$1)
+    }
+  }
 });
 $c_Lwhiteboard_Content$DisplayTeX.prototype.productIterator__sc_Iterator = (function() {
   return $m_sr_ScalaRunTime$().typedProductIterator__s_Product__sc_Iterator(this)
@@ -27854,7 +27898,11 @@ $c_Lwhiteboard_Content$DisplayTeX.prototype.canEqual__O__Z = (function(x$1) {
   return (x$1 instanceof $c_Lwhiteboard_Content$DisplayTeX)
 });
 $c_Lwhiteboard_Content$DisplayTeX.prototype.hashCode__I = (function() {
-  return $m_sr_ScalaRunTime$()._hashCode__s_Product__I(this)
+  var acc = (-889275714);
+  acc = $s_sr_Statics__mix__I__I__I(acc, $f_T__hashCode__I(this.productPrefix__T()));
+  acc = $s_sr_Statics__mix__I__I__I(acc, $s_sr_Statics__anyHash__O__I(this.code__T()));
+  acc = $s_sr_Statics__mix__I__I__I(acc, (this.formatted__Z() ? 1231 : 1237));
+  return $s_sr_Statics__finalizeHash__I__I__I(acc, 2)
 });
 $c_Lwhiteboard_Content$DisplayTeX.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
@@ -27866,7 +27914,7 @@ $c_Lwhiteboard_Content$DisplayTeX.prototype.equals__O__Z = (function(x$1) {
     var x1 = x$1;
     if (((x1 instanceof $c_Lwhiteboard_Content$DisplayTeX) || false)) {
       var DisplayTeX$1 = $as_Lwhiteboard_Content$DisplayTeX(x$1);
-      return ($is(this.code__T(), DisplayTeX$1.code__T()) && DisplayTeX$1.canEqual__O__Z(this))
+      return (((this.formatted__Z() === DisplayTeX$1.formatted__Z()) && $is(this.code__T(), DisplayTeX$1.code__T())) && DisplayTeX$1.canEqual__O__Z(this))
     } else {
       return false
     }
@@ -28155,9 +28203,11 @@ var $d_Lwhiteboard_Content$Heading = new $TypeData().initClass({
 });
 $c_Lwhiteboard_Content$Heading.prototype.$classData = $d_Lwhiteboard_Content$Heading;
 /** @constructor */
-function $c_Lwhiteboard_Content$InlineTeX(code) {
+function $c_Lwhiteboard_Content$InlineTeX(code, formatted) {
   this.Lwhiteboard_Content$InlineTeX__f_code = null;
+  this.Lwhiteboard_Content$InlineTeX__f_formatted = false;
   this.Lwhiteboard_Content$InlineTeX__f_code = code;
+  this.Lwhiteboard_Content$InlineTeX__f_formatted = formatted;
   $ct_O__(this);
   $f_s_Product__$init$__V(this)
 }
@@ -28171,20 +28221,44 @@ $h_Lwhiteboard_Content$InlineTeX.prototype = $c_Lwhiteboard_Content$InlineTeX.pr
 $c_Lwhiteboard_Content$InlineTeX.prototype.code__T = (function() {
   return this.Lwhiteboard_Content$InlineTeX__f_code
 });
+$c_Lwhiteboard_Content$InlineTeX.prototype.formatted__Z = (function() {
+  return this.Lwhiteboard_Content$InlineTeX__f_formatted
+});
+$c_Lwhiteboard_Content$InlineTeX.prototype.formatted_$eq__Z__V = (function(x$1) {
+  this.Lwhiteboard_Content$InlineTeX__f_formatted = x$1
+});
 $c_Lwhiteboard_Content$InlineTeX.prototype.view__Lorg_scalajs_dom_raw_HTMLElement = (function() {
   var s = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("inline-tex", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("data-tex", $m_Lscalatags_JsDom$all$().attr$default$2__Lscalatags_generic_Namespace(), $m_Lscalatags_JsDom$all$().attr$default$3__Z()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(this.code__T(), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element();
-  s.innerHTML = $dp_toString__T(katex.renderToString($m_sjs_js_Any$().fromString__T__sjs_js_Any(this.code__T())));
+  s.innerHTML = (this.formatted__Z() ? $dp_toString__T(katex.renderToString($m_sjs_js_Any$().fromString__T__sjs_js_Any(this.code__T()))) : (("<span> " + this.code__T()) + " </span>"));
+  s.onclick = (function(arg$outer) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      arg$outer.whiteboard$Content$InlineTeX$$$anonfun$view$8__Lorg_scalajs_dom_raw_MouseEvent__V(arg1)
+    })
+  })(this);
   return s
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.productPrefix__T = (function() {
   return "InlineTeX"
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.productArity__I = (function() {
-  return 1
+  return 2
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.productElement__I__O = (function(x$1) {
   var x1 = x$1;
-  return ((x1 === 0) ? this.code__T() : $s_sr_Statics__ioobe__I__O(x$1))
+  switch (x1) {
+    case 0: {
+      return this.code__T();
+      break
+    }
+    case 1: {
+      return this.formatted__Z();
+      break
+    }
+    default: {
+      return $s_sr_Statics__ioobe__I__O(x$1)
+    }
+  }
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.productIterator__sc_Iterator = (function() {
   return $m_sr_ScalaRunTime$().typedProductIterator__s_Product__sc_Iterator(this)
@@ -28193,7 +28267,11 @@ $c_Lwhiteboard_Content$InlineTeX.prototype.canEqual__O__Z = (function(x$1) {
   return (x$1 instanceof $c_Lwhiteboard_Content$InlineTeX)
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.hashCode__I = (function() {
-  return $m_sr_ScalaRunTime$()._hashCode__s_Product__I(this)
+  var acc = (-889275714);
+  acc = $s_sr_Statics__mix__I__I__I(acc, $f_T__hashCode__I(this.productPrefix__T()));
+  acc = $s_sr_Statics__mix__I__I__I(acc, $s_sr_Statics__anyHash__O__I(this.code__T()));
+  acc = $s_sr_Statics__mix__I__I__I(acc, (this.formatted__Z() ? 1231 : 1237));
+  return $s_sr_Statics__finalizeHash__I__I__I(acc, 2)
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
@@ -28205,11 +28283,14 @@ $c_Lwhiteboard_Content$InlineTeX.prototype.equals__O__Z = (function(x$1) {
     var x1 = x$1;
     if (((x1 instanceof $c_Lwhiteboard_Content$InlineTeX) || false)) {
       var InlineTeX$1 = $as_Lwhiteboard_Content$InlineTeX(x$1);
-      return ($is(this.code__T(), InlineTeX$1.code__T()) && InlineTeX$1.canEqual__O__Z(this))
+      return (((this.formatted__Z() === InlineTeX$1.formatted__Z()) && $is(this.code__T(), InlineTeX$1.code__T())) && InlineTeX$1.canEqual__O__Z(this))
     } else {
       return false
     }
   }
+});
+$c_Lwhiteboard_Content$InlineTeX.prototype.whiteboard$Content$InlineTeX$$$anonfun$view$8__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$8) {
+  this.formatted_$eq__Z__V((!this.formatted__Z()))
 });
 function $as_Lwhiteboard_Content$InlineTeX(obj) {
   return (((obj instanceof $c_Lwhiteboard_Content$InlineTeX) || (obj === null)) ? obj : $throwClassCastException(obj, "whiteboard.Content$InlineTeX"))
@@ -28232,8 +28313,8 @@ var $d_Lwhiteboard_Content$InlineTeX = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.$classData = $d_Lwhiteboard_Content$InlineTeX;
-function $p_Lwhiteboard_Content$Paragraph__$anonfun$view$8__Lwhiteboard_Phrase__Lorg_scalajs_dom_raw_HTMLElement($thiz, x$8) {
-  return x$8.view__Lorg_scalajs_dom_raw_HTMLElement()
+function $p_Lwhiteboard_Content$Paragraph__$anonfun$view$10__Lwhiteboard_Phrase__Lorg_scalajs_dom_raw_HTMLElement($thiz, x$9) {
+  return x$9.view__Lorg_scalajs_dom_raw_HTMLElement()
 }
 /** @constructor */
 function $c_Lwhiteboard_Content$Paragraph(spans) {
@@ -28254,9 +28335,9 @@ $c_Lwhiteboard_Content$Paragraph.prototype.spans__sci_Vector = (function() {
 });
 $c_Lwhiteboard_Content$Paragraph.prototype.view__Lorg_scalajs_dom_raw_HTMLElement = (function() {
   return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lwhiteboard_Content$().polySpan__sci_Vector__Lscalatags_JsDom$TypedTag($as_sci_Vector(this.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$8$2) {
-      var x$8 = $as_Lwhiteboard_Phrase(x$8$2);
-      return $p_Lwhiteboard_Content$Paragraph__$anonfun$view$8__Lwhiteboard_Phrase__Lorg_scalajs_dom_raw_HTMLElement(this\u00f8, x$8)
+    return (function(x$9$2) {
+      var x$9 = $as_Lwhiteboard_Phrase(x$9$2);
+      return $p_Lwhiteboard_Content$Paragraph__$anonfun$view$10__Lwhiteboard_Phrase__Lorg_scalajs_dom_raw_HTMLElement(this\u00f8, x$9)
     })
   })(this)))))])).render__Lorg_scalajs_dom_raw_Element()
 });

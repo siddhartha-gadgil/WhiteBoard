@@ -20,33 +20,33 @@ sealed trait Phrase extends Content {
 sealed trait Sentence extends Content // div
 
 object Content {
-    def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
-    case head +: Vector()     => div(contenteditable := true)(head)
-    case init :+ last => polyDiv(init)(last)
-    case Vector()     => div(contenteditable := true)
+  def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
+    case head +: Vector() => div(contenteditable := true)(head)
+    case init :+ last     => polyDiv(init)(last)
+    case Vector()         => div(contenteditable := true)
   }
 
-    case class Body(divs: Vector[Sentence]) extends Content{
-        def view: org.scalajs.dom.html.Element = 
-            p(polyDiv(divs.map(_.view))).render
-    }
+  case class Body(divs: Vector[Sentence]) extends Content {
+    def view: org.scalajs.dom.html.Element =
+      p(polyDiv(divs.map(_.view))).render
+  }
 
   case class Text(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Span = span(" "+body+" ").render
+    def view: org.scalajs.dom.html.Span = span(" " + body + " ").render
   }
 
   case class Strong(body: String) extends Phrase {
-    def view = strong(" "+body+" ").render
+    def view = strong(" " + body + " ").render
   }
 
   case class Emph(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Element = em(" "+body+" ").render
+    def view: org.scalajs.dom.html.Element = em(" " + body + " ").render
   }
 
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
     case head +: Vector() => span(head)
-    case init :+ last => polySpan(init)(last)
-    case Vector()     => span()
+    case init :+ last     => polySpan(init)(last)
+    case Vector()         => span()
   }
 
   case class Heading(spans: Vector[Phrase], level: Int) extends Sentence {
@@ -60,38 +60,41 @@ object Content {
     }
   }
 
-  case class InlineTeX(code: String) extends Phrase {
+  case class InlineTeX(code: String, var formatted: Boolean) extends Phrase {
     def view: org.scalajs.dom.html.Element = {
-      val s = span(`class`:= "inline-tex", attr("data-tex") := code).render
-      s.innerHTML = g.katex.renderToString(code).toString()
+      val s = span(`class` := "inline-tex", attr("data-tex") := code).render
+      s.innerHTML =
+        if (formatted) g.katex.renderToString(code).toString()
+        else s"<span> $code </span>"
+      s.onclick = (_) => formatted = !formatted
       s
     }
   }
 
-  case class DisplayTeX(code: String) extends Sentence {
+  case class DisplayTeX(code: String, formatted: Boolean) extends Sentence {
     def view: org.scalajs.dom.html.Element = {
-      val s = div(`class`:= "display-tex", attr("data-tex") := code).render
+      val s = div(`class` := "display-tex", attr("data-tex") := code).render
       s.innerHTML = g.katex.renderToString(code).toString()
       s
     }
   }
 
   case class Paragraph(spans: Vector[Phrase]) extends Sentence {
-    def view: org.scalajs.dom.html.Element = 
-        p(polySpan(spans.map(_.view))).render
+    def view: org.scalajs.dom.html.Element =
+      p(polySpan(spans.map(_.view))).render
   }
 
   val eg = Paragraph(
     Vector(
       Text("Something like"),
-      InlineTeX("x^2 + y^2"),
+      InlineTeX("x^2 + y^2", true),
       Text(" is a formula")
     )
   )
 
   def inline[_: P]: P[Phrase] =
     P(" ".rep ~ "$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$").map(s =>
-      InlineTeX(s)
+      InlineTeX(s, true)
     )
 
   def blankLine[_: P]: P[Unit] = P(" ".rep ~ "\n").rep(2)
@@ -113,7 +116,7 @@ object Content {
 
   def displayMath[_: P]: P[Sentence] =
     P("$$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$$").map { s =>
-      DisplayTeX(s)
+      DisplayTeX(s, true)
     }
 
   def spanSeq[_: P]: P[Vector[Phrase]] =
@@ -145,7 +148,10 @@ object Content {
       Vector()
     } | P(sentence ~ divSeq).map { case (x, ys) => x +: ys }
 
-  def bdy[_ : P] : P[Body] = divSeq.map(v => Body(v))
+  def bdy[_: P]: P[Body] = divSeq.map(v => Body(v))
 
-  val example = parse("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.", bdy(_)).get.value
+  val example = parse(
+    "This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.",
+    bdy(_)
+  ).get.value
 }

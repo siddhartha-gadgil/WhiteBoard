@@ -12,11 +12,32 @@ import org.scalajs.dom.html._
 
 @JSExportTopLevel("Whiteboard")
 object Whiteboard{
+    val jsDiv = dom.document.querySelector("#js-div")
+
+    lazy val d = Content.example.view
+
     @JSExport
     def load() : Unit = {
-        val jsDiv = dom.document.querySelector("#js-div")
-        val d = Content.example.view
-        d.oninput = (e) => jsDiv.appendChild(p("You clicked").render)
+        
+        
+        d.oninput = (e) => update()
         jsDiv.appendChild(d)
     }
+
+    def update() : Unit = {
+        // jsDiv.innerHTML = ""
+        // jsDiv.appendChild(d)
+
+        val savedRaw = d.childNodes
+
+        val saves  = (0 until savedRaw.length).map(j =>  savedRaw(j))
+
+        val focus = dom.window.getSelection().focusNode
+
+        // d.replaceChild(saves.head, saves.head)
+
+        jsDiv.appendChild(div(focus.textContent).render)
+    }
+
+
 }
