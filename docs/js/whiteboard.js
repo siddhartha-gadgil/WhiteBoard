@@ -7371,7 +7371,7 @@ function $c_Lwhiteboard_Content$() {
   $ct_O__(this);
   $n_Lwhiteboard_Content$ = this;
   this.Lwhiteboard_Content$__f_eg = new $c_Lwhiteboard_Content$Paragraph($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text("Something like"), new $c_Lwhiteboard_Content$InlineTeX("x^2 + y^2"), new $c_Lwhiteboard_Content$Text(" is a formula")]))));
-  this.Lwhiteboard_Content$__f_example = $as_Lwhiteboard_Content$Body($m_Lfastparse_package$().parse__Lfastparse_ParserInputSource__F1__Z__I__Lfastparse_internal_Instrument__Lfastparse_Parsed($m_Lfastparse_ParserInputSource$().fromParserInput__O__F1__Lfastparse_ParserInputSource$fromParserInput("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n and blah to you\n should merge with the above.", new $c_sjsr_AnonFunction1((function(this\u00f8) {
+  this.Lwhiteboard_Content$__f_example = $as_Lwhiteboard_Content$Body($m_Lfastparse_package$().parse__Lfastparse_ParserInputSource__F1__Z__I__Lfastparse_internal_Instrument__Lfastparse_Parsed($m_Lfastparse_ParserInputSource$().fromParserInput__O__F1__Lfastparse_ParserInputSource$fromParserInput("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.", new $c_sjsr_AnonFunction1((function(this\u00f8) {
     return (function(s$2) {
       var s = $as_T(s$2);
       return $p_Lwhiteboard_Content$__$anonfun$example$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
@@ -9470,13 +9470,20 @@ function $h_Lwhiteboard_Whiteboard$() {
 $h_Lwhiteboard_Whiteboard$.prototype = $c_Lwhiteboard_Whiteboard$.prototype;
 $c_Lwhiteboard_Whiteboard$.prototype.load__V = (function() {
   var jsDiv = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#js-div");
-  jsDiv.appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Just a hello")])).render__Lorg_scalajs_dom_raw_Element());
-  var d = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()).render__Lorg_scalajs_dom_raw_Element();
-  d.innerHTML = $dp_toString__T($m_Lwhiteboard_Content$().example__Lwhiteboard_Content$Body().view__Lorg_scalajs_dom_raw_HTMLElement());
-  jsDiv.appendChild($m_Lwhiteboard_Content$().example__Lwhiteboard_Content$Body().view__Lorg_scalajs_dom_raw_HTMLElement())
+  var d = $m_Lwhiteboard_Content$().example__Lwhiteboard_Content$Body().view__Lorg_scalajs_dom_raw_HTMLElement();
+  d.oninput = (function(jsDiv$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_Element__Lorg_scalajs_dom_raw_Node(arg1, jsDiv$1)
+    })
+  })(jsDiv);
+  jsDiv.appendChild(d)
 });
 $c_Lwhiteboard_Whiteboard$.prototype.$js$exported$meth$load__O = (function() {
   this.load__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_Element__Lorg_scalajs_dom_raw_Node = (function(e, jsDiv$1) {
+  return jsDiv$1.appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("You clicked")])).render__Lorg_scalajs_dom_raw_Element())
 });
 $c_Lwhiteboard_Whiteboard$.prototype.load = (function() {
   return this.$js$exported$meth$load__O()

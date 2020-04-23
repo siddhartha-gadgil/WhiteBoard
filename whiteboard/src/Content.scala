@@ -147,5 +147,5 @@ object Content {
 
   def bdy[_ : P] : P[Body] = divSeq.map(v => Body(v))
 
-  val example = parse("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n and blah to you\n should merge with the above.", bdy(_)).get.value
+  val example = parse("This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.", bdy(_)).get.value
 }

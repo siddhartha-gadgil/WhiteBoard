@@ -15,9 +15,8 @@ object Whiteboard{
     @JSExport
     def load() : Unit = {
         val jsDiv = dom.document.querySelector("#js-div")
-        jsDiv.appendChild(p("Just a hello").render)
-        val d = div().render
-        d.innerHTML = Content.example.view.toString()
-        jsDiv.appendChild(Content.example.view)
+        val d = Content.example.view
+        d.oninput = (e) => jsDiv.appendChild(p("You clicked").render)
+        jsDiv.appendChild(d)
     }
 }
