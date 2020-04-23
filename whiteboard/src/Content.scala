@@ -33,7 +33,10 @@ object Content {
     P(" ".rep ~ "$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$").map(s =>
       InlineTeX(s)
     )
-  def letter[_: P]: P[String] = CharPred(x => !Set('$', "_").contains(x)).! //.map(s => Text(s.toString()))
+
+  def blankLine[_: P] : P[Unit] = P(" ".rep ~ "\n").rep(2)
+
+  def letter[_: P]: P[String] = !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
 
 //   def prepend(x: Span, ys: List[Span]): List[Span] = (x, ys) match {
 //     case (Text(a), Text(w) :: tail) => Text(a + w) :: tail
@@ -42,7 +45,12 @@ object Content {
 
   def word[_: P] : P[Span] = letter.rep(1).map(l => Text(l.mkString("")))
 
-  def span[_: P]: P[Span] = P(inline | word)
+  def strong[_: P] : P[Span] = P("__" ~letter.rep(1) ~ "__").map(l => Strong(l.mkString("")))
+
+  def emph[_: P] : P[Span] = P("_" ~letter.rep(1) ~ "_").map(l => Emph(l.mkString("")))
+
+
+  def span[_: P]: P[Span] = P(inline | emph | strong | word)
 
   def dispAhead[_: P] = P(&("$$"))
 
@@ -51,10 +59,10 @@ object Content {
   def spanSeq[_: P]: P[List[Span]] =
     (End | P(" ".rep ~ "\n" ~ " ".rep ~ "\n" ~ " ".rep) | dispAhead).map { _ =>
       List()
-    } | P(inline ~ " ".rep ~ spanSeq).map { case (x, ys) => x :: ys
+    } | P(inline ~ " ".rep ~  spanSeq).map { case (x, ys) => x :: ys
        // prepend(x, ys) 
     } |
-      P(span ~ spanSeq).map { case (x, ys)               => x :: ys
+      P(span ~  spanSeq).map { case (x, ys)               => x :: ys
        // prepend(x, ys) 
     }
 
