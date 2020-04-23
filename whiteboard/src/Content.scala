@@ -12,6 +12,11 @@ object Content {
 
   case class Text(body: String) extends Span
 
+  case class Strong(body: String) extends Span
+
+  case class Emph(body: String) extends Span
+
+
   case class Heading(spans: List[Span], level: Int) extends Div
 
   case class InlineTeX(code: String) extends Span
@@ -28,24 +33,30 @@ object Content {
     P(" ".rep ~ "$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$").map(s =>
       InlineTeX(s)
     )
-  def letter[_: P]: P[Span] = CharPred(x => x != '$').!.map(s => Text(s.toString()))
+  def letter[_: P]: P[String] = CharPred(x => !Set('$', "_").contains(x)).! //.map(s => Text(s.toString()))
 
-  def prepend(x: Span, ys: List[Span]): List[Span] = (x, ys) match {
-    case (Text(a), Text(w) :: tail) => Text(a + w) :: tail
-    case (a, bs)                    => a :: bs
-  }
+//   def prepend(x: Span, ys: List[Span]): List[Span] = (x, ys) match {
+//     case (Text(a), Text(w) :: tail) => Text(a + w) :: tail
+//     case (a, bs)                    => a :: bs
+//   }
 
-  def span[_: P]: P[Span] = P(inline | letter)
+  def word[_: P] : P[Span] = letter.rep(1).map(l => Text(l.mkString("")))
 
-  def dispAhead[_: P] = P((" " | "\n" ) ~ &("$$"))
+  def span[_: P]: P[Span] = P(inline | word)
+
+  def dispAhead[_: P] = P(&("$$"))
 
   def displayMath[_: P]: P[Div] = P("$$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$$").map{s => DisplayTeX(s)}
 
   def spanSeq[_: P]: P[List[Span]] =
     (End | P(" ".rep ~ "\n" ~ " ".rep ~ "\n" ~ " ".rep) | dispAhead).map { _ =>
       List()
-    } | P(inline ~ " ".rep ~ spanSeq).map { case (x, ys) => prepend(x, ys) } |
-      P(span ~ spanSeq).map { case (x, ys)               => prepend(x, ys) }
+    } | P(inline ~ " ".rep ~ spanSeq).map { case (x, ys) => x :: ys
+       // prepend(x, ys) 
+    } |
+      P(span ~ spanSeq).map { case (x, ys)               => x :: ys
+       // prepend(x, ys) 
+    }
 
   def headHead[_: P]: P[Int] = P("#".rep(min = 1, max = 6).! ~ " ").map {
     _.size
