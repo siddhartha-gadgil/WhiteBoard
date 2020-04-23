@@ -17,7 +17,8 @@ object whiteboard extends ScalaJSModule{
       ivy"org.scala-js::scalajs-dom::1.0.0",
       // ivy"in.nvilla::monadic-html::0.4.0",
       ivy"com.lihaoyi::scalatags::0.9.0",
-      ivy"com.lihaoyi::fastparse::2.3.0"
+      ivy"com.lihaoyi::fastparse::2.3.0",
+      ivy"org.scala-lang.modules::scala-xml:1.2.0"
     )
   
     def pack(): define.Command[PathRef] = T.command {
