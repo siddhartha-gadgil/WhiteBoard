@@ -20,13 +20,37 @@ object Whiteboard{
 
     def log(s: String) : Unit= {
         logDiv.innerHTML = ""
-        logDiv.appendChild(span(s).render)
+        logDiv.appendChild(pre(s).render)
     }
 
     lazy val d = Content.example.view
 
-    def edContent : String =
-        dom.document.querySelector("#editor").innerHTML
+    def edNode =
+        dom.document.querySelector("#editor").asInstanceOf[HTMLElement]
+
+    def children(node: HTMLElement) : Vector[HTMLElement] = 
+         {
+            val c = node.childNodes
+            (0 until(c.length)).toVector.map(i => c(i))
+        }.collect{case n : HTMLElement if n != () => n}
+
+    def tagPad(s: String, tag: String) = tag match {
+        case "P" => s+"\n\n"
+        case "STRONG" => "__"+s+"__"
+        case "EM" => "_"+s+"_"
+        case s"H$n" => 
+            val level = n.toInt
+            ("#" * level) + " " + s+ "\n\n"
+        case _ => s
+    }
+
+    def fullText(node: HTMLElement) : String = 
+        if (node.classList.contains("inline-tex")) "$"+node.attributes.getNamedItem("data-tex").value+"$"
+        else if (node.classList.contains("display-tex")) "$$"+node.attributes.getNamedItem("data-tex").value+"$$"
+        else {
+            val cs = children(node)
+            if (cs.isEmpty) tagPad(node.textContent, node.tagName) else tagPad(cs.map(fullText(_)).mkString(""), node.tagName)
+        }
 
     def offspring(node: dom.Node) : Vector[HTMLElement] = 
         (if (node.hasChildNodes()) {
@@ -76,13 +100,19 @@ object Whiteboard{
 
         dom.console.log(Try(selected.asInstanceOf[dom.Element].classList.add("focussed") ))
 
+        dom.console.log(edNode.tagName)
+
+        log(fullText(edNode))
+
+        dom.console.log(fullText(edNode))
+
         // dom.console.log( offspring(d).find{n => focusOpt == Some(n)})
 
         // focus.asInstanceOf[dom.Element].classList.contains("tex-inline")
 
         // d.replaceChild(saves.head, saves.head)
 
-        // log(edContent)
+        // log(Content.getXML(s"<div>$edContent</div>").toString)
     }
 
 

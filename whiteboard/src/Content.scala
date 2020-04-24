@@ -8,6 +8,10 @@ import org.scalajs.dom.html._
 
 import scalajs.js.Dynamic.{global => g}
 import scalatags.JsDom.TypedTag
+// import org.xml.sax.InputSource
+// import java.io.StringReader 
+import scala.xml._
+
 
 sealed trait Content {
   def view: Element
@@ -32,15 +36,15 @@ object Content {
   }
 
   case class Text(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Span = span(" " + body + " ").render
+    def view: org.scalajs.dom.html.Span = span(body).render
   }
 
   case class Strong(body: String) extends Phrase {
-    def view = strong(" " + body + " ").render
+    def view = strong(body).render
   }
 
   case class Emph(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Element = em(" " + body + " ").render
+    def view: org.scalajs.dom.html.Element = em(body).render
   }
 
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
@@ -75,7 +79,7 @@ object Content {
     }
   }
 
-  case class DisplayTeX(code: String, formatted: Boolean) extends Sentence {
+  case class DisplayTeX(code: String, formatted: Boolean) extends Phrase {
     def view: org.scalajs.dom.html.Element = {
       val s = div(`class` := "display-tex", attr("data-tex") := code).render
       s.innerHTML = g.katex.renderToString(code).toString()
@@ -96,12 +100,12 @@ object Content {
     )
   )
 
-  def inline[_: P]: P[Phrase] =
+  def inlineTeX[_: P]: P[Phrase] =
     P(" ".rep ~ "$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$").map(s =>
       InlineTeX(s, true)
     )
 
-  def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n").rep)
+  def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n").rep(1))
 
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
@@ -114,19 +118,19 @@ object Content {
   def ital[_: P]: P[Phrase] =
     P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString("")))
 
-  def phrase[_: P]: P[Phrase] = P(inline | ital | bold | word)
+  def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX| ital | bold | word)
 
   def dispAhead[_: P] = P(&("$$"))
 
-  def displayMath[_: P]: P[Sentence] =
+  def displayMath[_: P]: P[Phrase] =
     P("$$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$$").map { s =>
       DisplayTeX(s, true)
     }
 
   def spanSeq[_: P]: P[Vector[Phrase]] =
-    (End | blankLine | dispAhead).map { _ =>
+    (End | blankLine).map { _ =>
       Vector()
-    } | P(inline ~ spanSeq).map {
+    } | P(inlineTeX~ spanSeq).map {
       case (x, ys) => x +: ys
       // prepend(x, ys)
     } |
@@ -145,7 +149,7 @@ object Content {
     case (l, s) => Heading(s, l)
   }
 
-  def sentence[_: P]: P[Sentence] = P(displayMath | heading | para)
+  def sentence[_: P]: P[Sentence] = P(heading | para)
 
   def divSeq[_: P]: P[Vector[Sentence]] =
     (End).map { _ =>
@@ -154,8 +158,10 @@ object Content {
 
   def bdy[_: P]: P[Body] = divSeq.map(v => Body(v))
 
-  val example = parse(
+  lazy val example = parse(
     "This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.",
     bdy(_)
   ).get.value
+
+  // def getXML(s: String) = XML.load(s )
 }
