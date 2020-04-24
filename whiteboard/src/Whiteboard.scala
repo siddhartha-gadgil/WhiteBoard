@@ -12,6 +12,8 @@ import org.scalajs.dom.html._
 import scala.util._
 import org.scalajs.dom.raw.HTMLElement
 
+import dom.console
+
 @JSExportTopLevel("Whiteboard")
 object Whiteboard{
     val jsDiv = dom.document.querySelector("#js-div")
@@ -73,7 +75,7 @@ object Whiteboard{
     def update() : Unit = {
         // jsDiv.innerHTML = ""
         // jsDiv.appendChild(d)
-        dom.console.log("updating")
+        console.log("updating")
 
         val savedRaw = d.childNodes
 
@@ -87,26 +89,28 @@ object Whiteboard{
 
         // focusElemOpt.foreach(_.classList.add("focussed"))
 
-        focusOpt.foreach{e => dom.console.log(e); dom.console.log(e.nodeValue); dom.console.log(Try(logDiv.setAttribute("blah", "blah") ).toString )}      
+        focusOpt.foreach{e => console.log(e); console.log(e.nodeValue); console.log(Try(logDiv.setAttribute("blah", "blah") ).toString )}      
 
-        dom.console.log("got an element") 
+        console.log("got an element") 
 
-        // dom.console.log(Try(focusElem.tagName))
+        // console.log(Try(focusElem.tagName))
         
 
         val selected = selection.getRangeAt(0).startContainer.parentNode
 
-        dom.console.log(selected)
+        console.log(selected)
 
-        dom.console.log(Try(selected.asInstanceOf[dom.Element].classList.add("focussed") ))
+        console.log(selection.focusOffset)
 
-        dom.console.log(edNode.tagName)
+        // console.log(Try(selected.asInstanceOf[dom.Element].classList.add("focussed") ))
+
+        // console.log(edNode.tagName)
 
         log(fullText(edNode))
 
-        dom.console.log(fullText(edNode))
+        // console.log(fullText(edNode))
 
-        // dom.console.log( offspring(d).find{n => focusOpt == Some(n)})
+        // console.log( offspring(d).find{n => focusOpt == Some(n)})
 
         // focus.asInstanceOf[dom.Element].classList.contains("tex-inline")
 

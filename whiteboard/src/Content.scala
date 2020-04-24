@@ -9,9 +9,8 @@ import org.scalajs.dom.html._
 import scalajs.js.Dynamic.{global => g}
 import scalatags.JsDom.TypedTag
 // import org.xml.sax.InputSource
-// import java.io.StringReader 
+// import java.io.StringReader
 import scala.xml._
-
 
 sealed trait Content {
   def view: Element
@@ -69,20 +68,25 @@ object Content {
       val s = span(`class` := "inline-tex", attr("data-tex") := code).render
       s.innerHTML =
         if (formatted) g.katex.renderToString(code).toString()
-        else s"<span> $code </span>"
-      s.onclick = (_) => {
-          formatted = !formatted
-          s.innerHTML = if (formatted) g.katex.renderToString(code).toString()
         else s"<span>${"$"}$code${"$"}</span>"
+      s.onclick = (_) => {
+        formatted = false
+        s.innerHTML = s"<span>${"$"}$code${"$"}</span>"
       }
       s
     }
   }
 
-  case class DisplayTeX(code: String, formatted: Boolean) extends Phrase {
+  case class DisplayTeX(code: String, var formatted: Boolean) extends Phrase {
     def view: org.scalajs.dom.html.Element = {
       val s = div(`class` := "display-tex", attr("data-tex") := code).render
-      s.innerHTML = g.katex.renderToString(code).toString()
+      s.innerHTML =
+        if (formatted) g.katex.renderToString(code).toString()
+        else s"<span>${"$$"}$code${"$$"}</span>"
+      s.onclick = (_) => {
+        formatted = false
+        s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
+      }
       s
     }
   }
@@ -118,7 +122,7 @@ object Content {
   def ital[_: P]: P[Phrase] =
     P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString("")))
 
-  def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX| ital | bold | word)
+  def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX | ital | bold | word)
 
   def dispAhead[_: P] = P(&("$$"))
 
@@ -130,7 +134,7 @@ object Content {
   def spanSeq[_: P]: P[Vector[Phrase]] =
     (End | blankLine).map { _ =>
       Vector()
-    } | P(inlineTeX~ spanSeq).map {
+    } | P(inlineTeX ~ spanSeq).map {
       case (x, ys) => x +: ys
       // prepend(x, ys)
     } |
