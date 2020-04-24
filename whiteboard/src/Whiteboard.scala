@@ -47,8 +47,8 @@ object Whiteboard{
     }
 
     def fullText(node: HTMLElement) : String = 
-        if (node.classList.contains("inline-tex")) "$"+node.attributes.getNamedItem("data-tex").value+"$"
-        else if (node.classList.contains("display-tex")) "$$"+node.attributes.getNamedItem("data-tex").value+"$$"
+        if (node.classList.contains("texed")) "$"+node.attributes.getNamedItem("data-tex").value+"$"
+        else if (node.classList.contains("dtexed")) "$$"+node.attributes.getNamedItem("data-tex").value+"$$"
         else {
             val cs = children(node)
             if (cs.isEmpty) tagPad(node.textContent, node.tagName) else tagPad(cs.map(fullText(_)).mkString(""), node.tagName)
@@ -110,7 +110,7 @@ object Whiteboard{
 
         // console.log(fullText(edNode))
 
-        // console.log( offspring(d).find{n => focusOpt == Some(n)})
+        console.log( offspring(d).find{n => selected == n})
 
         // focus.asInstanceOf[dom.Element].classList.contains("tex-inline")
 

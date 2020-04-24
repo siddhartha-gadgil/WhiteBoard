@@ -65,13 +65,16 @@ object Content {
 
   case class InlineTeX(code: String, var formatted: Boolean) extends Phrase {
     def view: org.scalajs.dom.html.Element = {
-      val s = span(`class` := "inline-tex", attr("data-tex") := code).render
+      val s =
+        span(`class` := "texed inline-tex", attr("data-tex") := code).render
       s.innerHTML =
         if (formatted) g.katex.renderToString(code).toString()
         else s"<span>${"$"}$code${"$"}</span>"
       s.onclick = (_) => {
+        if (formatted) s.innerHTML = s"<span>${"$"}$code${"$"}</span>"
         formatted = false
-        s.innerHTML = s"<span>${"$"}$code${"$"}</span>"
+        s.classList.remove("texed")
+
       }
       s
     }
@@ -79,13 +82,16 @@ object Content {
 
   case class DisplayTeX(code: String, var formatted: Boolean) extends Phrase {
     def view: org.scalajs.dom.html.Element = {
-      val s = div(`class` := "display-tex", attr("data-tex") := code).render
+      val s =
+        div(`class` := "dtexed display-tex", attr("data-tex") := code).render
       s.innerHTML =
         if (formatted) g.katex.renderToString(code).toString()
         else s"<span>${"$$"}$code${"$$"}</span>"
       s.onclick = (_) => {
+        if (formatted) s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
         formatted = false
-        s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
+        s.classList.remove("dtexed")
+
       }
       s
     }
