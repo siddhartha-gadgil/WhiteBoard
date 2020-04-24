@@ -21,9 +21,9 @@ sealed trait Sentence extends Content // div
 
 object Content {
   def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
-    case head +: Vector() => div(contenteditable := true)(head)
+    case head +: Vector() => div(contenteditable := true, id := "editor")(head)
     case init :+ last     => polyDiv(init)(last)
-    case Vector()         => div(contenteditable := true)
+    case Vector()         => div(contenteditable := true, id := "editor")
   }
 
   case class Body(divs: Vector[Sentence]) extends Content {
@@ -66,7 +66,11 @@ object Content {
       s.innerHTML =
         if (formatted) g.katex.renderToString(code).toString()
         else s"<span> $code </span>"
-      s.onclick = (_) => formatted = !formatted
+      s.onclick = (_) => {
+          formatted = !formatted
+          s.innerHTML = if (formatted) g.katex.renderToString(code).toString()
+        else s"<span>${"$"}$code${"$"}</span>"
+      }
       s
     }
   }
@@ -97,7 +101,7 @@ object Content {
       InlineTeX(s, true)
     )
 
-  def blankLine[_: P]: P[Unit] = P(" ".rep ~ "\n").rep(2)
+  def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n").rep)
 
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
@@ -120,9 +124,9 @@ object Content {
     }
 
   def spanSeq[_: P]: P[Vector[Phrase]] =
-    (End | P(" ".rep ~ "\n" ~ " ".rep ~ "\n" ~ " ".rep) | dispAhead).map { _ =>
+    (End | blankLine | dispAhead).map { _ =>
       Vector()
-    } | P(inline ~ " ".rep ~ spanSeq).map {
+    } | P(inline ~ spanSeq).map {
       case (x, ys) => x +: ys
       // prepend(x, ys)
     } |
