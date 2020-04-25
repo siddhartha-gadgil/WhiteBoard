@@ -6,6 +6,8 @@ import scalatags.JsDom.all._
 
 import org.scalajs.dom.html.{Option => _, _}
 
+import scalajs.js
+
 import scalajs.js.Dynamic.{global => g}
 import scalatags.JsDom.TypedTag
 // import org.xml.sax.InputSource
@@ -152,7 +154,7 @@ object Content {
       val s =
         div(`class` := "dtexed display-tex", attr("data-tex") := code).render
       s.innerHTML =
-        if (formatted) g.katex.renderToString(code.replace("\u00a0", " ")).toString()
+        if (formatted) g.katex.renderToString(code.replace("\u00a0", " "), js.Dynamic.literal("displayMode" -> true) ).toString()
         else s"<span>${"$$"}$code${"$$"}</span>"
       s.onclick = (_) => {
         if (formatted) s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"

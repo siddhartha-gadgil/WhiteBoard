@@ -6117,6 +6117,45 @@ function $m_sjs_js_package$() {
   };
   return $n_sjs_js_package$
 }
+function $p_sjs_js_special_package$__$anonfun$objectLiteral$1__sjs_js_special_package$FullyDynamicProps__T2__V($thiz, result$1, pair) {
+  result$1[pair._1__O()] = pair._2__O()
+}
+/** @constructor */
+function $c_sjs_js_special_package$() {
+  $ct_O__(this);
+  $n_sjs_js_special_package$ = this
+}
+$c_sjs_js_special_package$.prototype = new $h_O();
+$c_sjs_js_special_package$.prototype.constructor = $c_sjs_js_special_package$;
+/** @constructor */
+function $h_sjs_js_special_package$() {
+  /*<skip>*/
+}
+$h_sjs_js_special_package$.prototype = $c_sjs_js_special_package$.prototype;
+$c_sjs_js_special_package$.prototype.objectLiteral__sci_Seq__sjs_js_Object = (function(properties) {
+  var result = {};
+  properties.foreach__F1__V(new $c_sjsr_AnonFunction1((function(this\u00f8, result) {
+    return (function(pair$2) {
+      var pair = $as_T2(pair$2);
+      $p_sjs_js_special_package$__$anonfun$objectLiteral$1__sjs_js_special_package$FullyDynamicProps__T2__V(this\u00f8, result, pair)
+    })
+  })(this, result)));
+  return result
+});
+var $d_sjs_js_special_package$ = new $TypeData().initClass({
+  sjs_js_special_package$: 0
+}, false, "scala.scalajs.js.special.package$", {
+  sjs_js_special_package$: 1,
+  O: 1
+});
+$c_sjs_js_special_package$.prototype.$classData = $d_sjs_js_special_package$;
+var $n_sjs_js_special_package$ = (void 0);
+function $m_sjs_js_special_package$() {
+  if ((!$n_sjs_js_special_package$)) {
+    $n_sjs_js_special_package$ = new $c_sjs_js_special_package$()
+  };
+  return $n_sjs_js_special_package$
+}
 /** @constructor */
 function $c_sjsr_Compat$() {
   $ct_O__(this);
@@ -13142,6 +13181,36 @@ function $m_sr_ObjectRef$() {
   };
   return $n_sr_ObjectRef$
 }
+/** @constructor */
+function $c_sjs_js_Dynamic$literal$() {
+  $ct_O__(this);
+  $n_sjs_js_Dynamic$literal$ = this
+}
+$c_sjs_js_Dynamic$literal$.prototype = new $h_O();
+$c_sjs_js_Dynamic$literal$.prototype.constructor = $c_sjs_js_Dynamic$literal$;
+/** @constructor */
+function $h_sjs_js_Dynamic$literal$() {
+  /*<skip>*/
+}
+$h_sjs_js_Dynamic$literal$.prototype = $c_sjs_js_Dynamic$literal$.prototype;
+$c_sjs_js_Dynamic$literal$.prototype.applyDynamic__T__sci_Seq__sjs_js_Object = (function(name, fields) {
+  return $m_sjs_js_special_package$().objectLiteral__sci_Seq__sjs_js_Object(fields)
+});
+var $d_sjs_js_Dynamic$literal$ = new $TypeData().initClass({
+  sjs_js_Dynamic$literal$: 0
+}, false, "scala.scalajs.js.Dynamic$literal$", {
+  sjs_js_Dynamic$literal$: 1,
+  O: 1,
+  s_Dynamic: 1
+});
+$c_sjs_js_Dynamic$literal$.prototype.$classData = $d_sjs_js_Dynamic$literal$;
+var $n_sjs_js_Dynamic$literal$ = (void 0);
+function $m_sjs_js_Dynamic$literal$() {
+  if ((!$n_sjs_js_Dynamic$literal$)) {
+    $n_sjs_js_Dynamic$literal$ = new $c_sjs_js_Dynamic$literal$()
+  };
+  return $n_sjs_js_Dynamic$literal$
+}
 function $f_sjs_js_LowPrioAnyImplicits__wrapArray__sjs_js_Array__sjs_js_WrappedArray($thiz, array) {
   return $ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), array)
 }
@@ -17525,6 +17594,9 @@ function $h_sjs_js_Any$() {
 $h_sjs_js_Any$.prototype = $c_sjs_js_Any$.prototype;
 $c_sjs_js_Any$.prototype.wrapArray__sjs_js_Array__sjs_js_WrappedArray = (function(array) {
   return $f_sjs_js_LowPrioAnyImplicits__wrapArray__sjs_js_Array__sjs_js_WrappedArray(this, array)
+});
+$c_sjs_js_Any$.prototype.fromBoolean__Z__sjs_js_Any = (function(value) {
+  return value
 });
 $c_sjs_js_Any$.prototype.fromInt__I__sjs_js_Any = (function(value) {
   return value
@@ -29299,7 +29371,7 @@ function $f_s_reflect_Manifest__$init$__V($thiz) {
 function $p_Lwhiteboard_Content$DisplayTeX__view$lzycompute__Lorg_scalajs_dom_raw_HTMLElement($thiz) {
   if ((!$thiz.Lwhiteboard_Content$DisplayTeX__f_bitmap$0)) {
     var s = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("dtexed display-tex", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("data-tex", $m_Lscalatags_JsDom$all$().attr$default$2__Lscalatags_generic_Namespace(), $m_Lscalatags_JsDom$all$().attr$default$3__Z()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair($thiz.code__T(), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element();
-    s.innerHTML = ($thiz.formatted__Z() ? $dp_toString__T(katex.renderToString($m_sjs_js_Any$().fromString__T__sjs_js_Any($f_T__replace__jl_CharSequence__jl_CharSequence__T($thiz.code__T(), "\u00a0", " ")))) : (((("<span>" + "$$") + $thiz.code__T()) + "$$") + "</span>"));
+    s.innerHTML = ($thiz.formatted__Z() ? $dp_toString__T(katex.renderToString($m_sjs_js_Any$().fromString__T__sjs_js_Any($f_T__replace__jl_CharSequence__jl_CharSequence__T($thiz.code__T(), "\u00a0", " ")), $m_sjs_js_Dynamic$literal$().applyDynamic__T__sci_Seq__sjs_js_Object("apply", $m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_s_Predef$ArrowAssoc$().$minus$greater$extension__O__O__T2($m_s_Predef$().ArrowAssoc__O__O("displayMode"), $m_sjs_js_Any$().fromBoolean__Z__sjs_js_Any(true))])))) : (((("<span>" + "$$") + $thiz.code__T()) + "$$") + "</span>"));
     s.onclick = (function(arg$outer, s$2) {
       return (function(arg1$2) {
         var arg1 = arg1$2;
