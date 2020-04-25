@@ -102,8 +102,6 @@ object Whiteboard {
 
     // console.log(Try(focusElem.tagName))
 
-    val selected = selection.getRangeAt(0).startContainer.parentNode
-
     // console.log(selected)
 
     // console.log(selection.focusOffset)
@@ -120,53 +118,79 @@ object Whiteboard {
 
     // console.log(baseNodes(d).find { n => selected == n })
 
-    val offset = globalOffset(
-      baseNodes(edNode),
-      selected.asInstanceOf[HTMLElement],
-      selection.focusOffset
-    )
-
     // console.log(offset.toString())
 
     lazy val reparse = fastparse.parse(text, Content.bdy(_))
 
     reparse.fold[Unit](
-      {case f:  (String, Int, Parsed.Extra) => console.log(s"could not parse: \n\nError: $f")},
-      {case (newBody : Content.Body, _ :  Int) => 
-        console.log(offset)
+      {
+        case f: (String, Int, Parsed.Extra) =>
+          console.log(s"could not parse: \n\nError: $f")
+      }, {
+        case (newBody: Content.Body, _: Int) =>
+          val selected = selection.getRangeAt(0).startContainer.parentNode
 
-        def cursor = Content.phraseOffset(newBody.phraseList, offset.get).get
+          val basic = baseNodes(edNode)
 
-        cursor._1.addCursor(cursor._2)
+          val offset = globalOffset(
+            basic,
+            selected.asInstanceOf[HTMLElement],
+            selection.focusOffset
+          )
 
-        // val fNode = cursor._1.view
-        // fNode.classList.add("fcs")
+          if (!basic.contains(selected))
+            console.log("missing selected node", selected)
 
-        jsDiv.innerHTML = ""
-        jsDiv.appendChild(newBody.view)
-        jsDiv.appendChild(logDiv)
+          if (offset.isEmpty)
+            console.log(
+              (
+                baseNodes(edNode),
+                selected.asInstanceOf[HTMLElement],
+                selection.focusOffset
+              )
+            )
 
-        newBody.view.oninput = (e) => update()
-        // console.log(reparse)
-        // console.log("parse above")
-        // console.log(
-        //   Content.phraseOffset(newBody.phraseList, offset.get).get._1.view
-        // )
-        // console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._2)
+          offset.flatMap {
+            pos =>
+              Content.phraseOffset(newBody.phraseList, pos).map {
+                cursor =>
+                  cursor._1.addCursor(cursor._2)
 
-        val nd = dom.document.querySelector(".cursor").asInstanceOf[HTMLElement]
-        // console.log(nd)
+                  // val fNode = cursor._1.view
+                  // fNode.classList.add("fcs")
 
-        // selection.collapse(cursor._1.view, cursor._2)
-        val range = dom.document.createRange()
-        // console.log(range)
-        range.setStart(nd, 0)
-        // console.log("set range")
-        range.collapse(true)
-        val sel = dom.window.getSelection()
-        sel.removeAllRanges()
-        sel.addRange(range)
-        // console.log("focussed")
+                  jsDiv.innerHTML = ""
+                  jsDiv.appendChild(newBody.view)
+                  jsDiv.appendChild(logDiv)
+
+                  newBody.view.oninput = (e) => update()
+                  // console.log(reparse)
+                  // console.log("parse above")
+                  // console.log(
+                  //   Content.phraseOffset(newBody.phraseList, offset.get).get._1.view
+                  // )
+                  // console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._2)
+
+                  val nd =
+                    dom.document
+                      .querySelector(".cursor")
+                      .asInstanceOf[HTMLElement]
+                  // console.log(nd)
+
+                  // selection.collapse(cursor._1.view, cursor._2)
+                  val range = dom.document.createRange()
+                  // console.log(range)
+                  range.setStart(nd, 0)
+                  // console.log("set range")
+                  range.collapse(true)
+                  val sel = dom.window.getSelection()
+                  sel.removeAllRanges()
+                  sel.addRange(range)
+                // console.log("focussed")
+
+              }
+
+          }
 
       }
     )

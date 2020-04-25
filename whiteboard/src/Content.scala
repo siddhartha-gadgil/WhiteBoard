@@ -69,7 +69,7 @@ object Content {
     def addCursor(n: Int): Unit = {
       view.innerHTML = ""
       view.appendChild(
-        strong(
+        span(
           span(body.take(n)),
           span(contenteditable := true, `class` := "cursor"),
           span(body.drop(n))
@@ -88,7 +88,7 @@ object Content {
     def addCursor(n: Int): Unit = {
       view.innerHTML = ""
       view.appendChild(
-        em(
+        span(
           span(body.take(n)),
           span(contenteditable := true, `class` := "cursor"),
           span(body.drop(n))

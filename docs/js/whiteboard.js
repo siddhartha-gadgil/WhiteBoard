@@ -9711,10 +9711,32 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$3__T__I__Lfastparse_Parsed$
     throw new $c_s_MatchError(x1)
   }
 }
-function $p_Lwhiteboard_Whiteboard$__cursor$1__Lwhiteboard_Content$Body__s_Option__T2($thiz, x3$1, offset$1) {
-  return $as_T2($m_Lwhiteboard_Content$().phraseOffset__sci_Vector__I__s_Option(x3$1.phraseList__sci_Vector(), $uI(offset$1.get__O())).get__O())
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$6__Lwhiteboard_Content$Body__T2__V($thiz, x3$1, cursor) {
+  $as_Lwhiteboard_Phrase(cursor._1__O()).addCursor__I__V(cursor._2$mcI$sp__I());
+  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().innerHTML = "";
+  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild(x3$1.view__Lorg_scalajs_dom_raw_HTMLElement());
+  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($m_Lwhiteboard_Whiteboard$().logDiv__Lorg_scalajs_dom_raw_HTMLDivElement());
+  x3$1.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg1$2) {
+    var arg1 = arg1$2;
+    $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$7__Lorg_scalajs_dom_raw_Event__V(arg1)
+  });
+  var nd = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector(".cursor");
+  var range = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createRange();
+  range.setStart(nd, 0);
+  range.collapse(true);
+  var sel = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$4__s_Option__Lwhiteboard_Content$Body__I__V($thiz, offset$1, x0$2, x1$2) {
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$5__Lwhiteboard_Content$Body__I__s_Option($thiz, x3$1, pos) {
+  return $m_Lwhiteboard_Content$().phraseOffset__sci_Vector__I__s_Option(x3$1.phraseList__sci_Vector(), pos).map__F1__s_Option(new $c_sjsr_AnonFunction1((function(this\u00f8, x3$1) {
+    return (function(cursor$2) {
+      var cursor = $as_T2(cursor$2);
+      $p_Lwhiteboard_Whiteboard$__$anonfun$update$6__Lwhiteboard_Content$Body__T2__V(this\u00f8, x3$1, cursor)
+    })
+  })($thiz, x3$1)))
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$4__Lorg_scalajs_dom_raw_Selection__Lwhiteboard_Content$Body__I__V($thiz, selection$1, x0$2, x1$2) {
   var x1 = new $c_T2(x0$2, x1$2);
   matchEnd6: {
     if ((x1 !== null)) {
@@ -9722,22 +9744,21 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$4__s_Option__Lwhiteboard_Co
       if ((newBody !== null)) {
         var x3 = newBody;
         if (true) {
-          $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log(offset$1);
-          $as_Lwhiteboard_Phrase($p_Lwhiteboard_Whiteboard$__cursor$1__Lwhiteboard_Content$Body__s_Option__T2($thiz, x3, offset$1)._1__O()).addCursor__I__V($p_Lwhiteboard_Whiteboard$__cursor$1__Lwhiteboard_Content$Body__s_Option__T2($thiz, x3, offset$1)._2$mcI$sp__I());
-          $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().innerHTML = "";
-          $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild(x3.view__Lorg_scalajs_dom_raw_HTMLElement());
-          $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($m_Lwhiteboard_Whiteboard$().logDiv__Lorg_scalajs_dom_raw_HTMLDivElement());
-          x3.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg1$2) {
-            var arg1 = arg1$2;
-            $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$5__Lorg_scalajs_dom_raw_Event__V(arg1)
-          });
-          var nd = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector(".cursor");
-          var range = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createRange();
-          range.setStart(nd, 0);
-          range.collapse(true);
-          var sel = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection();
-          sel.removeAllRanges();
-          sel.addRange(range);
+          var selected = selection$1.getRangeAt(0).startContainer.parentNode;
+          var basic = $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($m_Lwhiteboard_Whiteboard$().edNode__Lorg_scalajs_dom_raw_HTMLElement());
+          var offset = $m_Lwhiteboard_Whiteboard$().globalOffset__sci_Vector__Lorg_scalajs_dom_raw_HTMLElement__I__s_Option(basic, selected, $uI(selection$1.focusOffset));
+          if ((!basic.contains__O__Z(selected))) {
+            $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("missing selected node", selected)
+          };
+          if (offset.isEmpty__Z()) {
+            $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log(new $c_T3($m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($m_Lwhiteboard_Whiteboard$().edNode__Lorg_scalajs_dom_raw_HTMLElement()), selected, $uI(selection$1.focusOffset)))
+          };
+          offset.flatMap__F1__s_Option(new $c_sjsr_AnonFunction1((function(this\u00f8, x3) {
+            return (function(pos$2) {
+              var pos = $uI(pos$2);
+              return $p_Lwhiteboard_Whiteboard$__$anonfun$update$5__Lwhiteboard_Content$Body__I__s_Option(this\u00f8, x3, pos)
+            })
+          })($thiz, x3)));
           break matchEnd6
         }
       }
@@ -9879,10 +9900,8 @@ $c_Lwhiteboard_Whiteboard$.prototype.load__V = (function() {
 $c_Lwhiteboard_Whiteboard$.prototype.update__V = (function() {
   var reparse$lzy = new $c_sr_LazyRef();
   var selection = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection();
-  var selected = selection.getRangeAt(0).startContainer.parentNode;
   var text = this.fullText__Lorg_scalajs_dom_raw_HTMLElement__T(this.edNode__Lorg_scalajs_dom_raw_HTMLElement());
   this.log__T__V(text);
-  var offset = this.globalOffset__sci_Vector__Lorg_scalajs_dom_raw_HTMLElement__I__s_Option(this.baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this.edNode__Lorg_scalajs_dom_raw_HTMLElement()), selected, $uI(selection.focusOffset));
   $p_Lwhiteboard_Whiteboard$__reparse$1__sr_LazyRef__T__Lfastparse_Parsed(this, reparse$lzy, text).fold__F3__F2__O(new $c_sjsr_AnonFunction3((function(this\u00f8) {
     return (function(x0$1$2, x1$1$2, x2$1$2) {
       var x0$1 = $as_T(x0$1$2);
@@ -9890,13 +9909,13 @@ $c_Lwhiteboard_Whiteboard$.prototype.update__V = (function() {
       var x2$1 = $as_Lfastparse_Parsed$Extra(x2$1$2);
       $p_Lwhiteboard_Whiteboard$__$anonfun$update$3__T__I__Lfastparse_Parsed$Extra__V(this\u00f8, x0$1, x1$1, x2$1)
     })
-  })(this)), new $c_sjsr_AnonFunction2((function(this$2, offset) {
+  })(this)), new $c_sjsr_AnonFunction2((function(this$2, selection) {
     return (function(x0$2$2, x1$2$2) {
       var x0$2 = $as_Lwhiteboard_Content$Body(x0$2$2);
       var x1$2 = $uI(x1$2$2);
-      $p_Lwhiteboard_Whiteboard$__$anonfun$update$4__s_Option__Lwhiteboard_Content$Body__I__V(this$2, offset, x0$2, x1$2)
+      $p_Lwhiteboard_Whiteboard$__$anonfun$update$4__Lorg_scalajs_dom_raw_Selection__Lwhiteboard_Content$Body__I__V(this$2, selection, x0$2, x1$2)
     })
-  })(this, offset)))
+  })(this, selection)))
 });
 $c_Lwhiteboard_Whiteboard$.prototype.$js$exported$meth$load__O = (function() {
   this.load__V()
@@ -9904,7 +9923,7 @@ $c_Lwhiteboard_Whiteboard$.prototype.$js$exported$meth$load__O = (function() {
 $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
   $m_Lwhiteboard_Whiteboard$().update__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$5__Lorg_scalajs_dom_raw_Event__V = (function(e) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$7__Lorg_scalajs_dom_raw_Event__V = (function(e) {
   $m_Lwhiteboard_Whiteboard$().update__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.load = (function() {
@@ -21758,8 +21777,14 @@ $c_s_Option.prototype.knownSize__I = (function() {
 $c_s_Option.prototype.getOrElse__F0__O = (function(default\u00f8) {
   return (this.isEmpty__Z() ? default\u00f8.apply__O() : this.get__O())
 });
+$c_s_Option.prototype.map__F1__s_Option = (function(f) {
+  return (this.isEmpty__Z() ? $m_s_None$() : new $c_s_Some(f.apply__O__O(this.get__O())))
+});
 $c_s_Option.prototype.fold__F0__F1__O = (function(ifEmpty, f) {
   return (this.isEmpty__Z() ? ifEmpty.apply__O() : f.apply__O__O(this.get__O()))
+});
+$c_s_Option.prototype.flatMap__F1__s_Option = (function(f) {
+  return (this.isEmpty__Z() ? $m_s_None$() : $as_s_Option(f.apply__O__O(this.get__O())))
 });
 $c_s_Option.prototype.orElse__F0__s_Option = (function(alternative) {
   return (this.isEmpty__Z() ? $as_s_Option(alternative.apply__O()) : this)
@@ -30245,7 +30270,7 @@ $c_Lwhiteboard_Content$Emph.prototype.sourceLength__I = (function() {
 });
 $c_Lwhiteboard_Content$Emph.prototype.addCursor__I__V = (function(n) {
   this.view__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().em__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().take$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("cursor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().drop$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))]))])).render__Lorg_scalajs_dom_raw_Element())
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().take$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("cursor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().drop$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))]))])).render__Lorg_scalajs_dom_raw_Element())
 });
 $c_Lwhiteboard_Content$Emph.prototype.productPrefix__T = (function() {
   return "Emph"
@@ -30782,7 +30807,7 @@ $c_Lwhiteboard_Content$Strong.prototype.view__Lorg_scalajs_dom_raw_HTMLElement =
 });
 $c_Lwhiteboard_Content$Strong.prototype.addCursor__I__V = (function(n) {
   this.view__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().strong__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().take$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("cursor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().drop$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))]))])).render__Lorg_scalajs_dom_raw_Element())
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().take$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("cursor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().drop$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.body__T()), n))]))])).render__Lorg_scalajs_dom_raw_Element())
 });
 $c_Lwhiteboard_Content$Strong.prototype.sourceLength__I = (function() {
   return this.Lwhiteboard_Content$Strong__f_sourceLength
