@@ -14,6 +14,7 @@ import scalatags.JsDom.TypedTag
 // import java.io.StringReader
 import scala.xml._
 import org.scalajs.dom.raw.HTMLElement
+import scala.util._
 
 sealed trait Content {
   val view: Element
@@ -40,7 +41,7 @@ object Content {
 
   case class Body(divs: Vector[Sentence]) extends Content {
     lazy val view: org.scalajs.dom.html.Element =
-      p(polyDiv(divs.map(_.view))).render
+      div(height :="1000")(polyDiv(divs.map(_.view))).render
 
     lazy val phraseList: Vector[Phrase] = divs.flatMap(_.spans)
   }
@@ -119,7 +120,9 @@ object Content {
       val s =
         span(`class` := "texed inline-tex", attr("data-tex") := code).render
       s.innerHTML =
-        if (formatted) g.katex.renderToString(code.replace("\u00a0", " ")).toString()
+        if (formatted)
+          Try { g.katex.renderToString(code.replace("\u00a0", " ")).toString() }
+            .getOrElse(s"<span>${"$"}$code${"$"}</span>")
         else s"<span>${"$"}$code${"$"}</span>"
       s.onclick = (_) => {
         if (formatted) s.innerHTML = s"<span>${"$"}$code${"$"}</span>"
@@ -135,11 +138,9 @@ object Content {
         view.innerHTML = ""
         view.appendChild(
           span(
-            span("$",
-            code.take(n)),
+            span("$", code.take(n)),
             span(contenteditable := true, `class` := "cursor"),
-            span(code.drop(n),
-            "$")
+            span(code.drop(n), "$")
           ).render
         )
         formatted = false
@@ -154,7 +155,15 @@ object Content {
       val s =
         div(`class` := "dtexed display-tex", attr("data-tex") := code).render
       s.innerHTML =
-        if (formatted) g.katex.renderToString(code.replace("\u00a0", " "), js.Dynamic.literal("displayMode" -> true) ).toString()
+        if (formatted)
+          Try {
+            g.katex
+              .renderToString(
+                code.replace("\u00a0", " "),
+                js.Dynamic.literal("displayMode" -> true)
+              )
+              .toString()
+          }.getOrElse(s"<span>${"$$"}$code${"$$"}</span>")
         else s"<span>${"$$"}$code${"$$"}</span>"
       s.onclick = (_) => {
         if (formatted) s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
@@ -170,11 +179,9 @@ object Content {
         view.innerHTML = ""
         view.appendChild(
           span(
-            span("$$",
-            code.take(n)),
+            span("$$", code.take(n)),
             span(contenteditable := true, `class` := "cursor"),
-            span(code.drop(n),
-            "$$")
+            span(code.drop(n), "$$")
           ).render
         )
         formatted = false
