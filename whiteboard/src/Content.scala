@@ -11,6 +11,7 @@ import scalatags.JsDom.TypedTag
 // import org.xml.sax.InputSource
 // import java.io.StringReader
 import scala.xml._
+import org.scalajs.dom.raw.HTMLElement
 
 sealed trait Content {
   val view: Element
@@ -20,6 +21,8 @@ sealed trait Phrase extends Content {
   val view: Element
 
   val sourceLength: Int
+
+  def addCursor(n: Int): Unit
 } // span
 
 sealed trait Sentence extends Content{
@@ -44,10 +47,20 @@ object Content {
     lazy val view: org.scalajs.dom.html.Span = span(body).render
 
     val sourceLength: Int = body.size
+
+    def addCursor(n: Int): Unit = {
+      view.innerHTML = "" 
+      view.appendChild(span(body.take(n), span(contenteditable := true, `class`:= "cursor"), body.drop(n)).render)
+    }
   }
 
   case class Strong(body: String) extends Phrase {
     lazy val view = strong(body).render
+
+    def addCursor(n: Int): Unit = {
+      view.innerHTML = "" 
+      view.appendChild(strong(body.take(n-2), span(contenteditable := true, `class`:= "cursor"), body.drop(n - 2)).render)
+    }
 
     val sourceLength: Int = body.size + 4
   }
@@ -56,6 +69,11 @@ object Content {
     lazy val view: org.scalajs.dom.html.Element = em(body).render
 
     val sourceLength: Int = body.size + 2
+
+    def addCursor(n: Int): Unit = {
+      view.innerHTML = "" 
+      view.appendChild(em(body.take(n -1), span(contenteditable := true, `class`:= "cursor"), body.drop(n - 1)).render)
+    }
   }
 
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
@@ -91,6 +109,14 @@ object Content {
       }
       s
     }
+
+    def addCursor(n: Int): Unit = {
+      if (formatted) {view.innerHTML = ""
+        view.appendChild(span("$", code.take(n - 1), span(contenteditable := true, `class`:= "cursor"), code.drop(n - 1), "$").render)
+        formatted = false
+        view.classList.remove("texed")
+    }
+    }
   }
 
   case class DisplayTeX(code: String, var formatted: Boolean) extends Phrase {
@@ -108,6 +134,14 @@ object Content {
 
       }
       s
+    }
+
+     def addCursor(n: Int): Unit = {
+      if (formatted) {view.innerHTML = ""
+        view.appendChild(span("$$", code.take(n - 2), span(contenteditable := true, `class`:= "cursor"), code.drop(n - 2), "$$").render)
+        formatted = false
+        view.classList.remove("texed")
+     }
     }
   }
 

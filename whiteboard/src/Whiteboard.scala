@@ -13,6 +13,7 @@ import scala.util._
 import org.scalajs.dom.raw.HTMLElement
 
 import dom.console
+import scalajs.js.Dynamic.{global => g}
 
 @JSExportTopLevel("Whiteboard")
 object Whiteboard{
@@ -80,7 +81,7 @@ object Whiteboard{
             
         // d.onpointermove = (e) => update()
         d.oninput = (e) => update()
-        d.onclick = (e) => update()
+        // d.onclick = (e) => update()
         jsDiv.appendChild(d)
         jsDiv.appendChild(logDiv)
         
@@ -136,13 +137,34 @@ object Whiteboard{
 
         lazy val newBody = reparse.get.value
 
+        def cursor = Content.phraseOffset(newBody.phraseList, offset.get).get
+
+        cursor._1.addCursor(cursor._2)
+
+        // val fNode = cursor._1.view 
+        // fNode.classList.add("fcs")
+
+        jsDiv.innerHTML = ""
         jsDiv.appendChild(newBody.view)  // should fold
+        jsDiv.appendChild(logDiv)
         console.log(reparse)
         console.log("parse above")
         console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._1.view)
         console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._2)
 
+        val nd = dom.document.querySelector(".cursor").asInstanceOf[HTMLElement]
+        console.log(nd)
 
+        // selection.collapse(cursor._1.view, cursor._2)
+        val range = dom.document.createRange()
+        console.log(range)
+        range.setStart(nd, 0)
+        console.log("set range")
+        range.collapse(true)
+        val sel = dom.window.getSelection()
+        sel.removeAllRanges()
+        sel.addRange(range)
+        console.log("focussed")
 
 
         // focus.asInstanceOf[dom.Element].classList.contains("tex-inline")
