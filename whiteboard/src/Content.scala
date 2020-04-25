@@ -41,7 +41,7 @@ object Content {
 
   case class Body(divs: Vector[Sentence]) extends Content {
     lazy val view: org.scalajs.dom.html.Element =
-      div(height :="1000")(polyDiv(divs.map(_.view))).render
+      div(height := "1000")(polyDiv(divs.map(_.view))).render
 
     lazy val phraseList: Vector[Phrase] = divs.flatMap(_.spans)
   }
@@ -271,8 +271,21 @@ object Content {
       offset: Int
   ): Option[(Phrase, Int)] = phrases match {
     case Vector() => None
+    case x +: Vector() =>
+      if (x.sourceLength >= offset) Some((x, offset))
+      else None
     case x +: ys =>
       if (x.sourceLength > offset) Some((x, offset))
       else phraseOffset(ys, offset - x.sourceLength)
   }
+
+  def divOffset(divs: Vector[Sentence], offset: Int): Option[(Phrase, Int)] =
+    divs match {
+      case Vector() => None
+      case x +: ys =>
+        phraseOffset(x.spans, offset).orElse {
+          val remaining = offset - x.spans.map(_.sourceLength).sum
+          divOffset(ys, remaining)
+        }
+    }
 }

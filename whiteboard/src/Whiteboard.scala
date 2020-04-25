@@ -94,31 +94,11 @@ object Whiteboard {
   }
 
   def update(): Unit = {
-    // jsDiv.innerHTML = ""
-    // jsDiv.appendChild(d)
-    // console.log("updating")
-
     val selection = dom.window.getSelection()
-
-    // console.log(Try(focusElem.tagName))
-
-    // console.log(selected)
-
-    // console.log(selection.focusOffset)
-
-    // console.log(Try(selected.asInstanceOf[dom.Element].classList.add("focussed") ))
-
-    // console.log(edNode.tagName)
 
     val text = fullText(edNode)
 
     log(text)
-
-    // console.log(fullText(edNode))
-
-    // console.log(baseNodes(d).find { n => selected == n })
-
-    // console.log(offset.toString())
 
     lazy val reparse = fastparse.parse(text, Content.bdy(_))
 
@@ -150,26 +130,27 @@ object Whiteboard {
               )
             )
 
-          offset.flatMap {
+          offset.foreach {
             pos =>
-              Content.phraseOffset(newBody.phraseList, pos).map {
-                cursor =>
-                  cursor._1.addCursor(cursor._2)
+                        //   console.log("global offset", pos)
 
-                  // val fNode = cursor._1.view
-                  // fNode.classList.add("fcs")
+              val cursorOpt = Content.divOffset(newBody.divs, pos)
+              if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
+              cursorOpt.fold[Unit]{jsDiv.innerHTML = ""
+                  jsDiv.appendChild(newBody.view)
+                  jsDiv.appendChild(logDiv)} {
+                cursor =>
+                //   console.log(cursor._1)
+                //   console.log(cursor._1.view)
+                //   console.log(cursor._2)
+
+                  cursor._1.addCursor(cursor._2)
 
                   jsDiv.innerHTML = ""
                   jsDiv.appendChild(newBody.view)
                   jsDiv.appendChild(logDiv)
 
                   newBody.view.oninput = (e) => update()
-                  // console.log(reparse)
-                  // console.log("parse above")
-                  // console.log(
-                  //   Content.phraseOffset(newBody.phraseList, offset.get).get._1.view
-                  // )
-                  // console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._2)
 
                   val nd =
                     dom.document
