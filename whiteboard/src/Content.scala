@@ -4,7 +4,7 @@ import fastparse._, NoWhitespace._
 
 import scalatags.JsDom.all._
 
-import org.scalajs.dom.html._
+import org.scalajs.dom.html.{Option => _, _}
 
 import scalajs.js.Dynamic.{global => g}
 import scalatags.JsDom.TypedTag
@@ -13,14 +13,18 @@ import scalatags.JsDom.TypedTag
 import scala.xml._
 
 sealed trait Content {
-  def view: Element
+  val view: Element
 }
 
 sealed trait Phrase extends Content {
-  def view: Element
+  val view: Element
+
+  val sourceLength: Int
 } // span
 
-sealed trait Sentence extends Content // div
+sealed trait Sentence extends Content{
+  val spans: Vector[Phrase]
+} // div
 
 object Content {
   def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
@@ -30,20 +34,28 @@ object Content {
   }
 
   case class Body(divs: Vector[Sentence]) extends Content {
-    def view: org.scalajs.dom.html.Element =
+    lazy val view: org.scalajs.dom.html.Element =
       p(polyDiv(divs.map(_.view))).render
+
+    lazy val phraseList: Vector[Phrase] = divs.flatMap(_.spans)
   }
 
   case class Text(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Span = span(body).render
+    lazy val view: org.scalajs.dom.html.Span = span(body).render
+
+    val sourceLength: Int = body.size
   }
 
   case class Strong(body: String) extends Phrase {
-    def view = strong(body).render
+    lazy val view = strong(body).render
+
+    val sourceLength: Int = body.size + 4
   }
 
   case class Emph(body: String) extends Phrase {
-    def view: org.scalajs.dom.html.Element = em(body).render
+    lazy val view: org.scalajs.dom.html.Element = em(body).render
+
+    val sourceLength: Int = body.size + 2
   }
 
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
@@ -53,7 +65,7 @@ object Content {
   }
 
   case class Heading(spans: Vector[Phrase], level: Int) extends Sentence {
-    def view: org.scalajs.dom.html.Element = level match {
+    lazy val view: org.scalajs.dom.html.Element = level match {
       case 1 => h1(polySpan(spans.map(_.view))).render
       case 2 => h2(polySpan(spans.map(_.view))).render
       case 3 => h3(polySpan(spans.map(_.view))).render
@@ -64,7 +76,8 @@ object Content {
   }
 
   case class InlineTeX(code: String, var formatted: Boolean) extends Phrase {
-    def view: org.scalajs.dom.html.Element = {
+    val sourceLength: Int = code.size + 2
+    lazy val view: org.scalajs.dom.html.Element = {
       val s =
         span(`class` := "texed inline-tex", attr("data-tex") := code).render
       s.innerHTML =
@@ -81,7 +94,8 @@ object Content {
   }
 
   case class DisplayTeX(code: String, var formatted: Boolean) extends Phrase {
-    def view: org.scalajs.dom.html.Element = {
+    val sourceLength: Int = code.size + 4
+    lazy val view: org.scalajs.dom.html.Element = {
       val s =
         div(`class` := "dtexed display-tex", attr("data-tex") := code).render
       s.innerHTML =
@@ -98,7 +112,7 @@ object Content {
   }
 
   case class Paragraph(spans: Vector[Phrase]) extends Sentence {
-    def view: org.scalajs.dom.html.Element =
+    lazy val view: org.scalajs.dom.html.Element =
       p(polySpan(spans.map(_.view))).render
   }
 
@@ -173,5 +187,8 @@ object Content {
     bdy(_)
   ).get.value
 
-  // def getXML(s: String) = XML.load(s )
+  def phraseOffset(phrases: Vector[Phrase], offset: Int) : Option[(Phrase, Int)] = phrases match {
+    case Vector() => None
+    case x +: ys => if (x.sourceLength > offset) Some((x, offset)) else phraseOffset(ys, offset - x.sourceLength)
+  }
 }

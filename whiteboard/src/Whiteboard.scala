@@ -120,13 +120,30 @@ object Whiteboard{
 
         // console.log(edNode.tagName)
 
-        log(fullText(edNode))
+        val text = fullText(edNode)
+
+        log(text)
 
         // console.log(fullText(edNode))
 
         console.log( baseNodes(d).find{n => selected == n})
 
-        console.log(globalOffset(baseNodes(edNode), selected.asInstanceOf[HTMLElement], selection.focusOffset ).toString)
+        val offset = globalOffset(baseNodes(edNode), selected.asInstanceOf[HTMLElement], selection.focusOffset )
+
+        console.log(offset.toString())
+
+        lazy val reparse = fastparse.parse(text, Content.bdy(_))
+
+        lazy val newBody = reparse.get.value
+
+        jsDiv.appendChild(newBody.view)  // should fold
+        console.log(reparse)
+        console.log("parse above")
+        console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._1.view)
+        console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._2)
+
+
+
 
         // focus.asInstanceOf[dom.Element].classList.contains("tex-inline")
 
