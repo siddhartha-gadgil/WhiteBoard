@@ -92,21 +92,8 @@ object Whiteboard{
         // jsDiv.appendChild(d)
         console.log("updating")
 
-        val savedRaw = d.childNodes
-
-        val saves  = (0 until savedRaw.length).map(j =>  savedRaw(j))
-
         val selection = dom.window.getSelection()
 
-        val focusOpt  = Option(dom.window.getSelection()).map(_.focusNode)
-
-        val focusElem = focusOpt.map{_.asInstanceOf[dom.raw.HTMLElement]}.get
-
-        // focusElemOpt.foreach(_.classList.add("focussed"))
-
-        focusOpt.foreach{e => console.log(e); console.log(e.nodeValue); console.log(Try(logDiv.setAttribute("blah", "blah") ).toString )}      
-
-        console.log("got an element") 
 
         // console.log(Try(focusElem.tagName))
         
@@ -147,6 +134,8 @@ object Whiteboard{
         jsDiv.innerHTML = ""
         jsDiv.appendChild(newBody.view)  // should fold
         jsDiv.appendChild(logDiv)
+
+        newBody.view.oninput = (e) => update()
         console.log(reparse)
         console.log("parse above")
         console.log(Content.phraseOffset(newBody.phraseList, offset.get).get._1.view)

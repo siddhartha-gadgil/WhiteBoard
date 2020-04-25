@@ -25,7 +25,7 @@ sealed trait Phrase extends Content {
   def addCursor(n: Int): Unit
 } // span
 
-sealed trait Sentence extends Content{
+sealed trait Sentence extends Content {
   val spans: Vector[Phrase]
 } // div
 
@@ -49,8 +49,14 @@ object Content {
     val sourceLength: Int = body.size
 
     def addCursor(n: Int): Unit = {
-      view.innerHTML = "" 
-      view.appendChild(span(body.take(n), span(contenteditable := true, `class`:= "cursor"), body.drop(n)).render)
+      view.innerHTML = ""
+      view.appendChild(
+        span(
+          span(body.take(n)),
+          span(contenteditable := true, `class` := "cursor"),
+          span(body.drop(n))
+        ).render
+      )
     }
   }
 
@@ -58,8 +64,14 @@ object Content {
     lazy val view = strong(body).render
 
     def addCursor(n: Int): Unit = {
-      view.innerHTML = "" 
-      view.appendChild(strong(body.take(n-2), span(contenteditable := true, `class`:= "cursor"), body.drop(n - 2)).render)
+      view.innerHTML = ""
+      view.appendChild(
+        strong(
+          span(body.take(n)),
+          span(contenteditable := true, `class` := "cursor"),
+          span(body.drop(n))
+        ).render
+      )
     }
 
     val sourceLength: Int = body.size + 4
@@ -71,8 +83,14 @@ object Content {
     val sourceLength: Int = body.size + 2
 
     def addCursor(n: Int): Unit = {
-      view.innerHTML = "" 
-      view.appendChild(em(body.take(n -1), span(contenteditable := true, `class`:= "cursor"), body.drop(n - 1)).render)
+      view.innerHTML = ""
+      view.appendChild(
+        em(
+          span(body.take(n)),
+          span(contenteditable := true, `class` := "cursor"),
+          span(body.drop(n))
+        ).render
+      )
     }
   }
 
@@ -99,7 +117,7 @@ object Content {
       val s =
         span(`class` := "texed inline-tex", attr("data-tex") := code).render
       s.innerHTML =
-        if (formatted) g.katex.renderToString(code).toString()
+        if (formatted) g.katex.renderToString(code.replace("\u00a0", " ")).toString()
         else s"<span>${"$"}$code${"$"}</span>"
       s.onclick = (_) => {
         if (formatted) s.innerHTML = s"<span>${"$"}$code${"$"}</span>"
@@ -111,11 +129,20 @@ object Content {
     }
 
     def addCursor(n: Int): Unit = {
-      if (formatted) {view.innerHTML = ""
-        view.appendChild(span("$", code.take(n - 1), span(contenteditable := true, `class`:= "cursor"), code.drop(n - 1), "$").render)
+      if (formatted) {
+        view.innerHTML = ""
+        view.appendChild(
+          span(
+            span("$",
+            code.take(n)),
+            span(contenteditable := true, `class` := "cursor"),
+            span(code.drop(n),
+            "$")
+          ).render
+        )
         formatted = false
         view.classList.remove("texed")
-    }
+      }
     }
   }
 
@@ -125,7 +152,7 @@ object Content {
       val s =
         div(`class` := "dtexed display-tex", attr("data-tex") := code).render
       s.innerHTML =
-        if (formatted) g.katex.renderToString(code).toString()
+        if (formatted) g.katex.renderToString(code.replace("\u00a0", " ")).toString()
         else s"<span>${"$$"}$code${"$$"}</span>"
       s.onclick = (_) => {
         if (formatted) s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
@@ -136,12 +163,21 @@ object Content {
       s
     }
 
-     def addCursor(n: Int): Unit = {
-      if (formatted) {view.innerHTML = ""
-        view.appendChild(span("$$", code.take(n - 2), span(contenteditable := true, `class`:= "cursor"), code.drop(n - 2), "$$").render)
+    def addCursor(n: Int): Unit = {
+      if (formatted) {
+        view.innerHTML = ""
+        view.appendChild(
+          span(
+            span("$$",
+            code.take(n)),
+            span(contenteditable := true, `class` := "cursor"),
+            span(code.drop(n),
+            "$$")
+          ).render
+        )
         formatted = false
         view.classList.remove("texed")
-     }
+      }
     }
   }
 
@@ -221,8 +257,13 @@ object Content {
     bdy(_)
   ).get.value
 
-  def phraseOffset(phrases: Vector[Phrase], offset: Int) : Option[(Phrase, Int)] = phrases match {
+  def phraseOffset(
+      phrases: Vector[Phrase],
+      offset: Int
+  ): Option[(Phrase, Int)] = phrases match {
     case Vector() => None
-    case x +: ys => if (x.sourceLength > offset) Some((x, offset)) else phraseOffset(ys, offset - x.sourceLength)
+    case x +: ys =>
+      if (x.sourceLength > offset) Some((x, offset))
+      else phraseOffset(ys, offset - x.sourceLength)
   }
 }
