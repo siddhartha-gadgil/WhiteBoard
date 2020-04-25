@@ -8,7 +8,7 @@ import scala.util._
 
 import scalatags.JsDom.all._
 
-import org.scalajs.dom.html._
+import org.scalajs.dom.html.{Option => _, _}
 import scala.util._
 import org.scalajs.dom.raw.HTMLElement
 
@@ -53,6 +53,20 @@ object Whiteboard{
             val cs = children(node)
             if (cs.isEmpty) tagPad(node.textContent, node.tagName) else tagPad(cs.map(fullText(_)).mkString(""), node.tagName)
         }
+
+    def baseNodes(node: HTMLElement) : Vector[HTMLElement] = 
+        if (node.classList.contains("texed")) Vector(node)
+        else if (node.classList.contains("dtexed")) Vector(node)
+        else {
+            val cs = children(node)
+            if (cs.isEmpty) Vector(node) else cs.flatMap(baseNodes(_))
+        }
+
+    def globalOffset(ns: Vector[HTMLElement], p: HTMLElement, offset: Int) : Option[Int] = ns match {
+        case Vector() => None
+        case x +: ys => if (x == p) Some(offset) else globalOffset(ys, p, offset + fullText(x).size)
+        case _ => None
+    }
 
     def offspring(node: dom.Node) : Vector[HTMLElement] = 
         (if (node.hasChildNodes()) {
@@ -110,7 +124,9 @@ object Whiteboard{
 
         // console.log(fullText(edNode))
 
-        console.log( offspring(d).find{n => selected == n})
+        console.log( baseNodes(d).find{n => selected == n})
+
+        console.log(globalOffset(baseNodes(edNode), selected.asInstanceOf[HTMLElement], selection.focusOffset ).toString)
 
         // focus.asInstanceOf[dom.Element].classList.contains("tex-inline")
 
