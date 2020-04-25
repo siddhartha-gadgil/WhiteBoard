@@ -63,16 +63,30 @@ object Content {
     }
   }
 
-  case class Strong(body: String) extends Phrase {
-    lazy val view = strong(body).render
+  case class Strong(body: String, var formatted: Boolean) extends Phrase {
+    lazy val view = span(strong(body)).render
 
-    def addCursor(n: Int): Unit = {
+    def simplify(): Unit = {
+      formatted = false
       view.innerHTML = ""
       view.appendChild(
         span(
-          span(body.take(n)),
+          "__", body, "__"
+        ).render
+      )
+    }
+
+    view.onclick = (_) => simplify()
+    view.oninput = (_) => simplify()
+
+    def addCursor(n: Int): Unit = {
+      val m = if (formatted) n else n - 2
+      view.innerHTML = ""
+      view.appendChild(
+        span(
+          span("__", body.take(m)),
           span(contenteditable := true, `class` := "cursor"),
-          span(body.drop(n))
+          span(body.drop(m), "__")
         ).render
       )
     }
@@ -80,18 +94,32 @@ object Content {
     val sourceLength: Int = body.size + 4
   }
 
-  case class Emph(body: String) extends Phrase {
-    lazy val view: org.scalajs.dom.html.Element = em(body).render
+  case class Emph(body: String, var formatted: Boolean) extends Phrase {
+    lazy val view: org.scalajs.dom.html.Element = span(em(body)).render
+
+    def simplify(): Unit = {
+      formatted = false
+      view.innerHTML = ""
+      view.appendChild(
+        span(
+          "_", body, "_"
+        ).render
+      )
+    }
+
+    view.onclick = (_) => simplify()
+    view.oninput = (_) => simplify()
 
     val sourceLength: Int = body.size + 2
 
     def addCursor(n: Int): Unit = {
+      val m = if (formatted) n else n - 1
       view.innerHTML = ""
       view.appendChild(
         span(
-          span(body.take(n)),
+          span("_", body.take(m)),
           span(contenteditable := true, `class` := "cursor"),
-          span(body.drop(n))
+          span(body.drop(m), "_")
         ).render
       )
     }
@@ -153,7 +181,7 @@ object Content {
     val sourceLength: Int = code.size + 4
     lazy val view: org.scalajs.dom.html.Element = {
       val s =
-        div(`class` := "dtexed display-tex", attr("data-tex") := code).render
+        span(`class` := "dtexed display-tex", attr("data-tex") := code).render
       s.innerHTML =
         if (formatted)
           Try {
@@ -185,7 +213,7 @@ object Content {
           ).render
         )
         formatted = false
-        view.classList.remove("texed")
+        view.classList.remove("dtexed")
       }
     }
   }
@@ -216,12 +244,12 @@ object Content {
   def word[_: P]: P[Phrase] = letter.rep(1).map(l => Text(l.mkString("")))
 
   def bold[_: P]: P[Phrase] =
-    P("__" ~ letter.rep(1) ~ "__").map(l => Strong(l.mkString("")))
+    P("__" ~ letter.rep(1) ~ "__").map(l => Strong(l.mkString(""), true))
 
   def ital[_: P]: P[Phrase] =
-    P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString("")))
+    P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString(""), true))
 
-  def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX | ital | bold | word)
+  def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX | bold | ital | word)
 
   def dispAhead[_: P] = P(&("$$"))
 

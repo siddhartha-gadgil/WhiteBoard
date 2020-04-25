@@ -18,6 +18,8 @@ import fastparse._
 object Whiteboard {
   val jsDiv = dom.document.querySelector("#js-div")
 
+  var lastPosition: Int = 0
+
   val logDiv = div().render
 
   def log(s: String): Unit = {
@@ -118,6 +120,8 @@ object Whiteboard {
             selection.focusOffset
           )
 
+          offset.foreach{n => lastPosition = n}
+
           if (!basic.contains(selected))
             console.log("missing selected node", selected)
 
@@ -130,19 +134,34 @@ object Whiteboard {
               )
             )
 
-          offset.foreach {
+          offset.fold[Unit] {
+            // jsDiv.innerHTML = ""
+            // jsDiv.appendChild(newBody.view)
+            // jsDiv.appendChild(logDiv)
+            // newBody.view.oninput = (e) => update()
+            // val range = dom.document.createRange()
+
+            // range.setStart(newBody.view, 0)
+            // range.collapse(true)
+            // val sel = dom.window.getSelection()
+            // sel.removeAllRanges()
+            // sel.addRange(range)
+          } {
             pos =>
-                        //   console.log("global offset", pos)
+              //   console.log("global offset", pos)
 
               val cursorOpt = Content.divOffset(newBody.divs, pos)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
-              cursorOpt.fold[Unit]{jsDiv.innerHTML = ""
-                  jsDiv.appendChild(newBody.view)
-                  jsDiv.appendChild(logDiv)} {
+              cursorOpt.fold[Unit] {
+                jsDiv.innerHTML = ""
+                jsDiv.appendChild(newBody.view)
+                jsDiv.appendChild(logDiv)
+
+              } {
                 cursor =>
-                //   console.log(cursor._1)
-                //   console.log(cursor._1.view)
-                //   console.log(cursor._2)
+                  //   console.log(cursor._1)
+                  //   console.log(cursor._1.view)
+                  //   console.log(cursor._2)
 
                   cursor._1.addCursor(cursor._2)
 
@@ -156,18 +175,15 @@ object Whiteboard {
                     dom.document
                       .querySelector(".cursor")
                       .asInstanceOf[HTMLElement]
-                  // console.log(nd)
 
-                  // selection.collapse(cursor._1.view, cursor._2)
                   val range = dom.document.createRange()
-                  // console.log(range)
+
                   range.setStart(nd, 0)
-                  // console.log("set range")
                   range.collapse(true)
                   val sel = dom.window.getSelection()
                   sel.removeAllRanges()
                   sel.addRange(range)
-                // console.log("focussed")
+                  // console.log("focussed")
 
               }
 
