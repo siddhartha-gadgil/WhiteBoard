@@ -133,7 +133,7 @@ object Content {
     case Vector()         => span()
   }
 
-  case class Heading(baseSpans: Vector[Phrase], level: Int, var formatted: Boolean) extends Sentence {
+  case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean) extends Sentence {
     lazy val view: org.scalajs.dom.html.Element = level match {
       case 1 => span(h1(polySpan(spans.map(_.view)))).render
       case 2 => span(h2(polySpan(spans.map(_.view)))).render
@@ -143,14 +143,12 @@ object Content {
       case 6 => span(h6(polySpan(spans.map(_.view)))).render
     }
 
-    val spans: Vector[Phrase] = baseSpans// if (formatted) spans else Text("#" * level + " ") +: baseSpans
-
     def simplify(): Unit = {
       formatted = false
       view.innerHTML = ""
       view.appendChild(
-        span(
-          // span("#" * level, " "),
+        p(
+          span("#" * level, " "),
           polySpan(spans.map(_.view))
         ).render
       )
@@ -352,8 +350,12 @@ object Content {
   def divOffset(divs: Vector[Sentence], offset: Int): Option[(Phrase, Int)] =
     divs match {
       case Vector() => None
-      case x +: ys =>
-        phraseOffset(x.spans, offset).orElse {
+      case x +: ys => 
+        val shift = x  match {
+          case Heading(spans, level, formatted) =>  level + 1
+          case _ => 0
+        }
+        phraseOffset(x.spans, offset - shift).map{case (p, j) => (p, j + shift)}.orElse {
           val remaining = offset - x.spans.map(_.sourceLength).sum
           divOffset(ys, remaining)
         }
