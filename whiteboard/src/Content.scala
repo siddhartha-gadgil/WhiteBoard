@@ -15,6 +15,8 @@ import scalatags.JsDom.TypedTag
 import scala.xml._
 import org.scalajs.dom.raw.HTMLElement
 import scala.util._
+import org.scalajs.dom
+import dom.console
 
 sealed trait Content {
   val view: Element
@@ -76,7 +78,7 @@ object Content {
       )
     }
 
-    view.onclick = (_) => simplify()
+    // view.onclick = (_) => simplify()
     view.oninput = (_) => simplify()
 
     def addCursor(n: Int): Unit = {
@@ -107,7 +109,7 @@ object Content {
       )
     }
 
-    view.onclick = (_) => simplify()
+    // view.onclick = (_) => simplify()
     view.oninput = (_) => simplify()
 
     val sourceLength: Int = body.size + 2
@@ -131,15 +133,30 @@ object Content {
     case Vector()         => span()
   }
 
-  case class Heading(spans: Vector[Phrase], level: Int) extends Sentence {
+  case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean) extends Sentence {
     lazy val view: org.scalajs.dom.html.Element = level match {
-      case 1 => h1(polySpan(spans.map(_.view))).render
-      case 2 => h2(polySpan(spans.map(_.view))).render
-      case 3 => h3(polySpan(spans.map(_.view))).render
-      case 4 => h4(polySpan(spans.map(_.view))).render
-      case 5 => h5(polySpan(spans.map(_.view))).render
-      case 6 => h6(polySpan(spans.map(_.view))).render
+      case 1 => span(h1(polySpan(spans.map(_.view)))).render
+      case 2 => span(h2(polySpan(spans.map(_.view)))).render
+      case 3 => span(h3(polySpan(spans.map(_.view)))).render
+      case 4 => span(h4(polySpan(spans.map(_.view)))).render
+      case 5 => span(h5(polySpan(spans.map(_.view)))).render
+      case 6 => span(h6(polySpan(spans.map(_.view)))).render
     }
+
+    def simplify(): Unit = {
+      formatted = false
+      view.innerHTML = ""
+      view.appendChild(
+        span(
+          span("#" * level, " "),
+          polySpan(spans.map(_.view))
+        ).render
+      )
+    }
+
+    // view.onclick = (_) => simplify()
+    view.oninput = (_) => simplify()
+
   }
 
   case class InlineTeX(code: String, var formatted: Boolean) extends Phrase {
@@ -277,7 +294,7 @@ object Content {
   def para[_: P]: P[Sentence] = P(spanSeq).map(Paragraph(_))
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
-    case (l, s) => Heading(s, l)
+    case (l, s) => Heading(s, l, true)
   }
 
   def sentence[_: P]: P[Sentence] = P(heading | para)

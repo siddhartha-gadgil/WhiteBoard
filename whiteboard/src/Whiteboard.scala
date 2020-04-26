@@ -151,6 +151,7 @@ object Whiteboard {
               //   console.log("global offset", pos)
 
               val cursorOpt = Content.divOffset(newBody.divs, pos)
+              console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
               cursorOpt.fold[Unit] {
                 jsDiv.innerHTML = ""
@@ -164,6 +165,8 @@ object Whiteboard {
                   //   console.log(cursor._2)
 
                   cursor._1.addCursor(cursor._2)
+
+                  newBody.divs.collect{case h:  whiteboard.Content.Heading => h}.foreach{h => if (h.spans.contains(cursor._1)) h.simplify()}
 
                   jsDiv.innerHTML = ""
                   jsDiv.appendChild(newBody.view)
