@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+./mill whiteboard.pack
+rsync -avz docs/ math.iisc.ac.in:/home/gadgil/public_html/whiteboard/

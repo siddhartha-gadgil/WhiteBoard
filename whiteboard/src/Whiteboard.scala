@@ -20,7 +20,7 @@ object Whiteboard {
 
   var lastPosition: Int = 0
 
-  val sourceDiv = div(`class`:= "border border-success source").render
+  val sourceDiv = div(`class` := "border border-success source extra").render
 
   def showSource(s: String): Unit = {
     sourceDiv.innerHTML = ""
@@ -29,10 +29,47 @@ object Whiteboard {
 
   showSource(Content.initialText)
 
-  lazy val d = Content.example.view
-
   def edNode =
     dom.document.querySelector("#editor").asInstanceOf[HTMLElement]
+
+  var focussed = false
+
+  def focus(): Unit = {
+    focussed = true
+    val extras = dom.document.querySelectorAll(".extra")
+    for { j <- 0 until (extras.length) } extras(j)
+      .asInstanceOf[HTMLElement]
+      .classList
+      .add("extra-hide")
+    edNode.classList
+      .remove("editor-bounded")
+    edNode.classList
+      .remove("border")
+    edNode.classList
+      .remove("border-primary")
+    jsDiv.asInstanceOf[HTMLElement].ondblclick = (_) => unFocus()
+  }
+
+  def unFocus(): Unit = {
+    val extras = dom.document.querySelectorAll(".extra")
+    for { j <- 0 until (extras.length) } extras(j)
+      .asInstanceOf[HTMLElement]
+      .classList
+      .remove("extra-hide")
+    edNode.classList
+      .add("editor-bounded")
+    edNode.classList
+      .add("border")
+    edNode.classList
+      .add("border-primary")
+
+    jsDiv.asInstanceOf[HTMLElement].ondblclick = (_) => focus()
+    focussed = false
+  }
+
+  jsDiv.asInstanceOf[HTMLElement].ondblclick = (_) => focus()
+
+  lazy val d = Content.example.view
 
   def children(node: HTMLElement): Vector[HTMLElement] = {
     val c = node.childNodes
@@ -94,8 +131,8 @@ object Whiteboard {
     // d.onclick = (e) => update()
     jsDiv.appendChild(d)
     jsDiv.appendChild(
-        div(p(), h3("Source"),
-            sourceDiv).render)
+      div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
+    )
 
   }
 
@@ -124,7 +161,7 @@ object Whiteboard {
             selection.focusOffset
           )
 
-          offset.foreach{n => lastPosition = n}
+          offset.foreach { n => lastPosition = n }
 
           if (!basic.contains(selected))
             console.log("missing selected node", selected)
@@ -138,17 +175,17 @@ object Whiteboard {
               )
             )
 
-          offset.foreach  {
+          offset.foreach {
             pos =>
               //   console.log("global offset", pos)
 
               val cursorOpt = Content.divOffset(newBody.divs, pos)
-            //   console.log(cursorOpt)
+              //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
               cursorOpt.fold[Unit] {
                 jsDiv.innerHTML = ""
                 jsDiv.appendChild(newBody.view)
-                jsDiv.appendChild(sourceDiv)
+                jsDiv.appendChild(div(p(), h3(`class` := "extra")("Source"), sourceDiv).render)
 
               } {
                 cursor =>
@@ -158,11 +195,17 @@ object Whiteboard {
 
                   cursor._1.addCursor(cursor._2)
 
-                  newBody.divs.collect{case h:  whiteboard.Content.Heading => h}.foreach{h => if (h.spans.contains(cursor._1)) h.simplify()}
+                  newBody.divs
+                    .collect { case h: whiteboard.Content.Heading => h }
+                    .foreach { h =>
+                      if (h.spans.contains(cursor._1)) h.simplify()
+                    }
 
                   jsDiv.innerHTML = ""
                   jsDiv.appendChild(newBody.view)
-                  jsDiv.appendChild(sourceDiv)
+                  jsDiv.appendChild(div(p(), h3(`class` := "extra")("Source"), sourceDiv).render)
+
+                  if (focussed) focus()
 
                   newBody.view.oninput = (e) => update()
 

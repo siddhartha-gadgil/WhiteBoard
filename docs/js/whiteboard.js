@@ -7941,7 +7941,7 @@ $c_Lwhiteboard_Content$.prototype.polyDiv__sci_Vector__Lscalatags_JsDom$TypedTag
       if ((p3 !== null)) {
         var o11 = $m_s_package$().Vector__sci_Vector$().unapplySeq__sc_SeqOps__sc_SeqOps(p3);
         if (((!$m_sc_SeqFactory$UnapplySeqWrapper$().isEmpty$extension__sc_SeqOps__Z(o11)) && ((new $c_sc_SeqFactory$UnapplySeqWrapper($m_sc_SeqFactory$UnapplySeqWrapper$().get$extension__sc_SeqOps__sc_SeqOps(o11)) !== null) && ($m_sc_SeqFactory$UnapplySeqWrapper$().lengthCompare$extension__sc_SeqOps__I__I($m_sc_SeqFactory$UnapplySeqWrapper$().get$extension__sc_SeqOps__sc_SeqOps(o11), 0) === 0)))) {
-          return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("border border-primary", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().id__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("editor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(head)]))
+          return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("border border-primary editor-bounded", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().id__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("editor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(head)]))
         }
       }
     }
@@ -7957,7 +7957,7 @@ $c_Lwhiteboard_Content$.prototype.polyDiv__sci_Vector__Lscalatags_JsDom$TypedTag
   if ((x1 !== null)) {
     var o16 = $m_s_package$().Vector__sci_Vector$().unapplySeq__sc_SeqOps__sc_SeqOps(x1);
     if (((!$m_sc_SeqFactory$UnapplySeqWrapper$().isEmpty$extension__sc_SeqOps__Z(o16)) && ((new $c_sc_SeqFactory$UnapplySeqWrapper($m_sc_SeqFactory$UnapplySeqWrapper$().get$extension__sc_SeqOps__sc_SeqOps(o16)) !== null) && ($m_sc_SeqFactory$UnapplySeqWrapper$().lengthCompare$extension__sc_SeqOps__I__I($m_sc_SeqFactory$UnapplySeqWrapper$().get$extension__sc_SeqOps__sc_SeqOps(o16), 0) === 0)))) {
-      return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("border border-primary", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().id__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("editor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]))
+      return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("border border-primary editor-bounded", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().id__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("editor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]))
     }
   };
   throw new $c_s_MatchError(x1)
@@ -9809,20 +9809,26 @@ function $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElem
   };
   return $thiz.Lwhiteboard_Whiteboard$__f_d
 }
+function $p_Lwhiteboard_Whiteboard$__$anonfun$focus$1__Lorg_scalajs_dom_raw_NodeList__I__V($thiz, extras$1, j) {
+  extras$1[j].classList.add("extra-hide")
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$unFocus$1__Lorg_scalajs_dom_raw_NodeList__I__V($thiz, extras$2, j) {
+  extras$2[j].classList.remove("extra-hide")
+}
 function $p_Lwhiteboard_Whiteboard$__$anonfun$children$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_Node($thiz, c$1, i) {
   return c$1[i]
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$1) {
-  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$1)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$4) {
+  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$4)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$2) {
-  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$2)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$5) {
+  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$5)
 }
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$3) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$3)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$6) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$6)
 }
 function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastparse_Parsed($thiz, reparse$lzy$1, text$1) {
   if ((reparse$lzy$1 === null)) {
@@ -9834,9 +9840,9 @@ function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastp
       return $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
     })
   })($thiz))), new $c_sjsr_AnonFunction1((function(this$2) {
-    return (function(x$3$2) {
-      var x$3 = $as_Lfastparse_ParsingRun(x$3$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$3)
+    return (function(x$6$2) {
+      var x$6 = $as_Lfastparse_ParsingRun(x$6$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$6)
     })
   })($thiz)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument()))))
 }
@@ -9858,7 +9864,7 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$5__I__V($thiz, n) {
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$7__Lwhiteboard_Content$Body__V($thiz, x3$1) {
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().innerHTML = "";
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild(x3$1.view__Lorg_scalajs_dom_raw_HTMLElement());
-  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($m_Lwhiteboard_Whiteboard$().sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())
+  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode($m_Lwhiteboard_Whiteboard$().sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element())
 }
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$9__T2__Lwhiteboard_Content$Heading__V($thiz, cursor$1, h) {
   if (h.spans__sci_Vector().contains__O__Z(cursor$1._1__O())) {
@@ -9875,7 +9881,10 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$8__Lwhiteboard_Content$Body
   })($thiz, cursor)));
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().innerHTML = "";
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild(x3$1.view__Lorg_scalajs_dom_raw_HTMLElement());
-  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($m_Lwhiteboard_Whiteboard$().sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement());
+  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode($m_Lwhiteboard_Whiteboard$().sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element());
+  if ($m_Lwhiteboard_Whiteboard$().focussed__Z()) {
+    $m_Lwhiteboard_Whiteboard$().focus__V()
+  };
   x3$1.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg1$2) {
     var arg1 = arg1$2;
     $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$10__Lorg_scalajs_dom_raw_Event__V(arg1)
@@ -9946,13 +9955,19 @@ function $c_Lwhiteboard_Whiteboard$() {
   this.Lwhiteboard_Whiteboard$__f_jsDiv = null;
   this.Lwhiteboard_Whiteboard$__f_lastPosition = 0;
   this.Lwhiteboard_Whiteboard$__f_sourceDiv = null;
+  this.Lwhiteboard_Whiteboard$__f_focussed = false;
   this.Lwhiteboard_Whiteboard$__f_bitmap$0 = false;
   $ct_O__(this);
   $n_Lwhiteboard_Whiteboard$ = this;
   this.Lwhiteboard_Whiteboard$__f_jsDiv = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#js-div");
   this.Lwhiteboard_Whiteboard$__f_lastPosition = 0;
-  this.Lwhiteboard_Whiteboard$__f_sourceDiv = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("border border-success source", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element();
-  this.showSource__T__V($m_Lwhiteboard_Content$().initialText__T())
+  this.Lwhiteboard_Whiteboard$__f_sourceDiv = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("border border-success source extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element();
+  this.showSource__T__V($m_Lwhiteboard_Content$().initialText__T());
+  this.Lwhiteboard_Whiteboard$__f_focussed = false;
+  this.jsDiv__Lorg_scalajs_dom_raw_Element().ondblclick = (function(arg1$2) {
+    var arg1 = arg1$2;
+    $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V(arg1)
+  })
 }
 $c_Lwhiteboard_Whiteboard$.prototype = new $h_O();
 $c_Lwhiteboard_Whiteboard$.prototype.constructor = $c_Lwhiteboard_Whiteboard$;
@@ -9974,11 +9989,51 @@ $c_Lwhiteboard_Whiteboard$.prototype.showSource__T__V = (function(s) {
   this.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement().innerHTML = "";
   this.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().pre__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag(s)])).render__Lorg_scalajs_dom_raw_Element())
 });
-$c_Lwhiteboard_Whiteboard$.prototype.d__Lorg_scalajs_dom_raw_HTMLElement = (function() {
-  return ((!this.Lwhiteboard_Whiteboard$__f_bitmap$0) ? $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElement(this) : this.Lwhiteboard_Whiteboard$__f_d)
-});
 $c_Lwhiteboard_Whiteboard$.prototype.edNode__Lorg_scalajs_dom_raw_HTMLElement = (function() {
   return $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#editor")
+});
+$c_Lwhiteboard_Whiteboard$.prototype.focussed__Z = (function() {
+  return this.Lwhiteboard_Whiteboard$__f_focussed
+});
+$c_Lwhiteboard_Whiteboard$.prototype.focussed_$eq__Z__V = (function(x$1) {
+  this.Lwhiteboard_Whiteboard$__f_focussed = x$1
+});
+$c_Lwhiteboard_Whiteboard$.prototype.focus__V = (function() {
+  this.focussed_$eq__Z__V(true);
+  var extras = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelectorAll(".extra");
+  $m_sr_RichInt$().until$extension__I__I__sci_Range($m_s_Predef$().intWrapper__I__I(0), $uI(extras.length)).foreach$mVc$sp__F1__V(new $c_sjsr_AnonFunction1((function(this\u00f8, extras) {
+    return (function(j$2) {
+      var j = $uI(j$2);
+      $p_Lwhiteboard_Whiteboard$__$anonfun$focus$1__Lorg_scalajs_dom_raw_NodeList__I__V(this\u00f8, extras, j)
+    })
+  })(this, extras)));
+  this.edNode__Lorg_scalajs_dom_raw_HTMLElement().classList.remove("editor-bounded");
+  this.edNode__Lorg_scalajs_dom_raw_HTMLElement().classList.remove("border");
+  this.edNode__Lorg_scalajs_dom_raw_HTMLElement().classList.remove("border-primary");
+  this.jsDiv__Lorg_scalajs_dom_raw_Element().ondblclick = (function(arg1$2) {
+    var arg1 = arg1$2;
+    $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V(arg1)
+  })
+});
+$c_Lwhiteboard_Whiteboard$.prototype.unFocus__V = (function() {
+  var extras = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelectorAll(".extra");
+  $m_sr_RichInt$().until$extension__I__I__sci_Range($m_s_Predef$().intWrapper__I__I(0), $uI(extras.length)).foreach$mVc$sp__F1__V(new $c_sjsr_AnonFunction1((function(this\u00f8, extras) {
+    return (function(j$2) {
+      var j = $uI(j$2);
+      $p_Lwhiteboard_Whiteboard$__$anonfun$unFocus$1__Lorg_scalajs_dom_raw_NodeList__I__V(this\u00f8, extras, j)
+    })
+  })(this, extras)));
+  this.edNode__Lorg_scalajs_dom_raw_HTMLElement().classList.add("editor-bounded");
+  this.edNode__Lorg_scalajs_dom_raw_HTMLElement().classList.add("border");
+  this.edNode__Lorg_scalajs_dom_raw_HTMLElement().classList.add("border-primary");
+  this.jsDiv__Lorg_scalajs_dom_raw_Element().ondblclick = (function(arg1$2) {
+    var arg1 = arg1$2;
+    $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V(arg1)
+  });
+  this.focussed_$eq__Z__V(false)
+});
+$c_Lwhiteboard_Whiteboard$.prototype.d__Lorg_scalajs_dom_raw_HTMLElement = (function() {
+  return ((!this.Lwhiteboard_Whiteboard$__f_bitmap$0) ? $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElement(this) : this.Lwhiteboard_Whiteboard$__f_d)
 });
 $c_Lwhiteboard_Whiteboard$.prototype.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector = (function(node) {
   var c = node.childNodes;
@@ -10018,9 +10073,9 @@ $c_Lwhiteboard_Whiteboard$.prototype.fullText__Lorg_scalajs_dom_raw_HTMLElement_
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? this.tagPad__T__T__T($as_T(node.textContent), $as_T(node.tagName)) : this.tagPad__T__T__T($as_sc_IterableOnceOps(cs.map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$1$2) {
-        var x$1 = x$1$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$1)
+      return (function(x$4$2) {
+        var x$4 = x$4$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$4)
       })
     })(this)))).mkString__T__T(""), $as_T(node.tagName)))
   }
@@ -10033,9 +10088,9 @@ $c_Lwhiteboard_Whiteboard$.prototype.baseNodes__Lorg_scalajs_dom_raw_HTMLElement
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node]))) : $as_sci_Vector(cs.flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$2$2) {
-        var x$2 = x$2$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$2)
+      return (function(x$5$2) {
+        var x$5 = x$5$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$5)
       })
     })(this)))))
   }
@@ -10075,7 +10130,7 @@ $c_Lwhiteboard_Whiteboard$.prototype.load__V = (function() {
     $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V(arg1)
   });
   this.jsDiv__Lorg_scalajs_dom_raw_Element().appendChild(this.d__Lorg_scalajs_dom_raw_HTMLElement());
-  this.jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(this.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element())
+  this.jsDiv__Lorg_scalajs_dom_raw_Element().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(this.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element())
 });
 $c_Lwhiteboard_Whiteboard$.prototype.update__V = (function() {
   var reparse$lzy = new $c_sr_LazyRef();
@@ -10099,6 +10154,15 @@ $c_Lwhiteboard_Whiteboard$.prototype.update__V = (function() {
 });
 $c_Lwhiteboard_Whiteboard$.prototype.$js$exported$meth$load__O = (function() {
   this.load__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$1) {
+  $m_Lwhiteboard_Whiteboard$().unFocus__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$2) {
+  $m_Lwhiteboard_Whiteboard$().focus__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$3) {
+  $m_Lwhiteboard_Whiteboard$().focus__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
   $m_Lwhiteboard_Whiteboard$().update__V()
@@ -30834,17 +30898,19 @@ function $p_Lwhiteboard_Content$Heading__$anonfun$simplify$1__Lwhiteboard_Phrase
   return x$11.view__Lorg_scalajs_dom_raw_HTMLElement()
 }
 /** @constructor */
-function $c_Lwhiteboard_Content$Heading(spans, level, formatted) {
+function $c_Lwhiteboard_Content$Heading(baseSpans, level, formatted) {
   this.Lwhiteboard_Content$Heading__f_view = null;
-  this.Lwhiteboard_Content$Heading__f_spans = null;
+  this.Lwhiteboard_Content$Heading__f_baseSpans = null;
   this.Lwhiteboard_Content$Heading__f_level = 0;
   this.Lwhiteboard_Content$Heading__f_formatted = false;
+  this.Lwhiteboard_Content$Heading__f_spans = null;
   this.Lwhiteboard_Content$Heading__f_bitmap$0 = false;
-  this.Lwhiteboard_Content$Heading__f_spans = spans;
+  this.Lwhiteboard_Content$Heading__f_baseSpans = baseSpans;
   this.Lwhiteboard_Content$Heading__f_level = level;
   this.Lwhiteboard_Content$Heading__f_formatted = formatted;
   $ct_O__(this);
   $f_s_Product__$init$__V(this);
+  this.Lwhiteboard_Content$Heading__f_spans = baseSpans;
   this.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg$outer) {
     return (function(arg1$2) {
       var arg1 = arg1$2;
@@ -30859,8 +30925,8 @@ function $h_Lwhiteboard_Content$Heading() {
   /*<skip>*/
 }
 $h_Lwhiteboard_Content$Heading.prototype = $c_Lwhiteboard_Content$Heading.prototype;
-$c_Lwhiteboard_Content$Heading.prototype.spans__sci_Vector = (function() {
-  return this.Lwhiteboard_Content$Heading__f_spans
+$c_Lwhiteboard_Content$Heading.prototype.baseSpans__sci_Vector = (function() {
+  return this.Lwhiteboard_Content$Heading__f_baseSpans
 });
 $c_Lwhiteboard_Content$Heading.prototype.level__I = (function() {
   return this.Lwhiteboard_Content$Heading__f_level
@@ -30874,10 +30940,13 @@ $c_Lwhiteboard_Content$Heading.prototype.formatted_$eq__Z__V = (function(x$1) {
 $c_Lwhiteboard_Content$Heading.prototype.view__Lorg_scalajs_dom_raw_HTMLElement = (function() {
   return ((!this.Lwhiteboard_Content$Heading__f_bitmap$0) ? $p_Lwhiteboard_Content$Heading__view$lzycompute__Lorg_scalajs_dom_raw_HTMLElement(this) : this.Lwhiteboard_Content$Heading__f_view)
 });
+$c_Lwhiteboard_Content$Heading.prototype.spans__sci_Vector = (function() {
+  return this.Lwhiteboard_Content$Heading__f_spans
+});
 $c_Lwhiteboard_Content$Heading.prototype.simplify__V = (function() {
   this.formatted_$eq__Z__V(false);
   this.view__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().$times$extension__T__I__T($m_s_Predef$().augmentString__T__T("#"), this.level__I())), $m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag(" ")])), $m_Lwhiteboard_Content$().polySpan__sci_Vector__Lscalatags_JsDom$TypedTag($as_sci_Vector(this.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lwhiteboard_Content$().polySpan__sci_Vector__Lscalatags_JsDom$TypedTag($as_sci_Vector(this.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
     return (function(x$11$2) {
       var x$11 = $as_Lwhiteboard_Phrase(x$11$2);
       return $p_Lwhiteboard_Content$Heading__$anonfun$simplify$1__Lwhiteboard_Phrase__Lorg_scalajs_dom_raw_HTMLElement(this\u00f8, x$11)
@@ -30894,7 +30963,7 @@ $c_Lwhiteboard_Content$Heading.prototype.productElement__I__O = (function(x$1) {
   var x1 = x$1;
   switch (x1) {
     case 0: {
-      return this.spans__sci_Vector();
+      return this.baseSpans__sci_Vector();
       break
     }
     case 1: {
@@ -30919,7 +30988,7 @@ $c_Lwhiteboard_Content$Heading.prototype.canEqual__O__Z = (function(x$1) {
 $c_Lwhiteboard_Content$Heading.prototype.hashCode__I = (function() {
   var acc = (-889275714);
   acc = $s_sr_Statics__mix__I__I__I(acc, $f_T__hashCode__I(this.productPrefix__T()));
-  acc = $s_sr_Statics__mix__I__I__I(acc, $s_sr_Statics__anyHash__O__I(this.spans__sci_Vector()));
+  acc = $s_sr_Statics__mix__I__I__I(acc, $s_sr_Statics__anyHash__O__I(this.baseSpans__sci_Vector()));
   acc = $s_sr_Statics__mix__I__I__I(acc, this.level__I());
   acc = $s_sr_Statics__mix__I__I__I(acc, (this.formatted__Z() ? 1231 : 1237));
   return $s_sr_Statics__finalizeHash__I__I__I(acc, 3)
@@ -30935,8 +31004,8 @@ $c_Lwhiteboard_Content$Heading.prototype.equals__O__Z = (function(x$1) {
     if (((x1 instanceof $c_Lwhiteboard_Content$Heading) || false)) {
       var Heading$1 = $as_Lwhiteboard_Content$Heading(x$1);
       if (((this.level__I() === Heading$1.level__I()) && (this.formatted__Z() === Heading$1.formatted__Z()))) {
-        var x = this.spans__sci_Vector();
-        var x$2 = Heading$1.spans__sci_Vector();
+        var x = this.baseSpans__sci_Vector();
+        var x$2 = Heading$1.baseSpans__sci_Vector();
         var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
       } else {
         var $$x1 = false

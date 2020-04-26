@@ -1,8 +1,11 @@
 #editor{
-    max-height: 500px;
     width: 100%;
     padding: 8px;
     overflow-y: auto;
+}
+
+.editor-bounded{
+    max-height: 500px;
 }
 
 .source {
@@ -10,4 +13,8 @@
     width: 100%;
     padding: 8px;
     overflow-y: auto;
+}
+
+.extra-hide {
+    display: none;
 }

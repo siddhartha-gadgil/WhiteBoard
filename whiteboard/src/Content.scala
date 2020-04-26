@@ -36,9 +36,9 @@ sealed trait Sentence extends Content {
 
 object Content {
   def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
-    case head +: Vector() => div(contenteditable := true, `class`:= "border border-primary", id := "editor")(head)
+    case head +: Vector() => div(contenteditable := true, `class`:= "border border-primary editor-bounded", id := "editor")(head)
     case init :+ last     => polyDiv(init)(last)
-    case Vector()         => div(contenteditable := true, `class`:= "border border-primary", id := "editor")
+    case Vector()         => div(contenteditable := true, `class`:= "border border-primary editor-bounded", id := "editor")
   }
 
   case class Body(divs: Vector[Sentence]) extends Content {
@@ -133,7 +133,7 @@ object Content {
     case Vector()         => span()
   }
 
-  case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean) extends Sentence {
+  case class Heading(baseSpans: Vector[Phrase], level: Int, var formatted: Boolean) extends Sentence {
     lazy val view: org.scalajs.dom.html.Element = level match {
       case 1 => span(h1(polySpan(spans.map(_.view)))).render
       case 2 => span(h2(polySpan(spans.map(_.view)))).render
@@ -143,12 +143,14 @@ object Content {
       case 6 => span(h6(polySpan(spans.map(_.view)))).render
     }
 
+    val spans: Vector[Phrase] = baseSpans// if (formatted) spans else Text("#" * level + " ") +: baseSpans
+
     def simplify(): Unit = {
       formatted = false
       view.innerHTML = ""
       view.appendChild(
         span(
-          span("#" * level, " "),
+          // span("#" * level, " "),
           polySpan(spans.map(_.view))
         ).render
       )
