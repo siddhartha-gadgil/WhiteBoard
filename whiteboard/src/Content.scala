@@ -36,9 +36,9 @@ sealed trait Sentence extends Content {
 
 object Content {
   def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
-    case head +: Vector() => div(contenteditable := true, id := "editor")(head)
+    case head +: Vector() => div(contenteditable := true, `class`:= "border border-primary", id := "editor")(head)
     case init :+ last     => polyDiv(init)(last)
-    case Vector()         => div(contenteditable := true, id := "editor")
+    case Vector()         => div(contenteditable := true, `class`:= "border border-primary", id := "editor")
   }
 
   case class Body(divs: Vector[Sentence]) extends Content {
@@ -306,8 +306,31 @@ object Content {
 
   def bdy[_: P]: P[Body] = divSeq.map(v => Body(v))
 
+  val initialText = 
+  """I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. 
+  |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display text.
+  |
+  |### Anything else?
+  |
+  | As you see there are headings (following markdown). We can also display equations such as $$x^2 + y^2 = 1.$$
+  |
+  |__Note:__ As usual a newline is like a space and a _blank_ line marks a new paragraph.
+  | 
+  |### But how?
+  |
+  | To edit a formula, click on it. Look at the source below, or read markdown documentation. You can also experiment here. 
+  |Note that you have to move the cursor manually out of formulas and other special environments.
+  |
+  |### Any improvements due?
+  | 
+  | The most important one planned is crude figures/handwriting support. This should come in a couple of days. 
+  | Other stuff is planned too,
+  | and suggestions are welcome.
+  |
+  """.stripMargin
+
   lazy val example = parse(
-    "This $x$ is $y^2 + 1$ _sometimes_, but __not__ always \n \n $$x$$  blah\n\n## and blah to you\n should merge with the above.",
+    initialText,
     bdy(_)
   ).get.value
 

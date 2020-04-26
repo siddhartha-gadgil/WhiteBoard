@@ -20,12 +20,14 @@ object Whiteboard {
 
   var lastPosition: Int = 0
 
-  val logDiv = div().render
+  val sourceDiv = div(`class`:= "border border-success source").render
 
-  def log(s: String): Unit = {
-    logDiv.innerHTML = ""
-    logDiv.appendChild(pre(s).render)
+  def showSource(s: String): Unit = {
+    sourceDiv.innerHTML = ""
+    sourceDiv.appendChild(pre(s).render)
   }
+
+  showSource(Content.initialText)
 
   lazy val d = Content.example.view
 
@@ -91,7 +93,9 @@ object Whiteboard {
     d.oninput = (e) => update()
     // d.onclick = (e) => update()
     jsDiv.appendChild(d)
-    jsDiv.appendChild(logDiv)
+    jsDiv.appendChild(
+        div(p(), h3("Source"),
+            sourceDiv).render)
 
   }
 
@@ -100,7 +104,7 @@ object Whiteboard {
 
     val text = fullText(edNode)
 
-    log(text)
+    showSource(text)
 
     lazy val reparse = fastparse.parse(text, Content.bdy(_))
 
@@ -134,29 +138,17 @@ object Whiteboard {
               )
             )
 
-          offset.fold[Unit] {
-            // jsDiv.innerHTML = ""
-            // jsDiv.appendChild(newBody.view)
-            // jsDiv.appendChild(logDiv)
-            // newBody.view.oninput = (e) => update()
-            // val range = dom.document.createRange()
-
-            // range.setStart(newBody.view, 0)
-            // range.collapse(true)
-            // val sel = dom.window.getSelection()
-            // sel.removeAllRanges()
-            // sel.addRange(range)
-          } {
+          offset.foreach  {
             pos =>
               //   console.log("global offset", pos)
 
               val cursorOpt = Content.divOffset(newBody.divs, pos)
-              console.log(cursorOpt)
+            //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
               cursorOpt.fold[Unit] {
                 jsDiv.innerHTML = ""
                 jsDiv.appendChild(newBody.view)
-                jsDiv.appendChild(logDiv)
+                jsDiv.appendChild(sourceDiv)
 
               } {
                 cursor =>
@@ -170,7 +162,7 @@ object Whiteboard {
 
                   jsDiv.innerHTML = ""
                   jsDiv.appendChild(newBody.view)
-                  jsDiv.appendChild(logDiv)
+                  jsDiv.appendChild(sourceDiv)
 
                   newBody.view.oninput = (e) => update()
 
