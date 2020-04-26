@@ -18,3 +18,7 @@
 .extra-hide {
     display: none;
 }
+
+.head-expanded{
+    display: block;
+}

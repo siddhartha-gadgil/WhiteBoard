@@ -147,8 +147,9 @@ object Content {
       formatted = false
       view.innerHTML = ""
       view.appendChild(
-        p(
-          span("#" * level, " "),
+        p(`class`:= "head-expanded")(
+          span("#" * level),
+          span(" "),
           polySpan(spans.map(_.view))
         ).render
       )

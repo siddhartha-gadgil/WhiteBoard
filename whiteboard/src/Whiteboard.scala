@@ -177,8 +177,11 @@ object Whiteboard {
 
           offset.foreach {
             pos =>
-              //   console.log("global offset", pos)
-
+                console.log("global offset", pos)
+                console.log("Selection", selected)
+                console.log("local offset", selection.focusOffset)
+                console.log("Basic")
+                // basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
               val cursorOpt = Content.divOffset(newBody.divs, pos)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
