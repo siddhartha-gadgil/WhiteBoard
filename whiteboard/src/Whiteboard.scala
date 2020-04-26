@@ -139,7 +139,19 @@ object Whiteboard {
   def update(): Unit = {
     val selection = dom.window.getSelection()
 
-    val text = fullText(edNode)
+    val selected = selection.getRangeAt(0).startContainer.parentNode
+
+    val basic = baseNodes(edNode)
+
+    val offset = globalOffset(
+      basic,
+      selected.asInstanceOf[HTMLElement],
+      selection.focusOffset
+    )
+
+    val t = fullText(edNode)
+
+    val text = offset.map{n =>Content.addCursor(t, n)}.getOrElse(t)
 
     showSource(text)
 
@@ -151,16 +163,6 @@ object Whiteboard {
           console.log(s"could not parse: \n\nError: $f")
       }, {
         case (newBody: Content.Body, _: Int) =>
-          val selected = selection.getRangeAt(0).startContainer.parentNode
-
-          val basic = baseNodes(edNode)
-
-          val offset = globalOffset(
-            basic,
-            selected.asInstanceOf[HTMLElement],
-            selection.focusOffset
-          )
-
           offset.foreach { n => lastPosition = n }
 
           if (!basic.contains(selected))
@@ -185,7 +187,9 @@ object Whiteboard {
               cursorOpt.fold[Unit] {
                 jsDiv.innerHTML = ""
                 jsDiv.appendChild(newBody.view)
-                jsDiv.appendChild(div(p(), h3(`class` := "extra")("Source"), sourceDiv).render)
+                jsDiv.appendChild(
+                  div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
+                )
 
               } {
                 cursor =>
@@ -203,7 +207,9 @@ object Whiteboard {
 
                   jsDiv.innerHTML = ""
                   jsDiv.appendChild(newBody.view)
-                  jsDiv.appendChild(div(p(), h3(`class` := "extra")("Source"), sourceDiv).render)
+                  jsDiv.appendChild(
+                    div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
+                  )
 
                   if (focussed) focus()
 

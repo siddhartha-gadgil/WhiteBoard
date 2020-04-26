@@ -23,11 +23,20 @@ sealed trait Content {
 }
 
 sealed trait Phrase extends Content {
+  def formatted : Boolean
   val view: Element
+
+  def curView = 
+    cur.map{
+      n => addCursor(n)
+      view
+    }.getOrElse(view)
 
   val sourceLength: Int
 
   def addCursor(n: Int): Unit
+
+  def cur : Option[Int]
 } // span
 
 sealed trait Sentence extends Content {
@@ -35,6 +44,22 @@ sealed trait Sentence extends Content {
 } // div
 
 object Content {
+  val cursorSymbol = "\u2038"
+
+  val csr = cursorSymbol.charAt(0)
+
+  def addCursor(s: String, n: Int) = s.take(n)+cursorSymbol+s.drop(n)
+
+  def splitCursor(s: String) = {
+    val init = s.takeWhile(c => c != csr)
+    (init, s.drop(init.size).replace(cursorSymbol, ""))
+  }
+
+  def cursorPosition(s: String) = {
+    val index = s.indexOf(cursorSymbol)
+    if (index < 0) None else Some(index)
+  }
+
   def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
     case head +: Vector() => div(contenteditable := true, `class`:= "border border-primary editor-bounded", id := "editor")(head)
     case init :+ last     => polyDiv(init)(last)
@@ -48,10 +73,10 @@ object Content {
     lazy val phraseList: Vector[Phrase] = divs.flatMap(_.spans)
   }
 
-  case class Text(body: String) extends Phrase {
-    lazy val view: org.scalajs.dom.html.Span = span(body).render
+  case class Text(body: String, val formatted: Boolean, val cur: Option[Int]) extends Phrase {
+    lazy val view: org.scalajs.dom.html.Span =  span(body).render
 
-    val sourceLength: Int = body.size
+    val sourceLength: Int = body.replace(cursorSymbol, "").size
 
     def addCursor(n: Int): Unit = {
       view.innerHTML = ""
@@ -65,7 +90,7 @@ object Content {
     }
   }
 
-  case class Strong(body: String, var formatted: Boolean) extends Phrase {
+  case class Strong(body: String, var formatted: Boolean, val cur: Option[Int]) extends Phrase {
     lazy val view = span(strong(body)).render
 
     def simplify(): Unit = {
@@ -93,10 +118,10 @@ object Content {
       )
     }
 
-    val sourceLength: Int = body.size + 4
+    val sourceLength: Int = body.replace(cursorSymbol, "").size + 4
   }
 
-  case class Emph(body: String, var formatted: Boolean) extends Phrase {
+  case class Emph(body: String, var formatted: Boolean, val cur: Option[Int]) extends Phrase {
     lazy val view: org.scalajs.dom.html.Element = span(em(body)).render
 
     def simplify(): Unit = {
@@ -112,7 +137,7 @@ object Content {
     // view.onclick = (_) => simplify()
     view.oninput = (_) => simplify()
 
-    val sourceLength: Int = body.size + 2
+    val sourceLength: Int = body.replace(cursorSymbol, "").size + 2
 
     def addCursor(n: Int): Unit = {
       val m = if (formatted) n else n - 1
@@ -155,12 +180,12 @@ object Content {
     }
 
     // view.onclick = (_) => simplify()
-    view.oninput = (_) => simplify()
+    // view.oninput = (_) => simplify()
 
   }
 
-  case class InlineTeX(code: String, var formatted: Boolean) extends Phrase {
-    val sourceLength: Int = code.size + 2
+  case class InlineTeX(code: String, var formatted: Boolean, val cur: Option[Int]) extends Phrase {
+    val sourceLength: Int = code.replace(cursorSymbol, "").size + 2
     lazy val view: org.scalajs.dom.html.Element = {
       val s =
         span(`class` := "texed inline-tex", attr("data-tex") := code).render
@@ -194,8 +219,8 @@ object Content {
     }
   }
 
-  case class DisplayTeX(code: String, var formatted: Boolean) extends Phrase {
-    val sourceLength: Int = code.size + 4
+  case class DisplayTeX(code: String, var formatted: Boolean, val cur: Option[Int]) extends Phrase {
+    val sourceLength: Int = code.replace(cursorSymbol, "").size + 4
     lazy val view: org.scalajs.dom.html.Element = {
       val s =
         span(`class` := "dtexed display-tex", attr("data-tex") := code).render
@@ -242,15 +267,15 @@ object Content {
 
   val eg = Paragraph(
     Vector(
-      Text("Something like"),
-      InlineTeX("x^2 + y^2", true),
-      Text(" is a formula")
+      Text("Something like", true, None),
+      InlineTeX("x^2 + y^2", true, None),
+      Text(" is a formula", true, None)
     )
   )
 
   def inlineTeX[_: P]: P[Phrase] =
     P(" ".rep ~ "$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$").map(s =>
-      InlineTeX(s, true)
+      InlineTeX(s.replace(cursorSymbol, "") , !s.contains(cursorSymbol), cursorPosition(s))
     )
 
   def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n").rep(1))
@@ -258,13 +283,13 @@ object Content {
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
 
-  def word[_: P]: P[Phrase] = letter.rep(1).map(l => Text(l.mkString("")))
+  def word[_: P]: P[Phrase] = letter.rep(1).map(l => Text(l.mkString("").replace(cursorSymbol, ""), !l.mkString("").contains(cursorSymbol), cursorPosition(l.mkString(""))))
 
   def bold[_: P]: P[Phrase] =
-    P("__" ~ letter.rep(1) ~ "__").map(l => Strong(l.mkString(""), true))
+    P("__" ~ letter.rep(1) ~ "__").map(l => Strong(l.mkString("").replace(cursorSymbol, ""), !l.mkString("").contains(cursorSymbol), cursorPosition(l.mkString(""))))
 
   def ital[_: P]: P[Phrase] =
-    P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString(""), true))
+    P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString("").replace(cursorSymbol, ""), !l.mkString("").contains(cursorSymbol), cursorPosition(l.mkString(""))))
 
   def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX | bold | ital | word)
 
@@ -272,7 +297,7 @@ object Content {
 
   def displayMath[_: P]: P[Phrase] =
     P("$$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$$").map { s =>
-      DisplayTeX(s, true)
+      DisplayTeX(s.replace(cursorSymbol, ""), s.contains(cursorSymbol) , cursorPosition(s))
     }
 
   def spanSeq[_: P]: P[Vector[Phrase]] =
@@ -294,7 +319,7 @@ object Content {
   def para[_: P]: P[Sentence] = P(spanSeq).map(Paragraph(_))
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
-    case (l, s) => Heading(s, l, true)
+    case (l, s) => Heading(s, l, s.forall(_.formatted))
   }
 
   def sentence[_: P]: P[Sentence] = P(heading | para)
