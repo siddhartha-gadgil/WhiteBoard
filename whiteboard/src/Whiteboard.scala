@@ -91,6 +91,7 @@ object Whiteboard {
       "$" + node.attributes.getNamedItem("data-tex").value + "$"
     else if (node.classList.contains("dtexed"))
       "$$" + node.attributes.getNamedItem("data-tex").value + "$$"
+    else if (isBlankNode(node)) ""
     else {
       val cs = children(node)
       if (cs.isEmpty) tagPad(node.textContent, node.tagName)
@@ -100,6 +101,10 @@ object Whiteboard {
   def isBreakNode(node: HTMLElement): Boolean =
     (node.tagName == "BR") ||
       (node.textContent.size == 0 && children(node).forall(isBreakNode(_)))
+
+  def isBlankNode(node: HTMLElement): Boolean =
+    (node.classList.contains("blank")) ||
+      (children(node).size > 1 && children(node).forall(isBlankNode(_)))
 
   def baseNodes(node: HTMLElement): Vector[HTMLElement] =
     if (node.classList.contains("texed") || node.classList.contains("dtexed"))
@@ -120,7 +125,7 @@ object Whiteboard {
     case x +: ys =>
       if (x == p) Some(offset)
       else {
-        val shift = if (p.classList.contains("blank")) 0 else fullText(x).size
+        val shift = if (isBlankNode(p)) {console.log("Blank"); console.log(p); console.log(offset); 0} else fullText(x).size
         globalOffset(ys, p, offset + shift)
       }
     case _ => None
@@ -195,7 +200,7 @@ object Whiteboard {
               console.log("Selection", selected)
               console.log("local offset", selection.focusOffset)
               console.log("Basic")
-              // basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
+              basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
               val cursorOpt = Content.divOffset(newBody.divs, pos)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
@@ -210,9 +215,7 @@ object Whiteboard {
 
               } {
                 cursor =>
-                  //   console.log(cursor._1)
-                  //   console.log(cursor._1.view)
-                  //   console.log(cursor._2)
+
 
                   cursor._1.addCursor(cursor._2)
 
@@ -244,7 +247,7 @@ object Whiteboard {
                   val sel = dom.window.getSelection()
                   sel.removeAllRanges()
                   sel.addRange(range)
-                  // console.log("focussed")
+
 
               }
 

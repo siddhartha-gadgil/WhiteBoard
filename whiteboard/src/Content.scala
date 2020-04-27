@@ -35,7 +35,10 @@ sealed trait Sentence extends Content {
 } // div
 
 object Content {
-  def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
+  val uspc = "\u00a0"
+
+  def polyDiv(ss: Vector[Element]): 
+  TypedTag[Div] = ss match {
     case head +: Vector() =>
       div(
         contenteditable := true,
@@ -76,7 +79,9 @@ object Content {
   }
 
   class Blank extends Phrase{
-    val view: org.scalajs.dom.html.Element = span(`class`:= "blank").render
+    val view: org.scalajs.dom.html.Element = span(`class`:= "blank")(uspc).render
+
+    view.oninput= (_) => view.innerText = {view.innerText.replace(uspc, "")}
     
     val sourceLength: Int = 0
     
@@ -168,7 +173,7 @@ object Content {
   case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean)
       extends Sentence {
     def inner =
-      if (spans.isEmpty) p(span(), span(`class` := "blank")("\u00a0"))
+      if (spans.isEmpty) p(span(), span(`class` := "blank")(uspc))
       else polySpan(spans.map(_.view))
     lazy val view: org.scalajs.dom.html.Element =
       level match {
@@ -186,7 +191,7 @@ object Content {
       view.appendChild(
         p(`class` := "head-expanded")(
           span(`class` := "padding")("#" * level),
-          span(`class` := "padding")("\u00a0"),
+          span(`class` := "padding")(uspc),
           inner
         ).render
       )
@@ -204,7 +209,7 @@ object Content {
         span(`class` := "texed inline-tex", attr("data-tex") := code).render
       s.innerHTML =
         if (formatted)
-          Try { g.katex.renderToString(code.replace("\u00a0", " ")).toString() }
+          Try { g.katex.renderToString(code.replace(uspc, " ")).toString() }
             .getOrElse(s"<span>${"$"}$code${"$"}</span>")
         else s"<span>${"$"}$code${"$"}</span>"
       s.onclick = (_) => {
@@ -242,7 +247,7 @@ object Content {
           Try {
             g.katex
               .renderToString(
-                code.replace("\u00a0", " "),
+                code.replace(uspc, " "),
                 js.Dynamic.literal("displayMode" -> true)
               )
               .toString()
@@ -291,7 +296,7 @@ object Content {
       InlineTeX(s, true)
     )
 
-  def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n").rep(1))
+  def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n"))
 
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
@@ -314,23 +319,23 @@ object Content {
     }
 
   def spanSeq[_: P]: P[Vector[Phrase]] =
-    (End | blankLine).map { _ =>
-      Vector()
-    } | P(inlineTeX ~ spanSeq).map {
+     P(inlineTeX ~ spanSeq).map {
       case (x, ys) => x +: ys
       // prepend(x, ys)
     } |
       P(phrase ~ spanSeq).map {
         case (x, ys) => x +: ys
         // prepend(x, ys)
-      }
+      } | (End | blankLine).map { _ =>
+      Vector()
+    }
 
   def headHead[_: P]: P[Int] =
-    P("#".rep(min = 1, max = 6).! ~ (" " | "\u00a0")).map {
+    P("#".rep(min = 1, max = 6).! ~ (" " | uspc)).map {
       _.size
     }
 
-  def para[_: P]: P[Sentence] = P(spanSeq).map(Paragraph(_))
+  def para[_: P]: P[Sentence] = P(spanSeq).map(s => Paragraph(s :+ (new Blank)))
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
     case (l, s) => Heading(s :+ (new Blank), l, true)
