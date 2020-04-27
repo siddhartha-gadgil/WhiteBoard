@@ -114,7 +114,10 @@ object Whiteboard {
     case Vector() => None
     case x +: ys =>
       if (x == p) Some(offset)
-      else globalOffset(ys, p, offset + fullText(x).size)
+      else {
+          val shift = if (p.classList.contains("blank")) 0 else fullText(x).size
+          globalOffset(ys, p, offset + shift)
+      }
     case _ => None
   }
 

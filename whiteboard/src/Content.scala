@@ -75,6 +75,24 @@ object Content {
     }
   }
 
+  class Blank extends Phrase{
+    val view: org.scalajs.dom.html.Element = span(`class`:= "blank").render
+    
+    val sourceLength: Int = 0
+    
+    def addCursor(n: Int): Unit = {
+      view.innerHTML = ""
+      view.appendChild(
+        span(
+          span(),
+          span(contenteditable := true, `class` := "cursor"),
+          span()
+        ).render
+      )
+    }
+    
+  }
+
   case class Strong(body: String, var formatted: Boolean) extends Phrase {
     lazy val view = span(strong(body)).render
 
@@ -150,7 +168,7 @@ object Content {
   case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean)
       extends Sentence {
     def inner =
-      if (spans.isEmpty) span(span(), span(`class` := "padding")("\u00a0"))
+      if (spans.isEmpty) p(span(), span(`class` := "blank")("\u00a0"))
       else polySpan(spans.map(_.view))
     lazy val view: org.scalajs.dom.html.Element =
       level match {
@@ -315,7 +333,7 @@ object Content {
   def para[_: P]: P[Sentence] = P(spanSeq).map(Paragraph(_))
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
-    case (l, s) => Heading(s, l, true)
+    case (l, s) => Heading(s :+ (new Blank), l, true)
   }
 
   def sentence[_: P]: P[Sentence] = P(heading | para)
@@ -373,7 +391,7 @@ object Content {
       case Vector() => None
       case x +: ys =>
         val shift = x match {
-          // case Heading(spans, level, formatted) =>  level + 1
+          case Heading(spans, level, formatted) =>  level + 1
           case _ => 0
         }
         phraseOffset(x.spans, offset - shift)
