@@ -36,9 +36,19 @@ sealed trait Sentence extends Content {
 
 object Content {
   def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
-    case head +: Vector() => div(contenteditable := true, `class`:= "border border-primary editor-bounded", id := "editor")(head)
-    case init :+ last     => polyDiv(init)(last)
-    case Vector()         => div(contenteditable := true, `class`:= "border border-primary editor-bounded", id := "editor")
+    case head +: Vector() =>
+      div(
+        contenteditable := true,
+        `class` := "border border-primary editor-bounded",
+        id := "editor"
+      )(head)
+    case init :+ last => polyDiv(init)(last)
+    case Vector() =>
+      div(
+        contenteditable := true,
+        `class` := "border border-primary editor-bounded",
+        id := "editor"
+      )
   }
 
   case class Body(divs: Vector[Sentence]) extends Content {
@@ -73,7 +83,9 @@ object Content {
       view.innerHTML = ""
       view.appendChild(
         span(
-          "__", body, "__"
+          "__",
+          body,
+          "__"
         ).render
       )
     }
@@ -104,7 +116,9 @@ object Content {
       view.innerHTML = ""
       view.appendChild(
         span(
-          "_", body, "_"
+          "_",
+          body,
+          "_"
         ).render
       )
     }
@@ -133,24 +147,29 @@ object Content {
     case Vector()         => span()
   }
 
-  case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean) extends Sentence {
-    lazy val view: org.scalajs.dom.html.Element = level match {
-      case 1 => span(h1(polySpan(spans.map(_.view)))).render
-      case 2 => span(h2(polySpan(spans.map(_.view)))).render
-      case 3 => span(h3(polySpan(spans.map(_.view)))).render
-      case 4 => span(h4(polySpan(spans.map(_.view)))).render
-      case 5 => span(h5(polySpan(spans.map(_.view)))).render
-      case 6 => span(h6(polySpan(spans.map(_.view)))).render
-    }
+  case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean)
+      extends Sentence {
+    def inner =
+      if (spans.isEmpty) span(span(), span(`class` := "padding")("\u00a0"))
+      else polySpan(spans.map(_.view))
+    lazy val view: org.scalajs.dom.html.Element =
+      level match {
+        case 1 => span(h1(inner)).render
+        case 2 => span(h2(inner)).render
+        case 3 => span(h3(inner)).render
+        case 4 => span(h4(inner)).render
+        case 5 => span(h5(inner)).render
+        case 6 => span(h6(inner)).render
+      }
 
     def simplify(): Unit = {
       formatted = false
       view.innerHTML = ""
       view.appendChild(
-        p(`class`:= "head-expanded")(
-          span(`class`:= "padding")("#" * level),
-          span(`class`:= "padding")(" "),
-          polySpan(spans.map(_.view))
+        p(`class` := "head-expanded")(
+          span(`class` := "padding")("#" * level),
+          span(`class` := "padding")(" "),
+          inner
         ).render
       )
     }
@@ -288,9 +307,10 @@ object Content {
         // prepend(x, ys)
       }
 
-  def headHead[_: P]: P[Int] = P("#".rep(min = 1, max = 6).! ~ (" " | "\u00a0" )).map {
-    _.size
-  }
+  def headHead[_: P]: P[Int] =
+    P("#".rep(min = 1, max = 6).! ~ (" " | "\u00a0")).map {
+      _.size
+    }
 
   def para[_: P]: P[Sentence] = P(spanSeq).map(Paragraph(_))
 
@@ -307,8 +327,8 @@ object Content {
 
   def bdy[_: P]: P[Body] = divSeq.map(v => Body(v))
 
-  val initialText = 
-  """I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. 
+  val initialText =
+    """I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. 
   |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display text.
   |
   |### Anything else?
@@ -351,14 +371,16 @@ object Content {
   def divOffset(divs: Vector[Sentence], offset: Int): Option[(Phrase, Int)] =
     divs match {
       case Vector() => None
-      case x +: ys => 
-        val shift = x  match {
-          case Heading(spans, level, formatted) =>  level + 1
+      case x +: ys =>
+        val shift = x match {
+          // case Heading(spans, level, formatted) =>  level + 1
           case _ => 0
         }
-        phraseOffset(x.spans, offset - shift).map{case (p, j) => (p, j + shift)}.orElse {
-          val remaining = offset - x.spans.map(_.sourceLength).sum
-          divOffset(ys, remaining)
-        }
+        phraseOffset(x.spans, offset - shift)
+          .map { case (p, j) => (p, j + shift) }
+          .orElse {
+            val remaining = offset - x.spans.map(_.sourceLength).sum
+            divOffset(ys, remaining)
+          }
     }
 }
