@@ -148,8 +148,8 @@ object Content {
       view.innerHTML = ""
       view.appendChild(
         p(`class`:= "head-expanded")(
-          span("#" * level),
-          span(" "),
+          span(`class`:= "padding")("#" * level),
+          span(`class`:= "padding")(" "),
           polySpan(spans.map(_.view))
         ).render
       )
@@ -288,7 +288,7 @@ object Content {
         // prepend(x, ys)
       }
 
-  def headHead[_: P]: P[Int] = P("#".rep(min = 1, max = 6).! ~ " ").map {
+  def headHead[_: P]: P[Int] = P("#".rep(min = 1, max = 6).! ~ (" " | "\u00a0" )).map {
     _.size
   }
 

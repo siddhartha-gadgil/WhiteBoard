@@ -7848,9 +7848,12 @@ function $p_Lwhiteboard_Content$__$anonfun$headHead$4__T($thiz) {
   return "\" \""
 }
 function $p_Lwhiteboard_Content$__$anonfun$headHead$5__T($thiz) {
+  return "\"\u00a0\""
+}
+function $p_Lwhiteboard_Content$__$anonfun$headHead$6__T($thiz) {
   return new $c_Lsourcecode_Name("headHead").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$headHead$6__T__I($thiz, x$17) {
+function $p_Lwhiteboard_Content$__$anonfun$headHead$7__T__I($thiz, x$17) {
   return $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(x$17))
 }
 function $p_Lwhiteboard_Content$__$anonfun$para$1__T($thiz) {
@@ -9306,7 +9309,7 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
   }
 });
 $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$11) {
-  var $$x4 = $m_Lfastparse_package$();
+  var $$x6 = $m_Lfastparse_package$();
   var x1 = evidence$11;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
@@ -9340,7 +9343,7 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
   x1$4.noDropBuffer_$eq__Z__V(oldCapturing);
   $$x2.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(((!x1$4.isSuccess__Z()) ? x1$4 : x1$4.freshSuccess__O__Lfastparse_ParsingRun(x1$4.input__Lfastparse_ParserInput().slice__I__I__T(startPos, x1$4.index__I()))));
   if ((!x1$2.isSuccess__Z())) {
-    var x1$6 = x1$2
+    var x1$8 = x1$2
   } else {
     var postLhsIndex$macro$3 = x1$2.index__I();
     var lhsAggregate$macro$6 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
@@ -9350,19 +9353,65 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
     };
     var lhsValue$macro$12 = x1$2.successValue__O();
     if (((!x1$2.isSuccess__Z()) && x1$2.cut__Z())) {
-      var x1$6 = x1$2
+      var x1$8 = x1$2
     } else {
       var preRhsIndex$macro$4 = x1$2.index__I();
       var x1$5 = evidence$11;
-      var input = x1$5.input__Lfastparse_ParserInput();
-      var index = x1$5.index__I();
-      var res = ((input.isReachable__I__Z(index) && (input.apply__I__C(index) === 32)) ? x1$5.freshSuccessUnit__I__Lfastparse_ParsingRun(((index + 1) | 0)) : x1$5.freshFailure__Lfastparse_ParsingRun());
-      if (x1$5.verboseFailures__Z()) {
-        x1$5.aggregateTerminal__I__F0__V(index, new $c_sjsr_AnonFunction0((function(this$3) {
+      var oldCut = x1$5.cut__Z();
+      x1$5.cut_$eq__Z__V(false);
+      var startPos$2 = x1$5.index__I();
+      var $$x3 = $m_Lfastparse_package$();
+      var x1$6 = evidence$11;
+      var input = x1$6.input__Lfastparse_ParserInput();
+      var index = x1$6.index__I();
+      var res = ((input.isReachable__I__Z(index) && (input.apply__I__C(index) === 32)) ? x1$6.freshSuccessUnit__I__Lfastparse_ParsingRun(((index + 1) | 0)) : x1$6.freshFailure__Lfastparse_ParsingRun());
+      if (x1$6.verboseFailures__Z()) {
+        x1$6.aggregateTerminal__I__F0__V(index, new $c_sjsr_AnonFunction0((function(this$3) {
           return (function() {
             return $p_Lwhiteboard_Content$__$anonfun$headHead$4__T(this$3)
           })
         })(this)))
+      };
+      $$x3.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(res);
+      var lhsMsg = x1$5.shortParserMsg__Lfastparse_internal_Msgs();
+      var lhsAggregate = x1$5.failureGroupAggregate__Lfastparse_internal_Msgs();
+      if (x1$5.isSuccess__Z()) {
+        x1$5.cut_$eq__Z__V((!(!(x1$5.cut__Z() | oldCut))))
+      } else if (x1$5.cut__Z()) {
+        /*<skip>*/
+      } else {
+        var verboseFailures = x1$5.verboseFailures__Z();
+        x1$5.index_$eq__I__V(startPos$2);
+        if (verboseFailures) {
+          x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$2, lhsMsg, lhsAggregate)
+        };
+        x1$5.cut_$eq__Z__V(false);
+        var x1$7 = evidence$11;
+        var input$2 = x1$7.input__Lfastparse_ParserInput();
+        var index$2 = x1$7.index__I();
+        var res$2 = ((input$2.isReachable__I__Z(index$2) && (input$2.apply__I__C(index$2) === 160)) ? x1$7.freshSuccessUnit__I__Lfastparse_ParsingRun(((index$2 + 1) | 0)) : x1$7.freshFailure__Lfastparse_ParsingRun());
+        if (x1$7.verboseFailures__Z()) {
+          x1$7.aggregateTerminal__I__F0__V(index$2, new $c_sjsr_AnonFunction0((function(this$4) {
+            return (function() {
+              return $p_Lwhiteboard_Content$__$anonfun$headHead$5__T(this$4)
+            })
+          })(this)))
+        };
+        var rhsMsg = x1$5.shortParserMsg__Lfastparse_internal_Msgs();
+        var rhsCut = x1$5.cut__Z();
+        var endCut = (!(!(rhsCut | oldCut)));
+        if (((!x1$5.isSuccess__Z()) && (!rhsCut))) {
+          x1$5.freshFailure__I__Lfastparse_ParsingRun(startPos$2)
+        } else {
+          (void 0)
+        };
+        x1$5.cut_$eq__Z__V(endCut);
+        if (verboseFailures) {
+          var rassoc$2 = rhsMsg;
+          var $$x4 = lhsMsg.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2);
+          var rassoc$3 = x1$5.failureGroupAggregate__Lfastparse_internal_Msgs();
+          x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$2, $$x4, lhsAggregate.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3))
+        }
       };
       var rhsAggregate$macro$7 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
       var rhsMsg$macro$8 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
@@ -9378,36 +9427,36 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
         var res$macro$14 = x1$2.freshSuccess__O__I__Lfastparse_ParsingRun(x1$3.apply__O__O__O($as_T(lhsValue$macro$12), (x1$2.successValue__O(), (void 0))), nextIndex$macro$13)
       };
       if (x1$2.verboseFailures__Z()) {
-        var $$x3 = $m_Lfastparse_internal_Util$().joinBinOp__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(lhsMsg$macro$9, rhsMsg$macro$8);
+        var $$x5 = $m_Lfastparse_internal_Util$().joinBinOp__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(lhsMsg$macro$9, rhsMsg$macro$8);
         var rassoc$1 = rhsAggregate$macro$7;
-        x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(preLhsIndex$macro$2, $$x3, lhsAggregate$macro$6.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$1), (preRhsIndex$macro$4 === x1$2.traceIndex__I()))
+        x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(preLhsIndex$macro$2, $$x5, lhsAggregate$macro$6.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$1), (preRhsIndex$macro$4 === x1$2.traceIndex__I()))
       };
-      var x1$6 = res$macro$14
+      var x1$8 = res$macro$14
     }
   };
   if (instrument) {
-    x1.instrument__Lfastparse_internal_Instrument().afterParse__T__I__Z__V(new $c_Lsourcecode_Name("headHead").value__T(), x1$6.index__I(), x1$6.isSuccess__Z())
+    x1.instrument__Lfastparse_internal_Instrument().afterParse__T__I__Z__V(new $c_Lsourcecode_Name("headHead").value__T(), x1$8.index__I(), x1$8.isSuccess__Z())
   };
-  if (x1$6.verboseFailures__Z()) {
-    x1$6.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(startIndex, new $c_Lfastparse_internal_Msgs($as_sci_List($m_sci_List$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lfastparse_internal_Lazy(new $c_sjsr_AnonFunction0((function(this$4) {
+  if (x1$8.verboseFailures__Z()) {
+    x1$8.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(startIndex, new $c_Lfastparse_internal_Msgs($as_sci_List($m_sci_List$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lfastparse_internal_Lazy(new $c_sjsr_AnonFunction0((function(this$5) {
       return (function() {
-        return $p_Lwhiteboard_Content$__$anonfun$headHead$5__T(this$4)
+        return $p_Lwhiteboard_Content$__$anonfun$headHead$6__T(this$5)
       })
-    })(this)))])))), x1$6.failureGroupAggregate__Lfastparse_internal_Msgs(), (startIndex < x1$6.traceIndex__I()));
-    if ((!x1$6.isSuccess__Z())) {
+    })(this)))])))), x1$8.failureGroupAggregate__Lfastparse_internal_Msgs(), (startIndex < x1$8.traceIndex__I()));
+    if ((!x1$8.isSuccess__Z())) {
       var rassoc$1$2 = $m_s_Predef$ArrowAssoc$().$minus$greater$extension__O__O__T2($m_s_Predef$().ArrowAssoc__O__O(new $c_Lsourcecode_Name("headHead").value__T()), startIndex);
-      x1$6.failureStack_$eq__sci_List__V(x1$6.failureStack__sci_List().$colon$colon__O__sci_List(rassoc$1$2))
+      x1$8.failureStack_$eq__sci_List__V(x1$8.failureStack__sci_List().$colon$colon__O__sci_List(rassoc$1$2))
     }
   };
-  var x1$7 = $$x4.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x1$6);
-  if ((!x1$7.isSuccess__Z())) {
-    return x1$7
+  var x1$9 = $$x6.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x1$8);
+  if ((!x1$9.isSuccess__Z())) {
+    return x1$9
   } else {
-    var this2 = x1$7;
-    this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$5) {
+    var this2 = x1$9;
+    this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$6) {
       return (function(x$17$2) {
         var x$17 = $as_T(x$17$2);
-        return $p_Lwhiteboard_Content$__$anonfun$headHead$6__T__I(this$5, x$17)
+        return $p_Lwhiteboard_Content$__$anonfun$headHead$7__T__I(this$6, x$17)
       })
     })(this)).apply__O__O($as_T(this2.successValue__O())));
     return this2
@@ -10112,6 +10161,8 @@ $c_Lwhiteboard_Whiteboard$.prototype.baseNodes__Lorg_scalajs_dom_raw_HTMLElement
     return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node])))
   } else if ($uZ(node.classList.contains("dtexed"))) {
     return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node])))
+  } else if ($uZ(node.classList.contains("padding"))) {
+    return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sci_Nil$()))
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node]))) : $as_sci_Vector(cs.flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
@@ -30971,7 +31022,7 @@ $c_Lwhiteboard_Content$Heading.prototype.view__Lorg_scalajs_dom_raw_HTMLElement 
 $c_Lwhiteboard_Content$Heading.prototype.simplify__V = (function() {
   this.formatted_$eq__Z__V(false);
   this.view__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("head-expanded", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().$times$extension__T__I__T($m_s_Predef$().augmentString__T__T("#"), this.level__I()))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag(" ")])), $m_Lwhiteboard_Content$().polySpan__sci_Vector__Lscalatags_JsDom$TypedTag($as_sci_Vector(this.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("head-expanded", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("padding", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().$times$extension__T__I__T($m_s_Predef$().augmentString__T__T("#"), this.level__I()))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("padding", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag(" ")])), $m_Lwhiteboard_Content$().polySpan__sci_Vector__Lscalatags_JsDom$TypedTag($as_sci_Vector(this.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
     return (function(x$11$2) {
       var x$11 = $as_Lwhiteboard_Phrase(x$11$2);
       return $p_Lwhiteboard_Content$Heading__$anonfun$simplify$1__Lwhiteboard_Phrase__Lorg_scalajs_dom_raw_HTMLElement(this\u00f8, x$11)

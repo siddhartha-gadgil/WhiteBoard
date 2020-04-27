@@ -100,6 +100,7 @@ object Whiteboard {
   def baseNodes(node: HTMLElement): Vector[HTMLElement] =
     if (node.classList.contains("texed")) Vector(node)
     else if (node.classList.contains("dtexed")) Vector(node)
+    else if (node.classList.contains("padding")) Vector()
     else {
       val cs = children(node)
       if (cs.isEmpty) Vector(node) else cs.flatMap(baseNodes(_))
