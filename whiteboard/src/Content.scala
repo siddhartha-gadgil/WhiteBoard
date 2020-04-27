@@ -186,7 +186,7 @@ object Content {
       view.appendChild(
         p(`class` := "head-expanded")(
           span(`class` := "padding")("#" * level),
-          span(`class` := "padding")(" "),
+          span(`class` := "padding")("\u00a0"),
           inner
         ).render
       )
