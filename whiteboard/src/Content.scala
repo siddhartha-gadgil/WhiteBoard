@@ -335,10 +335,10 @@ object Content {
       _.size
     }
 
-  def para[_: P]: P[Sentence] = P(spanSeq).map(s => if (s.isEmpty) Paragraph(Vector(Text("."))) else Paragraph(s))
+  def para[_: P]: P[Sentence] = P(spanSeq).map(s => if (s.isEmpty) Paragraph(Vector(Text(""))) else Paragraph(s))
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
-    case (l, s) => if (s.isEmpty) Heading(Vector(Text(".")), l, false) else Heading(s, l, true)
+    case (l, s) => if (s.isEmpty) Heading(Vector(Text("")), l, false) else Heading(s, l, true)
   }
 
   def sentence[_: P]: P[Sentence] = P(heading | para)
@@ -353,6 +353,8 @@ object Content {
   val initialText =
     """I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. 
   |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display text.
+  |To format use <Alt-B>. There is also an auto-format mode (format on change), but as the cursor placement is erratic this is off by default and can be toggled with <Alt-A>.
+  |You can also toggle the focus mode using <Alt-L> or by double-clicking. 
   |
   |### Anything else?
   |
@@ -395,6 +397,8 @@ object Content {
     divs match {
       case Vector() => None
       case x +: ys =>
+        console.log(x.view)
+        console.log(offset)
         val shift = x match {
           case Heading(spans, level, formatted) =>  level + 1
           case _ => 0

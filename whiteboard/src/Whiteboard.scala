@@ -16,9 +16,34 @@ import scalajs.js.Dynamic.{global => g}
 import fastparse._
 @JSExportTopLevel("Whiteboard")
 object Whiteboard {
-  val jsDiv = dom.document.querySelector("#js-div")
+  val jsDiv = dom.document.querySelector("#js-div").asInstanceOf[HTMLElement]
 
   var lastPosition: Int = 0
+
+  var autoUpdate = false
+
+  val autoView = button(`class` := "btn btn-info float-right")(
+    s"Auto-update: $autoUpdate"
+  ).render
+
+  jsDiv.appendChild(autoView)
+
+  jsDiv.onkeydown = (e) => {
+    if (e.altKey && e.keyCode == 66) update()
+    if (e.altKey && e.keyCode == 76) if (focussed) unFocus() else focus()
+    if (e.altKey && e.keyCode == 65) {
+      autoUpdate = !autoUpdate
+      autoView.innerText = s"Auto-update: $autoUpdate"
+      if (autoUpdate) update()
+    }
+
+  }
+
+  autoView.onclick = (_) => {
+    autoUpdate = !autoUpdate
+    autoView.innerText = s"Auto-update: $autoUpdate"
+    if (autoUpdate) update()
+  }
 
   val sourceDiv = div(`class` := "border border-success source extra").render
 
@@ -125,8 +150,10 @@ object Whiteboard {
     case x +: ys =>
       if (x == p) Some(offset)
       else {
-          if (isBlankNode(p)) {console.log("Blank"); console.log(p); console.log(offset)}
-        val shift =   fullText(x).size
+        if (isBlankNode(p)) {
+          console.log("Blank"); console.log(p); console.log(offset)
+        }
+        val shift = fullText(x).size
         globalOffset(ys, p, offset + shift)
       }
     case _ => None
@@ -168,7 +195,7 @@ object Whiteboard {
         case (newBody: Content.Body, _: Int) =>
           val selected = selection.getRangeAt(0).startContainer.parentNode
 
-          val basic = baseNodes(edNode) 
+          val basic = baseNodes(edNode)
           val offset = globalOffset(
             basic,
             selected.asInstanceOf[HTMLElement],
@@ -200,8 +227,8 @@ object Whiteboard {
               console.log("global offset", pos)
               console.log("Selection", selected)
               console.log("local offset", selection.focusOffset)
-            //   console.log("Basic")
-            //   basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
+              //   console.log("Basic")
+              //   basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
               val cursorOpt = Content.divOffset(newBody.divs, pos)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
@@ -216,17 +243,19 @@ object Whiteboard {
 
               } {
                 cursor =>
+                  //  if (autoUpdate)
+                  {
+                    cursor._1.addCursor(cursor._2)
 
-
-                  cursor._1.addCursor(cursor._2)
-
-                  newBody.divs
-                    .collect { case h: whiteboard.Content.Heading => h }
-                    .foreach { h =>
-                      if (h.spans.contains(cursor._1)) h.simplify()
-                    }
+                    newBody.divs
+                      .collect { case h: whiteboard.Content.Heading => h }
+                      .foreach { h =>
+                        if (h.spans.contains(cursor._1)) h.simplify()
+                      }
+                  }
 
                   jsDiv.innerHTML = ""
+                  jsDiv.appendChild(autoView)
                   jsDiv.appendChild(newBody.view)
                   jsDiv.appendChild(
                     div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
@@ -234,7 +263,7 @@ object Whiteboard {
 
                   if (focussed) focus()
 
-                  newBody.view.oninput = (e) => update()
+                  if (autoUpdate) newBody.view.oninput = (e) => update()
 
                   val nd =
                     dom.document
@@ -248,7 +277,6 @@ object Whiteboard {
                   val sel = dom.window.getSelection()
                   sel.removeAllRanges()
                   sel.addRange(range)
-
 
               }
 
