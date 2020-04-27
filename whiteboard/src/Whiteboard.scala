@@ -97,10 +97,15 @@ object Whiteboard {
       else tagPad(cs.map(fullText(_)).mkString(""), node.tagName)
     }
 
+  def isBreakNode(node: HTMLElement): Boolean =
+    (node.tagName == "BR") ||
+      (node.textContent.size == 0 && children(node).forall(isBreakNode(_)))
+
   def baseNodes(node: HTMLElement): Vector[HTMLElement] =
-    if (node.classList.contains("texed")) Vector(node)
-    else if (node.classList.contains("dtexed")) Vector(node)
+    if (node.classList.contains("texed") || node.classList.contains("dtexed"))
+      Vector(node)
     else if (node.classList.contains("padding")) Vector()
+    else if (isBreakNode(node)) node +: children(node).flatMap(baseNodes(_))
     else {
       val cs = children(node)
       if (cs.isEmpty) Vector(node) else cs.flatMap(baseNodes(_))
@@ -115,8 +120,8 @@ object Whiteboard {
     case x +: ys =>
       if (x == p) Some(offset)
       else {
-          val shift = if (p.classList.contains("blank")) 0 else fullText(x).size
-          globalOffset(ys, p, offset + shift)
+        val shift = if (p.classList.contains("blank")) 0 else fullText(x).size
+        globalOffset(ys, p, offset + shift)
       }
     case _ => None
   }
@@ -157,8 +162,7 @@ object Whiteboard {
         case (newBody: Content.Body, _: Int) =>
           val selected = selection.getRangeAt(0).startContainer.parentNode
 
-          val basic = baseNodes(edNode)
-
+          val basic = baseNodes(edNode) 
           val offset = globalOffset(
             basic,
             selected.asInstanceOf[HTMLElement],
@@ -167,8 +171,14 @@ object Whiteboard {
 
           offset.foreach { n => lastPosition = n }
 
-          if (!basic.contains(selected))
+          if (!basic.contains(selected)) {
             console.log("missing selected node", selected)
+            console.log(selected.asInstanceOf[HTMLElement].textContent.size)
+            console.log(isBreakNode(selected.asInstanceOf[HTMLElement]))
+            offspring(selected)
+              .collect { case n: HTMLElement if n != () => n }
+              .foreach(n => console.log(n.tagName))
+          }
 
           if (offset.isEmpty)
             console.log(
@@ -181,18 +191,22 @@ object Whiteboard {
 
           offset.foreach {
             pos =>
-                console.log("global offset", pos)
-                console.log("Selection", selected)
-                console.log("local offset", selection.focusOffset)
-                console.log("Basic")
-                // basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
+              console.log("global offset", pos)
+              console.log("Selection", selected)
+              console.log("local offset", selection.focusOffset)
+              console.log("Basic")
+              // basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
               val cursorOpt = Content.divOffset(newBody.divs, pos)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
               cursorOpt.fold[Unit] {
-                jsDiv.innerHTML = ""
-                jsDiv.appendChild(newBody.view)
-                jsDiv.appendChild(div(p(), h3(`class` := "extra")("Source"), sourceDiv).render)
+                // jsDiv.innerHTML = ""
+                // jsDiv.appendChild(newBody.view)
+                // jsDiv.appendChild(
+                //   div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
+                // )
+
+                // newBody.view.oninput = (e) => update()
 
               } {
                 cursor =>
@@ -210,7 +224,9 @@ object Whiteboard {
 
                   jsDiv.innerHTML = ""
                   jsDiv.appendChild(newBody.view)
-                  jsDiv.appendChild(div(p(), h3(`class` := "extra")("Source"), sourceDiv).render)
+                  jsDiv.appendChild(
+                    div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
+                  )
 
                   if (focussed) focus()
 
