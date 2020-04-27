@@ -125,7 +125,8 @@ object Whiteboard {
     case x +: ys =>
       if (x == p) Some(offset)
       else {
-        val shift = if (isBlankNode(p)) {console.log("Blank"); console.log(p); console.log(offset); 0} else fullText(x).size
+          if (isBlankNode(p)) {console.log("Blank"); console.log(p); console.log(offset)}
+        val shift =   fullText(x).size
         globalOffset(ys, p, offset + shift)
       }
     case _ => None
@@ -199,8 +200,8 @@ object Whiteboard {
               console.log("global offset", pos)
               console.log("Selection", selected)
               console.log("local offset", selection.focusOffset)
-              console.log("Basic")
-              basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
+            //   console.log("Basic")
+            //   basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
               val cursorOpt = Content.divOffset(newBody.divs, pos)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
