@@ -222,7 +222,8 @@ object Content {
     }
 
     def addCursor(n: Int): Unit = {
-      if (formatted) {
+      // if (formatted)
+       {
         view.innerHTML = ""
         view.appendChild(
           span(
@@ -254,7 +255,8 @@ object Content {
           }.getOrElse(s"<span>${"$$"}$code${"$$"}</span>")
         else s"<span>${"$$"}$code${"$$"}</span>"
       s.onclick = (_) => {
-        if (formatted) s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
+        // if (formatted) 
+        s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
         formatted = false
         s.classList.remove("dtexed")
 

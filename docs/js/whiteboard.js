@@ -30909,9 +30909,7 @@ $c_Lwhiteboard_Content$DisplayTeX.prototype.equals__O__Z = (function(x$1) {
   }
 });
 $c_Lwhiteboard_Content$DisplayTeX.prototype.whiteboard$Content$DisplayTeX$$$anonfun$view$7__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLSpanElement__V = (function(x$9, s$2) {
-  if (this.formatted__Z()) {
-    s$2.innerHTML = (((("<span>" + "$$") + this.code__T()) + "$$") + "</span>")
-  };
+  s$2.innerHTML = (((("<span>" + "$$") + this.code__T()) + "$$") + "</span>");
   this.formatted_$eq__Z__V(false);
   s$2.classList.remove("dtexed")
 });
@@ -31320,12 +31318,10 @@ $c_Lwhiteboard_Content$InlineTeX.prototype.view__Lorg_scalajs_dom_raw_HTMLElemen
   return ((!this.Lwhiteboard_Content$InlineTeX__f_bitmap$0) ? $p_Lwhiteboard_Content$InlineTeX__view$lzycompute__Lorg_scalajs_dom_raw_HTMLElement(this) : this.Lwhiteboard_Content$InlineTeX__f_view)
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.addCursor__I__V = (function(n) {
-  if (this.formatted__Z()) {
-    this.view__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-    this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("$"), $m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().take$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.code__T()), n))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("cursor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().drop$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.code__T()), n)), $m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("$")]))])).render__Lorg_scalajs_dom_raw_Element());
-    this.formatted_$eq__Z__V(false);
-    this.view__Lorg_scalajs_dom_raw_HTMLElement().classList.remove("texed")
-  }
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("$"), $m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().take$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.code__T()), n))])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().contenteditable__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(true, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("cursor", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_sc_StringOps$().drop$extension__T__I__T($m_s_Predef$().augmentString__T__T(this.code__T()), n)), $m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("$")]))])).render__Lorg_scalajs_dom_raw_Element());
+  this.formatted_$eq__Z__V(false);
+  this.view__Lorg_scalajs_dom_raw_HTMLElement().classList.remove("texed")
 });
 $c_Lwhiteboard_Content$InlineTeX.prototype.productPrefix__T = (function() {
   return "InlineTeX"
