@@ -335,10 +335,10 @@ object Content {
       _.size
     }
 
-  def para[_: P]: P[Sentence] = P(spanSeq).map(s => if (s.isEmpty) Paragraph(Vector(Text(""))) else Paragraph(s))
+  def para[_: P]: P[Sentence] = P(spanSeq).map(s => if (s.isEmpty) Paragraph(Vector(Text(uspc))) else Paragraph(s))
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
-    case (l, s) => if (s.isEmpty) Heading(Vector(Text("")), l, false) else Heading(s, l, true)
+    case (l, s) => if (s.isEmpty) Heading(Vector(Text(uspc)), l, false) else Heading(s, l, true)
   }
 
   def sentence[_: P]: P[Sentence] = P(heading | para)

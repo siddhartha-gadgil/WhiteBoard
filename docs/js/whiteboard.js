@@ -7764,7 +7764,7 @@ function $p_Lwhiteboard_Content$__$anonfun$para$1__T($thiz) {
   return new $c_Lsourcecode_Name("para").value__T()
 }
 function $p_Lwhiteboard_Content$__$anonfun$para$2__sci_Vector__Lwhiteboard_Sentence($thiz, s) {
-  return (s.isEmpty__Z() ? new $c_Lwhiteboard_Content$Paragraph($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text("")])))) : new $c_Lwhiteboard_Content$Paragraph(s))
+  return (s.isEmpty__Z() ? new $c_Lwhiteboard_Content$Paragraph($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text($m_Lwhiteboard_Content$().uspc__T())])))) : new $c_Lwhiteboard_Content$Paragraph(s))
 }
 function $p_Lwhiteboard_Content$__$anonfun$heading$1__T($thiz) {
   return new $c_Lsourcecode_Name("heading").value__T()
@@ -7774,7 +7774,7 @@ function $p_Lwhiteboard_Content$__$anonfun$heading$2__T2__Lwhiteboard_Sentence($
   if ((x1 !== null)) {
     var l = x1._1$mcI$sp__I();
     var s = $as_sci_Vector(x1._2__O());
-    return (s.isEmpty__Z() ? new $c_Lwhiteboard_Content$Heading($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text("")]))), l, false) : new $c_Lwhiteboard_Content$Heading(s, l, true))
+    return (s.isEmpty__Z() ? new $c_Lwhiteboard_Content$Heading($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text($m_Lwhiteboard_Content$().uspc__T())]))), l, false) : new $c_Lwhiteboard_Content$Heading(s, l, true))
   } else {
     throw new $c_s_MatchError(x1)
   }
