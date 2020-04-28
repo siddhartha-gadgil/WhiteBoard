@@ -173,7 +173,7 @@ object Content {
   case class Heading(spans: Vector[Phrase], level: Int, var formatted: Boolean)
       extends Sentence {
     def inner =
-      if (spans.isEmpty) p(span(), span(`class` := "blank")(uspc))
+      if (spans.isEmpty) p(span(), span(`class` := "blank")(""))
       else polySpan(spans.map(_.view))
     lazy val view: org.scalajs.dom.html.Element =
       level match {
@@ -382,18 +382,19 @@ object Content {
 
   def phraseOffset(
       phrases: Vector[Phrase],
-      offset: Int
+      offset: Int,
+      localOffset: Int
   ): Option[(Phrase, Int)] = phrases match {
     case Vector() => None
     case x +: Vector() =>
-      if (x.sourceLength >= offset) Some((x, offset))
+      if (x.sourceLength > offset || (x.sourceLength == offset && localOffset > 0)) Some((x, offset))
       else None
     case x +: ys =>
       if (x.sourceLength > offset) Some((x, offset))
-      else phraseOffset(ys, offset - x.sourceLength)
+      else phraseOffset(ys, offset - x.sourceLength, math.min(localOffset, 1))
   }
 
-  def divOffset(divs: Vector[Sentence], offset: Int): Option[(Phrase, Int)] =
+  def divOffset(divs: Vector[Sentence], offset: Int, localOffset: Int): Option[(Phrase, Int)] =
     divs match {
       case Vector() => None
       case x +: ys =>
@@ -403,11 +404,11 @@ object Content {
           case Heading(spans, level, formatted) =>  level + 1
           case _ => 0
         }
-        phraseOffset(x.spans, offset - shift)
+        phraseOffset(x.spans, offset - shift, localOffset)
           .map { case (p, j) => (p, j + shift) }
           .orElse {
             val remaining = offset - x.spans.map(_.sourceLength).sum
-            divOffset(ys, remaining)
+            divOffset(ys, remaining, localOffset)
           }
     }
 }

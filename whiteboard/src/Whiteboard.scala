@@ -233,7 +233,7 @@ object Whiteboard {
               console.log("local offset", selection.focusOffset)
               //   console.log("Basic")
               //   basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
-              val cursorOpt = Content.divOffset(newBody.divs, pos)
+              val cursorOpt = Content.divOffset(newBody.divs, pos, selection.focusOffset)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
               cursorOpt.fold[Unit] {
