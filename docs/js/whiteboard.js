@@ -10226,7 +10226,11 @@ $c_Lwhiteboard_Whiteboard$.prototype.globalOffset__sci_Vector__Lorg_scalajs_dom_
             $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log(p);
             $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log(offset)
           };
-          var shift = $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(_$this.fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x)));
+          var shift = (_$this.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x) ? 0 : $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(_$this.fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x))));
+          $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("shift", shift);
+          $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("due to", x);
+          $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("is break:", _$this.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x));
+          $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("previous offset", offset);
           var temp$ns = ys;
           var temp$offset = ((offset + shift) | 0);
           ns = temp$ns;

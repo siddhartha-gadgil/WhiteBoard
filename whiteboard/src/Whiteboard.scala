@@ -153,7 +153,11 @@ object Whiteboard {
         if (isBlankNode(p)) {
           console.log("Blank"); console.log(p); console.log(offset)
         }
-        val shift = fullText(x).size
+        val shift = if (isBreakNode(x)) 0 else fullText(x).size
+        console.log("shift", shift)
+        console.log("due to", x)
+        console.log("is break:", isBreakNode(x))
+        console.log("previous offset", offset)
         globalOffset(ys, p, offset + shift)
       }
     case _ => None
