@@ -341,7 +341,7 @@ object Content {
   def number[_: P]: P[Int] = P( CharIn("0-9").rep(1).!.map(_.toInt) )
 
   def svgParse[_ : P]: P[Phrase] = 
-    P("_$_"~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "," ~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "_$_").map{
+    P("$$$"~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "," ~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "$$$").map{
       case (h, w) => Svg.verb(h, w)
     }
 

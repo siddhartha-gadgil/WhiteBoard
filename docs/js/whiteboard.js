@@ -7584,10 +7584,10 @@ function $p_Lwhiteboard_Content$__$anonfun$number$5__T($thiz) {
   return new $c_Lsourcecode_Name("number").value__T()
 }
 function $p_Lwhiteboard_Content$__$anonfun$svgParse$1__Lfastparse_ParserInput__I__Z($thiz, string$macro$1, offset$macro$2) {
-  return (((string$macro$1.apply__I__C(((offset$macro$2 + 0) | 0)) === 95) && (string$macro$1.apply__I__C(((offset$macro$2 + 1) | 0)) === 36)) && (string$macro$1.apply__I__C(((offset$macro$2 + 2) | 0)) === 95))
+  return (((string$macro$1.apply__I__C(((offset$macro$2 + 0) | 0)) === 36) && (string$macro$1.apply__I__C(((offset$macro$2 + 1) | 0)) === 36)) && (string$macro$1.apply__I__C(((offset$macro$2 + 2) | 0)) === 36))
 }
 function $p_Lwhiteboard_Content$__$anonfun$svgParse$2__T($thiz) {
-  return "\"_$_\""
+  return "\"$$$\""
 }
 function $p_Lwhiteboard_Content$__$anonfun$svgParse$4__T($thiz) {
   return "\" \""
@@ -8077,10 +8077,10 @@ function $p_Lwhiteboard_Content$__rec$macro$132$1__I__I__Lfastparse_internal_Msg
   }
 }
 function $p_Lwhiteboard_Content$__$anonfun$svgParse$20__Lfastparse_ParserInput__I__Z($thiz, string$macro$152, offset$macro$153) {
-  return (((string$macro$152.apply__I__C(((offset$macro$153 + 0) | 0)) === 95) && (string$macro$152.apply__I__C(((offset$macro$153 + 1) | 0)) === 36)) && (string$macro$152.apply__I__C(((offset$macro$153 + 2) | 0)) === 95))
+  return (((string$macro$152.apply__I__C(((offset$macro$153 + 0) | 0)) === 36) && (string$macro$152.apply__I__C(((offset$macro$153 + 1) | 0)) === 36)) && (string$macro$152.apply__I__C(((offset$macro$153 + 2) | 0)) === 36))
 }
 function $p_Lwhiteboard_Content$__$anonfun$svgParse$21__T($thiz) {
-  return "\"_$_\""
+  return "\"$$$\""
 }
 function $p_Lwhiteboard_Content$__$anonfun$svgParse$22__T($thiz) {
   return new $c_Lsourcecode_Name("svgParse").value__T()
