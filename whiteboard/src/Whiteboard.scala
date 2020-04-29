@@ -16,6 +16,7 @@ import dom.console
 import scalajs.js.Dynamic.{global => g}
 import fastparse._
 import org.scalajs.dom.raw.MouseEvent
+import org.scalajs.dom.raw.HTMLInputElement
 @JSExportTopLevel("Whiteboard")
 object Whiteboard {
   val jsDiv = dom.document.querySelector("#js-div").asInstanceOf[HTMLElement]
@@ -23,6 +24,21 @@ object Whiteboard {
   var lastPosition: Int = 0
 
   var autoUpdate = false
+
+  var colour = "black"
+
+  def colourInput = {
+    val inp = input(
+      `type` := "color",
+      value := colour,
+      `class` := "colour-input"
+    ).render
+    inp.oninput = (_) => { 
+      colour = inp.value
+      dom.document.querySelectorAll(".colour-input").asInstanceOf[HTMLInputElement].value = colour
+    }
+    inp
+  }
 
   val autoView = button(`class` := "btn btn-info float-right")(
     s"Auto-update: $autoUpdate"
@@ -39,9 +55,11 @@ object Whiteboard {
   }
 
   def setAttribute(elem: HTMLElement, name: String, value: String) = {
-    val atts = elem.attributes 
-    val attV = (0 until atts.length).toVector.map{j => atts(j)}
-    attV.zipWithIndex.find(_._1.name == name).foreach{case (_, j) => atts(j).value = value}
+    val atts = elem.attributes
+    val attV = (0 until atts.length).toVector.map { j => atts(j) }
+    attV.zipWithIndex.find(_._1.name == name).foreach {
+      case (_, j) => atts(j).value = value
+    }
   }
 
   jsDiv.appendChild(autoView)
@@ -302,6 +320,12 @@ object Whiteboard {
                     ).asInstanceOf[HTMLElement]).toVector
                   sketchPads.foreach {
                     pad =>
+                      if (!pad.parentElement.lastChild
+                            .asInstanceOf[HTMLElement]
+                            .classList
+                            .contains("colour-input"))
+                        pad.parentElement.appendChild(colourInput)
+
                       val bound = pad.getBoundingClientRect();
                       pad.onmousedown = (event) => {
                         val (x, y) = xy(event, pad)
@@ -312,11 +336,34 @@ object Whiteboard {
 
                         setAttribute(pad, "data-x", x.toInt.toString())
                         setAttribute(pad, "data-y", y.toInt.toString())
-                        
+
                       }
 
                       pad.onmouseup = (event) => {
                         setAttribute(pad, "data-mousedown", false.toString())
+                      }
+
+                      pad.onmousemove = (event) => {
+                        val (a2, b2) = xy(event, pad)
+                        val a1 =
+                          pad.attributes.getNamedItem("data-x").value.toInt
+                        val b1 =
+                          pad.attributes.getNamedItem("data-y").value.toInt
+                        import svgAttrs.{x1, x2, y1, y2, stroke}
+                        val l = svgTags.line(
+                          x1 := a1,
+                          x2 := a2,
+                          y1 := b1,
+                          y2 := b2,
+                          stroke := colour
+                        )
+                        setAttribute(pad, "data-x", a2.toInt.toString())
+                        setAttribute(pad, "data-y", b2.toInt.toString())
+                        val down = pad.attributes
+                          .getNamedItem("data-mousedown")
+                          .value
+                          .toBoolean
+                        if (down) pad.appendChild(l.render)
                       }
                   }
 
