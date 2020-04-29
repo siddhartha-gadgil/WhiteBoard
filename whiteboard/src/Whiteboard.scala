@@ -54,6 +54,11 @@ object Whiteboard {
 
   showSource(Content.initialText)
 
+  Content.example.divs.collect { case h: whiteboard.Content.Heading => h }
+                      .foreach { h =>
+                        h.view.oninput = (_) => h.simplify()
+                      }
+
   def edNode =
     dom.document.querySelector("#editor").asInstanceOf[HTMLElement]
 
@@ -116,6 +121,8 @@ object Whiteboard {
       "$" + node.attributes.getNamedItem("data-tex").value + "$"
     else if (node.classList.contains("dtexed"))
       "$$" + node.attributes.getNamedItem("data-tex").value + "$$"
+    else if (node.classList.contains("verbatim"))
+      "$$$" + node.innerHTML + "$$$"
     else if (isBlankNode(node)) ""
     else {
       val cs = children(node)
@@ -132,7 +139,7 @@ object Whiteboard {
       (children(node).size > 1 && children(node).forall(isBlankNode(_)))
 
   def baseNodes(node: HTMLElement): Vector[HTMLElement] =
-    if (node.classList.contains("texed") || node.classList.contains("dtexed"))
+    if (node.classList.contains("texed") || node.classList.contains("dtexed") ||  node.classList.contains("verbatim"))
       Vector(node)
     else if (node.classList.contains("padding")) Vector()
     else if (isBreakNode(node)) node +: children(node).flatMap(baseNodes(_))

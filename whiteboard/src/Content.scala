@@ -164,6 +164,22 @@ object Content {
     }
   }
 
+  case class Verbatim(body: String) extends Phrase{
+    val view: org.scalajs.dom.html.Element = {
+      val d = div(`class`:="verbatim").render
+      d.innerHTML = body
+      d
+    }
+    
+    val sourceLength: Int = body.size + 6
+    
+    def addCursor(n: Int): Unit = {
+      view.innerHTML = body
+      view.appendChild(span(contenteditable := true, `class` := "cursor").render)
+    }
+    
+  }
+
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
     case head +: Vector() => span(head)
     case init :+ last     => polySpan(init)(last)
@@ -300,6 +316,8 @@ object Content {
 
   def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n"))
 
+  def verbatim[_: P]: P[Phrase] = P("$$$"~ (CharPred(x => x != '$').rep(1)).! ~"$$$").map(Verbatim(_))
+
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
 
@@ -311,7 +329,7 @@ object Content {
   def ital[_: P]: P[Phrase] =
     P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString(""), true))
 
-  def phrase[_: P]: P[Phrase] = P(displayMath | inlineTeX | bold | ital | word)
+  def phrase[_: P]: P[Phrase] = P(verbatim | displayMath | inlineTeX | bold | ital  | word)
 
   def dispAhead[_: P] = P(&("$$"))
 
