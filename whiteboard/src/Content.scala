@@ -189,6 +189,8 @@ object Content {
         `class` := "sketchpad",
         viewBox := s"0 0 $b $h",
         attr("data-mousedown") := false,
+        attr("data-x") := 0,
+        attr("data-y") := 0,
         height := h,
         width := b)(
       rect(width := b, height := h, stroke := "black", fill := "none")

@@ -15,6 +15,7 @@ import org.scalajs.dom.raw.HTMLElement
 import dom.console
 import scalajs.js.Dynamic.{global => g}
 import fastparse._
+import org.scalajs.dom.raw.MouseEvent
 @JSExportTopLevel("Whiteboard")
 object Whiteboard {
   val jsDiv = dom.document.querySelector("#js-div").asInstanceOf[HTMLElement]
@@ -26,6 +27,22 @@ object Whiteboard {
   val autoView = button(`class` := "btn btn-info float-right")(
     s"Auto-update: $autoUpdate"
   ).render
+
+  def xy(event: MouseEvent, elem: HTMLElement) = {
+    val bound = elem.getBoundingClientRect();
+    val x =
+      event.clientX - bound.left - elem.clientLeft
+    val y =
+      event.clientY - bound.top - elem.clientTop
+    (x, y)
+
+  }
+
+  def setAttribute(elem: HTMLElement, name: String, value: String) = {
+    val atts = elem.attributes 
+    val attV = (0 until atts.length).toVector.map{j => atts(j)}
+    attV.zipWithIndex.find(_._1.name == name).foreach{case (_, j) => atts(j).value = value}
+  }
 
   jsDiv.appendChild(autoView)
 
@@ -287,30 +304,19 @@ object Whiteboard {
                     pad =>
                       val bound = pad.getBoundingClientRect();
                       pad.onmousedown = (event) => {
-                        val x =
-                          event.clientX - bound.left - pad.clientLeft 
-                        val y =
-                          event.clientY - bound.top - pad.clientTop 
+                        val (x, y) = xy(event, pad)
                         console.log("mouse-x", x)
                         console.log("mouse-y", y)
-                        pad.appendChild(
-                          svgTags
-                            .rect(
-                              // svgAttrs.x := event.clientX,
-                              // svgAttrs.y := event.clientY,
-                              width := pad.attributes
-                                .getNamedItem("width")
-                                .value
-                                .toInt / 4,
-                              height := pad.attributes
-                                .getNamedItem("height")
-                                .value
-                                .toInt / 4,
-                              svgAttrs.stroke := "black",
-                              svgAttrs.fill := "green"
-                            )
-                            .render
-                        )
+                        val at = pad.attributes
+                        setAttribute(pad, "data-mousedown", true.toString())
+
+                        setAttribute(pad, "data-x", x.toInt.toString())
+                        setAttribute(pad, "data-y", y.toInt.toString())
+                        
+                      }
+
+                      pad.onmouseup = (event) => {
+                        setAttribute(pad, "data-mousedown", false.toString())
                       }
                   }
 
