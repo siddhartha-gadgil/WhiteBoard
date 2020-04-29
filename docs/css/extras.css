@@ -13,6 +13,7 @@
     width: 100%;
     padding: 8px;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
 .extra-hide {

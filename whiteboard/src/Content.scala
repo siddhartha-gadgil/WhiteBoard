@@ -37,8 +37,7 @@ sealed trait Sentence extends Content {
 object Content {
   val uspc = "\u00a0"
 
-  def polyDiv(ss: Vector[Element]): 
-  TypedTag[Div] = ss match {
+  def polyDiv(ss: Vector[Element]): TypedTag[Div] = ss match {
     case head +: Vector() =>
       div(
         contenteditable := true,
@@ -78,13 +77,14 @@ object Content {
     }
   }
 
-  class Blank extends Phrase{
-    val view: org.scalajs.dom.html.Element = span(`class`:= "blank")(uspc).render
+  class Blank extends Phrase {
+    val view: org.scalajs.dom.html.Element =
+      span(`class` := "blank")(uspc).render
 
-    view.oninput= (_) => view.innerText = {view.innerText.replace(uspc, "")}
-    
+    view.oninput = (_) => view.innerText = { view.innerText.replace(uspc, "") }
+
     val sourceLength: Int = 0
-    
+
     def addCursor(n: Int): Unit = {
       view.innerHTML = ""
       view.appendChild(
@@ -95,7 +95,7 @@ object Content {
         ).render
       )
     }
-    
+
   }
 
   case class Strong(body: String, var formatted: Boolean) extends Phrase {
@@ -164,20 +164,36 @@ object Content {
     }
   }
 
-  case class Verbatim(body: String) extends Phrase{
+  case class Verbatim(body: String) extends Phrase {
     val view: org.scalajs.dom.html.Element = {
-      val d = div(`class`:="verbatim").render
+      val d = span(`class` := "verbatim").render
       d.innerHTML = body
       d
     }
-    
+
     val sourceLength: Int = body.size + 6
-    
+
     def addCursor(n: Int): Unit = {
-      view.innerHTML = body
-      view.appendChild(span(contenteditable := true, `class` := "cursor").render)
+      // view.innerHTML = body
+      // view.appendChild(
+      //   span(contenteditable := true, `class` := "cursor").render
+      // )
     }
-    
+  }
+
+  object Svg {
+    import scalatags.JsDom.svgTags._
+    import scalatags.JsDom.svgAttrs.{`type` => _, id => _, attr => _, _}
+
+    def box(b: Int, h: Int) = svg(xmlns := "http://www.w3.org/2000/svg",
+        `class` := "sketchpad",
+        attr("data-mousedown") := false,
+        height := h,
+        width := b)(
+      rect(width := b, height := h, stroke := "black", fill := "none")
+    )
+
+    def verb(h: Int, w: Int) = Verbatim(box(h, w).toString())
   }
 
   def polySpan(ss: Vector[Element]): TypedTag[Span] = ss match {
@@ -239,7 +255,7 @@ object Content {
 
     def addCursor(n: Int): Unit = {
       // if (formatted)
-       {
+      {
         view.innerHTML = ""
         view.appendChild(
           span(
@@ -271,7 +287,7 @@ object Content {
           }.getOrElse(s"<span>${"$$"}$code${"$$"}</span>")
         else s"<span>${"$$"}$code${"$$"}</span>"
       s.onclick = (_) => {
-        // if (formatted) 
+        // if (formatted)
         s.innerHTML = s"<span>${"$$"}$code${"$$"}</span>"
         formatted = false
         s.classList.remove("dtexed")
@@ -316,7 +332,15 @@ object Content {
 
   def blankLine[_: P]: P[Unit] = P("\n" ~ (" ".rep ~ "\n"))
 
-  def verbatim[_: P]: P[Phrase] = P("$$$"~ (CharPred(x => x != '$').rep(1)).! ~"$$$").map(Verbatim(_))
+  def verbatim[_: P]: P[Phrase] =
+    P("$$$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$$$").map(Verbatim(_))
+
+  def number[_: P]: P[Int] = P( CharIn("0-9").rep(1).!.map(_.toInt) )
+
+  def svgParse[_ : P]: P[Phrase] = 
+    P("_$_"~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "," ~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "_$_").map{
+      case (h, w) => Svg.verb(h, w)
+    }
 
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
@@ -329,7 +353,8 @@ object Content {
   def ital[_: P]: P[Phrase] =
     P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString(""), true))
 
-  def phrase[_: P]: P[Phrase] = P(verbatim | displayMath | inlineTeX | bold | ital  | word)
+  def phrase[_: P]: P[Phrase] =
+    P(svgParse | verbatim | displayMath | inlineTeX | bold | ital | word)
 
   def dispAhead[_: P] = P(&("$$"))
 
@@ -339,26 +364,29 @@ object Content {
     }
 
   def spanSeq[_: P]: P[Vector[Phrase]] =
-     P(inlineTeX ~ spanSeq).map {
+    P(inlineTeX ~ spanSeq).map {
       case (x, ys) => x +: ys
       // prepend(x, ys)
     } |
       P(phrase ~ spanSeq).map {
         case (x, ys) => x +: ys
         // prepend(x, ys)
-      } | (End | blankLine).map { _ =>
-      Vector()
-    }
+      } | (End | blankLine).map { _ => Vector() }
 
   def headHead[_: P]: P[Int] =
     P("#".rep(min = 1, max = 6).! ~ (" " | uspc)).map {
       _.size
     }
 
-  def para[_: P]: P[Sentence] = P(spanSeq).map(s => if (s.isEmpty) Paragraph(Vector(Text(uspc))) else Paragraph(s))
+  def para[_: P]: P[Sentence] =
+    P(spanSeq).map(s =>
+      if (s.isEmpty) Paragraph(Vector(Text(uspc))) else Paragraph(s)
+    )
 
   def heading[_: P]: P[Sentence] = P(headHead ~ spanSeq).map {
-    case (l, s) => if (s.isEmpty) Heading(Vector(Text(uspc)), l, false) else Heading(s, l, true)
+    case (l, s) =>
+      if (s.isEmpty) Heading(Vector(Text(uspc)), l, false)
+      else Heading(s, l, true)
   }
 
   def sentence[_: P]: P[Sentence] = P(heading | para)
@@ -407,22 +435,27 @@ object Content {
   ): Option[(Phrase, Int)] = phrases match {
     case Vector() => None
     case x +: Vector() =>
-      if (x.sourceLength > offset || (x.sourceLength == offset && localOffset > 0)) Some((x, offset))
+      if (x.sourceLength > offset || (x.sourceLength == offset && localOffset > 0))
+        Some((x, offset))
       else None
     case x +: ys =>
       if (x.sourceLength > offset) Some((x, offset))
       else phraseOffset(ys, offset - x.sourceLength, math.min(localOffset, 1))
   }
 
-  def divOffset(divs: Vector[Sentence], offset: Int, localOffset: Int): Option[(Phrase, Int)] =
+  def divOffset(
+      divs: Vector[Sentence],
+      offset: Int,
+      localOffset: Int
+  ): Option[(Phrase, Int)] =
     divs match {
       case Vector() => None
       case x +: ys =>
         console.log(x.view)
         console.log(offset)
         val shift = x match {
-          case Heading(spans, level, formatted) =>  level + 1
-          case _ => 0
+          case Heading(spans, level, formatted) => level + 1
+          case _                                => 0
         }
         phraseOffset(x.spans, offset - shift, localOffset)
           .map { case (p, j) => (p, j + shift) }

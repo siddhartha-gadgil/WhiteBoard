@@ -4,6 +4,7 @@ import scala.scalajs.js.annotation._
 import org.scalajs.dom
 import scalatags.JsDom.all._
 import scala.util._
+import scalatags.JsDom.{svgTags, svgAttrs}
 
 import scalatags.JsDom.all._
 
@@ -54,10 +55,9 @@ object Whiteboard {
 
   showSource(Content.initialText)
 
-  Content.example.divs.collect { case h: whiteboard.Content.Heading => h }
-                      .foreach { h =>
-                        h.view.oninput = (_) => h.simplify()
-                      }
+  Content.example.divs
+    .collect { case h: whiteboard.Content.Heading => h }
+    .foreach { h => h.view.oninput = (_) => h.simplify() }
 
   def edNode =
     dom.document.querySelector("#editor").asInstanceOf[HTMLElement]
@@ -132,14 +132,17 @@ object Whiteboard {
 
   def isBreakNode(node: HTMLElement): Boolean =
     (node.tagName == "BR") ||
-      (node.textContent.size == 0 && children(node).forall(isBreakNode(_)))
+      (!node.classList.contains("verbatim") && node.textContent.size == 0 && children(
+        node
+      ).forall(isBreakNode(_)))
 
   def isBlankNode(node: HTMLElement): Boolean =
     (node.classList.contains("blank")) ||
       (children(node).size > 1 && children(node).forall(isBlankNode(_)))
 
   def baseNodes(node: HTMLElement): Vector[HTMLElement] =
-    if (node.classList.contains("texed") || node.classList.contains("dtexed") ||  node.classList.contains("verbatim"))
+    if (node.classList.contains("texed") || node.classList.contains("dtexed") || node.classList
+          .contains("verbatim"))
       Vector(node)
     else if (node.classList.contains("padding")) Vector()
     else if (isBreakNode(node)) node +: children(node).flatMap(baseNodes(_))
@@ -240,7 +243,8 @@ object Whiteboard {
               console.log("local offset", selection.focusOffset)
               //   console.log("Basic")
               //   basic.foreach{n => console.log(n); console.log(fullText(n)); console.log(fullText(n).size)}
-              val cursorOpt = Content.divOffset(newBody.divs, pos, selection.focusOffset)
+              val cursorOpt =
+                Content.divOffset(newBody.divs, pos, selection.focusOffset)
               //   console.log(cursorOpt)
               if (cursorOpt.isEmpty) console.log(pos, newBody.phraseList)
               cursorOpt.fold[Unit] {
@@ -274,6 +278,22 @@ object Whiteboard {
 
                   if (focussed) focus()
 
+                  val skechPadsRaw = dom.document.querySelectorAll(".sketchpad")
+                  val sketchPads =
+                    (for { i <- 0 until (skechPadsRaw.length) } yield skechPadsRaw(
+                      i
+                    ).asInstanceOf[HTMLElement]).toVector
+                  sketchPads.foreach { pad =>
+                    pad.appendChild(
+                      svgTags.rect(
+                        width := pad.attributes.getNamedItem("width").value,
+                        height := pad.attributes.getNamedItem("height").value,
+                        svgAttrs.stroke := "black",
+                        svgAttrs.fill := "green"
+                      ).render
+                    )
+                  }
+
                   if (autoUpdate) newBody.view.oninput = (e) => update()
 
                   val nd =
@@ -283,11 +303,11 @@ object Whiteboard {
 
                   val range = dom.document.createRange()
 
-                  range.setStart(nd, 0)
+                  Try{range.setStart(nd, 0)
                   range.collapse(true)
                   val sel = dom.window.getSelection()
                   sel.removeAllRanges()
-                  sel.addRange(range)
+                  sel.addRange(range)}
 
               }
 
