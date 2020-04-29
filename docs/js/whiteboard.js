@@ -11284,7 +11284,7 @@ function $h_Lwhiteboard_Content$Svg$() {
 }
 $h_Lwhiteboard_Content$Svg$.prototype = $c_Lwhiteboard_Content$Svg$.prototype;
 $c_Lwhiteboard_Content$Svg$.prototype.box__I__I__Lscalatags_JsDom$TypedTag = (function(b, h) {
-  return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().svg__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().xmlns__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("http://www.w3.org/2000/svg", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("sketchpad", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgTags$().attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("data-mousedown", $m_Lscalatags_JsDom$svgTags$().attr$default$2__Lscalatags_generic_Namespace(), $m_Lscalatags_JsDom$svgTags$().attr$default$3__Z()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(false, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().height__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(h, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().width__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().rect__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().width__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().height__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(h, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("black", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().fill__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("none", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]))]))
+  return $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().svg__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().xmlns__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("http://www.w3.org/2000/svg", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("sketchpad", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().viewBox__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(((("0 0 " + b) + " ") + h), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgTags$().attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("data-mousedown", $m_Lscalatags_JsDom$svgTags$().attr$default$2__Lscalatags_generic_Namespace(), $m_Lscalatags_JsDom$svgTags$().attr$default$3__Z()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(false, $m_Lscalatags_JsDom$all$().booleanAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().height__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(h, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().width__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().rect__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().width__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().height__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(h, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("black", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().fill__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("none", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]))]))
 });
 $c_Lwhiteboard_Content$Svg$.prototype.verb__I__I__Lwhiteboard_Content$Verbatim = (function(h, w) {
   return new $c_Lwhiteboard_Content$Verbatim(this.box__I__I__Lscalatags_JsDom$TypedTag(h, w).toString__T())
@@ -11396,10 +11396,16 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$10__T2__Lwhiteboard_Content
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$11__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_HTMLElement($thiz, skechPadsRaw$1, i) {
   return skechPadsRaw$1[i]
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_Node($thiz, pad) {
-  return pad.appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().rect__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().width__Lscalatags_generic_StyleMisc$PixelAutoStyle().$colon$eq__O__Lscalatags_generic_PixelStyleValue__Lscalatags_generic_StylePair($as_T(pad.attributes.getNamedItem("width").value), $m_Lscalatags_JsDom$all$().stringPixelStyle__Lscalatags_generic_PixelStyleValue()), $m_Lscalatags_JsDom$all$().height__Lscalatags_generic_StyleMisc$PixelAutoStyle().$colon$eq__O__Lscalatags_generic_PixelStyleValue__Lscalatags_generic_StylePair($as_T(pad.attributes.getNamedItem("height").value), $m_Lscalatags_JsDom$all$().stringPixelStyle__Lscalatags_generic_PixelStyleValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("black", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().fill__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("green", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element())
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, pad) {
+  var bound = pad.getBoundingClientRect();
+  pad.onmousedown = (function(bound$1, pad$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$13__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_ClientRect__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_Node(arg1, bound$1, pad$1)
+    })
+  })(bound, pad)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$14__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, range$1, nd$1) {
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$15__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, range$1, nd$1) {
   range$1.setStart(nd$1, 0);
   range$1.collapse(true);
   var sel = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection();
@@ -11431,20 +11437,20 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$9__Lwhiteboard_Content$Body
   sketchPads.foreach__F1__V(new $c_sjsr_AnonFunction1((function(this$3) {
     return (function(pad$2) {
       var pad = pad$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_Node(this$3, pad)
+      $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_HTMLElement__V(this$3, pad)
     })
   })($thiz)));
   if ($m_Lwhiteboard_Whiteboard$().autoUpdate__Z()) {
     x3$1.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg1$2) {
       var arg1 = arg1$2;
-      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$13__Lorg_scalajs_dom_raw_Event__V(arg1)
+      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$14__Lorg_scalajs_dom_raw_Event__V(arg1)
     })
   };
   var nd = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector(".cursor");
   var range = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createRange();
   $m_s_util_Try$().apply__F0__s_util_Try(new $c_sjsr_AnonFunction0((function(this$4, range, nd) {
     return (function() {
-      $p_Lwhiteboard_Whiteboard$__$anonfun$update$14__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V(this$4, range, nd)
+      $p_Lwhiteboard_Whiteboard$__$anonfun$update$15__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V(this$4, range, nd)
     })
   })($thiz, range, nd)))
 }
@@ -11837,7 +11843,14 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg
 $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
   $m_Lwhiteboard_Whiteboard$().update__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$13__Lorg_scalajs_dom_raw_Event__V = (function(e) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$13__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_ClientRect__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_Node = (function(event, bound$1, pad$1) {
+  var x = (($uD(event.clientX) - $uD(bound$1.left)) - $uI(pad$1.clientLeft));
+  var y = (($uD(event.clientY) - $uD(bound$1.top)) - $uI(pad$1.clientTop));
+  $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-x", x);
+  $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-y", y);
+  return pad$1.appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().rect__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().width__Lscalatags_generic_StyleMisc$PixelAutoStyle().$colon$eq__O__Lscalatags_generic_PixelStyleValue__Lscalatags_generic_StylePair((($m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("width").value))) / 4) | 0), $m_Lscalatags_JsDom$all$().intPixelStyle__Lscalatags_generic_PixelStyleValue()), $m_Lscalatags_JsDom$all$().height__Lscalatags_generic_StyleMisc$PixelAutoStyle().$colon$eq__O__Lscalatags_generic_PixelStyleValue__Lscalatags_generic_StylePair((($m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("height").value))) / 4) | 0), $m_Lscalatags_JsDom$all$().intPixelStyle__Lscalatags_generic_PixelStyleValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("black", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().fill__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("green", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element())
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$14__Lorg_scalajs_dom_raw_Event__V = (function(e) {
   $m_Lwhiteboard_Whiteboard$().update__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.load = (function() {
@@ -19944,6 +19957,9 @@ function $f_Lscalatags_generic_SvgAttrs__height__Lscalatags_generic_Attr($thiz) 
 }
 function $f_Lscalatags_generic_SvgAttrs__stroke__Lscalatags_generic_Attr($thiz) {
   return $thiz.attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("stroke", $thiz.attr$default$2__Lscalatags_generic_Namespace(), $thiz.attr$default$3__Z())
+}
+function $f_Lscalatags_generic_SvgAttrs__viewBox__Lscalatags_generic_Attr($thiz) {
+  return $thiz.attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("viewBox", $thiz.attr$default$2__Lscalatags_generic_Namespace(), $thiz.attr$default$3__Z())
 }
 function $f_Lscalatags_generic_SvgAttrs__width__Lscalatags_generic_Attr($thiz) {
   return $thiz.attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("width", $thiz.attr$default$2__Lscalatags_generic_Namespace(), $thiz.attr$default$3__Z())
@@ -32401,6 +32417,13 @@ function $p_Lscalatags_JsDom$svgAttrs$__stroke$lzycompute__Lscalatags_generic_At
   };
   return $thiz.Lscalatags_JsDom$svgAttrs$__f_stroke
 }
+function $p_Lscalatags_JsDom$svgAttrs$__viewBox$lzycompute__Lscalatags_generic_Attr($thiz) {
+  if ($thiz.Lscalatags_JsDom$svgAttrs$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(4194304, 0)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0))) {
+    $thiz.Lscalatags_JsDom$svgAttrs$__f_viewBox = $f_Lscalatags_generic_SvgAttrs__viewBox__Lscalatags_generic_Attr($thiz);
+    $thiz.Lscalatags_JsDom$svgAttrs$__f_bitmap$2 = $thiz.Lscalatags_JsDom$svgAttrs$__f_bitmap$2.$bar__RTLong__RTLong(new $c_RTLong(4194304, 0))
+  };
+  return $thiz.Lscalatags_JsDom$svgAttrs$__f_viewBox
+}
 function $p_Lscalatags_JsDom$svgAttrs$__width$lzycompute__Lscalatags_generic_Attr($thiz) {
   if ($thiz.Lscalatags_JsDom$svgAttrs$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(16777216, 0)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0))) {
     $thiz.Lscalatags_JsDom$svgAttrs$__f_width = $f_Lscalatags_generic_SvgAttrs__width__Lscalatags_generic_Attr($thiz);
@@ -32628,6 +32651,9 @@ $c_Lscalatags_JsDom$svgAttrs$.prototype.height__Lscalatags_generic_Attr = (funct
 });
 $c_Lscalatags_JsDom$svgAttrs$.prototype.stroke__Lscalatags_generic_Attr = (function() {
   return (this.Lscalatags_JsDom$svgAttrs$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(8, 0)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0)) ? $p_Lscalatags_JsDom$svgAttrs$__stroke$lzycompute__Lscalatags_generic_Attr(this) : this.Lscalatags_JsDom$svgAttrs$__f_stroke)
+});
+$c_Lscalatags_JsDom$svgAttrs$.prototype.viewBox__Lscalatags_generic_Attr = (function() {
+  return (this.Lscalatags_JsDom$svgAttrs$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(4194304, 0)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0)) ? $p_Lscalatags_JsDom$svgAttrs$__viewBox$lzycompute__Lscalatags_generic_Attr(this) : this.Lscalatags_JsDom$svgAttrs$__f_viewBox)
 });
 $c_Lscalatags_JsDom$svgAttrs$.prototype.width__Lscalatags_generic_Attr = (function() {
   return (this.Lscalatags_JsDom$svgAttrs$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(16777216, 0)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0)) ? $p_Lscalatags_JsDom$svgAttrs$__width$lzycompute__Lscalatags_generic_Attr(this) : this.Lscalatags_JsDom$svgAttrs$__f_width)
@@ -42461,6 +42487,9 @@ $c_Lscalatags_JsDom$all$.prototype.booleanStyle__Lscalatags_generic_StyleValue =
 });
 $c_Lscalatags_JsDom$all$.prototype.stringPixelStyle__Lscalatags_generic_PixelStyleValue = (function() {
   return this.Lscalatags_JsDom$all$__f_stringPixelStyle
+});
+$c_Lscalatags_JsDom$all$.prototype.intPixelStyle__Lscalatags_generic_PixelStyleValue = (function() {
+  return this.Lscalatags_JsDom$all$__f_intPixelStyle
 });
 $c_Lscalatags_JsDom$all$.prototype.scalatags$generic$Aggregate$_setter_$stringAttr_$eq__Lscalatags_generic_AttrValue__V = (function(x$1) {
   this.Lscalatags_JsDom$all$__f_stringAttr = x$1

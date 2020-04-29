@@ -187,6 +187,7 @@ object Content {
 
     def box(b: Int, h: Int) = svg(xmlns := "http://www.w3.org/2000/svg",
         `class` := "sketchpad",
+        viewBox := s"0 0 $b $h",
         attr("data-mousedown") := false,
         height := h,
         width := b)(

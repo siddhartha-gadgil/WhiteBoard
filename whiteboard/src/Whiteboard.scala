@@ -283,15 +283,35 @@ object Whiteboard {
                     (for { i <- 0 until (skechPadsRaw.length) } yield skechPadsRaw(
                       i
                     ).asInstanceOf[HTMLElement]).toVector
-                  sketchPads.foreach { pad =>
-                    pad.appendChild(
-                      svgTags.rect(
-                        width := pad.attributes.getNamedItem("width").value,
-                        height := pad.attributes.getNamedItem("height").value,
-                        svgAttrs.stroke := "black",
-                        svgAttrs.fill := "green"
-                      ).render
-                    )
+                  sketchPads.foreach {
+                    pad =>
+                      val bound = pad.getBoundingClientRect();
+                      pad.onmousedown = (event) => {
+                        val x =
+                          event.clientX - bound.left - pad.clientLeft 
+                        val y =
+                          event.clientY - bound.top - pad.clientTop 
+                        console.log("mouse-x", x)
+                        console.log("mouse-y", y)
+                        pad.appendChild(
+                          svgTags
+                            .rect(
+                              // svgAttrs.x := event.clientX,
+                              // svgAttrs.y := event.clientY,
+                              width := pad.attributes
+                                .getNamedItem("width")
+                                .value
+                                .toInt / 4,
+                              height := pad.attributes
+                                .getNamedItem("height")
+                                .value
+                                .toInt / 4,
+                              svgAttrs.stroke := "black",
+                              svgAttrs.fill := "green"
+                            )
+                            .render
+                        )
+                      }
                   }
 
                   if (autoUpdate) newBody.view.oninput = (e) => update()
@@ -303,11 +323,13 @@ object Whiteboard {
 
                   val range = dom.document.createRange()
 
-                  Try{range.setStart(nd, 0)
-                  range.collapse(true)
-                  val sel = dom.window.getSelection()
-                  sel.removeAllRanges()
-                  sel.addRange(range)}
+                  Try {
+                    range.setStart(nd, 0)
+                    range.collapse(true)
+                    val sel = dom.window.getSelection()
+                    sel.removeAllRanges()
+                    sel.addRange(range)
+                  }
 
               }
 

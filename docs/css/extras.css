@@ -23,3 +23,7 @@
 .head-expanded{
     display: block;
 }
+
+.sketchpad, .verbatim{
+    resize: both;
+}
