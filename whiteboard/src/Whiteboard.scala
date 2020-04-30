@@ -58,14 +58,15 @@ object Whiteboard {
   }
 
   def setAttribute(elem: HTMLElement, name: String, value: String) = {
-    val atts = elem.attributes
-    val attV = (0 until atts.length).toVector.map { j => atts(j) }
-    attV.zipWithIndex.find(_._1.name == name).foreach {
-      case (_, j) => atts(j).value = value
-    }
+    // val atts = elem.attributes
+    // val attV = (0 until atts.length).toVector.map { j => atts(j) }
+    // attV.zipWithIndex.find(_._1.name == name).foreach {
+    //   case (_, j) => atts(j).value = value
+    // }
+    elem.setAttribute(name, value)
   }
 
-  jsDiv.appendChild(autoView)
+  jsDiv.appendChild(div(FileGet.sp, autoView).render)
 
   def insertAtCursor(newText: String) = {
     val selection = dom.window.getSelection()
@@ -92,7 +93,7 @@ object Whiteboard {
         }, {
           case (newBody: Content.Body, _: Int) =>
             jsDiv.innerHTML = ""
-            jsDiv.appendChild(autoView)
+            jsDiv.appendChild(div(FileGet.sp, autoView).render)
             jsDiv.appendChild(newBody.view)
             jsDiv.appendChild(
               div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
@@ -115,7 +116,10 @@ object Whiteboard {
 
   jsDiv.onkeydown = (e) => {
     if (e.altKey && e.keyCode == 66) update()
-    if (e.altKey && e.keyCode == 67) insertAtCursor("test-insert")
+    if (e.altKey && e.keyCode == 85) {
+      insertAtCursor(" $$$ "+FileGet.content+" $$$ ")
+      FileGet.reset()
+    }
     if (e.altKey && e.keyCode == 76) if (focussed) unFocus() else focus()
     if (e.altKey && e.keyCode == 65) {
       autoUpdate = !autoUpdate
@@ -132,10 +136,11 @@ object Whiteboard {
         i
       ).asInstanceOf[HTMLElement]).toVector
     sketchPads.foreach { pad =>
-      if (!pad.parentElement.lastChild
+      val cl = pad.parentElement.lastChild
             .asInstanceOf[HTMLElement]
-            .classList
-            .contains("colour-input"))
+            .classList 
+      if (cl == () || !(cl
+            .contains("colour-input")))
         pad.parentElement.appendChild(colourInput)
       else {val inp = pad.parentElement.lastChild
             .asInstanceOf[HTMLInputElement]
@@ -162,9 +167,9 @@ object Whiteboard {
       pad.onmousemove = (event) => {
         val (a2, b2) = xy(event, pad)
         val a1 =
-          pad.attributes.getNamedItem("data-x").value.toInt
+          Try(pad.attributes.getNamedItem("data-x").value.toInt).getOrElse(0)
         val b1 =
-          pad.attributes.getNamedItem("data-y").value.toInt
+          Try(pad.attributes.getNamedItem("data-y").value.toInt).getOrElse(0)
         import svgAttrs.{x1, x2, y1, y2, stroke}
         val l = svgTags.line(
           x1 := a1,
@@ -175,10 +180,10 @@ object Whiteboard {
         )
         setAttribute(pad, "data-x", a2.toInt.toString())
         setAttribute(pad, "data-y", b2.toInt.toString())
-        val down = pad.attributes
+        val down = Try(pad.attributes
           .getNamedItem("data-mousedown")
           .value
-          .toBoolean
+          .toBoolean).getOrElse(false)
         if (down) pad.appendChild(l.render)
       }
     }
@@ -446,7 +451,7 @@ object Whiteboard {
                   }
 
                   jsDiv.innerHTML = ""
-                  jsDiv.appendChild(autoView)
+                  jsDiv.appendChild(div(FileGet.sp, autoView).render)
                   jsDiv.appendChild(newBody.view)
                   jsDiv.appendChild(
                     div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
@@ -495,13 +500,15 @@ object Whiteboard {
 
 }
 
-object FileDummy {
-  var content: Option[String] = None
+object FileGet {
+  var content: String = ""
+  var name: String = ""
+  val nameHolder = span("").render
 
   import org.scalajs.dom.{document => doc}
   import org.scalajs.dom.raw._
   import scala.scalajs.js
-  val fileInput = input(`type` := "file").render
+  val fileInput = input(`type` := "file",  accept := ".svg", `class` := "bg-primary").render
   fileInput.onchange = event => {
     val reader = new FileReader()
     reader.onload = event => {
@@ -509,6 +516,21 @@ object FileDummy {
     }
     val file = fileInput.files(0)
     reader.readAsText(file)
-    reader.onload = (_) => content = Some(reader.result.asInstanceOf[String])
+    reader.onload = (_) => {
+      content = reader.result.asInstanceOf[String]
+      name = file.name
+      nameHolder.innerText = name
+    } 
   }
+
+  def reset() ={
+    content = ""
+    name = ""
+    nameHolder.innerText = ""
+    fileInput.value = ""
+  }
+
+  val sp = span(
+    "Upload SVG file: ", fileInput
+  )
 }

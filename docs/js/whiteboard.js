@@ -2174,6 +2174,12 @@ function $s_jl_System__identityHashCode__O__I(x) {
 function $s_jl_System__arraycopy__O__I__O__I__I__V(src, srcPos, dest, destPos, length) {
   $m_jl_System$().arraycopy__O__I__O__I__I__V(src, srcPos, dest, destPos, length)
 }
+function $s_jl_System__err__Ljava_io_PrintStream() {
+  return $m_jl_System$().err__Ljava_io_PrintStream()
+}
+function $s_jl_System__out__Ljava_io_PrintStream() {
+  return $m_jl_System$().out__Ljava_io_PrintStream()
+}
 function $p_jl_System$__mismatch$1__E($thiz) {
   throw new $c_jl_ArrayStoreException("Incompatible array types")
 }
@@ -2219,6 +2225,12 @@ function $h_jl_System$() {
   /*<skip>*/
 }
 $h_jl_System$.prototype = $c_jl_System$.prototype;
+$c_jl_System$.prototype.out__Ljava_io_PrintStream = (function() {
+  return $m_jl_System$Streams$().out__Ljava_io_PrintStream()
+});
+$c_jl_System$.prototype.err__Ljava_io_PrintStream = (function() {
+  return $m_jl_System$Streams$().err__Ljava_io_PrintStream()
+});
 $c_jl_System$.prototype.arraycopy__O__I__O__I__I__V = (function(src, srcPos, dest, destPos, length) {
   if (((src === null) || (dest === null))) {
     throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
@@ -2511,6 +2523,44 @@ function $m_jl_System$IDHashCode$() {
   };
   return $n_jl_System$IDHashCode$
 }
+/** @constructor */
+function $c_jl_System$Streams$() {
+  this.jl_System$Streams$__f_out = null;
+  this.jl_System$Streams$__f_err = null;
+  this.jl_System$Streams$__f_in = null;
+  $ct_O__(this);
+  $n_jl_System$Streams$ = this;
+  this.jl_System$Streams$__f_out = new $c_jl_JSConsoleBasedPrintStream(false);
+  this.jl_System$Streams$__f_err = new $c_jl_JSConsoleBasedPrintStream(true);
+  this.jl_System$Streams$__f_in = null
+}
+$c_jl_System$Streams$.prototype = new $h_O();
+$c_jl_System$Streams$.prototype.constructor = $c_jl_System$Streams$;
+/** @constructor */
+function $h_jl_System$Streams$() {
+  /*<skip>*/
+}
+$h_jl_System$Streams$.prototype = $c_jl_System$Streams$.prototype;
+$c_jl_System$Streams$.prototype.out__Ljava_io_PrintStream = (function() {
+  return this.jl_System$Streams$__f_out
+});
+$c_jl_System$Streams$.prototype.err__Ljava_io_PrintStream = (function() {
+  return this.jl_System$Streams$__f_err
+});
+var $d_jl_System$Streams$ = new $TypeData().initClass({
+  jl_System$Streams$: 0
+}, false, "java.lang.System$Streams$", {
+  jl_System$Streams$: 1,
+  O: 1
+});
+$c_jl_System$Streams$.prototype.$classData = $d_jl_System$Streams$;
+var $n_jl_System$Streams$ = (void 0);
+function $m_jl_System$Streams$() {
+  if ((!$n_jl_System$Streams$)) {
+    $n_jl_System$Streams$ = new $c_jl_System$Streams$()
+  };
+  return $n_jl_System$Streams$
+}
 function $p_jl_System$SystemProperties$__loadSystemProperties__O($thiz) {
   var result = {};
   $m_jl_Utils$().dictSet__O__T__O__V(result, "java.version", "1.8");
@@ -2634,6 +2684,35 @@ function $m_jl_Utils$Cache$() {
     $n_jl_Utils$Cache$ = new $c_jl_Utils$Cache$()
   };
   return $n_jl_Utils$Cache$
+}
+/** @constructor */
+function $c_jl_Utils$DynamicImplicits$() {
+  $ct_O__(this);
+  $n_jl_Utils$DynamicImplicits$ = this
+}
+$c_jl_Utils$DynamicImplicits$.prototype = new $h_O();
+$c_jl_Utils$DynamicImplicits$.prototype.constructor = $c_jl_Utils$DynamicImplicits$;
+/** @constructor */
+function $h_jl_Utils$DynamicImplicits$() {
+  /*<skip>*/
+}
+$h_jl_Utils$DynamicImplicits$.prototype = $c_jl_Utils$DynamicImplicits$.prototype;
+$c_jl_Utils$DynamicImplicits$.prototype.truthValue__O__Z = (function(x) {
+  return $uZ((!(!x)))
+});
+var $d_jl_Utils$DynamicImplicits$ = new $TypeData().initClass({
+  jl_Utils$DynamicImplicits$: 0
+}, false, "java.lang.Utils$DynamicImplicits$", {
+  jl_Utils$DynamicImplicits$: 1,
+  O: 1
+});
+$c_jl_Utils$DynamicImplicits$.prototype.$classData = $d_jl_Utils$DynamicImplicits$;
+var $n_jl_Utils$DynamicImplicits$ = (void 0);
+function $m_jl_Utils$DynamicImplicits$() {
+  if ((!$n_jl_Utils$DynamicImplicits$)) {
+    $n_jl_Utils$DynamicImplicits$ = new $c_jl_Utils$DynamicImplicits$()
+  };
+  return $n_jl_Utils$DynamicImplicits$
 }
 /** @constructor */
 function $c_jl_Utils$Implicits$() {
@@ -3812,16 +3891,6 @@ function $f_sc_IterableOnceOps__exists__F1__Z($thiz, p) {
     res = $uZ(p.apply__O__O(it.next__O()))
   };
   return res
-}
-function $f_sc_IterableOnceOps__find__F1__s_Option($thiz, p) {
-  var it = $as_sc_IterableOnce($thiz).iterator__sc_Iterator();
-  while (it.hasNext__Z()) {
-    var a = it.next__O();
-    if ($uZ(p.apply__O__O(a))) {
-      return new $c_s_Some(a)
-    }
-  };
-  return $m_s_None$()
 }
 function $f_sc_IterableOnceOps__reduce__F2__O($thiz, op) {
   return $thiz.reduceLeft__F2__O(op)
@@ -5451,6 +5520,9 @@ function $m_sc_package$$plus$colon$() {
   };
   return $n_sc_package$$plus$colon$
 }
+function $f_s_io_AnsiColor__$init$__V($thiz) {
+  /*<skip>*/
+}
 function $f_s_math_LowPriorityEquiv__$init$__V($thiz) {
   /*<skip>*/
 }
@@ -6391,6 +6463,32 @@ function $m_sjsr_package$() {
   };
   return $n_sjsr_package$
 }
+/** @constructor */
+function $c_s_util_DynamicVariable(init) {
+  this.s_util_DynamicVariable__f_v = null;
+  $ct_O__(this);
+  this.s_util_DynamicVariable__f_v = init
+}
+$c_s_util_DynamicVariable.prototype = new $h_O();
+$c_s_util_DynamicVariable.prototype.constructor = $c_s_util_DynamicVariable;
+/** @constructor */
+function $h_s_util_DynamicVariable() {
+  /*<skip>*/
+}
+$h_s_util_DynamicVariable.prototype = $c_s_util_DynamicVariable.prototype;
+$c_s_util_DynamicVariable.prototype.value__O = (function() {
+  return this.s_util_DynamicVariable__f_v
+});
+$c_s_util_DynamicVariable.prototype.toString__T = (function() {
+  return (("DynamicVariable(" + this.value__O()) + ")")
+});
+var $d_s_util_DynamicVariable = new $TypeData().initClass({
+  s_util_DynamicVariable: 0
+}, false, "scala.util.DynamicVariable", {
+  s_util_DynamicVariable: 1,
+  O: 1
+});
+$c_s_util_DynamicVariable.prototype.$classData = $d_s_util_DynamicVariable;
 /** @constructor */
 function $c_s_util_control_NonFatal$() {
   $ct_O__(this);
@@ -11494,6 +11592,98 @@ function $m_Lwhiteboard_Content$Svg$() {
   };
   return $n_Lwhiteboard_Content$Svg$
 }
+/** @constructor */
+function $c_Lwhiteboard_FileGet$() {
+  this.Lwhiteboard_FileGet$__f_content = null;
+  this.Lwhiteboard_FileGet$__f_name = null;
+  this.Lwhiteboard_FileGet$__f_nameHolder = null;
+  this.Lwhiteboard_FileGet$__f_fileInput = null;
+  this.Lwhiteboard_FileGet$__f_sp = null;
+  $ct_O__(this);
+  $n_Lwhiteboard_FileGet$ = this;
+  this.Lwhiteboard_FileGet$__f_content = "";
+  this.Lwhiteboard_FileGet$__f_name = "";
+  this.Lwhiteboard_FileGet$__f_nameHolder = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("")])).render__Lorg_scalajs_dom_raw_Element();
+  this.Lwhiteboard_FileGet$__f_fileInput = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().input__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().type__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("file", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().accept__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(".svg", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("bg-primary", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).render__Lorg_scalajs_dom_raw_Element();
+  this.fileInput__Lorg_scalajs_dom_raw_HTMLInputElement().onchange = (function(arg1$2) {
+    var arg1 = arg1$2;
+    $m_Lwhiteboard_FileGet$().whiteboard$FileGet$$$anonfun$new$6__Lorg_scalajs_dom_raw_Event__V(arg1)
+  });
+  this.Lwhiteboard_FileGet$__f_sp = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().span__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Upload SVG file: "), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(this.fileInput__Lorg_scalajs_dom_raw_HTMLInputElement())]))
+}
+$c_Lwhiteboard_FileGet$.prototype = new $h_O();
+$c_Lwhiteboard_FileGet$.prototype.constructor = $c_Lwhiteboard_FileGet$;
+/** @constructor */
+function $h_Lwhiteboard_FileGet$() {
+  /*<skip>*/
+}
+$h_Lwhiteboard_FileGet$.prototype = $c_Lwhiteboard_FileGet$.prototype;
+$c_Lwhiteboard_FileGet$.prototype.content__T = (function() {
+  return this.Lwhiteboard_FileGet$__f_content
+});
+$c_Lwhiteboard_FileGet$.prototype.content_$eq__T__V = (function(x$1) {
+  this.Lwhiteboard_FileGet$__f_content = x$1
+});
+$c_Lwhiteboard_FileGet$.prototype.name__T = (function() {
+  return this.Lwhiteboard_FileGet$__f_name
+});
+$c_Lwhiteboard_FileGet$.prototype.name_$eq__T__V = (function(x$1) {
+  this.Lwhiteboard_FileGet$__f_name = x$1
+});
+$c_Lwhiteboard_FileGet$.prototype.nameHolder__Lorg_scalajs_dom_raw_HTMLSpanElement = (function() {
+  return this.Lwhiteboard_FileGet$__f_nameHolder
+});
+$c_Lwhiteboard_FileGet$.prototype.fileInput__Lorg_scalajs_dom_raw_HTMLInputElement = (function() {
+  return this.Lwhiteboard_FileGet$__f_fileInput
+});
+$c_Lwhiteboard_FileGet$.prototype.reset__V = (function() {
+  this.content_$eq__T__V("");
+  this.name_$eq__T__V("");
+  this.nameHolder__Lorg_scalajs_dom_raw_HTMLSpanElement().innerText = "";
+  this.fileInput__Lorg_scalajs_dom_raw_HTMLInputElement().value = ""
+});
+$c_Lwhiteboard_FileGet$.prototype.sp__Lscalatags_JsDom$TypedTag = (function() {
+  return this.Lwhiteboard_FileGet$__f_sp
+});
+$c_Lwhiteboard_FileGet$.prototype.whiteboard$FileGet$$$anonfun$new$7__Lorg_scalajs_dom_raw_UIEvent__Lorg_scalajs_dom_raw_FileReader__V = (function(event, reader$1) {
+  $m_s_Predef$().println__O__V(reader$1.result)
+});
+$c_Lwhiteboard_FileGet$.prototype.whiteboard$FileGet$$$anonfun$new$8__Lorg_scalajs_dom_raw_UIEvent__Lorg_scalajs_dom_raw_FileReader__Lorg_scalajs_dom_raw_File__V = (function(x$17, reader$1, file$1) {
+  $m_Lwhiteboard_FileGet$().content_$eq__T__V($as_T(reader$1.result));
+  $m_Lwhiteboard_FileGet$().name_$eq__T__V($as_T(file$1.name));
+  $m_Lwhiteboard_FileGet$().nameHolder__Lorg_scalajs_dom_raw_HTMLSpanElement().innerText = $m_Lwhiteboard_FileGet$().name__T()
+});
+$c_Lwhiteboard_FileGet$.prototype.whiteboard$FileGet$$$anonfun$new$6__Lorg_scalajs_dom_raw_Event__V = (function(event) {
+  var reader = new FileReader();
+  reader.onload = (function(reader$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      $m_Lwhiteboard_FileGet$().whiteboard$FileGet$$$anonfun$new$7__Lorg_scalajs_dom_raw_UIEvent__Lorg_scalajs_dom_raw_FileReader__V(arg1, reader$1)
+    })
+  })(reader);
+  var file = $m_Lwhiteboard_FileGet$().fileInput__Lorg_scalajs_dom_raw_HTMLInputElement().files[0];
+  reader.readAsText(file);
+  reader.onload = (function(reader$1, file$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      $m_Lwhiteboard_FileGet$().whiteboard$FileGet$$$anonfun$new$8__Lorg_scalajs_dom_raw_UIEvent__Lorg_scalajs_dom_raw_FileReader__Lorg_scalajs_dom_raw_File__V(arg1, reader$1, file$1)
+    })
+  })(reader, file)
+});
+var $d_Lwhiteboard_FileGet$ = new $TypeData().initClass({
+  Lwhiteboard_FileGet$: 0
+}, false, "whiteboard.FileGet$", {
+  Lwhiteboard_FileGet$: 1,
+  O: 1
+});
+$c_Lwhiteboard_FileGet$.prototype.$classData = $d_Lwhiteboard_FileGet$;
+var $n_Lwhiteboard_FileGet$ = (void 0);
+function $m_Lwhiteboard_FileGet$() {
+  if ((!$n_Lwhiteboard_FileGet$)) {
+    $n_Lwhiteboard_FileGet$ = new $c_Lwhiteboard_FileGet$()
+  };
+  return $n_Lwhiteboard_FileGet$
+}
 function $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElement($thiz) {
   if ((!$thiz.Lwhiteboard_Whiteboard$__f_bitmap$0)) {
     $thiz.Lwhiteboard_Whiteboard$__f_d = $m_Lwhiteboard_Content$().example__Lwhiteboard_Content$Body().view__Lorg_scalajs_dom_raw_HTMLElement();
@@ -11501,26 +11691,11 @@ function $p_Lwhiteboard_Whiteboard$__d$lzycompute__Lorg_scalajs_dom_raw_HTMLElem
   };
   return $thiz.Lwhiteboard_Whiteboard$__f_d
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$1__Lorg_scalajs_dom_raw_NamedNodeMap__I__Lorg_scalajs_dom_raw_Attr($thiz, atts$1, j) {
-  return atts$1[j]
-}
-function $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$2__T__T2__Z($thiz, name$1, x$2) {
-  return $is($as_T(x$2._1__O().name), name$1)
-}
-function $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$3__Lorg_scalajs_dom_raw_NamedNodeMap__T__T2__V($thiz, atts$1, value$1, x0$1) {
-  var x1 = x0$1;
-  if ((x1 !== null)) {
-    var j = x1._2$mcI$sp__I();
-    atts$1[j].value = value$1
-  } else {
-    throw new $c_s_MatchError(x1)
-  }
-}
 function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$2__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$3) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$3)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$2) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$2)
 }
 function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$4__T__I__Lfastparse_Parsed$Extra__V($thiz, x0$1, x1$1, x2$1) {
   var x1 = new $c_T3(x0$1, x1$1, x2$1);
@@ -11540,7 +11715,7 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$5__Lwhiteboard_Cont
         var x3 = newBody;
         if (true) {
           $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-          $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement());
+          $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lwhiteboard_FileGet$().sp__Lscalatags_JsDom$TypedTag(), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode($m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement())])).render__Lorg_scalajs_dom_raw_Element());
           $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild(x3.view__Lorg_scalajs_dom_raw_HTMLElement());
           $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode($m_Lwhiteboard_Whiteboard$().sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element());
           $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("HTML source")])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().pre__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra source", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_Lwhiteboard_Whiteboard$().htmlPre__T())]))])).render__Lorg_scalajs_dom_raw_Element());
@@ -11560,9 +11735,9 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$1__T__T__I__V($thiz
       return $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$2__T__Lfastparse_IndexedParserInput(this\u00f8, s)
     })
   })($thiz))), new $c_sjsr_AnonFunction1((function(this$2) {
-    return (function(x$3$2) {
-      var x$3 = $as_Lfastparse_ParsingRun(x$3$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$3)
+    return (function(x$2$2) {
+      var x$2 = $as_Lfastparse_ParsingRun(x$2$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$2)
     })
   })($thiz)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument());
   reparse.fold__F3__F2__O(new $c_sjsr_AnonFunction3((function(this$3) {
@@ -11583,8 +11758,27 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$insertAtCursor$1__T__T__I__V($thiz
 function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$1__Lorg_scalajs_dom_raw_HTMLCollection__I__Lorg_scalajs_dom_raw_HTMLElement($thiz, skechPadsRaw$1, i) {
   return skechPadsRaw$1[i]
 }
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$7__Lorg_scalajs_dom_raw_HTMLElement__I($thiz, pad$1) {
+  return $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-x").value)))
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$8__I($thiz) {
+  return 0
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$9__Lorg_scalajs_dom_raw_HTMLElement__I($thiz, pad$1) {
+  return $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-y").value)))
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$10__I($thiz) {
+  return 0
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$11__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, pad$1) {
+  return $m_sc_StringOps$().toBoolean$extension__T__Z($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-mousedown").value)))
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$12__Z($thiz) {
+  return false
+}
 function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$2__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, pad) {
-  if ((!$uZ(pad.parentElement.lastChild.classList.contains("colour-input")))) {
+  var cl = pad.parentElement.lastChild.classList;
+  if (($s_sr_BoxesRunTime__equals__O__O__Z(cl, (void 0)) || (!$uZ(cl.contains("colour-input"))))) {
     pad.parentElement.appendChild($m_Lwhiteboard_Whiteboard$().colourInput__Lorg_scalajs_dom_raw_HTMLInputElement())
   } else {
     var inp = pad.parentElement.lastChild;
@@ -11632,26 +11826,26 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$unFocus$1__Lorg_scalajs_dom_raw_No
 function $p_Lwhiteboard_Whiteboard$__$anonfun$children$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_Node($thiz, c$1, i) {
   return c$1[i]
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$12) {
-  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$12)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$11) {
+  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$11)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$13) {
-  return $m_Lwhiteboard_Whiteboard$().isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$13)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$12) {
+  return $m_Lwhiteboard_Whiteboard$().isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$12)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$14) {
-  return $m_Lwhiteboard_Whiteboard$().isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$14)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$13) {
+  return $m_Lwhiteboard_Whiteboard$().isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$13)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$15) {
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$14) {
+  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$14)
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$15) {
   return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$15)
-}
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$16) {
-  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$16)
 }
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$17) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$17)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$16) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$16)
 }
 function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastparse_Parsed($thiz, reparse$lzy$1, text$2) {
   if ((reparse$lzy$1 === null)) {
@@ -11663,9 +11857,9 @@ function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastp
       return $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
     })
   })($thiz))), new $c_sjsr_AnonFunction1((function(this$2) {
-    return (function(x$17$2) {
-      var x$17 = $as_Lfastparse_ParsingRun(x$17$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$17)
+    return (function(x$16$2) {
+      var x$16 = $as_Lfastparse_ParsingRun(x$16$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$16)
     })
   })($thiz)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument()))))
 }
@@ -11708,7 +11902,7 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$8__Lwhiteboard_Content$Body
     })
   })($thiz, cursor)));
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().innerHTML = "";
-  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement());
+  $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lwhiteboard_FileGet$().sp__Lscalatags_JsDom$TypedTag(), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode($m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement())])).render__Lorg_scalajs_dom_raw_Element());
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild(x3$1.view__Lorg_scalajs_dom_raw_HTMLElement());
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode($m_Lwhiteboard_Whiteboard$().sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element());
   $m_Lwhiteboard_Whiteboard$().jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("HTML source")])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().pre__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra source", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag($m_Lwhiteboard_Whiteboard$().htmlPre__T())]))])).render__Lorg_scalajs_dom_raw_Element());
@@ -11805,7 +11999,7 @@ function $c_Lwhiteboard_Whiteboard$() {
   this.Lwhiteboard_Whiteboard$__f_autoUpdate = false;
   this.Lwhiteboard_Whiteboard$__f_colour = "black";
   this.Lwhiteboard_Whiteboard$__f_autoView = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().button__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("btn btn-info float-right", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag(("Auto-update: " + this.autoUpdate__Z()))])).render__Lorg_scalajs_dom_raw_Element();
-  this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild(this.autoView__Lorg_scalajs_dom_raw_HTMLButtonElement());
+  this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lwhiteboard_FileGet$().sp__Lscalatags_JsDom$TypedTag(), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(this.autoView__Lorg_scalajs_dom_raw_HTMLButtonElement())])).render__Lorg_scalajs_dom_raw_Element());
   this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().onkeydown = (function(arg1$2) {
     var arg1 = arg1$2;
     return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$new$1__Lorg_scalajs_dom_raw_KeyboardEvent__O(arg1)
@@ -11873,24 +12067,7 @@ $c_Lwhiteboard_Whiteboard$.prototype.xy__Lorg_scalajs_dom_raw_MouseEvent__Lorg_s
   return new $c_T2$mcDD$sp(x, y)
 });
 $c_Lwhiteboard_Whiteboard$.prototype.setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V = (function(elem, name, value) {
-  var atts = elem.attributes;
-  var attV = $as_sci_Vector($m_sr_RichInt$().until$extension__I__I__sci_Range($m_s_Predef$().intWrapper__I__I(0), $uI(atts.length)).toVector__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8, atts) {
-    return (function(j$2) {
-      var j = $uI(j$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$1__Lorg_scalajs_dom_raw_NamedNodeMap__I__Lorg_scalajs_dom_raw_Attr(this\u00f8, atts, j)
-    })
-  })(this, atts))));
-  $as_sc_IterableOnceOps(attV.zipWithIndex__O()).find__F1__s_Option(new $c_sjsr_AnonFunction1((function(this$2, name) {
-    return (function(x$2$2) {
-      var x$2 = $as_T2(x$2$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$2__T__T2__Z(this$2, name, x$2)
-    })
-  })(this, name))).foreach__F1__V(new $c_sjsr_AnonFunction1((function(this$3, atts, value) {
-    return (function(x0$1$2) {
-      var x0$1 = $as_T2(x0$1$2);
-      $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$3__Lorg_scalajs_dom_raw_NamedNodeMap__T__T2__V(this$3, atts, value, x0$1)
-    })
-  })(this, atts, value)))
+  elem.setAttribute(name, value)
 });
 $c_Lwhiteboard_Whiteboard$.prototype.insertAtCursor__T__V = (function(newText) {
   var selection = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection();
@@ -12022,26 +12199,26 @@ $c_Lwhiteboard_Whiteboard$.prototype.fullText__Lorg_scalajs_dom_raw_HTMLElement_
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? this.tagPad__T__T__T($as_T(node.textContent), $as_T(node.tagName)) : this.tagPad__T__T__T($as_sc_IterableOnceOps(cs.map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$12$2) {
-        var x$12 = x$12$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$12)
+      return (function(x$11$2) {
+        var x$11 = x$11$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$11)
       })
     })(this)))).mkString__T__T(""), $as_T(node.tagName)))
   }
 });
 $c_Lwhiteboard_Whiteboard$.prototype.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z = (function(node) {
   return ($is($as_T(node.tagName), "BR") || (((!$uZ(node.classList.contains("verbatim"))) && ($m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(node.textContent))) === 0)) && this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).forall__F1__Z(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$13$2) {
-      var x$13 = x$13$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$13)
+    return (function(x$12$2) {
+      var x$12 = x$12$2;
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$12)
     })
   })(this)))))
 });
 $c_Lwhiteboard_Whiteboard$.prototype.isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z = (function(node) {
   return ($uZ(node.classList.contains("blank")) || ((this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).size__I() > 1) && this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).forall__F1__Z(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$14$2) {
-      var x$14 = x$14$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$14)
+    return (function(x$13$2) {
+      var x$13 = x$13$2;
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$13)
     })
   })(this)))))
 });
@@ -12053,17 +12230,17 @@ $c_Lwhiteboard_Whiteboard$.prototype.baseNodes__Lorg_scalajs_dom_raw_HTMLElement
   } else if (this.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(node)) {
     var rassoc$1 = node;
     return $as_sci_Vector($as_sc_SeqOps(this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$15$2) {
-        var x$15 = x$15$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$15)
+      return (function(x$14$2) {
+        var x$14 = x$14$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$14)
       })
     })(this)))).$plus$colon__O__O(rassoc$1))
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node]))) : $as_sci_Vector(cs.flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this$2) {
-      return (function(x$16$2) {
-        var x$16 = x$16$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this$2, x$16)
+      return (function(x$15$2) {
+        var x$15 = x$15$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this$2, x$15)
       })
     })(this)))))
   }
@@ -12142,8 +12319,9 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$1__Lorg
   if (($uZ(e.altKey) && ($uI(e.keyCode) === 66))) {
     $m_Lwhiteboard_Whiteboard$().update__V()
   };
-  if (($uZ(e.altKey) && ($uI(e.keyCode) === 67))) {
-    $m_Lwhiteboard_Whiteboard$().insertAtCursor__T__V("test-insert")
+  if (($uZ(e.altKey) && ($uI(e.keyCode) === 85))) {
+    $m_Lwhiteboard_Whiteboard$().insertAtCursor__T__V(((" $$$ " + $m_Lwhiteboard_FileGet$().content__T()) + " $$$ "));
+    $m_Lwhiteboard_FileGet$().reset__V()
   };
   if (($uZ(e.altKey) && ($uI(e.keyCode) === 76))) {
     if ($m_Lwhiteboard_Whiteboard$().focussed__Z()) {
@@ -12160,7 +12338,7 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$1__Lorg
     return (void 0)
   }
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_HTMLInputElement__V = (function(x$4, inp$2) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_HTMLInputElement__V = (function(x$3, inp$2) {
   $m_Lwhiteboard_Whiteboard$().colour_$eq__T__V($as_T(inp$2.value))
 });
 $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
@@ -12168,13 +12346,13 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSke
   if ((x1 !== null)) {
     var x = x1._1$mcD$sp__D();
     var y = x1._2$mcD$sp__D();
-    var x$5 = new $c_T2$mcDD$sp(x, y)
+    var x$4 = new $c_T2$mcDD$sp(x, y)
   } else {
-    var x$5;
+    var x$4;
     throw new $c_s_MatchError(x1)
   };
-  var x$2 = x$5._1$mcD$sp__D();
-  var y$2 = x$5._2$mcD$sp__D();
+  var x$2 = x$4._1$mcD$sp__D();
+  var y$2 = x$4._2$mcD$sp__D();
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-x", x$2);
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-y", y$2);
   var at = pad$1.attributes;
@@ -12190,36 +12368,60 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSke
   if ((x1 !== null)) {
     var a2 = x1._1$mcD$sp__D();
     var b2 = x1._2$mcD$sp__D();
-    var x$6 = new $c_T2$mcDD$sp(a2, b2)
+    var x$5 = new $c_T2$mcDD$sp(a2, b2)
   } else {
-    var x$6;
+    var x$5;
     throw new $c_s_MatchError(x1)
   };
-  var a2$2 = x$6._1$mcD$sp__D();
-  var b2$2 = x$6._2$mcD$sp__D();
-  var a1 = $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-x").value)));
-  var b1 = $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-y").value)));
+  var a2$2 = x$5._1$mcD$sp__D();
+  var b2$2 = x$5._2$mcD$sp__D();
+  var a1 = $uI($m_s_util_Try$().apply__F0__s_util_Try(new $c_sjsr_AnonFunction0((function(this\u00f8, pad$1) {
+    return (function() {
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$7__Lorg_scalajs_dom_raw_HTMLElement__I(this\u00f8, pad$1)
+    })
+  })(this, pad$1))).getOrElse__F0__O(new $c_sjsr_AnonFunction0((function(this$2) {
+    return (function() {
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$8__I(this$2)
+    })
+  })(this))));
+  var b1 = $uI($m_s_util_Try$().apply__F0__s_util_Try(new $c_sjsr_AnonFunction0((function(this$3, pad$1) {
+    return (function() {
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$9__Lorg_scalajs_dom_raw_HTMLElement__I(this$3, pad$1)
+    })
+  })(this, pad$1))).getOrElse__F0__O(new $c_sjsr_AnonFunction0((function(this$4) {
+    return (function() {
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$10__I(this$4)
+    })
+  })(this))));
   var l = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().line__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().x1__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(a1, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().x2__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(a2$2, $m_Lscalatags_JsDom$all$().doubleAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().y1__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b1, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().y2__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b2$2, $m_Lscalatags_JsDom$all$().doubleAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair($m_Lwhiteboard_Whiteboard$().colour__T(), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]));
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-x", $f_jl_Integer__toString__T($doubleToInt(a2$2)));
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-y", $f_jl_Integer__toString__T($doubleToInt(b2$2)));
-  var down = $m_sc_StringOps$().toBoolean$extension__T__Z($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-mousedown").value)));
+  var down = $uZ($m_s_util_Try$().apply__F0__s_util_Try(new $c_sjsr_AnonFunction0((function(this$5, pad$1) {
+    return (function() {
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$11__Lorg_scalajs_dom_raw_HTMLElement__Z(this$5, pad$1)
+    })
+  })(this, pad$1))).getOrElse__F0__O(new $c_sjsr_AnonFunction0((function(this$6) {
+    return (function() {
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$12__Z(this$6)
+    })
+  })(this))));
   return (down ? pad$1.appendChild(l.render__Lorg_scalajs_dom_raw_Element()) : (void 0))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$2__Lorg_scalajs_dom_raw_MouseEvent__O = (function(x$7) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$2__Lorg_scalajs_dom_raw_MouseEvent__O = (function(x$6) {
   $m_Lwhiteboard_Whiteboard$().autoUpdate_$eq__Z__V((!$m_Lwhiteboard_Whiteboard$().autoUpdate__Z()));
   $m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement().innerText = ("Auto-update: " + $m_Lwhiteboard_Whiteboard$().autoUpdate__Z());
   return ($m_Lwhiteboard_Whiteboard$().autoUpdate__Z() ? ($m_Lwhiteboard_Whiteboard$().update__V(), (void 0)) : (void 0))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$4__Lorg_scalajs_dom_raw_Event__Lwhiteboard_Content$Heading__V = (function(x$8, h$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$4__Lorg_scalajs_dom_raw_Event__Lwhiteboard_Content$Heading__V = (function(x$7, h$1) {
   h$1.simplify__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$9) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$8) {
   $m_Lwhiteboard_Whiteboard$().unFocus__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$10) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$9) {
   $m_Lwhiteboard_Whiteboard$().focus__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$11) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$10) {
   $m_Lwhiteboard_Whiteboard$().focus__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
@@ -14350,6 +14552,46 @@ function $m_s_Array$() {
   };
   return $n_s_Array$
 }
+/** @constructor */
+function $c_s_Console$() {
+  this.s_Console$__f_outVar = null;
+  this.s_Console$__f_errVar = null;
+  this.s_Console$__f_inVar = null;
+  $ct_O__(this);
+  $n_s_Console$ = this;
+  $f_s_io_AnsiColor__$init$__V(this);
+  this.s_Console$__f_outVar = new $c_s_util_DynamicVariable($s_jl_System__out__Ljava_io_PrintStream());
+  this.s_Console$__f_errVar = new $c_s_util_DynamicVariable($s_jl_System__err__Ljava_io_PrintStream());
+  this.s_Console$__f_inVar = new $c_s_util_DynamicVariable(null)
+}
+$c_s_Console$.prototype = new $h_O();
+$c_s_Console$.prototype.constructor = $c_s_Console$;
+/** @constructor */
+function $h_s_Console$() {
+  /*<skip>*/
+}
+$h_s_Console$.prototype = $c_s_Console$.prototype;
+$c_s_Console$.prototype.out__Ljava_io_PrintStream = (function() {
+  return $as_Ljava_io_PrintStream(this.s_Console$__f_outVar.value__O())
+});
+$c_s_Console$.prototype.println__O__V = (function(x) {
+  this.out__Ljava_io_PrintStream().println__O__V(x)
+});
+var $d_s_Console$ = new $TypeData().initClass({
+  s_Console$: 0
+}, false, "scala.Console$", {
+  s_Console$: 1,
+  O: 1,
+  s_io_AnsiColor: 1
+});
+$c_s_Console$.prototype.$classData = $d_s_Console$;
+var $n_s_Console$ = (void 0);
+function $m_s_Console$() {
+  if ((!$n_s_Console$)) {
+    $n_s_Console$ = new $c_s_Console$()
+  };
+  return $n_s_Console$
+}
 function $ct_s_LowPriorityImplicits__($thiz) {
   $ct_s_LowPriorityImplicits2__($thiz);
   return $thiz
@@ -16379,6 +16621,9 @@ $c_s_Predef$.prototype.any2stringadd__O__O = (function(self) {
 });
 $c_s_Predef$.prototype.augmentString__T__T = (function(x) {
   return x
+});
+$c_s_Predef$.prototype.println__O__V = (function(x) {
+  $m_s_Console$().println__O__V(x)
 });
 $c_s_Predef$.prototype.intArrayOps__AI__O = (function(xs) {
   return xs
@@ -20511,6 +20756,24 @@ function $isArrayOf_Ljava_io_IOException(obj, depth) {
 function $asArrayOf_Ljava_io_IOException(obj, depth) {
   return (($isArrayOf_Ljava_io_IOException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.io.IOException;", depth))
 }
+function $ct_Ljava_io_OutputStream__($thiz) {
+  $ct_O__($thiz);
+  return $thiz
+}
+/** @constructor */
+function $c_Ljava_io_OutputStream() {
+  /*<skip>*/
+}
+$c_Ljava_io_OutputStream.prototype = new $h_O();
+$c_Ljava_io_OutputStream.prototype.constructor = $c_Ljava_io_OutputStream;
+/** @constructor */
+function $h_Ljava_io_OutputStream() {
+  /*<skip>*/
+}
+$h_Ljava_io_OutputStream.prototype = $c_Ljava_io_OutputStream.prototype;
+$c_Ljava_io_OutputStream.prototype.close__V = (function() {
+  /*<skip>*/
+});
 function $ct_jl_AssertionError__T__jl_Throwable__($thiz, message, cause) {
   $ct_jl_Error__T__jl_Throwable__($thiz, message, cause);
   return $thiz
@@ -22065,9 +22328,6 @@ $c_sc_AbstractIterator.prototype.toString__T = (function() {
 $c_sc_AbstractIterator.prototype.foreach__F1__V = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f)
 });
-$c_sc_AbstractIterator.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
-});
 $c_sc_AbstractIterator.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
 });
@@ -22359,16 +22619,6 @@ function $f_sc_StrictOptimizedIterableOps__strictOptimizedCollect__scm_Builder__
     } else {
       (void 0)
     }
-  };
-  return b.result__O()
-}
-function $f_sc_StrictOptimizedIterableOps__zipWithIndex__O($thiz) {
-  var b = $thiz.iterableFactory__sc_IterableFactory().newBuilder__scm_Builder();
-  var i = 0;
-  var it = $thiz.iterator__sc_Iterator();
-  while (it.hasNext__Z()) {
-    b.$plus$eq__O__scm_Growable($ct_T2__O__O__(new $c_T2(), it.next__O(), i));
-    i = ((i + 1) | 0)
   };
   return b.result__O()
 }
@@ -23666,6 +23916,22 @@ var $d_Lfastparse_Parsed$Success = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lfastparse_Parsed$Success.prototype.$classData = $d_Lfastparse_Parsed$Success;
+function $ct_Ljava_io_FilterOutputStream__Ljava_io_OutputStream__($thiz, out) {
+  $thiz.Ljava_io_FilterOutputStream__f_out = out;
+  $ct_Ljava_io_OutputStream__($thiz);
+  return $thiz
+}
+/** @constructor */
+function $c_Ljava_io_FilterOutputStream() {
+  this.Ljava_io_FilterOutputStream__f_out = null
+}
+$c_Ljava_io_FilterOutputStream.prototype = new $h_Ljava_io_OutputStream();
+$c_Ljava_io_FilterOutputStream.prototype.constructor = $c_Ljava_io_FilterOutputStream;
+/** @constructor */
+function $h_Ljava_io_FilterOutputStream() {
+  /*<skip>*/
+}
+$h_Ljava_io_FilterOutputStream.prototype = $c_Ljava_io_FilterOutputStream.prototype;
 /** @constructor */
 function $c_jl_ArithmeticException(s) {
   this.jl_Throwable__f_s = null;
@@ -23874,6 +24140,28 @@ var $d_jl_IndexOutOfBoundsException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_jl_IndexOutOfBoundsException.prototype.$classData = $d_jl_IndexOutOfBoundsException;
+/** @constructor */
+function $c_jl_JSConsoleBasedPrintStream$DummyOutputStream() {
+  $ct_Ljava_io_OutputStream__(this)
+}
+$c_jl_JSConsoleBasedPrintStream$DummyOutputStream.prototype = new $h_Ljava_io_OutputStream();
+$c_jl_JSConsoleBasedPrintStream$DummyOutputStream.prototype.constructor = $c_jl_JSConsoleBasedPrintStream$DummyOutputStream;
+/** @constructor */
+function $h_jl_JSConsoleBasedPrintStream$DummyOutputStream() {
+  /*<skip>*/
+}
+$h_jl_JSConsoleBasedPrintStream$DummyOutputStream.prototype = $c_jl_JSConsoleBasedPrintStream$DummyOutputStream.prototype;
+var $d_jl_JSConsoleBasedPrintStream$DummyOutputStream = new $TypeData().initClass({
+  jl_JSConsoleBasedPrintStream$DummyOutputStream: 0
+}, false, "java.lang.JSConsoleBasedPrintStream$DummyOutputStream", {
+  jl_JSConsoleBasedPrintStream$DummyOutputStream: 1,
+  Ljava_io_OutputStream: 1,
+  O: 1,
+  Ljava_io_Closeable: 1,
+  jl_AutoCloseable: 1,
+  Ljava_io_Flushable: 1
+});
+$c_jl_JSConsoleBasedPrintStream$DummyOutputStream.prototype.$classData = $d_jl_JSConsoleBasedPrintStream$DummyOutputStream;
 function $ct_jl_NegativeArraySizeException__T__($thiz, s) {
   $ct_jl_RuntimeException__T__($thiz, s);
   return $thiz
@@ -28715,9 +29003,6 @@ $c_sci_MapKeyValueTupleIterator.prototype.toString__T = (function() {
 $c_sci_MapKeyValueTupleIterator.prototype.foreach__F1__V = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f)
 });
-$c_sci_MapKeyValueTupleIterator.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
-});
 $c_sci_MapKeyValueTupleIterator.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
 });
@@ -28968,9 +29253,6 @@ $c_sci_SetHashIterator.prototype.toString__T = (function() {
 $c_sci_SetHashIterator.prototype.foreach__F1__V = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f)
 });
-$c_sci_SetHashIterator.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
-});
 $c_sci_SetHashIterator.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
 });
@@ -29087,9 +29369,6 @@ $c_sci_SetIterator.prototype.toString__T = (function() {
 });
 $c_sci_SetIterator.prototype.foreach__F1__V = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f)
-});
-$c_sci_SetIterator.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
 });
 $c_sci_SetIterator.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
@@ -31424,9 +31703,6 @@ $c_sc_AbstractIterable.prototype.forall__F1__Z = (function(p) {
 });
 $c_sc_AbstractIterable.prototype.exists__F1__Z = (function(p) {
   return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
-});
-$c_sc_AbstractIterable.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
 });
 $c_sc_AbstractIterable.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
@@ -34100,6 +34376,53 @@ var $d_Lwhiteboard_Content$Verbatim = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lwhiteboard_Content$Verbatim.prototype.$classData = $d_Lwhiteboard_Content$Verbatim;
+function $ct_Ljava_io_PrintStream__Ljava_io_OutputStream__Z__Ljava_nio_charset_Charset__($thiz, _out, autoFlush, charset) {
+  $thiz.Ljava_io_PrintStream__f_autoFlush = autoFlush;
+  $thiz.Ljava_io_PrintStream__f_charset = charset;
+  $ct_Ljava_io_FilterOutputStream__Ljava_io_OutputStream__($thiz, _out);
+  $thiz.Ljava_io_PrintStream__f_closing = false;
+  $thiz.Ljava_io_PrintStream__f_java$io$PrintStream$$closed = false;
+  $thiz.Ljava_io_PrintStream__f_errorFlag = false;
+  return $thiz
+}
+function $ct_Ljava_io_PrintStream__Ljava_io_OutputStream__($thiz, out) {
+  $ct_Ljava_io_PrintStream__Ljava_io_OutputStream__Z__Ljava_nio_charset_Charset__($thiz, out, false, null);
+  return $thiz
+}
+/** @constructor */
+function $c_Ljava_io_PrintStream() {
+  this.Ljava_io_FilterOutputStream__f_out = null;
+  this.Ljava_io_PrintStream__f_encoder = null;
+  this.Ljava_io_PrintStream__f_autoFlush = false;
+  this.Ljava_io_PrintStream__f_charset = null;
+  this.Ljava_io_PrintStream__f_closing = false;
+  this.Ljava_io_PrintStream__f_java$io$PrintStream$$closed = false;
+  this.Ljava_io_PrintStream__f_errorFlag = false;
+  this.Ljava_io_PrintStream__f_bitmap$0 = false
+}
+$c_Ljava_io_PrintStream.prototype = new $h_Ljava_io_FilterOutputStream();
+$c_Ljava_io_PrintStream.prototype.constructor = $c_Ljava_io_PrintStream;
+/** @constructor */
+function $h_Ljava_io_PrintStream() {
+  /*<skip>*/
+}
+$h_Ljava_io_PrintStream.prototype = $c_Ljava_io_PrintStream.prototype;
+$c_Ljava_io_PrintStream.prototype.append__jl_CharSequence__Ljava_io_PrintStream = (function(csq) {
+  this.print__T__V(((csq === null) ? "null" : $dp_toString__T(csq)));
+  return this
+});
+$c_Ljava_io_PrintStream.prototype.append__jl_CharSequence__jl_Appendable = (function(x$1) {
+  return this.append__jl_CharSequence__Ljava_io_PrintStream(x$1)
+});
+function $as_Ljava_io_PrintStream(obj) {
+  return (((obj instanceof $c_Ljava_io_PrintStream) || (obj === null)) ? obj : $throwClassCastException(obj, "java.io.PrintStream"))
+}
+function $isArrayOf_Ljava_io_PrintStream(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ljava_io_PrintStream)))
+}
+function $asArrayOf_Ljava_io_PrintStream(obj, depth) {
+  return (($isArrayOf_Ljava_io_PrintStream(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.io.PrintStream;", depth))
+}
 /** @constructor */
 function $c_ju_DuplicateFormatFlagsException(f) {
   this.jl_Throwable__f_s = null;
@@ -35543,6 +35866,88 @@ function $m_Lscalatags_JsDom$svgTags$() {
   };
   return $n_Lscalatags_JsDom$svgTags$
 }
+function $p_jl_JSConsoleBasedPrintStream__flushed_$eq__Z__V($thiz, x$1) {
+  $thiz.jl_JSConsoleBasedPrintStream__f_flushed = x$1
+}
+function $p_jl_JSConsoleBasedPrintStream__buffer__T($thiz) {
+  return $thiz.jl_JSConsoleBasedPrintStream__f_buffer
+}
+function $p_jl_JSConsoleBasedPrintStream__buffer_$eq__T__V($thiz, x$1) {
+  $thiz.jl_JSConsoleBasedPrintStream__f_buffer = x$1
+}
+function $p_jl_JSConsoleBasedPrintStream__doWriteLine__T__V($thiz, line) {
+  if ((!$is($as_T((typeof console)), "undefined"))) {
+    if (($thiz.jl_JSConsoleBasedPrintStream__f_isErr && $m_jl_Utils$DynamicImplicits$().truthValue__O__Z(console.error))) {
+      console.error(line)
+    } else {
+      console.log(line)
+    }
+  }
+}
+/** @constructor */
+function $c_jl_JSConsoleBasedPrintStream(isErr) {
+  this.Ljava_io_FilterOutputStream__f_out = null;
+  this.Ljava_io_PrintStream__f_encoder = null;
+  this.Ljava_io_PrintStream__f_autoFlush = false;
+  this.Ljava_io_PrintStream__f_charset = null;
+  this.Ljava_io_PrintStream__f_closing = false;
+  this.Ljava_io_PrintStream__f_java$io$PrintStream$$closed = false;
+  this.Ljava_io_PrintStream__f_errorFlag = false;
+  this.Ljava_io_PrintStream__f_bitmap$0 = false;
+  this.jl_JSConsoleBasedPrintStream__f_isErr = false;
+  this.jl_JSConsoleBasedPrintStream__f_flushed = false;
+  this.jl_JSConsoleBasedPrintStream__f_buffer = null;
+  this.jl_JSConsoleBasedPrintStream__f_isErr = isErr;
+  $ct_Ljava_io_PrintStream__Ljava_io_OutputStream__(this, new $c_jl_JSConsoleBasedPrintStream$DummyOutputStream());
+  this.jl_JSConsoleBasedPrintStream__f_flushed = true;
+  this.jl_JSConsoleBasedPrintStream__f_buffer = ""
+}
+$c_jl_JSConsoleBasedPrintStream.prototype = new $h_Ljava_io_PrintStream();
+$c_jl_JSConsoleBasedPrintStream.prototype.constructor = $c_jl_JSConsoleBasedPrintStream;
+/** @constructor */
+function $h_jl_JSConsoleBasedPrintStream() {
+  /*<skip>*/
+}
+$h_jl_JSConsoleBasedPrintStream.prototype = $c_jl_JSConsoleBasedPrintStream.prototype;
+$c_jl_JSConsoleBasedPrintStream.prototype.print__T__V = (function(s) {
+  this.java$lang$JSConsoleBasedPrintStream$$printString__T__V(((s === null) ? "null" : s))
+});
+$c_jl_JSConsoleBasedPrintStream.prototype.println__O__V = (function(obj) {
+  this.java$lang$JSConsoleBasedPrintStream$$printString__T__V((("" + obj) + "\n"))
+});
+$c_jl_JSConsoleBasedPrintStream.prototype.java$lang$JSConsoleBasedPrintStream$$printString__T__V = (function(s) {
+  var rest = s;
+  while ((!$is(rest, ""))) {
+    var nlPos = $f_T__indexOf__T__I(rest, "\n");
+    if ((nlPos < 0)) {
+      $p_jl_JSConsoleBasedPrintStream__buffer_$eq__T__V(this, (("" + $p_jl_JSConsoleBasedPrintStream__buffer__T(this)) + rest));
+      $p_jl_JSConsoleBasedPrintStream__flushed_$eq__Z__V(this, false);
+      rest = ""
+    } else {
+      $p_jl_JSConsoleBasedPrintStream__doWriteLine__T__V(this, (("" + $p_jl_JSConsoleBasedPrintStream__buffer__T(this)) + $f_T__substring__I__I__T(rest, 0, nlPos)));
+      $p_jl_JSConsoleBasedPrintStream__buffer_$eq__T__V(this, "");
+      $p_jl_JSConsoleBasedPrintStream__flushed_$eq__Z__V(this, true);
+      rest = $f_T__substring__I__T(rest, ((nlPos + 1) | 0))
+    }
+  }
+});
+$c_jl_JSConsoleBasedPrintStream.prototype.close__V = (function() {
+  /*<skip>*/
+});
+var $d_jl_JSConsoleBasedPrintStream = new $TypeData().initClass({
+  jl_JSConsoleBasedPrintStream: 0
+}, false, "java.lang.JSConsoleBasedPrintStream", {
+  jl_JSConsoleBasedPrintStream: 1,
+  Ljava_io_PrintStream: 1,
+  Ljava_io_FilterOutputStream: 1,
+  Ljava_io_OutputStream: 1,
+  O: 1,
+  Ljava_io_Closeable: 1,
+  jl_AutoCloseable: 1,
+  Ljava_io_Flushable: 1,
+  jl_Appendable: 1
+});
+$c_jl_JSConsoleBasedPrintStream.prototype.$classData = $d_jl_JSConsoleBasedPrintStream;
 function $p_sc_StrictOptimizedLinearSeqOps__loop$2__I__sc_LinearSeq__sc_LinearSeq($thiz, n, s) {
   var _$this = $thiz;
   while (true) {
@@ -35641,9 +36046,6 @@ $c_sci_MapKeyValueTupleHashIterator.prototype.toString__T = (function() {
 });
 $c_sci_MapKeyValueTupleHashIterator.prototype.foreach__F1__V = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f)
-});
-$c_sci_MapKeyValueTupleHashIterator.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
 });
 $c_sci_MapKeyValueTupleHashIterator.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
@@ -38086,6 +38488,9 @@ function $isArrayOf_scm_MapOps(obj, depth) {
 function $asArrayOf_scm_MapOps(obj, depth) {
   return (($isArrayOf_scm_MapOps(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.MapOps;", depth))
 }
+function $f_Lscalatags_generic_Attrs__accept__Lscalatags_generic_Attr($thiz) {
+  return $thiz.attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr("accept", $thiz.attr$default$2__Lscalatags_generic_Namespace(), $thiz.attr$default$3__Z())
+}
 function $f_Lscalatags_generic_Attrs__$init$__V($thiz) {
   /*<skip>*/
 }
@@ -39098,9 +39503,6 @@ $c_sci_Set$Set1.prototype.foreach__F1__V = (function(f) {
 $c_sci_Set$Set1.prototype.forall__F1__Z = (function(p) {
   return $uZ(p.apply__O__O(this.sci_Set$Set1__f_elem1))
 });
-$c_sci_Set$Set1.prototype.find__F1__s_Option = (function(p) {
-  return ($uZ(p.apply__O__O(this.sci_Set$Set1__f_elem1)) ? new $c_s_Some(this.sci_Set$Set1__f_elem1) : $m_s_None$())
-});
 $c_sci_Set$Set1.prototype.head__O = (function() {
   return this.sci_Set$Set1__f_elem1
 });
@@ -39203,9 +39605,6 @@ $c_sci_Set$Set2.prototype.foreach__F1__V = (function(f) {
 });
 $c_sci_Set$Set2.prototype.forall__F1__Z = (function(p) {
   return ($uZ(p.apply__O__O(this.sci_Set$Set2__f_elem1)) && $uZ(p.apply__O__O(this.sci_Set$Set2__f_elem2)))
-});
-$c_sci_Set$Set2.prototype.find__F1__s_Option = (function(p) {
-  return ($uZ(p.apply__O__O(this.sci_Set$Set2__f_elem1)) ? new $c_s_Some(this.sci_Set$Set2__f_elem1) : ($uZ(p.apply__O__O(this.sci_Set$Set2__f_elem2)) ? new $c_s_Some(this.sci_Set$Set2__f_elem2) : $m_s_None$()))
 });
 $c_sci_Set$Set2.prototype.head__O = (function() {
   return this.sci_Set$Set2__f_elem1
@@ -39313,9 +39712,6 @@ $c_sci_Set$Set3.prototype.foreach__F1__V = (function(f) {
 });
 $c_sci_Set$Set3.prototype.forall__F1__Z = (function(p) {
   return (($uZ(p.apply__O__O(this.sci_Set$Set3__f_elem1)) && $uZ(p.apply__O__O(this.sci_Set$Set3__f_elem2))) && $uZ(p.apply__O__O(this.sci_Set$Set3__f_elem3)))
-});
-$c_sci_Set$Set3.prototype.find__F1__s_Option = (function(p) {
-  return ($uZ(p.apply__O__O(this.sci_Set$Set3__f_elem1)) ? new $c_s_Some(this.sci_Set$Set3__f_elem1) : ($uZ(p.apply__O__O(this.sci_Set$Set3__f_elem2)) ? new $c_s_Some(this.sci_Set$Set3__f_elem2) : ($uZ(p.apply__O__O(this.sci_Set$Set3__f_elem3)) ? new $c_s_Some(this.sci_Set$Set3__f_elem3) : $m_s_None$())))
 });
 $c_sci_Set$Set3.prototype.head__O = (function() {
   return this.sci_Set$Set3__f_elem1
@@ -39427,9 +39823,6 @@ $c_sci_Set$Set4.prototype.foreach__F1__V = (function(f) {
 });
 $c_sci_Set$Set4.prototype.forall__F1__Z = (function(p) {
   return ((($uZ(p.apply__O__O(this.sci_Set$Set4__f_elem1)) && $uZ(p.apply__O__O(this.sci_Set$Set4__f_elem2))) && $uZ(p.apply__O__O(this.sci_Set$Set4__f_elem3))) && $uZ(p.apply__O__O(this.sci_Set$Set4__f_elem4)))
-});
-$c_sci_Set$Set4.prototype.find__F1__s_Option = (function(p) {
-  return ($uZ(p.apply__O__O(this.sci_Set$Set4__f_elem1)) ? new $c_s_Some(this.sci_Set$Set4__f_elem1) : ($uZ(p.apply__O__O(this.sci_Set$Set4__f_elem2)) ? new $c_s_Some(this.sci_Set$Set4__f_elem2) : ($uZ(p.apply__O__O(this.sci_Set$Set4__f_elem3)) ? new $c_s_Some(this.sci_Set$Set4__f_elem3) : ($uZ(p.apply__O__O(this.sci_Set$Set4__f_elem4)) ? new $c_s_Some(this.sci_Set$Set4__f_elem4) : $m_s_None$()))))
 });
 $c_sci_Set$Set4.prototype.head__O = (function() {
   return this.sci_Set$Set4__f_elem1
@@ -40554,21 +40947,6 @@ $c_sci_LazyList.prototype.prepended__O__sci_LazyList = (function(elem) {
 $c_sci_LazyList.prototype.map__F1__sci_LazyList = (function(f) {
   return (this.scala$collection$immutable$LazyList$$knownIsEmpty__Z() ? $m_sci_LazyList$().empty__sci_LazyList() : $p_sci_LazyList__mapImpl__F1__sci_LazyList(this, f))
 });
-$c_sci_LazyList.prototype.find__F1__s_Option = (function(p) {
-  var _$this = this;
-  while (true) {
-    if (_$this.isEmpty__Z()) {
-      return $m_s_None$()
-    } else {
-      var elem = _$this.head__O();
-      if ($uZ(p.apply__O__O(elem))) {
-        return new $c_s_Some(elem)
-      } else {
-        _$this = _$this.tail__sci_LazyList()
-      }
-    }
-  }
-});
 $c_sci_LazyList.prototype.drop__I__sci_LazyList = (function(n) {
   return ((n <= 0) ? this : (this.scala$collection$immutable$LazyList$$knownIsEmpty__Z() ? $m_sci_LazyList$().empty__sci_LazyList() : $m_sci_LazyList$().scala$collection$immutable$LazyList$$dropImpl__sci_LazyList__I__sci_LazyList(this, n)))
 });
@@ -40782,18 +41160,6 @@ $c_sci_Stream.prototype.foreach__F1__V = (function(f) {
       continue
     };
     break
-  }
-});
-$c_sci_Stream.prototype.find__F1__s_Option = (function(p) {
-  var _$this = this;
-  while (true) {
-    if (_$this.isEmpty__Z()) {
-      return $m_s_None$()
-    } else if ($uZ(p.apply__O__O(_$this.head__O()))) {
-      return new $c_s_Some(_$this.head__O())
-    } else {
-      _$this = $as_sci_Stream(_$this.tail__O())
-    }
   }
 });
 $c_sci_Stream.prototype.equals__O__Z = (function(that) {
@@ -41212,9 +41578,6 @@ $c_sjsr_WrappedVarArgs.prototype.foreach__F1__V = (function(f) {
 });
 $c_sjsr_WrappedVarArgs.prototype.exists__F1__Z = (function(p) {
   return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
-});
-$c_sjsr_WrappedVarArgs.prototype.find__F1__s_Option = (function(p) {
-  return $f_sc_IterableOnceOps__find__F1__s_Option(this, p)
 });
 $c_sjsr_WrappedVarArgs.prototype.reduce__F2__O = (function(op) {
   return $f_sc_IterableOnceOps__reduce__F2__O(this, op)
@@ -42470,6 +42833,13 @@ function $p_Lscalatags_JsDom$all$__height$lzycompute__Lscalatags_generic_StyleMi
   };
   return $thiz.Lscalatags_JsDom$all$__f_height
 }
+function $p_Lscalatags_JsDom$all$__accept$lzycompute__Lscalatags_generic_Attr($thiz) {
+  if ($thiz.Lscalatags_JsDom$all$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(0, 1)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0))) {
+    $thiz.Lscalatags_JsDom$all$__f_accept = $f_Lscalatags_generic_Attrs__accept__Lscalatags_generic_Attr($thiz);
+    $thiz.Lscalatags_JsDom$all$__f_bitmap$2 = $thiz.Lscalatags_JsDom$all$__f_bitmap$2.$bar__RTLong__RTLong(new $c_RTLong(0, 1))
+  };
+  return $thiz.Lscalatags_JsDom$all$__f_accept
+}
 function $p_Lscalatags_JsDom$all$__type$lzycompute__Lscalatags_generic_Attr($thiz) {
   if ($thiz.Lscalatags_JsDom$all$__f_bitmap$4.$amp__RTLong__RTLong(new $c_RTLong(2097152, 0)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0))) {
     $thiz.Lscalatags_JsDom$all$__f_type = $f_Lscalatags_generic_InputAttrs__type__Lscalatags_generic_Attr($thiz);
@@ -43107,6 +43477,9 @@ $c_Lscalatags_JsDom$all$.prototype.button__Lscalatags_JsDom$TypedTag = (function
 });
 $c_Lscalatags_JsDom$all$.prototype.height__Lscalatags_generic_StyleMisc$PixelAutoStyle = (function() {
   return (this.Lscalatags_JsDom$all$__f_bitmap$1.$amp__RTLong__RTLong(new $c_RTLong(0, 16384)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0)) ? $p_Lscalatags_JsDom$all$__height$lzycompute__Lscalatags_generic_StyleMisc$PixelAutoStyle(this) : this.Lscalatags_JsDom$all$__f_height)
+});
+$c_Lscalatags_JsDom$all$.prototype.accept__Lscalatags_generic_Attr = (function() {
+  return (this.Lscalatags_JsDom$all$__f_bitmap$2.$amp__RTLong__RTLong(new $c_RTLong(0, 1)).equals__RTLong__Z($m_RTLong$().fromInt__I__RTLong(0)) ? $p_Lscalatags_JsDom$all$__accept$lzycompute__Lscalatags_generic_Attr(this) : this.Lscalatags_JsDom$all$__f_accept)
 });
 $c_Lscalatags_JsDom$all$.prototype.scalatags$generic$MouseEventAttrs$_setter_$ondrag_$eq__Lscalatags_generic_Attr__V = (function(x$1) {
   this.Lscalatags_JsDom$all$__f_ondrag = x$1
@@ -44763,16 +45136,6 @@ $c_sci_List.prototype.exists__F1__Z = (function(p) {
   };
   return false
 });
-$c_sci_List.prototype.find__F1__s_Option = (function(p) {
-  var these = this;
-  while ((!these.isEmpty__Z())) {
-    if ($uZ(p.apply__O__O(these.head__O()))) {
-      return new $c_s_Some(these.head__O())
-    };
-    these = $as_sci_List(these.tail__O())
-  };
-  return $m_s_None$()
-});
 $c_sci_List.prototype.last__O = (function() {
   if (this.isEmpty__Z()) {
     throw $ct_ju_NoSuchElementException__T__(new $c_ju_NoSuchElementException(), "List.last")
@@ -45123,9 +45486,6 @@ $c_sci_Vector.prototype.collect__s_PartialFunction__O = (function(pf) {
 });
 $c_sci_Vector.prototype.strictOptimizedCollect__scm_Builder__s_PartialFunction__O = (function(b, pf) {
   return $f_sc_StrictOptimizedIterableOps__strictOptimizedCollect__scm_Builder__s_PartialFunction__O(this, b, pf)
-});
-$c_sci_Vector.prototype.zipWithIndex__O = (function() {
-  return $f_sc_StrictOptimizedIterableOps__zipWithIndex__O(this)
 });
 $c_sci_Vector.prototype.filterNot__F1__O = (function(pred) {
   return $f_sc_StrictOptimizedIterableOps__filterNot__F1__O(this, pred)
