@@ -137,6 +137,10 @@ object Whiteboard {
             .classList
             .contains("colour-input"))
         pad.parentElement.appendChild(colourInput)
+      else {val inp = pad.parentElement.lastChild
+            .asInstanceOf[HTMLInputElement]
+            inp.oninput = (_) => colour = inp.value
+      }
 
       val bound = pad.getBoundingClientRect();
       pad.onmousedown = (event) => {

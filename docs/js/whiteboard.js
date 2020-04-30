@@ -11587,25 +11587,31 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$2__Lorg_scalajs_d
   if ((!$uZ(pad.parentElement.lastChild.classList.contains("colour-input")))) {
     pad.parentElement.appendChild($m_Lwhiteboard_Whiteboard$().colourInput__Lorg_scalajs_dom_raw_HTMLInputElement())
   } else {
-    (void 0)
+    var inp = pad.parentElement.lastChild;
+    inp.oninput = (function(inp$2) {
+      return (function(arg1$2) {
+        var arg1 = arg1$2;
+        $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_HTMLInputElement__V(arg1, inp$2)
+      })
+    })(inp)
   };
   var bound = pad.getBoundingClientRect();
   pad.onmousedown = (function(pad$1) {
     return (function(arg1$2) {
       var arg1 = arg1$2;
-      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
+      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
     })
   })(pad);
   pad.onmouseup = (function(pad$1) {
     return (function(arg1$2) {
       var arg1 = arg1$2;
-      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
+      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$5__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
     })
   })(pad);
   pad.onmousemove = (function(pad$1) {
     return (function(arg1$2) {
       var arg1 = arg1$2;
-      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$5__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O(arg1, pad$1)
+      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$6__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O(arg1, pad$1)
     })
   })(pad)
 }
@@ -11626,26 +11632,26 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$unFocus$1__Lorg_scalajs_dom_raw_No
 function $p_Lwhiteboard_Whiteboard$__$anonfun$children$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_Node($thiz, c$1, i) {
   return c$1[i]
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$11) {
-  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$11)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$12) {
+  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$12)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$12) {
-  return $m_Lwhiteboard_Whiteboard$().isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$12)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$13) {
+  return $m_Lwhiteboard_Whiteboard$().isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$13)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$13) {
-  return $m_Lwhiteboard_Whiteboard$().isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$13)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$14) {
+  return $m_Lwhiteboard_Whiteboard$().isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$14)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$14) {
-  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$14)
-}
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$15) {
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$15) {
   return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$15)
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$16) {
+  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$16)
 }
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$16) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$16)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$17) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$17)
 }
 function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastparse_Parsed($thiz, reparse$lzy$1, text$2) {
   if ((reparse$lzy$1 === null)) {
@@ -11657,9 +11663,9 @@ function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastp
       return $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
     })
   })($thiz))), new $c_sjsr_AnonFunction1((function(this$2) {
-    return (function(x$16$2) {
-      var x$16 = $as_Lfastparse_ParsingRun(x$16$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$16)
+    return (function(x$17$2) {
+      var x$17 = $as_Lfastparse_ParsingRun(x$17$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$17)
     })
   })($thiz)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument()))))
 }
@@ -12016,26 +12022,26 @@ $c_Lwhiteboard_Whiteboard$.prototype.fullText__Lorg_scalajs_dom_raw_HTMLElement_
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? this.tagPad__T__T__T($as_T(node.textContent), $as_T(node.tagName)) : this.tagPad__T__T__T($as_sc_IterableOnceOps(cs.map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$11$2) {
-        var x$11 = x$11$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$11)
+      return (function(x$12$2) {
+        var x$12 = x$12$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$12)
       })
     })(this)))).mkString__T__T(""), $as_T(node.tagName)))
   }
 });
 $c_Lwhiteboard_Whiteboard$.prototype.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z = (function(node) {
   return ($is($as_T(node.tagName), "BR") || (((!$uZ(node.classList.contains("verbatim"))) && ($m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(node.textContent))) === 0)) && this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).forall__F1__Z(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$12$2) {
-      var x$12 = x$12$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$12)
+    return (function(x$13$2) {
+      var x$13 = x$13$2;
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$13)
     })
   })(this)))))
 });
 $c_Lwhiteboard_Whiteboard$.prototype.isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z = (function(node) {
   return ($uZ(node.classList.contains("blank")) || ((this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).size__I() > 1) && this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).forall__F1__Z(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$13$2) {
-      var x$13 = x$13$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$13)
+    return (function(x$14$2) {
+      var x$14 = x$14$2;
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$14)
     })
   })(this)))))
 });
@@ -12047,17 +12053,17 @@ $c_Lwhiteboard_Whiteboard$.prototype.baseNodes__Lorg_scalajs_dom_raw_HTMLElement
   } else if (this.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(node)) {
     var rassoc$1 = node;
     return $as_sci_Vector($as_sc_SeqOps(this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$14$2) {
-        var x$14 = x$14$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$14)
+      return (function(x$15$2) {
+        var x$15 = x$15$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$15)
       })
     })(this)))).$plus$colon__O__O(rassoc$1))
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node]))) : $as_sci_Vector(cs.flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this$2) {
-      return (function(x$15$2) {
-        var x$15 = x$15$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this$2, x$15)
+      return (function(x$16$2) {
+        var x$16 = x$16$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this$2, x$16)
       })
     })(this)))))
   }
@@ -12154,18 +12160,21 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$1__Lorg
     return (void 0)
   }
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_HTMLInputElement__V = (function(x$4, inp$2) {
+  $m_Lwhiteboard_Whiteboard$().colour_$eq__T__V($as_T(inp$2.value))
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
   var x1 = $m_Lwhiteboard_Whiteboard$().xy__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__T2(event, pad$1);
   if ((x1 !== null)) {
     var x = x1._1$mcD$sp__D();
     var y = x1._2$mcD$sp__D();
-    var x$4 = new $c_T2$mcDD$sp(x, y)
+    var x$5 = new $c_T2$mcDD$sp(x, y)
   } else {
-    var x$4;
+    var x$5;
     throw new $c_s_MatchError(x1)
   };
-  var x$2 = x$4._1$mcD$sp__D();
-  var y$2 = x$4._2$mcD$sp__D();
+  var x$2 = x$5._1$mcD$sp__D();
+  var y$2 = x$5._2$mcD$sp__D();
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-x", x$2);
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-y", y$2);
   var at = pad$1.attributes;
@@ -12173,21 +12182,21 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSke
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-x", $f_jl_Integer__toString__T($doubleToInt(x$2)));
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-y", $f_jl_Integer__toString__T($doubleToInt(y$2)))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$5__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-mousedown", $f_jl_Boolean__toString__T(false))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$5__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O = (function(event, pad$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$6__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O = (function(event, pad$1) {
   var x1 = $m_Lwhiteboard_Whiteboard$().xy__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__T2(event, pad$1);
   if ((x1 !== null)) {
     var a2 = x1._1$mcD$sp__D();
     var b2 = x1._2$mcD$sp__D();
-    var x$5 = new $c_T2$mcDD$sp(a2, b2)
+    var x$6 = new $c_T2$mcDD$sp(a2, b2)
   } else {
-    var x$5;
+    var x$6;
     throw new $c_s_MatchError(x1)
   };
-  var a2$2 = x$5._1$mcD$sp__D();
-  var b2$2 = x$5._2$mcD$sp__D();
+  var a2$2 = x$6._1$mcD$sp__D();
+  var b2$2 = x$6._2$mcD$sp__D();
   var a1 = $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-x").value)));
   var b1 = $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-y").value)));
   var l = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().line__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().x1__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(a1, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().x2__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(a2$2, $m_Lscalatags_JsDom$all$().doubleAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().y1__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b1, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().y2__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b2$2, $m_Lscalatags_JsDom$all$().doubleAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair($m_Lwhiteboard_Whiteboard$().colour__T(), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]));
@@ -12196,21 +12205,21 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSke
   var down = $m_sc_StringOps$().toBoolean$extension__T__Z($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-mousedown").value)));
   return (down ? pad$1.appendChild(l.render__Lorg_scalajs_dom_raw_Element()) : (void 0))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$2__Lorg_scalajs_dom_raw_MouseEvent__O = (function(x$6) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$2__Lorg_scalajs_dom_raw_MouseEvent__O = (function(x$7) {
   $m_Lwhiteboard_Whiteboard$().autoUpdate_$eq__Z__V((!$m_Lwhiteboard_Whiteboard$().autoUpdate__Z()));
   $m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement().innerText = ("Auto-update: " + $m_Lwhiteboard_Whiteboard$().autoUpdate__Z());
   return ($m_Lwhiteboard_Whiteboard$().autoUpdate__Z() ? ($m_Lwhiteboard_Whiteboard$().update__V(), (void 0)) : (void 0))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$4__Lorg_scalajs_dom_raw_Event__Lwhiteboard_Content$Heading__V = (function(x$7, h$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$4__Lorg_scalajs_dom_raw_Event__Lwhiteboard_Content$Heading__V = (function(x$8, h$1) {
   h$1.simplify__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$8) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$9) {
   $m_Lwhiteboard_Whiteboard$().unFocus__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$9) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$10) {
   $m_Lwhiteboard_Whiteboard$().focus__V()
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$10) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$11) {
   $m_Lwhiteboard_Whiteboard$().focus__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
