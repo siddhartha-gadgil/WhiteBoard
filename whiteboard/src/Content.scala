@@ -424,7 +424,9 @@ object Content {
   | To edit a formula, click on it. Look at the source below, or read markdown documentation. You can also experiment here. 
   |Note that you have to move the cursor manually out of formulas and other special environments.
   |To make a quick sketchpad with the default size, just type a _triple underscore_, i.e., the underscore thrice. 
-  |For custom sizes, type _triple dollar_ width, height _triple dollar_. 
+  |For custom sizes, type _triple dollar_ width, height _triple dollar_. You can also insert an SVG image by selecting the file
+  |using the file selector on top and then using Alt-U to place it (this is erratic as it depends on being able to locate your cursor.
+  |If you have trouble, format and insert in the middle of text, which you can delete later).
   |
   |To save your work, note that both the source as seen by 
   |this application and a HTML source is shown when not in focus mode. Save these with a text editor. The HTML source will 
