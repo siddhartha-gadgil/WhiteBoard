@@ -9,6 +9,11 @@
     max-height: 500px;
 }
 
+div{
+    margin: 8px;
+    padding: 8px;
+}
+
 .source {
     max-height: 200px;
     width: 100%;
@@ -28,4 +33,5 @@
 
 .sketchpad, .verbatim{
     resize: both;
+    overflow: scroll;
 }

@@ -88,6 +88,7 @@ object Whiteboard {
     sourceDiv.appendChild(pre(s).render)
   }
 
+
   showSource(Content.initialText)
 
   Content.example.divs
@@ -96,6 +97,29 @@ object Whiteboard {
 
   def edNode =
     dom.document.querySelector("#editor").asInstanceOf[HTMLElement]
+
+  def htmlPre = 
+  s"""<!DOCTYPE html>
+  |
+  |<html>
+  |
+  |<head>
+  |    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.css"  
+  |integrity="sha384-bsHo4/LA+lkZv61JspMDQB9QP1TtO4IgOf2yYS+J6VdAYLVyx1c3XKcsHh0Vy8Ws" crossorigin="anonymous">
+  |    <link rel="icon" href="IIScLogo.jpg">
+  |    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  |integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  |    <script src="js/katex.js"></script>
+  |</head>
+  |
+  |<body>
+  |    <div class="container">
+  |       ${edNode.innerHTML}
+  |    </div>
+  |</body>
+  |
+  |</html>
+  |""".stripMargin
 
   var focussed = false
 
@@ -310,6 +334,7 @@ object Whiteboard {
                   jsDiv.appendChild(
                     div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
                   )
+                  jsDiv.appendChild(div(p(), h3(`class` := "extra")("HTML source"),  pre(`class` := "extra source")(htmlPre)).render)
 
                   if (focussed) focus()
 
