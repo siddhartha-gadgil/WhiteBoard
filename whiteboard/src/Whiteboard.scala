@@ -508,7 +508,7 @@ object FileGet {
   import org.scalajs.dom.{document => doc}
   import org.scalajs.dom.raw._
   import scala.scalajs.js
-  val fileInput = input(`type` := "file",  accept := ".svg", `class` := "bg-primary").render
+  val fileInput = input(`type` := "file",  accept := ".svg").render
   fileInput.onchange = event => {
     val reader = new FileReader()
     reader.onload = event => {
