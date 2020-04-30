@@ -67,8 +67,55 @@ object Whiteboard {
 
   jsDiv.appendChild(autoView)
 
+  def insertAtCursor(newText: String) = {
+    val selection = dom.window.getSelection()
+
+    val text = fullText(edNode)
+
+    val selected = selection.getRangeAt(0).startContainer.parentNode
+
+    val basic = baseNodes(edNode)
+    val offsetOpt = globalOffset(
+      basic,
+      selected.asInstanceOf[HTMLElement],
+      selection.focusOffset
+    )
+
+    if (offsetOpt.isEmpty) console.log("could not find cursor")
+    offsetOpt.map { n =>
+      val withInsert = text.take(n) + newText + text.drop(n)
+      val reparse = fastparse.parse(withInsert, Content.bdy(_))
+      reparse.fold[Unit](
+        {
+          case f: (String, Int, Parsed.Extra) =>
+            console.log(s"could not parse: \n\nError: $f")
+        }, {
+          case (newBody: Content.Body, _: Int) =>
+            jsDiv.innerHTML = ""
+            jsDiv.appendChild(autoView)
+            jsDiv.appendChild(newBody.view)
+            jsDiv.appendChild(
+              div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
+            )
+            jsDiv.appendChild(
+              div(
+                p(),
+                h3(`class` := "extra")("HTML source"),
+                pre(`class` := "extra source")(htmlPre)
+              ).render
+            )
+            update()
+
+        }
+      )
+
+    }
+    activateSketches()
+  }
+
   jsDiv.onkeydown = (e) => {
     if (e.altKey && e.keyCode == 66) update()
+    if (e.altKey && e.keyCode == 67) insertAtCursor("test-insert")
     if (e.altKey && e.keyCode == 76) if (focussed) unFocus() else focus()
     if (e.altKey && e.keyCode == 65) {
       autoUpdate = !autoUpdate
@@ -79,7 +126,7 @@ object Whiteboard {
   }
 
   def activateSketches(): Unit = {
-    val skechPadsRaw = dom.document.querySelectorAll(".sketchpad")
+    val skechPadsRaw = dom.document.getElementsByTagName("svg")
     val sketchPads =
       (for { i <- 0 until (skechPadsRaw.length) } yield skechPadsRaw(
         i
@@ -278,13 +325,13 @@ object Whiteboard {
       if (x == p) Some(offset)
       else {
         if (isBlankNode(p)) {
-          console.log("Blank"); console.log(p); console.log(offset)
+          // console.log("Blank"); console.log(p); console.log(offset)
         }
         val shift = if (isBreakNode(x)) 0 else fullText(x).size
-        console.log("shift", shift)
-        console.log("due to", x)
-        console.log("is break:", isBreakNode(x))
-        console.log("previous offset", offset)
+        // console.log("shift", shift)
+        // console.log("due to", x)
+        // console.log("is break:", isBreakNode(x))
+        // console.log("previous offset", offset)
         globalOffset(ys, p, offset + shift)
       }
     case _ => None
@@ -307,12 +354,12 @@ object Whiteboard {
       div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
     )
     jsDiv.appendChild(
-                    div(
-                      p(),
-                      h3(`class` := "extra")("HTML source"),
-                      pre(`class` := "extra source")(htmlPre)
-                    ).render
-                  )
+      div(
+        p(),
+        h3(`class` := "extra")("HTML source"),
+        pre(`class` := "extra source")(htmlPre)
+      ).render
+    )
     activateSketches()
 
   }
@@ -347,9 +394,9 @@ object Whiteboard {
             console.log("missing selected node", selected)
             console.log(selected.asInstanceOf[HTMLElement].textContent.size)
             console.log(isBreakNode(selected.asInstanceOf[HTMLElement]))
-            offspring(selected)
-              .collect { case n: HTMLElement if n != () => n }
-              .foreach(n => console.log(n.tagName))
+            // offspring(selected)
+            //   .collect { case n: HTMLElement if n != () => n }
+            //   .foreach(n => console.log(n.tagName))
           }
 
           if (offset.isEmpty)
@@ -442,4 +489,22 @@ object Whiteboard {
     // log(Content.getXML(s"<div>$edContent</div>").toString)
   }
 
+}
+
+object FileDummy {
+  var content: Option[String] = None
+
+  import org.scalajs.dom.{document => doc}
+  import org.scalajs.dom.raw._
+  import scala.scalajs.js
+  val fileInput = input(`type` := "file").render
+  fileInput.onchange = event => {
+    val reader = new FileReader()
+    reader.onload = event => {
+      println(reader.result)
+    }
+    val file = fileInput.files(0)
+    reader.readAsText(file)
+    reader.onload = (_) => content = Some(reader.result.asInstanceOf[String])
+  }
 }
