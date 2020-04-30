@@ -345,6 +345,8 @@ object Content {
       case (h, w) => Svg.verb(h, w)
     }
 
+  def quickSvg[_: P] : P[Phrase] = P("___" ~ !"_").map{(_) => Svg.verb(1200, 300)}
+
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
 
@@ -357,7 +359,7 @@ object Content {
     P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString(""), true))
 
   def phrase[_: P]: P[Phrase] =
-    P(svgParse | verbatim | displayMath | inlineTeX | bold | ital | word)
+    P(quickSvg | svgParse | verbatim | displayMath | inlineTeX | bold | ital | word)
 
   def dispAhead[_: P] = P(&("$$"))
 

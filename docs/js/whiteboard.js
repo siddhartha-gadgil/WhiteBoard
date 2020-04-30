@@ -7160,9 +7160,9 @@ function $p_Lwhiteboard_Content$__example$lzycompute__Lwhiteboard_Content$Body($
         return $p_Lwhiteboard_Content$__$anonfun$example$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
       })
     })($thiz))), new $c_sjsr_AnonFunction1((function(this$2) {
-      return (function(x$16$2) {
-        var x$16 = $as_Lfastparse_ParsingRun(x$16$2);
-        return $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$16)
+      return (function(x$17$2) {
+        var x$17 = $as_Lfastparse_ParsingRun(x$17$2);
+        return $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$17)
       })
     })($thiz)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument()).get__Lfastparse_Parsed$Success().value__O());
     $thiz.Lwhiteboard_Content$__f_bitmap$0 = true
@@ -8109,8 +8109,37 @@ function $p_Lwhiteboard_Content$__$anonfun$svgParse$23__T2__Lwhiteboard_Phrase($
     throw new $c_s_MatchError(x1)
   }
 }
-function $p_Lwhiteboard_Content$__$anonfun$letter$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$6$1) {
-  return $m_Lwhiteboard_Content$().blankLine__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$6$1)
+function $p_Lwhiteboard_Content$__$anonfun$quickSvg$1__Lfastparse_ParserInput__I__Z($thiz, string$macro$1, offset$macro$2) {
+  return (((string$macro$1.apply__I__C(((offset$macro$2 + 0) | 0)) === 95) && (string$macro$1.apply__I__C(((offset$macro$2 + 1) | 0)) === 95)) && (string$macro$1.apply__I__C(((offset$macro$2 + 2) | 0)) === 95))
+}
+function $p_Lwhiteboard_Content$__$anonfun$quickSvg$2__T($thiz) {
+  return "\"___\""
+}
+function $p_Lwhiteboard_Content$__$anonfun$quickSvg$4__T($thiz) {
+  return "\"_\""
+}
+function $p_Lwhiteboard_Content$__$anonfun$quickSvg$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$6$1) {
+  var x1 = evidence$6$1;
+  var input = x1.input__Lfastparse_ParserInput();
+  var index = x1.index__I();
+  var res = ((input.isReachable__I__Z(index) && (input.apply__I__C(index) === 95)) ? x1.freshSuccessUnit__I__Lfastparse_ParsingRun(((index + 1) | 0)) : x1.freshFailure__Lfastparse_ParsingRun());
+  if (x1.verboseFailures__Z()) {
+    x1.aggregateTerminal__I__F0__V(index, new $c_sjsr_AnonFunction0((function(this\u00f8) {
+      return (function() {
+        return $p_Lwhiteboard_Content$__$anonfun$quickSvg$4__T(this\u00f8)
+      })
+    })($thiz)))
+  };
+  return res
+}
+function $p_Lwhiteboard_Content$__$anonfun$quickSvg$5__T($thiz) {
+  return new $c_Lsourcecode_Name("quickSvg").value__T()
+}
+function $p_Lwhiteboard_Content$__$anonfun$quickSvg$6__jl_Void__Lwhiteboard_Content$Verbatim($thiz, x$13) {
+  return $m_Lwhiteboard_Content$Svg$().verb__I__I__Lwhiteboard_Content$Verbatim(1200, 300)
+}
+function $p_Lwhiteboard_Content$__$anonfun$letter$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$7$1) {
+  return $m_Lwhiteboard_Content$().blankLine__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$7$1)
 }
 function $p_Lwhiteboard_Content$__$anonfun$letter$2__C__Z($thiz, x) {
   return (!$as_sc_SetOps($m_s_Predef$().Set__sci_Set$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$bC(36), $bC(95)]))).contains__O__Z($bC(x)))
@@ -8118,21 +8147,21 @@ function $p_Lwhiteboard_Content$__$anonfun$letter$2__C__Z($thiz, x) {
 function $p_Lwhiteboard_Content$__$anonfun$letter$3__F1__T($thiz, x1$21) {
   return (("char-pred(" + x1$21) + ")")
 }
-function $p_Lwhiteboard_Content$__$anonfun$word$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$7$1) {
-  return $m_Lwhiteboard_Content$().letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$7$1)
+function $p_Lwhiteboard_Content$__$anonfun$word$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$8$1) {
+  return $m_Lwhiteboard_Content$().letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$8$1)
 }
 function $p_Lwhiteboard_Content$__$anonfun$word$2__Lfastparse_internal_Msgs__T($thiz, parsedMsg$macro$9$4) {
   return ((parsedMsg$macro$9$4.render__T() + ".rep") + (("(" + 1) + ")"))
 }
-function $p_Lwhiteboard_Content$__rec$macro$7$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun($thiz, startIndex$macro$4, count$macro$5, lastAgg$macro$10, x1$22, originalCut$macro$8$4, evidence$7$1, x1$23, acc$macro$3$4) {
+function $p_Lwhiteboard_Content$__rec$macro$7$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun($thiz, startIndex$macro$4, count$macro$5, lastAgg$macro$10, x1$22, originalCut$macro$8$4, evidence$8$1, x1$23, acc$macro$3$4) {
   var _$this = $thiz;
   while (true) {
     x1$22.cut_$eq__Z__V((originalCut$macro$8$4.sr_BooleanRef__f_elem && (count$macro$5 < 1)));
-    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$7$1) {
+    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$8$1) {
       return (function() {
-        return $p_Lwhiteboard_Content$__$anonfun$word$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$7$1)
+        return $p_Lwhiteboard_Content$__$anonfun$word$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$8$1)
       })
-    })(_$this, evidence$7$1))).apply__O();
+    })(_$this, evidence$8$1))).apply__O();
     var parsedMsg$macro$9 = x1$22.shortParserMsg__Lfastparse_internal_Msgs();
     var parsedAgg$macro$11 = x1$22.failureGroupAggregate__Lfastparse_internal_Msgs();
     originalCut$macro$8$4.sr_BooleanRef__f_elem = (!(!(originalCut$macro$8$4.sr_BooleanRef__f_elem | x1$22.cut__Z())));
@@ -8184,21 +8213,21 @@ function $p_Lwhiteboard_Content$__$anonfun$bold$1__Lfastparse_ParserInput__I__Z(
 function $p_Lwhiteboard_Content$__$anonfun$bold$2__T($thiz) {
   return "\"__\""
 }
-function $p_Lwhiteboard_Content$__$anonfun$bold$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$8$1) {
-  return $m_Lwhiteboard_Content$().letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$8$1)
+function $p_Lwhiteboard_Content$__$anonfun$bold$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$9$1) {
+  return $m_Lwhiteboard_Content$().letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$9$1)
 }
 function $p_Lwhiteboard_Content$__$anonfun$bold$4__Lfastparse_internal_Msgs__T($thiz, parsedMsg$macro$11$3) {
   return ((parsedMsg$macro$11$3.render__T() + ".rep") + (("(" + 1) + ")"))
 }
-function $p_Lwhiteboard_Content$__rec$macro$9$3__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun($thiz, startIndex$macro$6, count$macro$7, lastAgg$macro$12, x1$24, originalCut$macro$10$3, evidence$8$1, x1$25, acc$macro$5$3) {
+function $p_Lwhiteboard_Content$__rec$macro$9$3__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun($thiz, startIndex$macro$6, count$macro$7, lastAgg$macro$12, x1$24, originalCut$macro$10$3, evidence$9$1, x1$25, acc$macro$5$3) {
   var _$this = $thiz;
   while (true) {
     x1$24.cut_$eq__Z__V((originalCut$macro$10$3.sr_BooleanRef__f_elem && (count$macro$7 < 1)));
-    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$8$1) {
+    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$9$1) {
       return (function() {
-        return $p_Lwhiteboard_Content$__$anonfun$bold$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$8$1)
+        return $p_Lwhiteboard_Content$__$anonfun$bold$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$9$1)
       })
-    })(_$this, evidence$8$1))).apply__O();
+    })(_$this, evidence$9$1))).apply__O();
     var parsedMsg$macro$11 = x1$24.shortParserMsg__Lfastparse_internal_Msgs();
     var parsedAgg$macro$13 = x1$24.failureGroupAggregate__Lfastparse_internal_Msgs();
     originalCut$macro$10$3.sr_BooleanRef__f_elem = (!(!(originalCut$macro$10$3.sr_BooleanRef__f_elem | x1$24.cut__Z())));
@@ -8256,21 +8285,21 @@ function $p_Lwhiteboard_Content$__$anonfun$bold$8__sci_Seq__Lwhiteboard_Content$
 function $p_Lwhiteboard_Content$__$anonfun$ital$1__T($thiz) {
   return "\"_\""
 }
-function $p_Lwhiteboard_Content$__$anonfun$ital$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$9$1) {
-  return $m_Lwhiteboard_Content$().letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$9$1)
+function $p_Lwhiteboard_Content$__$anonfun$ital$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$10$1) {
+  return $m_Lwhiteboard_Content$().letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10$1)
 }
 function $p_Lwhiteboard_Content$__$anonfun$ital$3__Lfastparse_internal_Msgs__T($thiz, parsedMsg$macro$9$5) {
   return ((parsedMsg$macro$9$5.render__T() + ".rep") + (("(" + 1) + ")"))
 }
-function $p_Lwhiteboard_Content$__rec$macro$7$5__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun($thiz, startIndex$macro$4, count$macro$5, lastAgg$macro$10, x1$26, originalCut$macro$8$5, evidence$9$1, x1$27, acc$macro$3$5) {
+function $p_Lwhiteboard_Content$__rec$macro$7$5__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun($thiz, startIndex$macro$4, count$macro$5, lastAgg$macro$10, x1$26, originalCut$macro$8$5, evidence$10$1, x1$27, acc$macro$3$5) {
   var _$this = $thiz;
   while (true) {
     x1$26.cut_$eq__Z__V((originalCut$macro$8$5.sr_BooleanRef__f_elem && (count$macro$5 < 1)));
-    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$9$1) {
+    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$10$1) {
       return (function() {
-        return $p_Lwhiteboard_Content$__$anonfun$ital$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$9$1)
+        return $p_Lwhiteboard_Content$__$anonfun$ital$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$10$1)
       })
-    })(_$this, evidence$9$1))).apply__O();
+    })(_$this, evidence$10$1))).apply__O();
     var parsedMsg$macro$9 = x1$26.shortParserMsg__Lfastparse_internal_Msgs();
     var parsedAgg$macro$11 = x1$26.failureGroupAggregate__Lfastparse_internal_Msgs();
     originalCut$macro$8$5.sr_BooleanRef__f_elem = (!(!(originalCut$macro$8$5.sr_BooleanRef__f_elem | x1$26.cut__Z())));
@@ -8337,8 +8366,8 @@ function $p_Lwhiteboard_Content$__$anonfun$displayMath$4__C__Z($thiz, x) {
 function $p_Lwhiteboard_Content$__$anonfun$displayMath$5__F1__T($thiz, x1$29) {
   return (("char-pred(" + x1$29) + ")")
 }
-function $p_Lwhiteboard_Content$__$anonfun$displayMath$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$12$1) {
-  var x1 = evidence$12$1;
+function $p_Lwhiteboard_Content$__$anonfun$displayMath$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$13$1) {
+  var x1 = evidence$13$1;
   var x1$2 = new $c_sjsr_AnonFunction1((function(this\u00f8) {
     return (function(x$2) {
       var x = $uC(x$2);
@@ -8359,15 +8388,15 @@ function $p_Lwhiteboard_Content$__$anonfun$displayMath$3__Lfastparse_ParsingRun_
 function $p_Lwhiteboard_Content$__$anonfun$displayMath$6__Lfastparse_internal_Msgs__T($thiz, parsedMsg$macro$11$4) {
   return ((parsedMsg$macro$11$4.render__T() + ".rep") + (("(" + 1) + ")"))
 }
-function $p_Lwhiteboard_Content$__rec$macro$9$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater$UnitRepeater$__jl_Void__Lfastparse_ParsingRun($thiz, startIndex$macro$6, count$macro$7, lastAgg$macro$12, x1$28, originalCut$macro$10$4, evidence$12$1, x1$30, acc$macro$5$4) {
+function $p_Lwhiteboard_Content$__rec$macro$9$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater$UnitRepeater$__jl_Void__Lfastparse_ParsingRun($thiz, startIndex$macro$6, count$macro$7, lastAgg$macro$12, x1$28, originalCut$macro$10$4, evidence$13$1, x1$30, acc$macro$5$4) {
   var _$this = $thiz;
   while (true) {
     x1$28.cut_$eq__Z__V((originalCut$macro$10$4.sr_BooleanRef__f_elem && (count$macro$7 < 1)));
-    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$12$1) {
+    $m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$13$1) {
       return (function() {
-        return $p_Lwhiteboard_Content$__$anonfun$displayMath$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$12$1)
+        return $p_Lwhiteboard_Content$__$anonfun$displayMath$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$13$1)
       })
-    })(_$this, evidence$12$1))).apply__O();
+    })(_$this, evidence$13$1))).apply__O();
     var parsedMsg$macro$11 = x1$28.shortParserMsg__Lfastparse_internal_Msgs();
     var parsedAgg$macro$13 = x1$28.failureGroupAggregate__Lfastparse_internal_Msgs();
     originalCut$macro$10$4.sr_BooleanRef__f_elem = (!(!(originalCut$macro$10$4.sr_BooleanRef__f_elem | x1$28.cut__Z())));
@@ -8450,14 +8479,14 @@ function $p_Lwhiteboard_Content$__$anonfun$spanSeq$4__T2__sci_Vector($thiz, x0$2
     throw new $c_s_MatchError(x1)
   }
 }
-function $p_Lwhiteboard_Content$__$anonfun$spanSeq$5__jl_Void__sci_Vector($thiz, x$13) {
+function $p_Lwhiteboard_Content$__$anonfun$spanSeq$5__jl_Void__sci_Vector($thiz, x$14) {
   return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sci_Nil$()))
 }
 function $p_Lwhiteboard_Content$__$anonfun$headHead$2__T($thiz) {
   return "\"#\""
 }
-function $p_Lwhiteboard_Content$__$anonfun$headHead$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$14$1) {
-  var x1 = evidence$14$1;
+function $p_Lwhiteboard_Content$__$anonfun$headHead$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, evidence$15$1) {
+  var x1 = evidence$15$1;
   var input = x1.input__Lfastparse_ParserInput();
   var index = x1.index__I();
   var res = ((input.isReachable__I__Z(index) && (input.apply__I__C(index) === 35)) ? x1.freshSuccessUnit__I__Lfastparse_ParsingRun(((index + 1) | 0)) : x1.freshFailure__Lfastparse_ParsingRun());
@@ -8482,8 +8511,8 @@ function $p_Lwhiteboard_Content$__$anonfun$headHead$5__T__T($thiz, s1$5) {
 function $p_Lwhiteboard_Content$__$anonfun$headHead$6__T($thiz) {
   return new $c_Lsourcecode_Name("headHead").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$headHead$7__T__I($thiz, x$14) {
-  return $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(x$14))
+function $p_Lwhiteboard_Content$__$anonfun$headHead$7__T__I($thiz, x$15) {
+  return $m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T(x$15))
 }
 function $p_Lwhiteboard_Content$__$anonfun$para$1__T($thiz) {
   return new $c_Lsourcecode_Name("para").value__T()
@@ -8507,7 +8536,7 @@ function $p_Lwhiteboard_Content$__$anonfun$heading$2__T2__Lwhiteboard_Sentence($
 function $p_Lwhiteboard_Content$__$anonfun$sentence$1__T($thiz) {
   return new $c_Lsourcecode_Name("sentence").value__T()
 }
-function $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector($thiz, x$15) {
+function $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector($thiz, x$16) {
   return $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sci_Nil$()))
 }
 function $p_Lwhiteboard_Content$__$anonfun$divSeq$2__T($thiz) {
@@ -8530,8 +8559,8 @@ function $p_Lwhiteboard_Content$__$anonfun$bdy$1__sci_Vector__Lwhiteboard_Conten
 function $p_Lwhiteboard_Content$__$anonfun$example$1__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$16) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$16)
+function $p_Lwhiteboard_Content$__$anonfun$example$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$17) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$17)
 }
 function $p_Lwhiteboard_Content$__$anonfun$divOffset$1__I__T2__T2($thiz, shift$1, x0$1) {
   var x1 = x0$1;
@@ -8543,14 +8572,14 @@ function $p_Lwhiteboard_Content$__$anonfun$divOffset$1__I__T2__T2($thiz, shift$1
     throw new $c_s_MatchError(x1)
   }
 }
-function $p_Lwhiteboard_Content$__$anonfun$divOffset$3__Lwhiteboard_Phrase__I($thiz, x$17) {
-  return x$17.sourceLength__I()
+function $p_Lwhiteboard_Content$__$anonfun$divOffset$3__Lwhiteboard_Phrase__I($thiz, x$18) {
+  return x$18.sourceLength__I()
 }
-function $p_Lwhiteboard_Content$__$anonfun$divOffset$2__I__Lwhiteboard_Sentence__sci_Vector__I__s_Option($thiz, offset$1, x$18, ys$1, localOffset$1) {
-  var remaining = ((offset$1 - $uI($as_sc_IterableOnceOps(x$18.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$17$2) {
-      var x$17 = $as_Lwhiteboard_Phrase(x$17$2);
-      return $p_Lwhiteboard_Content$__$anonfun$divOffset$3__Lwhiteboard_Phrase__I(this\u00f8, x$17)
+function $p_Lwhiteboard_Content$__$anonfun$divOffset$2__I__Lwhiteboard_Sentence__sci_Vector__I__s_Option($thiz, offset$1, x$19, ys$1, localOffset$1) {
+  var remaining = ((offset$1 - $uI($as_sc_IterableOnceOps(x$19.spans__sci_Vector().map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
+    return (function(x$18$2) {
+      var x$18 = $as_Lwhiteboard_Phrase(x$18$2);
+      return $p_Lwhiteboard_Content$__$anonfun$divOffset$3__Lwhiteboard_Phrase__I(this\u00f8, x$18)
     })
   })($thiz)))).sum__s_math_Numeric__O($m_s_math_Numeric$IntIsIntegral$()))) | 0);
   return $m_Lwhiteboard_Content$().divOffset__sci_Vector__I__I__s_Option(ys$1, remaining, localOffset$1)
@@ -9631,16 +9660,116 @@ $c_Lwhiteboard_Content$.prototype.svgParse__Lfastparse_ParsingRun__Lfastparse_Pa
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$6) {
+$c_Lwhiteboard_Content$.prototype.quickSvg__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$6) {
+  var $$x3 = $m_Lfastparse_package$();
   var x1 = evidence$6;
+  var startIndex = x1.index__I();
+  var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
+  if (instrument) {
+    x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("quickSvg").value__T(), startIndex)
+  };
+  var x1$2 = evidence$6;
+  var x1$3 = $m_Lfastparse_Implicits$Sequencer$().SingleSequencer__Lfastparse_Implicits$Sequencer();
+  var preLhsIndex$macro$4 = x1$2.index__I();
+  var input$macro$13 = x1$2.input__Lfastparse_ParserInput();
+  var $$x1 = $m_Lfastparse_package$();
+  var x1$4 = evidence$6;
+  var index = x1$4.index__I();
+  var end = ((index + 3) | 0);
+  var input = x1$4.input__Lfastparse_ParserInput();
+  var res = ((input.isReachable__I__Z(((end - 1) | 0)) && $uZ(new $c_sjsr_AnonFunction2((function(this\u00f8) {
+    return (function(string$macro$1$2, offset$macro$2$2) {
+      var string$macro$1 = $as_Lfastparse_ParserInput(string$macro$1$2);
+      var offset$macro$2 = $uI(offset$macro$2$2);
+      return $p_Lwhiteboard_Content$__$anonfun$quickSvg$1__Lfastparse_ParserInput__I__Z(this\u00f8, string$macro$1, offset$macro$2)
+    })
+  })(this)).apply__O__O__O(input, index))) ? x1$4.freshSuccessUnit__I__Lfastparse_ParsingRun(end) : x1$4.freshFailure__Lfastparse_ParsingRun());
+  if (x1$4.verboseFailures__Z()) {
+    x1$4.aggregateTerminal__I__F0__V(index, new $c_sjsr_AnonFunction0((function(this$2) {
+      return (function() {
+        return $p_Lwhiteboard_Content$__$anonfun$quickSvg$2__T(this$2)
+      })
+    })(this)))
+  };
+  $$x1.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(res);
+  if ((!x1$2.isSuccess__Z())) {
+    var x1$5 = x1$2
+  } else {
+    var postLhsIndex$macro$5 = x1$2.index__I();
+    var lhsAggregate$macro$8 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
+    var lhsMsg$macro$11 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
+    if (((postLhsIndex$macro$5 > preLhsIndex$macro$4) && x1$2.checkForDrop__Z())) {
+      input$macro$13.dropBuffer__I__V(postLhsIndex$macro$5)
+    };
+    var lhsValue$macro$14 = x1$2.successValue__O();
+    if (((!x1$2.isSuccess__Z()) && x1$2.cut__Z())) {
+      var x1$5 = x1$2
+    } else {
+      var preRhsIndex$macro$6 = x1$2.index__I();
+      $m_Lfastparse_package$ByNameOps$().unary_$bang$extension__F0__Lfastparse_ParsingRun__Lfastparse_ParsingRun(new $c_sjsr_AnonFunction0((function(this$3, evidence$6) {
+        return (function() {
+          return $p_Lwhiteboard_Content$__$anonfun$quickSvg$3__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$3, evidence$6)
+        })
+      })(this, evidence$6)), evidence$6);
+      var rhsAggregate$macro$9 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
+      var rhsMsg$macro$10 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
+      if ((!x1$2.isSuccess__Z())) {
+        var res$macro$16 = x1$2
+      } else {
+        var postRhsIndex$macro$7 = x1$2.index__I();
+        var rhsMadeProgress$macro$12 = (postRhsIndex$macro$7 > preRhsIndex$macro$6);
+        var nextIndex$macro$15 = (((!rhsMadeProgress$macro$12) && input$macro$13.isReachable__I__Z(postRhsIndex$macro$7)) ? postLhsIndex$macro$5 : postRhsIndex$macro$7);
+        if ((rhsMadeProgress$macro$12 && x1$2.checkForDrop__Z())) {
+          input$macro$13.dropBuffer__I__V(postRhsIndex$macro$7)
+        };
+        var res$macro$16 = x1$2.freshSuccess__O__I__Lfastparse_ParsingRun(x1$3.apply__O__O__O((void 0), (x1$2.successValue__O(), (void 0))), nextIndex$macro$15)
+      };
+      if (x1$2.verboseFailures__Z()) {
+        var $$x2 = $m_Lfastparse_internal_Util$().joinBinOp__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(lhsMsg$macro$11, rhsMsg$macro$10);
+        var rassoc$1 = rhsAggregate$macro$9;
+        x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(preLhsIndex$macro$4, $$x2, lhsAggregate$macro$8.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$1), (preRhsIndex$macro$6 === x1$2.traceIndex__I()))
+      };
+      var x1$5 = res$macro$16
+    }
+  };
+  if (instrument) {
+    x1.instrument__Lfastparse_internal_Instrument().afterParse__T__I__Z__V(new $c_Lsourcecode_Name("quickSvg").value__T(), x1$5.index__I(), x1$5.isSuccess__Z())
+  };
+  if (x1$5.verboseFailures__Z()) {
+    x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(startIndex, new $c_Lfastparse_internal_Msgs($as_sci_List($m_sci_List$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lfastparse_internal_Lazy(new $c_sjsr_AnonFunction0((function(this$4) {
+      return (function() {
+        return $p_Lwhiteboard_Content$__$anonfun$quickSvg$5__T(this$4)
+      })
+    })(this)))])))), x1$5.failureGroupAggregate__Lfastparse_internal_Msgs(), (startIndex < x1$5.traceIndex__I()));
+    if ((!x1$5.isSuccess__Z())) {
+      var rassoc$1$2 = $m_s_Predef$ArrowAssoc$().$minus$greater$extension__O__O__T2($m_s_Predef$().ArrowAssoc__O__O(new $c_Lsourcecode_Name("quickSvg").value__T()), startIndex);
+      x1$5.failureStack_$eq__sci_List__V(x1$5.failureStack__sci_List().$colon$colon__O__sci_List(rassoc$1$2))
+    }
+  };
+  var x1$6 = $$x3.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x1$5);
+  if ((!x1$6.isSuccess__Z())) {
+    return x1$6
+  } else {
+    var this2 = x1$6;
+    this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$5) {
+      return (function(x$13$2) {
+        var x$13 = $as_jl_Void(x$13$2);
+        return $p_Lwhiteboard_Content$__$anonfun$quickSvg$6__jl_Void__Lwhiteboard_Content$Verbatim(this$5, x$13)
+      })
+    })(this)).apply__O__O((this2.successValue__O(), (void 0))));
+    return this2
+  }
+});
+$c_Lwhiteboard_Content$.prototype.letter__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$7) {
+  var x1 = evidence$7;
   var x1$2 = $m_Lfastparse_Implicits$Sequencer$().SingleSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$2 = x1.index__I();
   var input$macro$11 = x1.input__Lfastparse_ParserInput();
-  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$ByNameOps$().unary_$bang$extension__F0__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$6) {
+  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$ByNameOps$().unary_$bang$extension__F0__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$().ByNameOps__F0__F0(new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$7) {
     return (function() {
-      return $p_Lwhiteboard_Content$__$anonfun$letter$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$6)
+      return $p_Lwhiteboard_Content$__$anonfun$letter$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$7)
     })
-  })(this, evidence$6))), evidence$6));
+  })(this, evidence$7))), evidence$7));
   if ((!x1.isSuccess__Z())) {
     return x1
   } else {
@@ -9655,12 +9784,12 @@ $c_Lwhiteboard_Content$.prototype.letter__Lfastparse_ParsingRun__Lfastparse_Pars
       return x1
     } else {
       var preRhsIndex$macro$4 = x1.index__I();
-      var x1$3 = evidence$6;
+      var x1$3 = evidence$7;
       var startPos = x1$3.index__I();
       var oldCapturing = x1$3.noDropBuffer__Z();
       x1$3.noDropBuffer_$eq__Z__V(true);
       var $$x1 = $m_Lfastparse_package$();
-      var x1$4 = evidence$6;
+      var x1$4 = evidence$7;
       var x1$5 = new $c_sjsr_AnonFunction1((function(this$2) {
         return (function(x$2) {
           var x = $uC(x$2);
@@ -9705,13 +9834,13 @@ $c_Lwhiteboard_Content$.prototype.letter__Lfastparse_ParsingRun__Lfastparse_Pars
     }
   }
 });
-$c_Lwhiteboard_Content$.prototype.word__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$7) {
+$c_Lwhiteboard_Content$.prototype.word__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$8) {
   var $$x1 = $m_Lfastparse_package$();
-  var x1 = evidence$7;
+  var x1 = evidence$8;
   var x1$2 = $m_Lfastparse_Implicits$Repeater$().GenericRepeaterImplicit__Lfastparse_Implicits$Repeater();
   var originalCut$macro$8 = $s_sr_BooleanRef__create__Z__sr_BooleanRef(x1.cut__Z());
   var acc$macro$3 = x1$2.initial__O();
-  var x1$3 = $$x1.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($p_Lwhiteboard_Content$__rec$macro$7$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun(this, x1.index__I(), 0, null, x1, originalCut$macro$8, evidence$7, x1$2, acc$macro$3));
+  var x1$3 = $$x1.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($p_Lwhiteboard_Content$__rec$macro$7$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun(this, x1.index__I(), 0, null, x1, originalCut$macro$8, evidence$8, x1$2, acc$macro$3));
   if ((!x1$3.isSuccess__Z())) {
     return x1$3
   } else {
@@ -9725,25 +9854,25 @@ $c_Lwhiteboard_Content$.prototype.word__Lfastparse_ParsingRun__Lfastparse_Parsin
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.bold__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$8) {
+$c_Lwhiteboard_Content$.prototype.bold__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$9) {
   var $$x6 = $m_Lfastparse_package$();
-  var x1 = evidence$8;
+  var x1 = evidence$9;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("bold").value__T(), startIndex)
   };
-  var x1$2 = evidence$8;
+  var x1$2 = evidence$9;
   var x1$3 = $m_Lfastparse_Implicits$Sequencer$().UnitSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$32 = x1$2.index__I();
   var input$macro$41 = x1$2.input__Lfastparse_ParserInput();
   var $$x4 = $m_Lfastparse_package$();
-  var x1$4 = evidence$8;
+  var x1$4 = evidence$9;
   var x1$5 = $m_Lfastparse_Implicits$Sequencer$().SingleSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$15 = x1$4.index__I();
   var input$macro$24 = x1$4.input__Lfastparse_ParserInput();
   var $$x1 = $m_Lfastparse_package$();
-  var x1$6 = evidence$8;
+  var x1$6 = evidence$9;
   var index = x1$6.index__I();
   var end = ((index + 2) | 0);
   var input = x1$6.input__Lfastparse_ParserInput();
@@ -9776,11 +9905,11 @@ $c_Lwhiteboard_Content$.prototype.bold__Lfastparse_ParsingRun__Lfastparse_Parsin
       var $$x2 = x1$4
     } else {
       var preRhsIndex$macro$17 = x1$4.index__I();
-      var x1$7 = evidence$8;
+      var x1$7 = evidence$9;
       var x1$8 = $m_Lfastparse_Implicits$Repeater$().GenericRepeaterImplicit__Lfastparse_Implicits$Repeater();
       var originalCut$macro$10 = $s_sr_BooleanRef__create__Z__sr_BooleanRef(x1$7.cut__Z());
       var acc$macro$5 = x1$8.initial__O();
-      $p_Lwhiteboard_Content$__rec$macro$9$3__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun(this, x1$7.index__I(), 0, null, x1$7, originalCut$macro$10, evidence$8, x1$8, acc$macro$5);
+      $p_Lwhiteboard_Content$__rec$macro$9$3__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun(this, x1$7.index__I(), 0, null, x1$7, originalCut$macro$10, evidence$9, x1$8, acc$macro$5);
       var rhsAggregate$macro$20 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
       var rhsMsg$macro$21 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
       if ((!x1$4.isSuccess__Z())) {
@@ -9817,7 +9946,7 @@ $c_Lwhiteboard_Content$.prototype.bold__Lfastparse_ParsingRun__Lfastparse_Parsin
       var x1$10 = x1$2
     } else {
       var preRhsIndex$macro$34 = x1$2.index__I();
-      var x1$9 = evidence$8;
+      var x1$9 = evidence$9;
       var index$2 = x1$9.index__I();
       var end$2 = ((index$2 + 2) | 0);
       var input$2 = x1$9.input__Lfastparse_ParserInput();
@@ -9884,25 +10013,25 @@ $c_Lwhiteboard_Content$.prototype.bold__Lfastparse_ParsingRun__Lfastparse_Parsin
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.ital__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$9) {
+$c_Lwhiteboard_Content$.prototype.ital__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$10) {
   var $$x6 = $m_Lfastparse_package$();
-  var x1 = evidence$9;
+  var x1 = evidence$10;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("ital").value__T(), startIndex)
   };
-  var x1$2 = evidence$9;
+  var x1$2 = evidence$10;
   var x1$3 = $m_Lfastparse_Implicits$Sequencer$().UnitSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$28 = x1$2.index__I();
   var input$macro$37 = x1$2.input__Lfastparse_ParserInput();
   var $$x4 = $m_Lfastparse_package$();
-  var x1$4 = evidence$9;
+  var x1$4 = evidence$10;
   var x1$5 = $m_Lfastparse_Implicits$Sequencer$().SingleSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$13 = x1$4.index__I();
   var input$macro$22 = x1$4.input__Lfastparse_ParserInput();
   var $$x1 = $m_Lfastparse_package$();
-  var x1$6 = evidence$9;
+  var x1$6 = evidence$10;
   var input = x1$6.input__Lfastparse_ParserInput();
   var index = x1$6.index__I();
   var res = ((input.isReachable__I__Z(index) && (input.apply__I__C(index) === 95)) ? x1$6.freshSuccessUnit__I__Lfastparse_ParsingRun(((index + 1) | 0)) : x1$6.freshFailure__Lfastparse_ParsingRun());
@@ -9928,11 +10057,11 @@ $c_Lwhiteboard_Content$.prototype.ital__Lfastparse_ParsingRun__Lfastparse_Parsin
       var $$x2 = x1$4
     } else {
       var preRhsIndex$macro$15 = x1$4.index__I();
-      var x1$7 = evidence$9;
+      var x1$7 = evidence$10;
       var x1$8 = $m_Lfastparse_Implicits$Repeater$().GenericRepeaterImplicit__Lfastparse_Implicits$Repeater();
       var originalCut$macro$8 = $s_sr_BooleanRef__create__Z__sr_BooleanRef(x1$7.cut__Z());
       var acc$macro$3 = x1$8.initial__O();
-      $p_Lwhiteboard_Content$__rec$macro$7$5__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun(this, x1$7.index__I(), 0, null, x1$7, originalCut$macro$8, evidence$9, x1$8, acc$macro$3);
+      $p_Lwhiteboard_Content$__rec$macro$7$5__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater__O__Lfastparse_ParsingRun(this, x1$7.index__I(), 0, null, x1$7, originalCut$macro$8, evidence$10, x1$8, acc$macro$3);
       var rhsAggregate$macro$18 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
       var rhsMsg$macro$19 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
       if ((!x1$4.isSuccess__Z())) {
@@ -9969,7 +10098,7 @@ $c_Lwhiteboard_Content$.prototype.ital__Lfastparse_ParsingRun__Lfastparse_Parsin
       var x1$10 = x1$2
     } else {
       var preRhsIndex$macro$30 = x1$2.index__I();
-      var x1$9 = evidence$9;
+      var x1$9 = evidence$10;
       var input$2 = x1$9.input__Lfastparse_ParserInput();
       var index$2 = x1$9.index__I();
       var res$2 = ((input$2.isReachable__I__Z(index$2) && (input$2.apply__I__C(index$2) === 95)) ? x1$9.freshSuccessUnit__I__Lfastparse_ParsingRun(((index$2 + 1) | 0)) : x1$9.freshFailure__Lfastparse_ParsingRun());
@@ -10029,275 +10158,313 @@ $c_Lwhiteboard_Content$.prototype.ital__Lfastparse_ParsingRun__Lfastparse_Parsin
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.phrase__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$10) {
-  var x1 = evidence$10;
+$c_Lwhiteboard_Content$.prototype.phrase__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$11) {
+  var x1 = evidence$11;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("phrase").value__T(), startIndex)
   };
-  var x1$2 = evidence$10;
+  var x1$2 = evidence$11;
   var oldCut = x1$2.cut__Z();
   x1$2.cut_$eq__Z__V(false);
   var startPos = x1$2.index__I();
-  var $$x15 = $m_Lfastparse_package$();
-  var x1$3 = evidence$10;
+  var $$x18 = $m_Lfastparse_package$();
+  var x1$3 = evidence$11;
   var oldCut$2 = x1$3.cut__Z();
   x1$3.cut_$eq__Z__V(false);
   var startPos$2 = x1$3.index__I();
-  var $$x12 = $m_Lfastparse_package$();
-  var x1$4 = evidence$10;
+  var $$x15 = $m_Lfastparse_package$();
+  var x1$4 = evidence$11;
   var oldCut$3 = x1$4.cut__Z();
   x1$4.cut_$eq__Z__V(false);
   var startPos$3 = x1$4.index__I();
-  var $$x9 = $m_Lfastparse_package$();
-  var x1$5 = evidence$10;
+  var $$x12 = $m_Lfastparse_package$();
+  var x1$5 = evidence$11;
   var oldCut$4 = x1$5.cut__Z();
   x1$5.cut_$eq__Z__V(false);
   var startPos$4 = x1$5.index__I();
-  var $$x6 = $m_Lfastparse_package$();
-  var x1$6 = evidence$10;
+  var $$x9 = $m_Lfastparse_package$();
+  var x1$6 = evidence$11;
   var oldCut$5 = x1$6.cut__Z();
   x1$6.cut_$eq__Z__V(false);
   var startPos$5 = x1$6.index__I();
-  var $$x3 = $m_Lfastparse_package$();
-  var x1$7 = evidence$10;
+  var $$x6 = $m_Lfastparse_package$();
+  var x1$7 = evidence$11;
   var oldCut$6 = x1$7.cut__Z();
   x1$7.cut_$eq__Z__V(false);
   var startPos$6 = x1$7.index__I();
-  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.svgParse__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10));
-  var lhsMsg = x1$7.shortParserMsg__Lfastparse_internal_Msgs();
-  var lhsAggregate = x1$7.failureGroupAggregate__Lfastparse_internal_Msgs();
+  var $$x3 = $m_Lfastparse_package$();
+  var x1$8 = evidence$11;
+  var oldCut$7 = x1$8.cut__Z();
+  x1$8.cut_$eq__Z__V(false);
+  var startPos$7 = x1$8.index__I();
+  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.quickSvg__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11));
+  var lhsMsg = x1$8.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate = x1$8.failureGroupAggregate__Lfastparse_internal_Msgs();
+  if (x1$8.isSuccess__Z()) {
+    x1$8.cut_$eq__Z__V((!(!(x1$8.cut__Z() | oldCut$7))));
+    var $$x1 = x1$8
+  } else if (x1$8.cut__Z()) {
+    var $$x1 = x1$8
+  } else {
+    var verboseFailures = x1$8.verboseFailures__Z();
+    x1$8.index_$eq__I__V(startPos$7);
+    if (verboseFailures) {
+      x1$8.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$7, lhsMsg, lhsAggregate)
+    };
+    x1$8.cut_$eq__Z__V(false);
+    this.svgParse__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg = x1$8.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut = x1$8.cut__Z();
+    var endCut = (!(!(rhsCut | oldCut$7)));
+    if (((!x1$8.isSuccess__Z()) && (!rhsCut))) {
+      x1$8.freshFailure__I__Lfastparse_ParsingRun(startPos$7)
+    } else {
+      (void 0)
+    };
+    x1$8.cut_$eq__Z__V(endCut);
+    if (verboseFailures) {
+      var rassoc$2 = rhsMsg;
+      var $$x2 = lhsMsg.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2);
+      var rassoc$3 = x1$8.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$8.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$7, $$x2, lhsAggregate.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3))
+    };
+    var $$x1 = x1$8
+  };
+  $$x3.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x1);
+  var lhsMsg$2 = x1$7.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate$2 = x1$7.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$7.isSuccess__Z()) {
     x1$7.cut_$eq__Z__V((!(!(x1$7.cut__Z() | oldCut$6))));
-    var $$x1 = x1$7
+    var $$x4 = x1$7
   } else if (x1$7.cut__Z()) {
-    var $$x1 = x1$7
+    var $$x4 = x1$7
   } else {
-    var verboseFailures = x1$7.verboseFailures__Z();
+    var verboseFailures$2 = x1$7.verboseFailures__Z();
     x1$7.index_$eq__I__V(startPos$6);
-    if (verboseFailures) {
-      x1$7.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$6, lhsMsg, lhsAggregate)
+    if (verboseFailures$2) {
+      x1$7.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$6, lhsMsg$2, lhsAggregate$2)
     };
     x1$7.cut_$eq__Z__V(false);
-    this.verbatim__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10);
-    var rhsMsg = x1$7.shortParserMsg__Lfastparse_internal_Msgs();
-    var rhsCut = x1$7.cut__Z();
-    var endCut = (!(!(rhsCut | oldCut$6)));
-    if (((!x1$7.isSuccess__Z()) && (!rhsCut))) {
+    this.verbatim__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg$2 = x1$7.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut$2 = x1$7.cut__Z();
+    var endCut$2 = (!(!(rhsCut$2 | oldCut$6)));
+    if (((!x1$7.isSuccess__Z()) && (!rhsCut$2))) {
       x1$7.freshFailure__I__Lfastparse_ParsingRun(startPos$6)
     } else {
       (void 0)
     };
-    x1$7.cut_$eq__Z__V(endCut);
-    if (verboseFailures) {
-      var rassoc$2 = rhsMsg;
-      var $$x2 = lhsMsg.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2);
-      var rassoc$3 = x1$7.failureGroupAggregate__Lfastparse_internal_Msgs();
-      x1$7.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$6, $$x2, lhsAggregate.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3))
+    x1$7.cut_$eq__Z__V(endCut$2);
+    if (verboseFailures$2) {
+      var rassoc$2$2 = rhsMsg$2;
+      var $$x5 = lhsMsg$2.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$2);
+      var rassoc$3$2 = x1$7.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$7.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$6, $$x5, lhsAggregate$2.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$2))
     };
-    var $$x1 = x1$7
+    var $$x4 = x1$7
   };
-  $$x3.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x1);
-  var lhsMsg$2 = x1$6.shortParserMsg__Lfastparse_internal_Msgs();
-  var lhsAggregate$2 = x1$6.failureGroupAggregate__Lfastparse_internal_Msgs();
+  $$x6.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x4);
+  var lhsMsg$3 = x1$6.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate$3 = x1$6.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$6.isSuccess__Z()) {
     x1$6.cut_$eq__Z__V((!(!(x1$6.cut__Z() | oldCut$5))));
-    var $$x4 = x1$6
+    var $$x7 = x1$6
   } else if (x1$6.cut__Z()) {
-    var $$x4 = x1$6
+    var $$x7 = x1$6
   } else {
-    var verboseFailures$2 = x1$6.verboseFailures__Z();
+    var verboseFailures$3 = x1$6.verboseFailures__Z();
     x1$6.index_$eq__I__V(startPos$5);
-    if (verboseFailures$2) {
-      x1$6.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$5, lhsMsg$2, lhsAggregate$2)
+    if (verboseFailures$3) {
+      x1$6.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$5, lhsMsg$3, lhsAggregate$3)
     };
     x1$6.cut_$eq__Z__V(false);
-    this.displayMath__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10);
-    var rhsMsg$2 = x1$6.shortParserMsg__Lfastparse_internal_Msgs();
-    var rhsCut$2 = x1$6.cut__Z();
-    var endCut$2 = (!(!(rhsCut$2 | oldCut$5)));
-    if (((!x1$6.isSuccess__Z()) && (!rhsCut$2))) {
+    this.displayMath__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg$3 = x1$6.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut$3 = x1$6.cut__Z();
+    var endCut$3 = (!(!(rhsCut$3 | oldCut$5)));
+    if (((!x1$6.isSuccess__Z()) && (!rhsCut$3))) {
       x1$6.freshFailure__I__Lfastparse_ParsingRun(startPos$5)
     } else {
       (void 0)
     };
-    x1$6.cut_$eq__Z__V(endCut$2);
-    if (verboseFailures$2) {
-      var rassoc$2$2 = rhsMsg$2;
-      var $$x5 = lhsMsg$2.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$2);
-      var rassoc$3$2 = x1$6.failureGroupAggregate__Lfastparse_internal_Msgs();
-      x1$6.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$5, $$x5, lhsAggregate$2.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$2))
+    x1$6.cut_$eq__Z__V(endCut$3);
+    if (verboseFailures$3) {
+      var rassoc$2$3 = rhsMsg$3;
+      var $$x8 = lhsMsg$3.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$3);
+      var rassoc$3$3 = x1$6.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$6.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$5, $$x8, lhsAggregate$3.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$3))
     };
-    var $$x4 = x1$6
+    var $$x7 = x1$6
   };
-  $$x6.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x4);
-  var lhsMsg$3 = x1$5.shortParserMsg__Lfastparse_internal_Msgs();
-  var lhsAggregate$3 = x1$5.failureGroupAggregate__Lfastparse_internal_Msgs();
+  $$x9.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x7);
+  var lhsMsg$4 = x1$5.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate$4 = x1$5.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$5.isSuccess__Z()) {
     x1$5.cut_$eq__Z__V((!(!(x1$5.cut__Z() | oldCut$4))));
-    var $$x7 = x1$5
+    var $$x10 = x1$5
   } else if (x1$5.cut__Z()) {
-    var $$x7 = x1$5
+    var $$x10 = x1$5
   } else {
-    var verboseFailures$3 = x1$5.verboseFailures__Z();
+    var verboseFailures$4 = x1$5.verboseFailures__Z();
     x1$5.index_$eq__I__V(startPos$4);
-    if (verboseFailures$3) {
-      x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$4, lhsMsg$3, lhsAggregate$3)
+    if (verboseFailures$4) {
+      x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$4, lhsMsg$4, lhsAggregate$4)
     };
     x1$5.cut_$eq__Z__V(false);
-    this.inlineTeX__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10);
-    var rhsMsg$3 = x1$5.shortParserMsg__Lfastparse_internal_Msgs();
-    var rhsCut$3 = x1$5.cut__Z();
-    var endCut$3 = (!(!(rhsCut$3 | oldCut$4)));
-    if (((!x1$5.isSuccess__Z()) && (!rhsCut$3))) {
+    this.inlineTeX__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg$4 = x1$5.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut$4 = x1$5.cut__Z();
+    var endCut$4 = (!(!(rhsCut$4 | oldCut$4)));
+    if (((!x1$5.isSuccess__Z()) && (!rhsCut$4))) {
       x1$5.freshFailure__I__Lfastparse_ParsingRun(startPos$4)
     } else {
       (void 0)
     };
-    x1$5.cut_$eq__Z__V(endCut$3);
-    if (verboseFailures$3) {
-      var rassoc$2$3 = rhsMsg$3;
-      var $$x8 = lhsMsg$3.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$3);
-      var rassoc$3$3 = x1$5.failureGroupAggregate__Lfastparse_internal_Msgs();
-      x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$4, $$x8, lhsAggregate$3.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$3))
+    x1$5.cut_$eq__Z__V(endCut$4);
+    if (verboseFailures$4) {
+      var rassoc$2$4 = rhsMsg$4;
+      var $$x11 = lhsMsg$4.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$4);
+      var rassoc$3$4 = x1$5.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$5.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$4, $$x11, lhsAggregate$4.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$4))
     };
-    var $$x7 = x1$5
+    var $$x10 = x1$5
   };
-  $$x9.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x7);
-  var lhsMsg$4 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
-  var lhsAggregate$4 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
+  $$x12.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x10);
+  var lhsMsg$5 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate$5 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$4.isSuccess__Z()) {
     x1$4.cut_$eq__Z__V((!(!(x1$4.cut__Z() | oldCut$3))));
-    var $$x10 = x1$4
+    var $$x13 = x1$4
   } else if (x1$4.cut__Z()) {
-    var $$x10 = x1$4
+    var $$x13 = x1$4
   } else {
-    var verboseFailures$4 = x1$4.verboseFailures__Z();
+    var verboseFailures$5 = x1$4.verboseFailures__Z();
     x1$4.index_$eq__I__V(startPos$3);
-    if (verboseFailures$4) {
-      x1$4.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$3, lhsMsg$4, lhsAggregate$4)
+    if (verboseFailures$5) {
+      x1$4.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$3, lhsMsg$5, lhsAggregate$5)
     };
     x1$4.cut_$eq__Z__V(false);
-    this.bold__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10);
-    var rhsMsg$4 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
-    var rhsCut$4 = x1$4.cut__Z();
-    var endCut$4 = (!(!(rhsCut$4 | oldCut$3)));
-    if (((!x1$4.isSuccess__Z()) && (!rhsCut$4))) {
+    this.bold__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg$5 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut$5 = x1$4.cut__Z();
+    var endCut$5 = (!(!(rhsCut$5 | oldCut$3)));
+    if (((!x1$4.isSuccess__Z()) && (!rhsCut$5))) {
       x1$4.freshFailure__I__Lfastparse_ParsingRun(startPos$3)
     } else {
       (void 0)
     };
-    x1$4.cut_$eq__Z__V(endCut$4);
-    if (verboseFailures$4) {
-      var rassoc$2$4 = rhsMsg$4;
-      var $$x11 = lhsMsg$4.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$4);
-      var rassoc$3$4 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
-      x1$4.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$3, $$x11, lhsAggregate$4.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$4))
+    x1$4.cut_$eq__Z__V(endCut$5);
+    if (verboseFailures$5) {
+      var rassoc$2$5 = rhsMsg$5;
+      var $$x14 = lhsMsg$5.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$5);
+      var rassoc$3$5 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$4.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$3, $$x14, lhsAggregate$5.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$5))
     };
-    var $$x10 = x1$4
+    var $$x13 = x1$4
   };
-  $$x12.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x10);
-  var lhsMsg$5 = x1$3.shortParserMsg__Lfastparse_internal_Msgs();
-  var lhsAggregate$5 = x1$3.failureGroupAggregate__Lfastparse_internal_Msgs();
+  $$x15.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x13);
+  var lhsMsg$6 = x1$3.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate$6 = x1$3.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$3.isSuccess__Z()) {
     x1$3.cut_$eq__Z__V((!(!(x1$3.cut__Z() | oldCut$2))));
-    var $$x13 = x1$3
+    var $$x16 = x1$3
   } else if (x1$3.cut__Z()) {
-    var $$x13 = x1$3
+    var $$x16 = x1$3
   } else {
-    var verboseFailures$5 = x1$3.verboseFailures__Z();
+    var verboseFailures$6 = x1$3.verboseFailures__Z();
     x1$3.index_$eq__I__V(startPos$2);
-    if (verboseFailures$5) {
-      x1$3.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$2, lhsMsg$5, lhsAggregate$5)
+    if (verboseFailures$6) {
+      x1$3.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$2, lhsMsg$6, lhsAggregate$6)
     };
     x1$3.cut_$eq__Z__V(false);
-    this.ital__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10);
-    var rhsMsg$5 = x1$3.shortParserMsg__Lfastparse_internal_Msgs();
-    var rhsCut$5 = x1$3.cut__Z();
-    var endCut$5 = (!(!(rhsCut$5 | oldCut$2)));
-    if (((!x1$3.isSuccess__Z()) && (!rhsCut$5))) {
+    this.ital__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg$6 = x1$3.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut$6 = x1$3.cut__Z();
+    var endCut$6 = (!(!(rhsCut$6 | oldCut$2)));
+    if (((!x1$3.isSuccess__Z()) && (!rhsCut$6))) {
       x1$3.freshFailure__I__Lfastparse_ParsingRun(startPos$2)
     } else {
       (void 0)
     };
-    x1$3.cut_$eq__Z__V(endCut$5);
-    if (verboseFailures$5) {
-      var rassoc$2$5 = rhsMsg$5;
-      var $$x14 = lhsMsg$5.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$5);
-      var rassoc$3$5 = x1$3.failureGroupAggregate__Lfastparse_internal_Msgs();
-      x1$3.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$2, $$x14, lhsAggregate$5.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$5))
+    x1$3.cut_$eq__Z__V(endCut$6);
+    if (verboseFailures$6) {
+      var rassoc$2$6 = rhsMsg$6;
+      var $$x17 = lhsMsg$6.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$6);
+      var rassoc$3$6 = x1$3.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$3.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$2, $$x17, lhsAggregate$6.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$6))
     };
-    var $$x13 = x1$3
+    var $$x16 = x1$3
   };
-  $$x15.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x13);
-  var lhsMsg$6 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
-  var lhsAggregate$6 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
+  $$x18.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($$x16);
+  var lhsMsg$7 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
+  var lhsAggregate$7 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$2.isSuccess__Z()) {
     x1$2.cut_$eq__Z__V((!(!(x1$2.cut__Z() | oldCut))));
-    var x1$8 = x1$2
+    var x1$9 = x1$2
   } else if (x1$2.cut__Z()) {
-    var x1$8 = x1$2
+    var x1$9 = x1$2
   } else {
-    var verboseFailures$6 = x1$2.verboseFailures__Z();
+    var verboseFailures$7 = x1$2.verboseFailures__Z();
     x1$2.index_$eq__I__V(startPos);
-    if (verboseFailures$6) {
-      x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos, lhsMsg$6, lhsAggregate$6)
+    if (verboseFailures$7) {
+      x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos, lhsMsg$7, lhsAggregate$7)
     };
     x1$2.cut_$eq__Z__V(false);
-    this.word__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$10);
-    var rhsMsg$6 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
-    var rhsCut$6 = x1$2.cut__Z();
-    var endCut$6 = (!(!(rhsCut$6 | oldCut)));
-    if (((!x1$2.isSuccess__Z()) && (!rhsCut$6))) {
+    this.word__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$11);
+    var rhsMsg$7 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
+    var rhsCut$7 = x1$2.cut__Z();
+    var endCut$7 = (!(!(rhsCut$7 | oldCut)));
+    if (((!x1$2.isSuccess__Z()) && (!rhsCut$7))) {
       x1$2.freshFailure__I__Lfastparse_ParsingRun(startPos)
     } else {
       (void 0)
     };
-    x1$2.cut_$eq__Z__V(endCut$6);
-    if (verboseFailures$6) {
-      var rassoc$2$6 = rhsMsg$6;
-      var $$x16 = lhsMsg$6.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$6);
-      var rassoc$3$6 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
-      x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos, $$x16, lhsAggregate$6.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$6))
+    x1$2.cut_$eq__Z__V(endCut$7);
+    if (verboseFailures$7) {
+      var rassoc$2$7 = rhsMsg$7;
+      var $$x19 = lhsMsg$7.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$2$7);
+      var rassoc$3$7 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
+      x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos, $$x19, lhsAggregate$7.$colon$colon$colon__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs(rassoc$3$7))
     };
-    var x1$8 = x1$2
+    var x1$9 = x1$2
   };
   if (instrument) {
-    x1.instrument__Lfastparse_internal_Instrument().afterParse__T__I__Z__V(new $c_Lsourcecode_Name("phrase").value__T(), x1$8.index__I(), x1$8.isSuccess__Z())
+    x1.instrument__Lfastparse_internal_Instrument().afterParse__T__I__Z__V(new $c_Lsourcecode_Name("phrase").value__T(), x1$9.index__I(), x1$9.isSuccess__Z())
   };
-  if (x1$8.verboseFailures__Z()) {
-    x1$8.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(startIndex, new $c_Lfastparse_internal_Msgs($as_sci_List($m_sci_List$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lfastparse_internal_Lazy(new $c_sjsr_AnonFunction0((function(this\u00f8) {
+  if (x1$9.verboseFailures__Z()) {
+    x1$9.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__Z__V(startIndex, new $c_Lfastparse_internal_Msgs($as_sci_List($m_sci_List$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lfastparse_internal_Lazy(new $c_sjsr_AnonFunction0((function(this\u00f8) {
       return (function() {
         return $p_Lwhiteboard_Content$__$anonfun$phrase$1__T(this\u00f8)
       })
-    })(this)))])))), x1$8.failureGroupAggregate__Lfastparse_internal_Msgs(), (startIndex < x1$8.traceIndex__I()));
-    if ((!x1$8.isSuccess__Z())) {
+    })(this)))])))), x1$9.failureGroupAggregate__Lfastparse_internal_Msgs(), (startIndex < x1$9.traceIndex__I()));
+    if ((!x1$9.isSuccess__Z())) {
       var rassoc$1 = $m_s_Predef$ArrowAssoc$().$minus$greater$extension__O__O__T2($m_s_Predef$().ArrowAssoc__O__O(new $c_Lsourcecode_Name("phrase").value__T()), startIndex);
-      x1$8.failureStack_$eq__sci_List__V(x1$8.failureStack__sci_List().$colon$colon__O__sci_List(rassoc$1))
+      x1$9.failureStack_$eq__sci_List__V(x1$9.failureStack__sci_List().$colon$colon__O__sci_List(rassoc$1))
     }
   };
-  return x1$8
+  return x1$9
 });
-$c_Lwhiteboard_Content$.prototype.displayMath__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$12) {
+$c_Lwhiteboard_Content$.prototype.displayMath__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$13) {
   var $$x7 = $m_Lfastparse_package$();
-  var x1 = evidence$12;
+  var x1 = evidence$13;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("displayMath").value__T(), startIndex)
   };
-  var x1$2 = evidence$12;
+  var x1$2 = evidence$13;
   var x1$3 = $m_Lfastparse_Implicits$Sequencer$().UnitSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$32 = x1$2.index__I();
   var input$macro$41 = x1$2.input__Lfastparse_ParserInput();
   var $$x5 = $m_Lfastparse_package$();
-  var x1$4 = evidence$12;
+  var x1$4 = evidence$13;
   var x1$5 = $m_Lfastparse_Implicits$Sequencer$().SingleSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$15 = x1$4.index__I();
   var input$macro$24 = x1$4.input__Lfastparse_ParserInput();
   var $$x1 = $m_Lfastparse_package$();
-  var x1$6 = evidence$12;
+  var x1$6 = evidence$13;
   var index = x1$6.index__I();
   var end = ((index + 2) | 0);
   var input = x1$6.input__Lfastparse_ParserInput();
@@ -10330,17 +10497,17 @@ $c_Lwhiteboard_Content$.prototype.displayMath__Lfastparse_ParsingRun__Lfastparse
       var $$x2 = x1$4
     } else {
       var preRhsIndex$macro$17 = x1$4.index__I();
-      var x1$7 = evidence$12;
+      var x1$7 = evidence$13;
       var startPos = x1$7.index__I();
       var oldCapturing = x1$7.noDropBuffer__Z();
       x1$7.noDropBuffer_$eq__Z__V(true);
       var $$x3 = $m_Lfastparse_package$();
-      var x1$8 = evidence$12;
+      var x1$8 = evidence$13;
       var x1$9 = $m_Lfastparse_Implicits$Repeater$UnitRepeater$();
       var originalCut$macro$10 = $s_sr_BooleanRef__create__Z__sr_BooleanRef(x1$8.cut__Z());
       x1$9.initial__V();
       var acc$macro$5 = (void 0);
-      $$x3.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($p_Lwhiteboard_Content$__rec$macro$9$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater$UnitRepeater$__jl_Void__Lfastparse_ParsingRun(this, x1$8.index__I(), 0, null, x1$8, originalCut$macro$10, evidence$12, x1$9, acc$macro$5));
+      $$x3.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($p_Lwhiteboard_Content$__rec$macro$9$4__I__I__Lfastparse_internal_Msgs__Lfastparse_ParsingRun__sr_BooleanRef__Lfastparse_ParsingRun__Lfastparse_Implicits$Repeater$UnitRepeater$__jl_Void__Lfastparse_ParsingRun(this, x1$8.index__I(), 0, null, x1$8, originalCut$macro$10, evidence$13, x1$9, acc$macro$5));
       x1$7.noDropBuffer_$eq__Z__V(oldCapturing);
       if ((!x1$7.isSuccess__Z())) {
         x1$7
@@ -10383,7 +10550,7 @@ $c_Lwhiteboard_Content$.prototype.displayMath__Lfastparse_ParsingRun__Lfastparse
       var x1$11 = x1$2
     } else {
       var preRhsIndex$macro$34 = x1$2.index__I();
-      var x1$10 = evidence$12;
+      var x1$10 = evidence$13;
       var index$2 = x1$10.index__I();
       var end$2 = ((index$2 + 2) | 0);
       var input$2 = x1$10.input__Lfastparse_ParserInput();
@@ -10450,29 +10617,29 @@ $c_Lwhiteboard_Content$.prototype.displayMath__Lfastparse_ParsingRun__Lfastparse
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$13) {
-  var x1 = evidence$13;
+$c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$14) {
+  var x1 = evidence$14;
   var oldCut = x1.cut__Z();
   x1.cut_$eq__Z__V(false);
   var startPos = x1.index__I();
   var $$x9 = $m_Lfastparse_package$();
-  var x1$2 = evidence$13;
+  var x1$2 = evidence$14;
   var oldCut$2 = x1$2.cut__Z();
   x1$2.cut_$eq__Z__V(false);
   var startPos$2 = x1$2.index__I();
   var $$x4 = $m_Lfastparse_package$();
   var $$x2 = $m_Lfastparse_package$();
-  var x1$3 = evidence$13;
+  var x1$3 = evidence$14;
   var startIndex = x1$3.index__I();
   var instrument = (x1$3.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1$3.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("spanSeq").value__T(), startIndex)
   };
-  var x1$4 = evidence$13;
+  var x1$4 = evidence$14;
   var x1$5 = $as_Lfastparse_Implicits$Sequencer($m_Lfastparse_Implicits$Sequencer$().Sequencer1__O());
   var preLhsIndex$macro$2 = x1$4.index__I();
   var input$macro$11 = x1$4.input__Lfastparse_ParserInput();
-  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.inlineTeX__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$13));
+  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.inlineTeX__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$14));
   if ((!x1$4.isSuccess__Z())) {
     var x1$6 = x1$4
   } else {
@@ -10487,7 +10654,7 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
       var x1$6 = x1$4
     } else {
       var preRhsIndex$macro$4 = x1$4.index__I();
-      this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$13);
+      this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$14);
       var rhsAggregate$macro$7 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
       var rhsMsg$macro$8 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
       if ((!x1$4.isSuccess__Z())) {
@@ -10552,17 +10719,17 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
     };
     x1$2.cut_$eq__Z__V(false);
     var $$x7 = $m_Lfastparse_package$();
-    var x1$8 = evidence$13;
+    var x1$8 = evidence$14;
     var startIndex$2 = x1$8.index__I();
     var instrument$2 = (x1$8.instrument__Lfastparse_internal_Instrument() !== null);
     if (instrument$2) {
       x1$8.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("spanSeq").value__T(), startIndex$2)
     };
-    var x1$9 = evidence$13;
+    var x1$9 = evidence$14;
     var x1$10 = $as_Lfastparse_Implicits$Sequencer($m_Lfastparse_Implicits$Sequencer$().Sequencer1__O());
     var preLhsIndex$macro$17 = x1$9.index__I();
     var input$macro$26 = x1$9.input__Lfastparse_ParserInput();
-    $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.phrase__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$13));
+    $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.phrase__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$14));
     if ((!x1$9.isSuccess__Z())) {
       var x1$11 = x1$9
     } else {
@@ -10577,7 +10744,7 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
         var x1$11 = x1$9
       } else {
         var preRhsIndex$macro$19 = x1$9.index__I();
-        this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$13);
+        this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$14);
         var rhsAggregate$macro$22 = x1$9.failureGroupAggregate__Lfastparse_internal_Msgs();
         var rhsMsg$macro$23 = x1$9.shortParserMsg__Lfastparse_internal_Msgs();
         if ((!x1$9.isSuccess__Z())) {
@@ -10658,11 +10825,11 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
     };
     x1.cut_$eq__Z__V(false);
     var $$x12 = $m_Lfastparse_package$();
-    var x1$13 = evidence$13;
+    var x1$13 = evidence$14;
     var oldCut$3 = x1$13.cut__Z();
     x1$13.cut_$eq__Z__V(false);
     var startPos$3 = x1$13.index__I();
-    $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$().End__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$13));
+    $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$().End__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$14));
     var lhsMsg$3 = x1$13.shortParserMsg__Lfastparse_internal_Msgs();
     var lhsAggregate$3 = x1$13.failureGroupAggregate__Lfastparse_internal_Msgs();
     if (x1$13.isSuccess__Z()) {
@@ -10677,7 +10844,7 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
         x1$13.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos$3, lhsMsg$3, lhsAggregate$3)
       };
       x1$13.cut_$eq__Z__V(false);
-      this.blankLine__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$13);
+      this.blankLine__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$14);
       var rhsMsg$2 = x1$13.shortParserMsg__Lfastparse_internal_Msgs();
       var rhsCut$2 = x1$13.cut__Z();
       var endCut$2 = (!(!(rhsCut$2 | oldCut$3)));
@@ -10701,9 +10868,9 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
     } else {
       var this2$3 = x1$14;
       this2$3.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$5) {
-        return (function(x$13$2) {
-          var x$13 = $as_jl_Void(x$13$2);
-          return $p_Lwhiteboard_Content$__$anonfun$spanSeq$5__jl_Void__sci_Vector(this$5, x$13)
+        return (function(x$14$2) {
+          var x$14 = $as_jl_Void(x$14$2);
+          return $p_Lwhiteboard_Content$__$anonfun$spanSeq$5__jl_Void__sci_Vector(this$5, x$14)
         })
       })(this)).apply__O__O((this2$3.successValue__O(), (void 0))))
     };
@@ -10725,29 +10892,29 @@ $c_Lwhiteboard_Content$.prototype.spanSeq__Lfastparse_ParsingRun__Lfastparse_Par
     return x1
   }
 });
-$c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$14) {
+$c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$15) {
   var $$x6 = $m_Lfastparse_package$();
-  var x1 = evidence$14;
+  var x1 = evidence$15;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("headHead").value__T(), startIndex)
   };
-  var x1$2 = evidence$14;
+  var x1$2 = evidence$15;
   var x1$3 = $m_Lfastparse_Implicits$Sequencer$().UnitSequencer__Lfastparse_Implicits$Sequencer();
   var preLhsIndex$macro$2 = x1$2.index__I();
   var input$macro$11 = x1$2.input__Lfastparse_ParserInput();
   var $$x2 = $m_Lfastparse_package$();
-  var x1$4 = evidence$14;
+  var x1$4 = evidence$15;
   var startPos = x1$4.index__I();
   var oldCapturing = x1$4.noDropBuffer__Z();
   x1$4.noDropBuffer_$eq__Z__V(true);
   var $$x1 = $m_Lfastparse_package$();
-  var qual$1 = new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$14) {
+  var qual$1 = new $c_sjsr_AnonFunction0((function(this\u00f8, evidence$15) {
     return (function() {
-      return $p_Lwhiteboard_Content$__$anonfun$headHead$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$14)
+      return $p_Lwhiteboard_Content$__$anonfun$headHead$1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this\u00f8, evidence$15)
     })
-  })(this, evidence$14));
+  })(this, evidence$15));
   var x$1 = 1;
   var x$2 = 6;
   var x$3 = new $c_sjsr_AnonFunction0((function(this$2, qual$1) {
@@ -10756,7 +10923,7 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
     })
   })(this, qual$1));
   var x$4 = $m_Lfastparse_package$ByNameOps$().rep$default$4$extension__F0__I(qual$1);
-  $$x1.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$ByNameOps$().rep$extension__F0__I__F0__I__I__Lfastparse_Implicits$Repeater__F1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(qual$1, 1, x$3, 6, x$4, $m_Lfastparse_Implicits$Repeater$UnitRepeater$(), $m_Lfastparse_NoWhitespace$noWhitespaceImplicit$(), evidence$14));
+  $$x1.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$ByNameOps$().rep$extension__F0__I__F0__I__I__Lfastparse_Implicits$Repeater__F1__Lfastparse_ParsingRun__Lfastparse_ParsingRun(qual$1, 1, x$3, 6, x$4, $m_Lfastparse_Implicits$Repeater$UnitRepeater$(), $m_Lfastparse_NoWhitespace$noWhitespaceImplicit$(), evidence$15));
   x1$4.noDropBuffer_$eq__Z__V(oldCapturing);
   $$x2.EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(((!x1$4.isSuccess__Z()) ? x1$4 : x1$4.freshSuccess__O__Lfastparse_ParsingRun(x1$4.input__Lfastparse_ParserInput().slice__I__I__T(startPos, x1$4.index__I()))));
   if ((!x1$2.isSuccess__Z())) {
@@ -10773,12 +10940,12 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
       var x1$8 = x1$2
     } else {
       var preRhsIndex$macro$4 = x1$2.index__I();
-      var x1$5 = evidence$14;
+      var x1$5 = evidence$15;
       var oldCut = x1$5.cut__Z();
       x1$5.cut_$eq__Z__V(false);
       var startPos$2 = x1$5.index__I();
       var $$x3 = $m_Lfastparse_package$();
-      var x1$6 = evidence$14;
+      var x1$6 = evidence$15;
       var input = x1$6.input__Lfastparse_ParserInput();
       var index = x1$6.index__I();
       var res = ((input.isReachable__I__Z(index) && (input.apply__I__C(index) === 32)) ? x1$6.freshSuccessUnit__I__Lfastparse_ParsingRun(((index + 1) | 0)) : x1$6.freshFailure__Lfastparse_ParsingRun());
@@ -10804,7 +10971,7 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
         };
         x1$5.cut_$eq__Z__V(false);
         var s1 = this.uspc__T();
-        var x1$7 = evidence$14;
+        var x1$7 = evidence$15;
         var index$2 = x1$7.index__I();
         var res$2 = ($m_Lfastparse_internal_Util$().startsWith__Lfastparse_ParserInput__T__I__Z(x1$7.input__Lfastparse_ParserInput(), s1, index$2) ? x1$7.freshSuccessUnit__I__Lfastparse_ParsingRun(((index$2 + $f_T__length__I(s1)) | 0)) : x1$7.freshFailure__Lfastparse_ParsingRun());
         if (x1$7.verboseFailures__Z()) {
@@ -10871,23 +11038,23 @@ $c_Lwhiteboard_Content$.prototype.headHead__Lfastparse_ParsingRun__Lfastparse_Pa
   } else {
     var this2 = x1$9;
     this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this$6) {
-      return (function(x$14$2) {
-        var x$14 = $as_T(x$14$2);
-        return $p_Lwhiteboard_Content$__$anonfun$headHead$7__T__I(this$6, x$14)
+      return (function(x$15$2) {
+        var x$15 = $as_T(x$15$2);
+        return $p_Lwhiteboard_Content$__$anonfun$headHead$7__T__I(this$6, x$15)
       })
     })(this)).apply__O__O($as_T(this2.successValue__O())));
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.para__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$15) {
+$c_Lwhiteboard_Content$.prototype.para__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$16) {
   var $$x1 = $m_Lfastparse_package$();
-  var x1 = evidence$15;
+  var x1 = evidence$16;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("para").value__T(), startIndex)
   };
-  var x1$2 = this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$15);
+  var x1$2 = this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$16);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().afterParse__T__I__Z__V(new $c_Lsourcecode_Name("para").value__T(), x1$2.index__I(), x1$2.isSuccess__Z())
   };
@@ -10916,19 +11083,19 @@ $c_Lwhiteboard_Content$.prototype.para__Lfastparse_ParsingRun__Lfastparse_Parsin
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.heading__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$16) {
+$c_Lwhiteboard_Content$.prototype.heading__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$17) {
   var $$x2 = $m_Lfastparse_package$();
-  var x1 = evidence$16;
+  var x1 = evidence$17;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("heading").value__T(), startIndex)
   };
-  var x1$2 = evidence$16;
+  var x1$2 = evidence$17;
   var x1$3 = $as_Lfastparse_Implicits$Sequencer($m_Lfastparse_Implicits$Sequencer$().Sequencer1__O());
   var preLhsIndex$macro$2 = x1$2.index__I();
   var input$macro$11 = x1$2.input__Lfastparse_ParserInput();
-  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.headHead__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$16));
+  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.headHead__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$17));
   if ((!x1$2.isSuccess__Z())) {
     var x1$4 = x1$2
   } else {
@@ -10943,7 +11110,7 @@ $c_Lwhiteboard_Content$.prototype.heading__Lfastparse_ParsingRun__Lfastparse_Par
       var x1$4 = x1$2
     } else {
       var preRhsIndex$macro$4 = x1$2.index__I();
-      this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$16);
+      this.spanSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$17);
       var rhsAggregate$macro$7 = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
       var rhsMsg$macro$8 = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
       if ((!x1$2.isSuccess__Z())) {
@@ -10993,18 +11160,18 @@ $c_Lwhiteboard_Content$.prototype.heading__Lfastparse_ParsingRun__Lfastparse_Par
     return this2
   }
 });
-$c_Lwhiteboard_Content$.prototype.sentence__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$17) {
-  var x1 = evidence$17;
+$c_Lwhiteboard_Content$.prototype.sentence__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$18) {
+  var x1 = evidence$18;
   var startIndex = x1.index__I();
   var instrument = (x1.instrument__Lfastparse_internal_Instrument() !== null);
   if (instrument) {
     x1.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("sentence").value__T(), startIndex)
   };
-  var x1$2 = evidence$17;
+  var x1$2 = evidence$18;
   var oldCut = x1$2.cut__Z();
   x1$2.cut_$eq__Z__V(false);
   var startPos = x1$2.index__I();
-  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.heading__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$17));
+  $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.heading__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$18));
   var lhsMsg = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
   var lhsAggregate = x1$2.failureGroupAggregate__Lfastparse_internal_Msgs();
   if (x1$2.isSuccess__Z()) {
@@ -11019,7 +11186,7 @@ $c_Lwhiteboard_Content$.prototype.sentence__Lfastparse_ParsingRun__Lfastparse_Pa
       x1$2.aggregateMsg__I__Lfastparse_internal_Msgs__Lfastparse_internal_Msgs__V(startPos, lhsMsg, lhsAggregate)
     };
     x1$2.cut_$eq__Z__V(false);
-    this.para__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$17);
+    this.para__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$18);
     var rhsMsg = x1$2.shortParserMsg__Lfastparse_internal_Msgs();
     var rhsCut = x1$2.cut__Z();
     var endCut = (!(!(rhsCut | oldCut)));
@@ -11053,21 +11220,21 @@ $c_Lwhiteboard_Content$.prototype.sentence__Lfastparse_ParsingRun__Lfastparse_Pa
   };
   return x1$3
 });
-$c_Lwhiteboard_Content$.prototype.divSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$18) {
-  var x1 = evidence$18;
+$c_Lwhiteboard_Content$.prototype.divSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$19) {
+  var x1 = evidence$19;
   var oldCut = x1.cut__Z();
   x1.cut_$eq__Z__V(false);
   var startPos = x1.index__I();
   var $$x2 = $m_Lfastparse_package$();
-  var x1$2 = $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$().End__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$18));
+  var x1$2 = $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun($m_Lfastparse_package$().End__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$19));
   if ((!x1$2.isSuccess__Z())) {
     var $$x1 = x1$2
   } else {
     var this2 = x1$2;
     this2.successValue_$eq__O__V(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$15$2) {
-        var x$15 = $as_jl_Void(x$15$2);
-        return $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector(this\u00f8, x$15)
+      return (function(x$16$2) {
+        var x$16 = $as_jl_Void(x$16$2);
+        return $p_Lwhiteboard_Content$__$anonfun$divSeq$1__jl_Void__sci_Vector(this\u00f8, x$16)
       })
     })(this)).apply__O__O((this2.successValue__O(), (void 0))));
     var $$x1 = this2
@@ -11088,17 +11255,17 @@ $c_Lwhiteboard_Content$.prototype.divSeq__Lfastparse_ParsingRun__Lfastparse_Pars
     };
     x1.cut_$eq__Z__V(false);
     var $$x4 = $m_Lfastparse_package$();
-    var x1$3 = evidence$18;
+    var x1$3 = evidence$19;
     var startIndex = x1$3.index__I();
     var instrument = (x1$3.instrument__Lfastparse_internal_Instrument() !== null);
     if (instrument) {
       x1$3.instrument__Lfastparse_internal_Instrument().beforeParse__T__I__V(new $c_Lsourcecode_Name("divSeq").value__T(), startIndex)
     };
-    var x1$4 = evidence$18;
+    var x1$4 = evidence$19;
     var x1$5 = $as_Lfastparse_Implicits$Sequencer($m_Lfastparse_Implicits$Sequencer$().Sequencer1__O());
     var preLhsIndex$macro$2 = x1$4.index__I();
     var input$macro$11 = x1$4.input__Lfastparse_ParserInput();
-    $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.sentence__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$18));
+    $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.sentence__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$19));
     if ((!x1$4.isSuccess__Z())) {
       var x1$6 = x1$4
     } else {
@@ -11113,7 +11280,7 @@ $c_Lwhiteboard_Content$.prototype.divSeq__Lfastparse_ParsingRun__Lfastparse_Pars
         var x1$6 = x1$4
       } else {
         var preRhsIndex$macro$4 = x1$4.index__I();
-        this.divSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$18);
+        this.divSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$19);
         var rhsAggregate$macro$7 = x1$4.failureGroupAggregate__Lfastparse_internal_Msgs();
         var rhsMsg$macro$8 = x1$4.shortParserMsg__Lfastparse_internal_Msgs();
         if ((!x1$4.isSuccess__Z())) {
@@ -11179,8 +11346,8 @@ $c_Lwhiteboard_Content$.prototype.divSeq__Lfastparse_ParsingRun__Lfastparse_Pars
     return x1
   }
 });
-$c_Lwhiteboard_Content$.prototype.bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$19) {
-  var x1 = $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.divSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$19));
+$c_Lwhiteboard_Content$.prototype.bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun = (function(evidence$20) {
+  var x1 = $m_Lfastparse_package$().EagerOps__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this.divSeq__Lfastparse_ParsingRun__Lfastparse_ParsingRun(evidence$20));
   if ((!x1.isSuccess__Z())) {
     return x1
   } else {
