@@ -33,9 +33,12 @@ object Whiteboard {
       value := colour,
       `class` := "colour-input"
     ).render
-    inp.oninput = (_) => { 
+    inp.oninput = (_) => {
       colour = inp.value
-      dom.document.querySelectorAll(".colour-input").asInstanceOf[HTMLInputElement].value = colour
+      dom.document
+        .querySelectorAll(".colour-input")
+        .asInstanceOf[HTMLInputElement]
+        .value = colour
     }
     inp
   }
@@ -75,6 +78,62 @@ object Whiteboard {
 
   }
 
+  def activateSketches(): Unit = {
+    val skechPadsRaw = dom.document.querySelectorAll(".sketchpad")
+    val sketchPads =
+      (for { i <- 0 until (skechPadsRaw.length) } yield skechPadsRaw(
+        i
+      ).asInstanceOf[HTMLElement]).toVector
+    sketchPads.foreach { pad =>
+      if (!pad.parentElement.lastChild
+            .asInstanceOf[HTMLElement]
+            .classList
+            .contains("colour-input"))
+        pad.parentElement.appendChild(colourInput)
+
+      val bound = pad.getBoundingClientRect();
+      pad.onmousedown = (event) => {
+        val (x, y) = xy(event, pad)
+        console.log("mouse-x", x)
+        console.log("mouse-y", y)
+        val at = pad.attributes
+        setAttribute(pad, "data-mousedown", true.toString())
+
+        setAttribute(pad, "data-x", x.toInt.toString())
+        setAttribute(pad, "data-y", y.toInt.toString())
+
+      }
+
+      pad.onmouseup = (event) => {
+        setAttribute(pad, "data-mousedown", false.toString())
+      }
+
+      pad.onmousemove = (event) => {
+        val (a2, b2) = xy(event, pad)
+        val a1 =
+          pad.attributes.getNamedItem("data-x").value.toInt
+        val b1 =
+          pad.attributes.getNamedItem("data-y").value.toInt
+        import svgAttrs.{x1, x2, y1, y2, stroke}
+        val l = svgTags.line(
+          x1 := a1,
+          x2 := a2,
+          y1 := b1,
+          y2 := b2,
+          stroke := colour
+        )
+        setAttribute(pad, "data-x", a2.toInt.toString())
+        setAttribute(pad, "data-y", b2.toInt.toString())
+        val down = pad.attributes
+          .getNamedItem("data-mousedown")
+          .value
+          .toBoolean
+        if (down) pad.appendChild(l.render)
+      }
+    }
+
+  }
+
   autoView.onclick = (_) => {
     autoUpdate = !autoUpdate
     autoView.innerText = s"Auto-update: $autoUpdate"
@@ -88,7 +147,6 @@ object Whiteboard {
     sourceDiv.appendChild(pre(s).render)
   }
 
-
   showSource(Content.initialText)
 
   Content.example.divs
@@ -98,8 +156,8 @@ object Whiteboard {
   def edNode =
     dom.document.querySelector("#editor").asInstanceOf[HTMLElement]
 
-  def htmlPre = 
-  s"""<!DOCTYPE html>
+  def htmlPre =
+    s"""<!DOCTYPE html>
   |
   |<html>
   |
@@ -248,6 +306,14 @@ object Whiteboard {
     jsDiv.appendChild(
       div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
     )
+    jsDiv.appendChild(
+                    div(
+                      p(),
+                      h3(`class` := "extra")("HTML source"),
+                      pre(`class` := "extra source")(htmlPre)
+                    ).render
+                  )
+    activateSketches()
 
   }
 
@@ -334,65 +400,19 @@ object Whiteboard {
                   jsDiv.appendChild(
                     div(p(), h3(`class` := "extra")("Source"), sourceDiv).render
                   )
-                  jsDiv.appendChild(div(p(), h3(`class` := "extra")("HTML source"),  pre(`class` := "extra source")(htmlPre)).render)
+                  jsDiv.appendChild(
+                    div(
+                      p(),
+                      h3(`class` := "extra")("HTML source"),
+                      pre(`class` := "extra source")(htmlPre)
+                    ).render
+                  )
 
                   if (focussed) focus()
 
-                  val skechPadsRaw = dom.document.querySelectorAll(".sketchpad")
-                  val sketchPads =
-                    (for { i <- 0 until (skechPadsRaw.length) } yield skechPadsRaw(
-                      i
-                    ).asInstanceOf[HTMLElement]).toVector
-                  sketchPads.foreach {
-                    pad =>
-                      if (!pad.parentElement.lastChild
-                            .asInstanceOf[HTMLElement]
-                            .classList
-                            .contains("colour-input"))
-                        pad.parentElement.appendChild(colourInput)
-
-                      val bound = pad.getBoundingClientRect();
-                      pad.onmousedown = (event) => {
-                        val (x, y) = xy(event, pad)
-                        console.log("mouse-x", x)
-                        console.log("mouse-y", y)
-                        val at = pad.attributes
-                        setAttribute(pad, "data-mousedown", true.toString())
-
-                        setAttribute(pad, "data-x", x.toInt.toString())
-                        setAttribute(pad, "data-y", y.toInt.toString())
-
-                      }
-
-                      pad.onmouseup = (event) => {
-                        setAttribute(pad, "data-mousedown", false.toString())
-                      }
-
-                      pad.onmousemove = (event) => {
-                        val (a2, b2) = xy(event, pad)
-                        val a1 =
-                          pad.attributes.getNamedItem("data-x").value.toInt
-                        val b1 =
-                          pad.attributes.getNamedItem("data-y").value.toInt
-                        import svgAttrs.{x1, x2, y1, y2, stroke}
-                        val l = svgTags.line(
-                          x1 := a1,
-                          x2 := a2,
-                          y1 := b1,
-                          y2 := b2,
-                          stroke := colour
-                        )
-                        setAttribute(pad, "data-x", a2.toInt.toString())
-                        setAttribute(pad, "data-y", b2.toInt.toString())
-                        val down = pad.attributes
-                          .getNamedItem("data-mousedown")
-                          .value
-                          .toBoolean
-                        if (down) pad.appendChild(l.render)
-                      }
-                  }
-
                   if (autoUpdate) newBody.view.oninput = (e) => update()
+
+                  activateSketches()
 
                   val nd =
                     dom.document

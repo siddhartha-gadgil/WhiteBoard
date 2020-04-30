@@ -414,17 +414,25 @@ object Content {
   | As you see there are headings (following markdown). We can also display equations such as $$x^2 + y^2 = 1.$$
   |
   |__Note:__ As usual a newline is like a space and a _blank_ line marks a new paragraph.
+  |
+  |If you like, you can also draw or write by hand (by pressing the mouse key down).
+  |
+  |$$$1000, 200$$$
   | 
   |### But how?
   |
   | To edit a formula, click on it. Look at the source below, or read markdown documentation. You can also experiment here. 
   |Note that you have to move the cursor manually out of formulas and other special environments.
+  |To make a quick sketchpad with the default size, just type a _triple underscore_, i.e., the underscore thrice. 
+  |For custom sizes, type _triple dollar_ width, height _triple dollar_. To save your work, note that both the source as seen by 
+  |this application and a HTML source is shown when not in focus mode. Save these with a text editor. The HTML source will 
+  |essentially replicate the whiteboard _including_ figures/handwriting. You may want to tweak the formatting.
   |
   |### Any improvements due?
   | 
-  | The most important one planned is crude figures/handwriting support. This should come in a couple of days. 
-  | Other stuff is planned too,
-  | and suggestions are welcome.
+  | Now that the figures are here, development is frozen even though a lot is buggy and missing, till I find (or someone finds) that there are
+  |situations where this is more pleasant/productive than e.g. __Xournal++__. Obvious possible improvements that are not hard  are 
+  |undo/redo, save file, resizing sketchboardse.
   |
   """.stripMargin
 

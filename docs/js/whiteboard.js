@@ -8595,7 +8595,7 @@ function $c_Lwhiteboard_Content$() {
   $n_Lwhiteboard_Content$ = this;
   this.Lwhiteboard_Content$__f_uspc = "\u00a0";
   this.Lwhiteboard_Content$__f_eg = new $c_Lwhiteboard_Content$Paragraph($as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([new $c_Lwhiteboard_Content$Text("Something like"), new $c_Lwhiteboard_Content$InlineTeX("x^2 + y^2", true), new $c_Lwhiteboard_Content$Text(" is a formula")]))));
-  this.Lwhiteboard_Content$__f_initialText = $m_sc_StringOps$().stripMargin$extension__T__T($m_s_Predef$().augmentString__T__T("I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. \n  |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display text.\n  |To format use <Alt-B>. There is also an auto-format mode (format on change), but as the cursor placement is erratic this is off by default and can be toggled with <Alt-A>.\n  |You can also toggle the focus mode using <Alt-L> or by double-clicking. \n  |\n  |### Anything else?\n  |\n  | As you see there are headings (following markdown). We can also display equations such as $$x^2 + y^2 = 1.$$\n  |\n  |__Note:__ As usual a newline is like a space and a _blank_ line marks a new paragraph.\n  | \n  |### But how?\n  |\n  | To edit a formula, click on it. Look at the source below, or read markdown documentation. You can also experiment here. \n  |Note that you have to move the cursor manually out of formulas and other special environments.\n  |\n  |### Any improvements due?\n  | \n  | The most important one planned is crude figures/handwriting support. This should come in a couple of days. \n  | Other stuff is planned too,\n  | and suggestions are welcome.\n  |\n  "))
+  this.Lwhiteboard_Content$__f_initialText = $m_sc_StringOps$().stripMargin$extension__T__T($m_s_Predef$().augmentString__T__T("I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. \n  |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display text.\n  |To format use <Alt-B>. There is also an auto-format mode (format on change), but as the cursor placement is erratic this is off by default and can be toggled with <Alt-A>.\n  |You can also toggle the focus mode using <Alt-L> or by double-clicking. \n  |\n  |### Anything else?\n  |\n  | As you see there are headings (following markdown). We can also display equations such as $$x^2 + y^2 = 1.$$\n  |\n  |__Note:__ As usual a newline is like a space and a _blank_ line marks a new paragraph.\n  |\n  |If you like, you can also draw or write by hand (by pressing the mouse key down).\n  |\n  |$$$1000, 200$$$\n  | \n  |### But how?\n  |\n  | To edit a formula, click on it. Look at the source below, or read markdown documentation. You can also experiment here. \n  |Note that you have to move the cursor manually out of formulas and other special environments.\n  |To make a quick sketchpad with the default size, just type a _triple underscore_, i.e., the underscore thrice. \n  |For custom sizes, type _triple dollar_ width, height _triple dollar_. To save your work, note that both the source as seen by \n  |this application and a HTML source is shown when not in focus mode. Save these with a text editor. The HTML source will \n  |essentially replicate the whiteboard _including_ figures/handwriting. You may want to tweak the formatting.\n  |\n  |### Any improvements due?\n  | \n  | Now that the figures are here, development is frozen even though a lot is buggy and missing, till I find (or someone finds) that there are\n  |situations where this is more pleasant/productive than e.g. __Xournal++__. Obvious possible improvements that are not hard  are \n  |undo/redo, save file, resizing sketchboardse.\n  |\n  "))
 }
 $c_Lwhiteboard_Content$.prototype = new $h_O();
 $c_Lwhiteboard_Content$.prototype.constructor = $c_Lwhiteboard_Content$;
@@ -11516,6 +11516,35 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$setAttribute$3__Lorg_scalajs_dom_r
     throw new $c_s_MatchError(x1)
   }
 }
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_HTMLElement($thiz, skechPadsRaw$1, i) {
+  return skechPadsRaw$1[i]
+}
+function $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$2__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, pad) {
+  if ((!$uZ(pad.parentElement.lastChild.classList.contains("colour-input")))) {
+    pad.parentElement.appendChild($m_Lwhiteboard_Whiteboard$().colourInput__Lorg_scalajs_dom_raw_HTMLInputElement())
+  } else {
+    (void 0)
+  };
+  var bound = pad.getBoundingClientRect();
+  pad.onmousedown = (function(pad$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
+    })
+  })(pad);
+  pad.onmouseup = (function(pad$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
+    })
+  })(pad);
+  pad.onmousemove = (function(pad$1) {
+    return (function(arg1$2) {
+      var arg1 = arg1$2;
+      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$activateSketches$5__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O(arg1, pad$1)
+    })
+  })(pad)
+}
 function $p_Lwhiteboard_Whiteboard$__$anonfun$new$3__Lwhiteboard_Content$Heading__V($thiz, h) {
   h.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(h$1) {
     return (function(arg1$2) {
@@ -11533,20 +11562,20 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$unFocus$1__Lorg_scalajs_dom_raw_No
 function $p_Lwhiteboard_Whiteboard$__$anonfun$children$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_Node($thiz, c$1, i) {
   return c$1[i]
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$8) {
-  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$8)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T($thiz, x$10) {
+  return $m_Lwhiteboard_Whiteboard$().fullText__Lorg_scalajs_dom_raw_HTMLElement__T(x$10)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$9) {
-  return $m_Lwhiteboard_Whiteboard$().isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$9)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$11) {
+  return $m_Lwhiteboard_Whiteboard$().isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$11)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$10) {
-  return $m_Lwhiteboard_Whiteboard$().isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$10)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z($thiz, x$12) {
+  return $m_Lwhiteboard_Whiteboard$().isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z(x$12)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$11) {
-  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$11)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$13) {
+  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$13)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$12) {
-  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$12)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector($thiz, x$14) {
+  return $m_Lwhiteboard_Whiteboard$().baseNodes__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(x$14)
 }
 function $p_Lwhiteboard_Whiteboard$__$anonfun$offspring$1__Lorg_scalajs_dom_raw_NodeList__I__sci_Vector($thiz, c$2, i) {
   return $m_Lwhiteboard_Whiteboard$().offspring__Lorg_scalajs_dom_raw_Node__sci_Vector(c$2[i])
@@ -11554,8 +11583,8 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$offspring$1__Lorg_scalajs_dom_raw_
 function $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput($thiz, s) {
   return $m_Lfastparse_ParserInput$().fromString__T__Lfastparse_IndexedParserInput(s)
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$13) {
-  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$13)
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun($thiz, x$15) {
+  return $m_Lwhiteboard_Content$().bdy__Lfastparse_ParsingRun__Lfastparse_ParsingRun(x$15)
 }
 function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastparse_Parsed($thiz, reparse$lzy$1, text$1) {
   if ((reparse$lzy$1 === null)) {
@@ -11567,9 +11596,9 @@ function $p_Lwhiteboard_Whiteboard$__reparse$lzycompute$1__sr_LazyRef__T__Lfastp
       return $p_Lwhiteboard_Whiteboard$__$anonfun$update$1__T__Lfastparse_IndexedParserInput(this\u00f8, s)
     })
   })($thiz))), new $c_sjsr_AnonFunction1((function(this$2) {
-    return (function(x$13$2) {
-      var x$13 = $as_Lfastparse_ParsingRun(x$13$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$13)
+    return (function(x$15$2) {
+      var x$15 = $as_Lfastparse_ParsingRun(x$15$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$2__Lfastparse_ParsingRun__Lfastparse_ParsingRun(this$2, x$15)
     })
   })($thiz)), $m_Lfastparse_package$().parse$default$3__Z(), $m_Lfastparse_package$().parse$default$4__I(), $m_Lfastparse_package$().parse$default$5__Lfastparse_internal_Instrument()))))
 }
@@ -11599,36 +11628,7 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$10__T2__Lwhiteboard_Content
     h.simplify__V()
   }
 }
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$11__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_HTMLElement($thiz, skechPadsRaw$1, i) {
-  return skechPadsRaw$1[i]
-}
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, pad) {
-  if ((!$uZ(pad.parentElement.lastChild.classList.contains("colour-input")))) {
-    pad.parentElement.appendChild($m_Lwhiteboard_Whiteboard$().colourInput__Lorg_scalajs_dom_raw_HTMLInputElement())
-  } else {
-    (void 0)
-  };
-  var bound = pad.getBoundingClientRect();
-  pad.onmousedown = (function(pad$1) {
-    return (function(arg1$2) {
-      var arg1 = arg1$2;
-      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$13__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
-    })
-  })(pad);
-  pad.onmouseup = (function(pad$1) {
-    return (function(arg1$2) {
-      var arg1 = arg1$2;
-      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$14__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V(arg1, pad$1)
-    })
-  })(pad);
-  pad.onmousemove = (function(pad$1) {
-    return (function(arg1$2) {
-      var arg1 = arg1$2;
-      return $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$15__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O(arg1, pad$1)
-    })
-  })(pad)
-}
-function $p_Lwhiteboard_Whiteboard$__$anonfun$update$17__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, range$1, nd$1) {
+function $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V($thiz, range$1, nd$1) {
   range$1.setStart(nd$1, 0);
   range$1.collapse(true);
   var sel = $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().getSelection();
@@ -11651,30 +11651,18 @@ function $p_Lwhiteboard_Whiteboard$__$anonfun$update$9__Lwhiteboard_Content$Body
   if ($m_Lwhiteboard_Whiteboard$().focussed__Z()) {
     $m_Lwhiteboard_Whiteboard$().focus__V()
   };
-  var skechPadsRaw = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelectorAll(".sketchpad");
-  var sketchPads = $m_sr_RichInt$().until$extension__I__I__sci_Range($m_s_Predef$().intWrapper__I__I(0), $uI(skechPadsRaw.length)).map__F1__sci_IndexedSeq(new $c_sjsr_AnonFunction1((function(this$2, skechPadsRaw) {
-    return (function(i$2) {
-      var i = $uI(i$2);
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$update$11__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_HTMLElement(this$2, skechPadsRaw, i)
-    })
-  })($thiz, skechPadsRaw))).toVector__sci_Vector();
-  sketchPads.foreach__F1__V(new $c_sjsr_AnonFunction1((function(this$3) {
-    return (function(pad$2) {
-      var pad = pad$2;
-      $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_HTMLElement__V(this$3, pad)
-    })
-  })($thiz)));
   if ($m_Lwhiteboard_Whiteboard$().autoUpdate__Z()) {
     x3$1.view__Lorg_scalajs_dom_raw_HTMLElement().oninput = (function(arg1$2) {
       var arg1 = arg1$2;
-      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$16__Lorg_scalajs_dom_raw_Event__V(arg1)
+      $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$update$11__Lorg_scalajs_dom_raw_Event__V(arg1)
     })
   };
+  $m_Lwhiteboard_Whiteboard$().activateSketches__V();
   var nd = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector(".cursor");
   var range = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createRange();
-  $m_s_util_Try$().apply__F0__s_util_Try(new $c_sjsr_AnonFunction0((function(this$4, range, nd) {
+  $m_s_util_Try$().apply__F0__s_util_Try(new $c_sjsr_AnonFunction0((function(this$2, range, nd) {
     return (function() {
-      $p_Lwhiteboard_Whiteboard$__$anonfun$update$17__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V(this$4, range, nd)
+      $p_Lwhiteboard_Whiteboard$__$anonfun$update$12__Lorg_scalajs_dom_raw_Range__Lorg_scalajs_dom_raw_HTMLElement__V(this$2, range, nd)
     })
   })($thiz, range, nd)))
 }
@@ -11846,6 +11834,21 @@ $c_Lwhiteboard_Whiteboard$.prototype.setAttribute__Lorg_scalajs_dom_raw_HTMLElem
     })
   })(this, atts, value)))
 });
+$c_Lwhiteboard_Whiteboard$.prototype.activateSketches__V = (function() {
+  var skechPadsRaw = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelectorAll(".sketchpad");
+  var sketchPads = $m_sr_RichInt$().until$extension__I__I__sci_Range($m_s_Predef$().intWrapper__I__I(0), $uI(skechPadsRaw.length)).map__F1__sci_IndexedSeq(new $c_sjsr_AnonFunction1((function(this\u00f8, skechPadsRaw) {
+    return (function(i$2) {
+      var i = $uI(i$2);
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$1__Lorg_scalajs_dom_raw_NodeList__I__Lorg_scalajs_dom_raw_HTMLElement(this\u00f8, skechPadsRaw, i)
+    })
+  })(this, skechPadsRaw))).toVector__sci_Vector();
+  sketchPads.foreach__F1__V(new $c_sjsr_AnonFunction1((function(this$2) {
+    return (function(pad$2) {
+      var pad = pad$2;
+      $p_Lwhiteboard_Whiteboard$__$anonfun$activateSketches$2__Lorg_scalajs_dom_raw_HTMLElement__V(this$2, pad)
+    })
+  })(this)))
+});
 $c_Lwhiteboard_Whiteboard$.prototype.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement = (function() {
   return this.Lwhiteboard_Whiteboard$__f_sourceDiv
 });
@@ -11944,26 +11947,26 @@ $c_Lwhiteboard_Whiteboard$.prototype.fullText__Lorg_scalajs_dom_raw_HTMLElement_
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? this.tagPad__T__T__T($as_T(node.textContent), $as_T(node.tagName)) : this.tagPad__T__T__T($as_sc_IterableOnceOps(cs.map__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$8$2) {
-        var x$8 = x$8$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$8)
+      return (function(x$10$2) {
+        var x$10 = x$10$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$fullText$1__Lorg_scalajs_dom_raw_HTMLElement__T(this\u00f8, x$10)
       })
     })(this)))).mkString__T__T(""), $as_T(node.tagName)))
   }
 });
 $c_Lwhiteboard_Whiteboard$.prototype.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z = (function(node) {
   return ($is($as_T(node.tagName), "BR") || (((!$uZ(node.classList.contains("verbatim"))) && ($m_sc_StringOps$().size$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(node.textContent))) === 0)) && this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).forall__F1__Z(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$9$2) {
-      var x$9 = x$9$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$9)
+    return (function(x$11$2) {
+      var x$11 = x$11$2;
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBreakNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$11)
     })
   })(this)))))
 });
 $c_Lwhiteboard_Whiteboard$.prototype.isBlankNode__Lorg_scalajs_dom_raw_HTMLElement__Z = (function(node) {
   return ($uZ(node.classList.contains("blank")) || ((this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).size__I() > 1) && this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).forall__F1__Z(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-    return (function(x$10$2) {
-      var x$10 = x$10$2;
-      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$10)
+    return (function(x$12$2) {
+      var x$12 = x$12$2;
+      return $p_Lwhiteboard_Whiteboard$__$anonfun$isBlankNode$1__Lorg_scalajs_dom_raw_HTMLElement__Z(this\u00f8, x$12)
     })
   })(this)))))
 });
@@ -11975,17 +11978,17 @@ $c_Lwhiteboard_Whiteboard$.prototype.baseNodes__Lorg_scalajs_dom_raw_HTMLElement
   } else if (this.isBreakNode__Lorg_scalajs_dom_raw_HTMLElement__Z(node)) {
     var rassoc$1 = node;
     return $as_sci_Vector($as_sc_SeqOps(this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node).flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this\u00f8) {
-      return (function(x$11$2) {
-        var x$11 = x$11$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$11)
+      return (function(x$13$2) {
+        var x$13 = x$13$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$1__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this\u00f8, x$13)
       })
     })(this)))).$plus$colon__O__O(rassoc$1))
   } else {
     var cs = this.children__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(node);
     return (cs.isEmpty__Z() ? $as_sci_Vector($m_s_package$().Vector__sci_Vector$().apply__sci_Seq__O($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([node]))) : $as_sci_Vector(cs.flatMap__F1__O(new $c_sjsr_AnonFunction1((function(this$2) {
-      return (function(x$12$2) {
-        var x$12 = x$12$2;
-        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this$2, x$12)
+      return (function(x$14$2) {
+        var x$14 = x$14$2;
+        return $p_Lwhiteboard_Whiteboard$__$anonfun$baseNodes$2__Lorg_scalajs_dom_raw_HTMLElement__sci_Vector(this$2, x$14)
       })
     })(this)))))
   }
@@ -12050,7 +12053,9 @@ $c_Lwhiteboard_Whiteboard$.prototype.load__V = (function() {
     $m_Lwhiteboard_Whiteboard$().whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V(arg1)
   });
   this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild(this.d__Lorg_scalajs_dom_raw_HTMLElement());
-  this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(this.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element())
+  this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("Source")])), $m_Lscalatags_JsDom$all$().bindNode__Lorg_scalajs_dom_raw_Node__Lscalatags_LowPriorityImplicits$bindNode(this.sourceDiv__Lorg_scalajs_dom_raw_HTMLDivElement())])).render__Lorg_scalajs_dom_raw_Element());
+  this.jsDiv__Lorg_scalajs_dom_raw_HTMLElement().appendChild($as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().div__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().p__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sci_Nil$()), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().h3__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag("HTML source")])), $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$all$().pre__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().class__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("extra source", $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())])).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$all$().stringFrag__T__Lscalatags_JsDom$StringFrag(this.htmlPre__T())]))])).render__Lorg_scalajs_dom_raw_Element());
+  this.activateSketches__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.update__V = (function() {
   var reparse$lzy = new $c_sr_LazyRef();
@@ -12098,38 +12103,18 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$1__Lorg
     return (void 0)
   }
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$2__Lorg_scalajs_dom_raw_MouseEvent__O = (function(x$3) {
-  $m_Lwhiteboard_Whiteboard$().autoUpdate_$eq__Z__V((!$m_Lwhiteboard_Whiteboard$().autoUpdate__Z()));
-  $m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement().innerText = ("Auto-update: " + $m_Lwhiteboard_Whiteboard$().autoUpdate__Z());
-  return ($m_Lwhiteboard_Whiteboard$().autoUpdate__Z() ? ($m_Lwhiteboard_Whiteboard$().update__V(), (void 0)) : (void 0))
-});
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$4__Lorg_scalajs_dom_raw_Event__Lwhiteboard_Content$Heading__V = (function(x$4, h$1) {
-  h$1.simplify__V()
-});
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$5) {
-  $m_Lwhiteboard_Whiteboard$().unFocus__V()
-});
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$6) {
-  $m_Lwhiteboard_Whiteboard$().focus__V()
-});
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$7) {
-  $m_Lwhiteboard_Whiteboard$().focus__V()
-});
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
-  $m_Lwhiteboard_Whiteboard$().update__V()
-});
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$13__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$3__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
   var x1 = $m_Lwhiteboard_Whiteboard$().xy__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__T2(event, pad$1);
   if ((x1 !== null)) {
     var x = x1._1$mcD$sp__D();
     var y = x1._2$mcD$sp__D();
-    var x$14 = new $c_T2$mcDD$sp(x, y)
+    var x$3 = new $c_T2$mcDD$sp(x, y)
   } else {
-    var x$14;
+    var x$3;
     throw new $c_s_MatchError(x1)
   };
-  var x$2 = x$14._1$mcD$sp__D();
-  var y$2 = x$14._2$mcD$sp__D();
+  var x$2 = x$3._1$mcD$sp__D();
+  var y$2 = x$3._2$mcD$sp__D();
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-x", x$2);
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("mouse-y", y$2);
   var at = pad$1.attributes;
@@ -12137,21 +12122,21 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$13__
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-x", $f_jl_Integer__toString__T($doubleToInt(x$2)));
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-y", $f_jl_Integer__toString__T($doubleToInt(y$2)))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$14__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$4__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__V = (function(event, pad$1) {
   $m_Lwhiteboard_Whiteboard$().setAttribute__Lorg_scalajs_dom_raw_HTMLElement__T__T__V(pad$1, "data-mousedown", $f_jl_Boolean__toString__T(false))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$15__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O = (function(event, pad$1) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$activateSketches$5__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__O = (function(event, pad$1) {
   var x1 = $m_Lwhiteboard_Whiteboard$().xy__Lorg_scalajs_dom_raw_MouseEvent__Lorg_scalajs_dom_raw_HTMLElement__T2(event, pad$1);
   if ((x1 !== null)) {
     var a2 = x1._1$mcD$sp__D();
     var b2 = x1._2$mcD$sp__D();
-    var x$15 = new $c_T2$mcDD$sp(a2, b2)
+    var x$4 = new $c_T2$mcDD$sp(a2, b2)
   } else {
-    var x$15;
+    var x$4;
     throw new $c_s_MatchError(x1)
   };
-  var a2$2 = x$15._1$mcD$sp__D();
-  var b2$2 = x$15._2$mcD$sp__D();
+  var a2$2 = x$4._1$mcD$sp__D();
+  var b2$2 = x$4._2$mcD$sp__D();
   var a1 = $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-x").value)));
   var b1 = $m_sc_StringOps$().toInt$extension__T__I($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-y").value)));
   var l = $as_Lscalatags_JsDom$TypedTag($m_Lscalatags_JsDom$svgTags$().line__Lscalatags_generic_TypedTag()).apply__sci_Seq__Lscalatags_JsDom$TypedTag($m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq([$m_Lscalatags_JsDom$svgAttrs$().x1__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(a1, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().x2__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(a2$2, $m_Lscalatags_JsDom$all$().doubleAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().y1__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b1, $m_Lscalatags_JsDom$all$().intAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().y2__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(b2$2, $m_Lscalatags_JsDom$all$().doubleAttr__Lscalatags_generic_AttrValue()), $m_Lscalatags_JsDom$svgAttrs$().stroke__Lscalatags_generic_Attr().$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair($m_Lwhiteboard_Whiteboard$().colour__T(), $m_Lscalatags_JsDom$all$().stringAttr__Lscalatags_generic_AttrValue())]));
@@ -12160,7 +12145,27 @@ $c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$15__
   var down = $m_sc_StringOps$().toBoolean$extension__T__Z($m_s_Predef$().augmentString__T__T($as_T(pad$1.attributes.getNamedItem("data-mousedown").value)));
   return (down ? pad$1.appendChild(l.render__Lorg_scalajs_dom_raw_Element()) : (void 0))
 });
-$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$16__Lorg_scalajs_dom_raw_Event__V = (function(e) {
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$2__Lorg_scalajs_dom_raw_MouseEvent__O = (function(x$5) {
+  $m_Lwhiteboard_Whiteboard$().autoUpdate_$eq__Z__V((!$m_Lwhiteboard_Whiteboard$().autoUpdate__Z()));
+  $m_Lwhiteboard_Whiteboard$().autoView__Lorg_scalajs_dom_raw_HTMLButtonElement().innerText = ("Auto-update: " + $m_Lwhiteboard_Whiteboard$().autoUpdate__Z());
+  return ($m_Lwhiteboard_Whiteboard$().autoUpdate__Z() ? ($m_Lwhiteboard_Whiteboard$().update__V(), (void 0)) : (void 0))
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$4__Lorg_scalajs_dom_raw_Event__Lwhiteboard_Content$Heading__V = (function(x$6, h$1) {
+  h$1.simplify__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$focus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$7) {
+  $m_Lwhiteboard_Whiteboard$().unFocus__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$unFocus$2__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$8) {
+  $m_Lwhiteboard_Whiteboard$().focus__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$new$5__Lorg_scalajs_dom_raw_MouseEvent__V = (function(x$9) {
+  $m_Lwhiteboard_Whiteboard$().focus__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$load$1__Lorg_scalajs_dom_raw_Event__V = (function(e) {
+  $m_Lwhiteboard_Whiteboard$().update__V()
+});
+$c_Lwhiteboard_Whiteboard$.prototype.whiteboard$Whiteboard$$$anonfun$update$11__Lorg_scalajs_dom_raw_Event__V = (function(e) {
   $m_Lwhiteboard_Whiteboard$().update__V()
 });
 $c_Lwhiteboard_Whiteboard$.prototype.load = (function() {
