@@ -185,16 +185,19 @@ object Content {
     import scalatags.JsDom.svgTags._
     import scalatags.JsDom.svgAttrs.{`type` => _, id => _, attr => _, _}
 
-    def box(b: Int, h: Int) = svg(xmlns := "http://www.w3.org/2000/svg",
+    def box(b: Int, h: Int) =
+      svg(
+        xmlns := "http://www.w3.org/2000/svg",
         `class` := "sketchpad",
         viewBox := s"0 0 $b $h",
         attr("data-mousedown") := false,
         attr("data-x") := 0,
         attr("data-y") := 0,
         height := h,
-        width := b)(
-      rect(width := b, height := h, stroke := "black", fill := "none")
-    )
+        width := b
+      )(
+        rect(width := b, height := h, stroke := "black", fill := "none")
+      )
 
     def verb(h: Int, w: Int) = Verbatim(box(h, w).toString())
   }
@@ -244,8 +247,21 @@ object Content {
         span(`class` := "texed inline-tex", attr("data-tex") := code).render
       s.innerHTML =
         if (formatted)
-          Try { g.katex.renderToString(code.replace(uspc, " ")).toString() }
-            .getOrElse(s"<span>${"$"}$code${"$"}</span>")
+          Try {
+            g.katex
+              .renderToString(
+                code.replace(uspc, " "),
+                js.Dynamic.literal(
+                  "macros" -> js.Dynamic.literal(
+                    "\\R" -> "\\mathbb{R}",
+                    "\\C" -> "\\mathbb{C}",
+                    "\\N" -> "\\mathbb{N}",
+                    "\\del" -> "\\partial"
+                  )
+                )
+              )
+              .toString()
+          }.getOrElse(s"<span>${"$"}$code${"$"}</span>")
         else s"<span>${"$"}$code${"$"}</span>"
       s.onclick = (_) => {
         if (formatted) s.innerHTML = s"<span>${"$"}$code${"$"}</span>"
@@ -284,7 +300,15 @@ object Content {
             g.katex
               .renderToString(
                 code.replace(uspc, " "),
-                js.Dynamic.literal("displayMode" -> true)
+                js.Dynamic.literal(
+                  "displayMode" -> true,
+                  "macros" -> js.Dynamic.literal(
+                    "\\R" -> "\\mathbb{R}",
+                    "\\C" -> "\\mathbb{C}",
+                    "\\N" -> "\\mathbb{N}",
+                    "\\del" -> "\\partial"
+                  )
+                )
               )
               .toString()
           }.getOrElse(s"<span>${"$$"}$code${"$$"}</span>")
@@ -338,14 +362,18 @@ object Content {
   def verbatim[_: P]: P[Phrase] =
     P("$$$" ~ (CharPred(x => x != '$').rep(1)).! ~ "$$$").map(Verbatim(_))
 
-  def number[_: P]: P[Int] = P( CharIn("0-9").rep(1).!.map(_.toInt) )
+  def number[_: P]: P[Int] = P(CharIn("0-9").rep(1).!.map(_.toInt))
 
-  def svgParse[_ : P]: P[Phrase] = 
-    P("$$$"~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "," ~ (" "| uspc).rep ~ number ~ (" "| uspc).rep ~ "$$$").map{
+  def svgParse[_: P]: P[Phrase] =
+    P(
+      "$$$" ~ (" " | uspc).rep ~ number ~ (" " | uspc).rep ~ "," ~ (" " | uspc).rep ~ number ~ (" " | uspc).rep ~ "$$$"
+    ).map {
       case (h, w) => Svg.verb(h, w)
     }
 
-  def quickSvg[_: P] : P[Phrase] = P("___" ~ !"_").map{(_) => Svg.verb(1200, 300)}
+  def quickSvg[_: P]: P[Phrase] = P("___" ~ !"_").map { (_) =>
+    Svg.verb(1200, 300)
+  }
 
   def letter[_: P]: P[String] =
     !blankLine ~ CharPred(x => !Set('$', '_').contains(x)).! //.map(s => Text(s.toString()))
@@ -359,7 +387,9 @@ object Content {
     P("_" ~ letter.rep(1) ~ "_").map(l => Emph(l.mkString(""), true))
 
   def phrase[_: P]: P[Phrase] =
-    P(quickSvg | svgParse | verbatim | displayMath | inlineTeX | bold | ital | word)
+    P(
+      quickSvg | svgParse | verbatim | displayMath | inlineTeX | bold | ital | word
+    )
 
   def dispAhead[_: P] = P(&("$$"))
 
