@@ -438,7 +438,7 @@ object Content {
 
   val initialText =
     """I wrote this minimal whiteboard for the sake of only one feature - parsing a latex formula such as $x+ y$ on the fly. 
-  |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display text.
+  |There are a couple of other features, we can use _emphasis_ or be __strong__ and handle Display TeX.
   |To format use <Alt-B>. There is also an auto-format mode (format on change), but as the cursor placement is erratic this is off by default and can be toggled with <Alt-A>.
   |You can also toggle the focus mode using <Alt-L> or by double-clicking. 
   |
