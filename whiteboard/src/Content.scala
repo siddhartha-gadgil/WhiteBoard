@@ -306,6 +306,8 @@ object Content {
                     "\\R" -> "\\mathbb{R}",
                     "\\C" -> "\\mathbb{C}",
                     "\\N" -> "\\mathbb{N}",
+                    "\\Q" -> "\\mathbb{Q}",
+                    "\\H" -> "\\mathbb{H}",
                     "\\del" -> "\\partial"
                   )
                 )
