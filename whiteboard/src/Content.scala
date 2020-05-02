@@ -196,7 +196,7 @@ object Content {
         height := h,
         width := b
       )(
-        rect(width := b, height := h, stroke := "black", fill := "none")
+        rect(width := b, height := h, stroke := "#000000", fill := "none")
       )
 
     def verb(h: Int, w: Int) = Verbatim(box(h, w).toString())
@@ -306,8 +306,6 @@ object Content {
                     "\\R" -> "\\mathbb{R}",
                     "\\C" -> "\\mathbb{C}",
                     "\\N" -> "\\mathbb{N}",
-                    "\\Q" -> "\\mathbb{Q}",
-                    "\\H" -> "\\mathbb{H}",
                     "\\del" -> "\\partial"
                   )
                 )

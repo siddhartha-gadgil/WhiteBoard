@@ -150,8 +150,8 @@ object Whiteboard {
       val bound = pad.getBoundingClientRect();
       pad.onmousedown = (event) => {
         val (x, y) = xy(event, pad)
-        console.log("mouse-x", x)
-        console.log("mouse-y", y)
+        // console.log("mouse-x", x)
+        // console.log("mouse-y", y)
         val at = pad.attributes
         setAttribute(pad, "data-mousedown", true.toString())
 
